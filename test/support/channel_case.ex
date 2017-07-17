@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.ChannelCase do
+defmodule Healthlocker.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,23 @@ defmodule OxleasAdhd.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias OxleasAdhd.Repo
+      alias Healthlocker.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint OxleasAdhd.Endpoint
+      @endpoint Healthlocker.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(OxleasAdhd.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.ReadOnlyRepo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(OxleasAdhd.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Healthlocker.Repo, {:shared, self()})
     end
 
     :ok

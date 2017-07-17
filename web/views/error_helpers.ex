@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.ErrorHelpers do
+defmodule Healthlocker.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule OxleasAdhd.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(OxleasAdhd.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(Healthlocker.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(OxleasAdhd.Gettext, "errors", msg, opts)
+      Gettext.dgettext(Healthlocker.Gettext, "errors", msg, opts)
     end
   end
 end

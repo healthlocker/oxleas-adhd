@@ -1,0 +1,62 @@
+<div class="ma0 ma3-ns ma4-m ma4-l">
+  <h2 class="tc">Account</h2>
+  <p>Please use the correct information as it appears on your health record.</p>
+
+  <%= form_for @changeset, @action, fn f -> %>
+    <input name="_method" type="hidden" value="put" />
+    <div class="w-100">
+      <div class="dib w-40">
+        <%= label f, "First name", class: "f5 b db mt2 mb2" %>
+        <%= text_input f, :Forename, class: "ph3 input-reset bn hl-bg-grey w-100" %>
+        <%= error_tag f, :Forename %>
+      </div>
+
+      <div class="dib w-50 fr">
+        <%= label f, "Last name", class: "f5 b db mt2 mb2" %>
+        <%= text_input f, :Surname, class: "ph3 input-reset bn hl-bg-grey w-100" %>
+        <%= error_tag f, :Surname %>
+      </div>
+    </div>
+
+    <div>
+      <%= label f, "Date of birth", class: "f5 b db mt2 mb2" %>
+      <%= text_input f, :DOB, class: "ph3 input-reset bn hl-bg-grey w-40" %>
+      <p class="di gray">DD/MM/YYYY</p>
+      <%= error_tag f, :DOB %>
+    </div>
+
+    <div>
+      <%= label f, :NHS_Number, class: "f5 b db mt2 mb2" do %>
+        NHS number
+        <%= link to: page_path(@conn, :show, "nhs_help") do %>
+          <%= img_tag("/images/Tooltip.png", class: "w1 h1") %>
+        <% end %>
+      <% end %>
+      <%= text_input f, :NHS_Number,
+          class: "ph3 input-reset bn hl-bg-grey w-100" %>
+      <%= error_tag f, :NHS_Number %>
+    </div>
+
+    <p>
+      Are you interested in being contacted if you are eligible to take part
+      in research that contributes to better health for people with mental
+      health related problems? If so you can sign up to a register called
+      <%= link_to("Consent for Contact (C4C)",
+      to: "http://www.slam.nhs.uk/research/patient-involvement/current-opportunities/consent-for-contact") %>.
+      All researchers work for or are approved by
+      South London and Maudsley NHS Foundation Trust.
+    </p>
+
+    <div>
+      <%= checkbox f, :c4c, class: "checkbox" %>
+      <%= label f, :c4c do %>
+        I agree to join the
+        <%= link_to("C4C register", to: "http://www.slam.nhs.uk/research/patient-involvement/current-opportunities/consent-for-contact") %>
+      <% end %>
+    </div>
+
+    <div class="tr mt4">
+      <%= submit_primary "Connect" %>
+    </div>
+  <% end %>
+</div>

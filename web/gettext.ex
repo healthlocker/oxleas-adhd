@@ -1,11 +1,11 @@
-defmodule OxleasAdhd.Gettext do
+defmodule Healthlocker.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import OxleasAdhd.Gettext
+      import Healthlocker.Gettext
 
       # Simple translation
       gettext "Here is the string to translate"
@@ -20,5 +20,5 @@ defmodule OxleasAdhd.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :oxleas_adhd
+  use Gettext, otp_app: :healthlocker
 end

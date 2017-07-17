@@ -1,3 +1,3 @@
-defmodule OxleasAdhd.PageViewTest do
-  use OxleasAdhd.ConnCase, async: true
+defmodule Healthlocker.PageViewTest do
+  use Healthlocker.ConnCase, async: true
 end

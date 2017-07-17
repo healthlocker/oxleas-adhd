@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.ModelCase do
+defmodule Healthlocker.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,20 +16,21 @@ defmodule OxleasAdhd.ModelCase do
 
   using do
     quote do
-      alias OxleasAdhd.Repo
+      alias Healthlocker.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import OxleasAdhd.ModelCase
+      import Healthlocker.ModelCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(OxleasAdhd.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.ReadOnlyRepo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(OxleasAdhd.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Healthlocker.Repo, {:shared, self()})
     end
 
     :ok
@@ -59,7 +60,7 @@ defmodule OxleasAdhd.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&OxleasAdhd.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&Healthlocker.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

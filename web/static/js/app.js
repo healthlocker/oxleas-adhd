@@ -11,11 +11,43 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+import 'phoenix_html';
+import socket from './socket';
+import Room from "./room"
+import './tracker.js';
 
-// Import local files
-//
-// Local files can be imported directly using relative
-// paths "./socket" or full ones "web/static/js/socket".
+var nav = document.getElementById('my-sidenav');
 
-// import socket from "./socket"
+function openNav () {
+  nav.style.width = '100%';
+}
+
+function closeNav () {
+  nav.style.width = '0';
+}
+
+document.getElementById('open-nav').addEventListener('click', openNav);
+document.getElementById('close-nav').addEventListener('click', closeNav);
+
+var goalCompletion = document.getElementById('goal_completed');
+var notes = document.getElementById('notes');
+var url = window.location.href;
+
+function displayNotes () {
+  if (goalCompletion.checked) {
+    notes.classList.remove('dn');
+  } else {
+    notes.classList.add('dn');
+  }
+}
+
+if (url.search(/goal/) && goalCompletion) {
+  displayNotes();
+  goalCompletion.addEventListener('click', displayNotes);
+}
+
+Room.init(socket, document.getElementById("message-feed"))
+
+if (document.getElementById("close_tab")) {
+  document.getElementById("close_tab").addEventListener('click', function() {window.close()});
+}

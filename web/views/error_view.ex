@@ -1,5 +1,5 @@
-defmodule OxleasAdhd.ErrorView do
-  use OxleasAdhd.Web, :view
+defmodule Healthlocker.ErrorView do
+  use Healthlocker.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

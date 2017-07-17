@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.ConnCase do
+defmodule Healthlocker.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,23 +20,24 @@ defmodule OxleasAdhd.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias OxleasAdhd.Repo
+      alias Healthlocker.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import OxleasAdhd.Router.Helpers
+      import Healthlocker.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint OxleasAdhd.Endpoint
+      @endpoint Healthlocker.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(OxleasAdhd.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.ReadOnlyRepo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(OxleasAdhd.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Healthlocker.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

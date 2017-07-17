@@ -1,0 +1,14 @@
+<div class="ma3 ma4-m ma4-l">
+  <h2 class="tc">View Coping Strategy</h2>
+  <div class="tr">
+    <%= link_to "Edit", to: coping_strategy_path(@conn, :edit, @coping_strategy) %>
+  </div>
+  <div class="hl-bg-grey pv1 ph3 mt2 word-wrap">
+    <span class="b">
+      <%= markdown String.trim_trailing(@coping_strategy.content, " #CopingStrategy") %>
+    </span>
+  </div>
+  <p class="mv3 f6 i">
+    Created <%= Healthlocker.ComponentView.pretty_date(@coping_strategy.inserted_at) %>
+  </p>
+</div>

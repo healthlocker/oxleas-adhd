@@ -1,12 +1,12 @@
-defmodule OxleasAdhd.Web do
+defmodule Healthlocker.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use OxleasAdhd.Web, :controller
-      use OxleasAdhd.Web, :view
+      use Healthlocker.Web, :controller
+      use Healthlocker.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,12 +30,13 @@ defmodule OxleasAdhd.Web do
     quote do
       use Phoenix.Controller
 
-      alias OxleasAdhd.Repo
+      alias Healthlocker.Repo
+      alias Healthlocker.ReadOnlyRepo
       import Ecto
       import Ecto.Query
 
-      import OxleasAdhd.Router.Helpers
-      import OxleasAdhd.Gettext
+      import Healthlocker.Router.Helpers
+      import Healthlocker.Gettext
     end
   end
 
@@ -49,15 +50,18 @@ defmodule OxleasAdhd.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import OxleasAdhd.Router.Helpers
-      import OxleasAdhd.ErrorHelpers
-      import OxleasAdhd.Gettext
+      import Healthlocker.Router.Helpers
+      import Healthlocker.ErrorHelpers
+      import Healthlocker.Gettext
+
+      use Healthlocker.ComponentHelpers
     end
   end
 
   def router do
     quote do
       use Phoenix.Router
+      import Healthlocker.Plugs.FindRoom
     end
   end
 
@@ -65,10 +69,10 @@ defmodule OxleasAdhd.Web do
     quote do
       use Phoenix.Channel
 
-      alias OxleasAdhd.Repo
+      alias Healthlocker.Repo
       import Ecto
       import Ecto.Query
-      import OxleasAdhd.Gettext
+      import Healthlocker.Gettext
     end
   end
 

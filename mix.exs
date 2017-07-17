@@ -1,9 +1,9 @@
-defmodule OxleasAdhd.Mixfile do
+defmodule Healthlocker.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :oxleas_adhd,
-     version: "0.0.1",
+    [app: :healthlocker,
+     version: "1.0.2",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -17,9 +17,31 @@ defmodule OxleasAdhd.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {OxleasAdhd, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+    [mod: {Healthlocker, []},
+       applications: [
+        :phoenix,
+        :phoenix_pubsub,
+        :phoenix_html,
+        :cowboy,
+        :logger,
+        :gettext,
+        :phoenix_ecto,
+        :postgrex,
+        :comeonin,
+        :timex,
+        :bamboo,
+        :segment,
+        :faker,
+        :appsignal,
+        :mssqlex,
+        :mssql_ecto,
+        :edeliver,
+        :earmark,
+        :bamboo_smtp,
+        :ecto_factory,
+        :wallaby
+      ]
+    ]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +59,24 @@ defmodule OxleasAdhd.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:earmark, "~> 1.1"},
+     {:comeonin, "~> 3.0"},
+     {:credo, "~> 0.7.2", only: [:dev, :test]},
+     {:timex, "~> 3.0"},
+     {:segment, github: "tonydaly/analytics-elixir"},
+     {:bamboo, "~> 0.7"},
+     {:bamboo_smtp, "~> 1.2.1"},
+     {:mock, "~> 0.2.0", only: :test},
+     {:faker, "~> 0.7"},
+     {:appsignal, "~> 1.0"},
+     {:wallaby, "~> 0.16.1"},
+     {:ecto_factory, "~> 0.0.6"},
+     {:mssql_ecto, "~> 0.1"},
+     {:mssqlex, "~> 0.6"},
+     {:edeliver, "~> 1.4.0"},
+     {:distillery, ">= 0.8.0", warn_missing: false}
+   ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

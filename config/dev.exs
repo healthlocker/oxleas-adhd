@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :oxleas_adhd, OxleasAdhd.Endpoint,
+config :healthlocker, Healthlocker.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -16,7 +16,7 @@ config :oxleas_adhd, OxleasAdhd.Endpoint,
 
 
 # Watch static and templates for browser reloading.
-config :oxleas_adhd, OxleasAdhd.Endpoint,
+config :healthlocker, Healthlocker.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
@@ -34,10 +34,19 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :oxleas_adhd, OxleasAdhd.Repo,
+config :healthlocker, Healthlocker.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "oxleas_adhd_dev",
+  database: "healthlocker_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :healthlocker, Healthlocker.ReadOnlyRepo,
+  adapter: MssqlEcto,
+  hostname: System.get_env("READ_ONLY_HOSTNAME"),
+  username: System.get_env("READ_ONLY_USERNAME"),
+  password: System.get_env("READ_ONLY_PASSWORD"),
+  database: System.get_env("READ_ONLY_DATABASE")
+
+config :healthlocker, :analytics, Healthlocker.Analytics.Segment
