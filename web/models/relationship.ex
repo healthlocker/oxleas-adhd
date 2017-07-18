@@ -1,5 +1,5 @@
-defmodule Healthlocker.Relationship do
-  use Healthlocker.Web, :model
+defmodule App.Relationship do
+  use App.Web, :model
 
 
   schema "relationships" do

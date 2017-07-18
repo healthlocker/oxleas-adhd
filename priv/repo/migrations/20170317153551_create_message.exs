@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.CreateMessage do
+defmodule App.Repo.Migrations.CreateMessage do
   use Ecto.Migration
 
   def change do

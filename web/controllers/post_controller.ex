@@ -1,6 +1,6 @@
-defmodule Healthlocker.PostController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.Post
+defmodule App.PostController do
+  use App.Web, :controller
+  alias App.Post
 
   def show(conn, %{"id" => id}) do
     post = Repo.get!(Post, id) |> Repo.preload(:likes)

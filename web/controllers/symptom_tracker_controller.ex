@@ -1,6 +1,6 @@
-defmodule Healthlocker.SymptomTrackerController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.{Symptom, SymptomTracker}
+defmodule App.SymptomTrackerController do
+  use App.Web, :controller
+  alias App.{Symptom, SymptomTracker}
 
   def new(conn, _params) do
     user_id = conn.assigns.current_user.id

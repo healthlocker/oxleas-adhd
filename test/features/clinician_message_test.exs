@@ -1,6 +1,6 @@
-defmodule Healthlocker.ClinicianMessageTest do
-  use Healthlocker.FeatureCase
-  alias Healthlocker.{Carer, EPJSPatientAddressDetails, EPJSTeamMember, ReadOnlyRepo, Repo, User}
+defmodule App.ClinicianMessageTest do
+  use App.FeatureCase
+  alias App.{Carer, EPJSPatientAddressDetails, EPJSTeamMember, ReadOnlyRepo, Repo, User}
 
   setup %{session: session} do
     service_user = EctoFactory.insert(:user,
@@ -40,7 +40,7 @@ defmodule Healthlocker.ClinicianMessageTest do
     })
     session |> log_in("robert_macmurray@nhs.co.uk")
 
-    ReadOnlyRepo.insert!(%Healthlocker.EPJSUser{
+    ReadOnlyRepo.insert!(%App.EPJSUser{
       Patient_ID: 202,
       Surname: "Bow",
       Forename: "Kat",
@@ -67,7 +67,7 @@ defmodule Healthlocker.ClinicianMessageTest do
       Email: "robert_macmurray@nhs.co.uk"
     })
 
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
+    Mix.Tasks.App.Room.Create.run("run")
 
     {:ok, %{session: session}}
   end

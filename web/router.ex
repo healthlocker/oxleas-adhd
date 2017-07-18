@@ -1,5 +1,5 @@
-defmodule Healthlocker.Router do
-  use Healthlocker.Web, :router
+defmodule App.Router do
+  use App.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,12 +7,12 @@ defmodule Healthlocker.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug Healthlocker.Plugs.Auth, repo: Healthlocker.Repo
+    plug App.Plugs.Auth, repo: App.Repo
     plug :find_room
   end
 
   pipeline :logged_in do
-    plug Healthlocker.Plugs.RequireLogin
+    plug App.Plugs.RequireLogin
     plug :find_room
   end
 
@@ -21,7 +21,7 @@ defmodule Healthlocker.Router do
   end
 
   # endpoints requiring a logged in user
-  scope "/", Healthlocker do
+  scope "/", App do
     pipe_through [:browser, :logged_in]
 
     resources "/posts", PostController, only: [:new, :create, :edit, :update] do
@@ -69,7 +69,7 @@ defmodule Healthlocker.Router do
   end
 
   # endpoints not requiring a logged in user
-  scope "/", Healthlocker do
+  scope "/", App do
     pipe_through :browser
 
     get "/", PageController, :index

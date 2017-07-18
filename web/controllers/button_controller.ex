@@ -1,5 +1,5 @@
-defmodule Healthlocker.ButtonController do
-  use Healthlocker.Web, :controller
+defmodule App.ButtonController do
+  use App.Web, :controller
 
   def index(conn, _params) do
     # for now this only uses one button, so the same image is loaded on error

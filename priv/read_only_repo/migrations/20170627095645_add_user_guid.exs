@@ -1,4 +1,4 @@
-defmodule Healthlocker.ReadOnlyRepo.Migrations.AddUserGuid do
+defmodule App.ReadOnlyRepo.Migrations.AddUserGuid do
   use Ecto.Migration
 
   def change do

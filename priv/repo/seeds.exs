@@ -5,17 +5,17 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     Healthlocker.Repo.insert!(%Healthlocker.SomeModel{})
+#     App.Repo.insert!(%App.SomeModel{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
 Faker.start
-alias Healthlocker.{Repo, User, Post, Goal, Relationship}
+alias App.{Repo, User, Post, Goal, Relationship}
 import Ecto.Query
 
 
-defmodule Healthlocker.DemoDataSeeder do
+defmodule App.DemoDataSeeder do
   def add_users do
     Repo.insert!(%User{
       email: Faker.Internet.free_email(),
@@ -183,8 +183,8 @@ Repo.insert!(%User{
   role: "admin"
 })
 
-(1..200) |> Enum.each(fn _ -> Healthlocker.DemoDataSeeder.add_users end)
-(1..10) |> Enum.each(fn _ -> Healthlocker.DemoDataSeeder.add_clinicians end)
-(1..20) |> Enum.each(fn _ -> Healthlocker.DemoDataSeeder.add_carers end)
+(1..200) |> Enum.each(fn _ -> App.DemoDataSeeder.add_users end)
+(1..10) |> Enum.each(fn _ -> App.DemoDataSeeder.add_clinicians end)
+(1..20) |> Enum.each(fn _ -> App.DemoDataSeeder.add_carers end)
 
-Mix.Tasks.Healthlocker.Room.Create.run("run")
+Mix.Tasks.App.Room.Create.run("run")

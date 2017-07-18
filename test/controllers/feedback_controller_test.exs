@@ -1,5 +1,5 @@
-defmodule Healthlocker.FeedbackControllerTest do
-  use Healthlocker.ConnCase, async: false
+defmodule App.FeedbackControllerTest do
+  use App.ConnCase, async: false
 
   import Mock
 
@@ -9,7 +9,7 @@ defmodule Healthlocker.FeedbackControllerTest do
   end
 
   test "/feedback :: create", %{conn: conn} do
-    with_mock Healthlocker.Mailer, [deliver_now: fn(_) -> nil end] do
+    with_mock App.Mailer, [deliver_now: fn(_) -> nil end] do
       conn = post conn, feedback_path(conn, :create,
       %{"feedback" => %{"subject" => "Here's a subject", "content" => "With some content"}})
       assert redirected_to(conn, 302) =~ "/feedback"

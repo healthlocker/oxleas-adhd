@@ -1,12 +1,12 @@
-defmodule Healthlocker.Web do
+defmodule App.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Healthlocker.Web, :controller
-      use Healthlocker.Web, :view
+      use App.Web, :controller
+      use App.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,13 +30,13 @@ defmodule Healthlocker.Web do
     quote do
       use Phoenix.Controller
 
-      alias Healthlocker.Repo
-      alias Healthlocker.ReadOnlyRepo
+      alias App.Repo
+      alias App.ReadOnlyRepo
       import Ecto
       import Ecto.Query
 
-      import Healthlocker.Router.Helpers
-      import Healthlocker.Gettext
+      import App.Router.Helpers
+      import App.Gettext
     end
   end
 
@@ -50,18 +50,18 @@ defmodule Healthlocker.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Healthlocker.Router.Helpers
-      import Healthlocker.ErrorHelpers
-      import Healthlocker.Gettext
+      import App.Router.Helpers
+      import App.ErrorHelpers
+      import App.Gettext
 
-      use Healthlocker.ComponentHelpers
+      use App.ComponentHelpers
     end
   end
 
   def router do
     quote do
       use Phoenix.Router
-      import Healthlocker.Plugs.FindRoom
+      import App.Plugs.FindRoom
     end
   end
 
@@ -69,10 +69,10 @@ defmodule Healthlocker.Web do
     quote do
       use Phoenix.Channel
 
-      alias Healthlocker.Repo
+      alias App.Repo
       import Ecto
       import Ecto.Query
-      import Healthlocker.Gettext
+      import App.Gettext
     end
   end
 

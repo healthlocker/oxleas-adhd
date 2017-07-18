@@ -1,12 +1,12 @@
-defmodule Healthlocker.SleepTracker do
-  use Healthlocker.Web, :model
+defmodule App.SleepTracker do
+  use App.Web, :model
 
   schema "sleep_trackers" do
     field :hours_slept, :string, null: false
     field :wake_count, :string
     field :notes, :string
     field :for_date, :date
-    belongs_to :user, Healthlocker.User
+    belongs_to :user, App.User
 
     timestamps()
   end

@@ -166,7 +166,7 @@
     <h2 class="f3">Posts</h2>
     <p class="f5 lh-copy sans-serif">There are multiple types of 'posts' derived from the underlying component type:</p>
     <h2 class="f4">Tips</h2>
-    <%= render Healthlocker.PostView, "_post.html", post: @post %>
+    <%= render App.PostView, "_post.html", post: @post %>
     <img src="https://cloud.githubusercontent.com/assets/16775804/25189183/581d3324-2520-11e7-8033-551d05fec739.png" width= "500px"/>
 
     <h2 class="f4">Stories</h2>

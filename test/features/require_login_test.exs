@@ -1,5 +1,5 @@
-defmodule Healthlocker.RequireLoginTest do
-  use Healthlocker.FeatureCase
+defmodule App.RequireLoginTest do
+  use App.FeatureCase
 
   describe "when user is logged in" do
     setup %{session: session} do

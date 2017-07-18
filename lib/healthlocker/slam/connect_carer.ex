@@ -1,7 +1,7 @@
-defmodule Healthlocker.Slam.ConnectCarer do
+defmodule App.Slam.ConnectCarer do
   use Ecto.Schema
   alias Ecto.Multi
-  alias Healthlocker.{User, Carer, Room, UserRoom, ClinicianRooms, Repo}
+  alias App.{User, Carer, Room, UserRoom, ClinicianRooms, Repo}
 
   def connect_carer_and_create_rooms(user, params, service_user) do
     Multi.new
@@ -36,7 +36,7 @@ defmodule Healthlocker.Slam.ConnectCarer do
     carer = multi.user |> Repo.preload([:caring])
     [service_user|_] = carer.caring
 
-    care_team = Healthlocker.Slam.CareTeam.for(service_user)
+    care_team = App.Slam.CareTeam.for(service_user)
     clinicians =
       make_clinicians(care_team, multi.room.id)
       |> Enum.uniq_by(fn %{clinician_id: x} -> x end)

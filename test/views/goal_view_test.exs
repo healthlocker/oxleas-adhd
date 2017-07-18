@@ -1,3 +1,3 @@
-defmodule Healthlocker.GoalViewTest do
-  use Healthlocker.ConnCase, async: true
+defmodule App.GoalViewTest do
+  use App.ConnCase, async: true
 end

@@ -1,7 +1,7 @@
-defmodule Healthlocker.PasswordControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.PasswordControllerTest do
+  use App.ConnCase
 
-  alias Healthlocker.User
+  alias App.User
   import Mock
   use Timex
 
@@ -59,7 +59,7 @@ defmodule Healthlocker.PasswordControllerTest do
   end
 
   test "POST /password sends password reset email", %{conn: conn} do
-    with_mock Healthlocker.Mailer, [deliver_now: fn(_) -> nil end] do
+    with_mock App.Mailer, [deliver_now: fn(_) -> nil end] do
       conn = post conn, password_path(conn, :create), user: @existing_email
       assert redirected_to(conn) == login_path(conn, :index)
       assert get_flash(conn, :info) == "If your email address exists in our database, you will receive a password reset link at your email address in a few minutes."

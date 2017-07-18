@@ -1,6 +1,6 @@
-defmodule Healthlocker.GoalTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.Goal
+defmodule App.GoalTest do
+  use App.ModelCase, async: true
+  alias App.Goal
 
   @valid_attrs %{
     content: "some content",

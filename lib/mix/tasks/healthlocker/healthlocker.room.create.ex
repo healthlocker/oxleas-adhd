@@ -1,5 +1,5 @@
-defmodule Mix.Tasks.Healthlocker.Room.Create do
-  alias Healthlocker.{ClinicianRooms, ReadOnlyRepo, Repo, Room, User, UserRoom}
+defmodule Mix.Tasks.App.Room.Create do
+  alias App.{ClinicianRooms, ReadOnlyRepo, Repo, Room, User, UserRoom}
   import Ecto.Query
   require Logger
   use Mix.Task
@@ -26,7 +26,7 @@ defmodule Mix.Tasks.Healthlocker.Room.Create do
 
       # Add the clinicians as members of the room
       [service_user | _] = carer.caring
-      care_team = Healthlocker.Slam.CareTeam.for(service_user)
+      care_team = App.Slam.CareTeam.for(service_user)
 
       add_clinicians_to_room(room, care_team)
     end
@@ -35,7 +35,7 @@ defmodule Mix.Tasks.Healthlocker.Room.Create do
       room = find_or_create(%Room{name: "service-user-care-team:" <> Integer.to_string(user.id)})
       add_to_room(room, user)
 
-      care_team = Healthlocker.Slam.CareTeam.for(user)
+      care_team = App.Slam.CareTeam.for(user)
       add_clinicians_to_room(room, care_team)
     end
   end

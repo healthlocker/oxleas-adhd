@@ -1,6 +1,6 @@
-defmodule Healthlocker.ComponentViewTest do
-  use Healthlocker.ConnCase, async: true
-  alias Healthlocker.{ComponentView,User}
+defmodule App.ComponentViewTest do
+  use App.ConnCase, async: true
+  alias App.{ComponentView,User}
 
   # @valid_changeset <action: nil, changes: %{}, errors: [], valid?: false>
   describe "changeset with and without errors" do

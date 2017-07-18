@@ -1,6 +1,6 @@
-defmodule Healthlocker.TrackerControllerTest do
-  use Healthlocker.ConnCase
-  alias Healthlocker.User
+defmodule App.TrackerControllerTest do
+  use App.ConnCase
+  alias App.User
 
   describe "with current user" do
     setup do

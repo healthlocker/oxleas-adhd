@@ -1,7 +1,7 @@
-defmodule Healthlocker.Caseload.UserControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.Caseload.UserControllerTest do
+  use App.ConnCase
 
-  alias Healthlocker.{User, ReadOnlyRepo, EPJSUser, EPJSPatientAddressDetails, EPJSTeamMember, Room, UserRoom}
+  alias App.{User, ReadOnlyRepo, EPJSUser, EPJSPatientAddressDetails, EPJSTeamMember, Room, UserRoom}
 
   describe "clinician current_user is assigned" do
     setup do

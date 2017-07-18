@@ -1,3 +1,3 @@
-defmodule Healthlocker.SymptomView do
-  use Healthlocker.Web, :view
+defmodule App.SymptomView do
+  use App.Web, :view
 end

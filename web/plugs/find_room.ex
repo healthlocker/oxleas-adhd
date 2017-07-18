@@ -1,10 +1,10 @@
-defmodule Healthlocker.Plugs.FindRoom do
+defmodule App.Plugs.FindRoom do
   @moduledoc """
   A small plug to find the room for a service user.
   """
 
   import Plug.Conn
-  alias Healthlocker.Repo
+  alias App.Repo
 
   def find_room(conn, _options) do
     if conn.assigns[:current_user] do

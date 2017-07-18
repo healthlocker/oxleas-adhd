@@ -1,7 +1,7 @@
-defmodule Healthlocker.CaseloadController do
-  use Healthlocker.Web, :controller
+defmodule App.CaseloadController do
+  use App.Web, :controller
 
-  alias Healthlocker.{EPJSTeamMember, EPJSUser, User, Plugs.Auth, DecryptUser}
+  alias App.{EPJSTeamMember, EPJSUser, User, Plugs.Auth, DecryptUser}
 
   def index(conn, %{"userdata" => user_data}) do
     [decrypted_user_guid, decrypted_time_str] = DecryptUser.decrypt_user_data(user_data)

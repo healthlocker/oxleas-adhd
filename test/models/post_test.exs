@@ -1,7 +1,7 @@
-defmodule Healthlocker.PostTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.Post
-  import Healthlocker.Fixtures
+defmodule App.PostTest do
+  use App.ModelCase, async: true
+  alias App.Post
+  import App.Fixtures
 
   @valid_attrs %{content: "Hello world!"}
   @invalid_attrs %{}

@@ -1,7 +1,7 @@
-defmodule Healthlocker.TipController do
-  use Healthlocker.Web, :controller
+defmodule App.TipController do
+  use App.Web, :controller
 
-  alias Healthlocker.Post
+  alias App.Post
 
   def index(conn, params) do
     tips = if params["tag"] do

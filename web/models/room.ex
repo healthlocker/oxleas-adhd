@@ -1,10 +1,10 @@
-defmodule Healthlocker.Room do
-  use Healthlocker.Web, :model
+defmodule App.Room do
+  use App.Web, :model
 
   schema "rooms" do
     field :name, :string
-    many_to_many :users, Healthlocker.User, join_through: "user_rooms", on_delete: :delete_all
-    has_many :messages, Healthlocker.Message
+    many_to_many :users, App.User, join_through: "user_rooms", on_delete: :delete_all
+    has_many :messages, App.Message
 
     timestamps()
   end

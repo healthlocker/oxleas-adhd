@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.RemoveSlamUserFromUsers do
+defmodule App.Repo.Migrations.RemoveSlamUserFromUsers do
   use Ecto.Migration
 
   def change do

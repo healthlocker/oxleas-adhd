@@ -38,8 +38,8 @@ end
 # when running `mix release`, the first release in the file
 # will be used by default
 
-release :healthlocker do
-  set version: current_version(:healthlocker)
+release :app do
+  set version: current_version(:app)
   set applications: [
     :runtime_tools
   ]

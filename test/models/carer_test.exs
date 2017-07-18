@@ -1,6 +1,6 @@
-defmodule Healthlocker.CarerTest do
-  use Healthlocker.ModelCase
-  alias Healthlocker.{Carer}
+defmodule App.CarerTest do
+  use App.ModelCase
+  alias App.{Carer}
 
   test "no carers" do
     user = EctoFactory.insert(:user, email: "bob@healthlocker.uk")

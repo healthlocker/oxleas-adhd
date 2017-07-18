@@ -1,5 +1,5 @@
-defmodule Healthlocker.CarerConnectSlam do
-  use Healthlocker.FeatureCase
+defmodule App.CarerConnectSlam do
+  use App.FeatureCase
 
   setup %{session: session} do
     EctoFactory.insert(:user_with_defaults,
@@ -19,7 +19,7 @@ defmodule Healthlocker.CarerConnectSlam do
       slam_id: 200
     )
 
-    Healthlocker.ReadOnlyRepo.insert!(%Healthlocker.EPJSUser{
+    App.ReadOnlyRepo.insert!(%App.EPJSUser{
       Patient_ID: 200,
       Surname: "Bow",
       Forename: "Kat",

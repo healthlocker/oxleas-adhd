@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddRelationshipJoin do
+defmodule App.Repo.Migrations.AddRelationshipJoin do
   use Ecto.Migration
 
   def change do

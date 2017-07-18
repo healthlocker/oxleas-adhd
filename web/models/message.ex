@@ -1,11 +1,11 @@
-defmodule Healthlocker.Message do
-  use Healthlocker.Web, :model
+defmodule App.Message do
+  use App.Web, :model
 
   schema "messages" do
     field :body, :string
     field :name, :string
-    belongs_to :user, Healthlocker.User
-    belongs_to :room, Healthlocker.Room
+    belongs_to :user, App.User
+    belongs_to :room, App.Room
 
     timestamps()
   end

@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddFirstLastNameToUsers do
+defmodule App.Repo.Migrations.AddFirstLastNameToUsers do
   use Ecto.Migration
 
   def change do

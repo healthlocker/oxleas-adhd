@@ -1,18 +1,18 @@
-defmodule Healthlocker.Endpoint do
-  use Phoenix.Endpoint, otp_app: :healthlocker
+defmodule App.Endpoint do
+  use Phoenix.Endpoint, otp_app: :app
 
-  if Application.get_env(:healthlocker, :sql_sandbox) do
+  if Application.get_env(:app, :sql_sandbox) do
     plug Phoenix.Ecto.SQL.Sandbox
   end
 
-  socket "/socket", Healthlocker.UserSocket
+  socket "/socket", App.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :healthlocker, gzip: false,
+    at: "/", from: :app, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -39,9 +39,9 @@ defmodule Healthlocker.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_healthlocker_key",
+    key: "_app_key",
     signing_salt: "ftUT7zkc"
 
   use Appsignal.Phoenix
-  plug Healthlocker.Router
+  plug App.Router
 end

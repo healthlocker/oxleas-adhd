@@ -35,7 +35,7 @@
   <%= form_for @changeset, @action, @method, fn f -> %>
     <div class="">
       <%= textarea f, :entry, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
+      App.ComponentView.highlight_errors(@changeset, :entry) %>
       <span class="hl-pink"><%= error_tag f, :entry %></span>
     </div>
 

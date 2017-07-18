@@ -1,6 +1,6 @@
-defmodule Healthlocker.EPJSTeamMemberTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.EPJSTeamMember
+defmodule App.EPJSTeamMemberTest do
+  use App.ModelCase, async: true
+  alias App.EPJSTeamMember
 
   @valid_attrs %{
     Patient_ID: 1,

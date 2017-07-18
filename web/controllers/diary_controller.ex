@@ -1,7 +1,7 @@
-defmodule Healthlocker.DiaryController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.Diary
-  import Healthlocker.ComponentHelpers.Link
+defmodule App.DiaryController do
+  use App.Web, :controller
+  alias App.Diary
+  import App.ComponentHelpers.Link
 
   def new(conn, _params) do
     user_id = conn.assigns.current_user.id

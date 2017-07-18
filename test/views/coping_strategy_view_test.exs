@@ -1,3 +1,3 @@
-defmodule Healthlocker.CopingStrategyViewTest do
-  use Healthlocker.ConnCase, async: true
+defmodule App.CopingStrategyViewTest do
+  use App.ConnCase, async: true
 end

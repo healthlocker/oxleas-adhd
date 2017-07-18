@@ -1,3 +1,3 @@
-defmodule Healthlocker.FeedbackView do
-  use Healthlocker.Web, :view
+defmodule App.FeedbackView do
+  use App.Web, :view
 end

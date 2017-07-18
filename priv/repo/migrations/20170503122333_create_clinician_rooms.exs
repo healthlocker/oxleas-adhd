@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.CreateClinicianRooms do
+defmodule App.Repo.Migrations.CreateClinicianRooms do
   use Ecto.Migration
 
   def change do

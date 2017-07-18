@@ -1,6 +1,6 @@
-defmodule Healthlocker.Slam.DisconnectSlamTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.{User, UserRoom, ClinicianRooms, Room, Slam.DisconnectSlam,
+defmodule App.Slam.DisconnectSlamTest do
+  use App.ModelCase, async: true
+  alias App.{User, UserRoom, ClinicianRooms, Room, Slam.DisconnectSlam,
                       Message}
 
   describe "success paths for disconnecting from slam" do

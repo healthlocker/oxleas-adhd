@@ -1,10 +1,10 @@
-defmodule Healthlocker.Post do
-  use Healthlocker.Web, :model
+defmodule App.Post do
+  use App.Web, :model
 
   schema "posts" do
     field :content, :string
-    belongs_to :user, Healthlocker.User
-    many_to_many :likes, Healthlocker.User, join_through: "posts_likes", on_replace: :delete
+    belongs_to :user, App.User
+    many_to_many :likes, App.User, join_through: "posts_likes", on_replace: :delete
 
     timestamps()
   end

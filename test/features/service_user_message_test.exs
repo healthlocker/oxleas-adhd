@@ -1,5 +1,5 @@
-defmodule Healthlocker.ServiceUserMessageTest do
-  use Healthlocker.FeatureCase
+defmodule App.ServiceUserMessageTest do
+  use App.FeatureCase
 
   setup %{session: session} do
     EctoFactory.insert(:user,
@@ -12,7 +12,7 @@ defmodule Healthlocker.ServiceUserMessageTest do
       data_access: true,
       slam_id: 202
     )
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
+    Mix.Tasks.App.Room.Create.run("run")
 
     {:ok, %{session: session}}
   end

@@ -1,5 +1,5 @@
-defmodule Healthlocker.EPJSPatientAddressDetails do
-  use Healthlocker.Web, :model
+defmodule App.EPJSPatientAddressDetails do
+  use App.Web, :model
 
   @primary_key {:Address_ID, :integer, autogenerate: false}
   schema "mhlPatientAddressDetails" do

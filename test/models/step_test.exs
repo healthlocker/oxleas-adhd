@@ -1,6 +1,6 @@
-defmodule Healthlocker.StepTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.Step
+defmodule App.StepTest do
+  use App.ModelCase, async: true
+  alias App.Step
 
   @valid_attrs %{
     details: "detail1",

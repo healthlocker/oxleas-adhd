@@ -1,7 +1,7 @@
-defmodule Healthlocker.Fixtures do
-  alias Healthlocker.Repo
-  alias Healthlocker.Post
-  alias Healthlocker.User
+defmodule App.Fixtures do
+  alias App.Repo
+  alias App.Post
+  alias App.User
 
   def fixture(:user) do
     Repo.insert %User{email: "user@example.com", password: "password123"}

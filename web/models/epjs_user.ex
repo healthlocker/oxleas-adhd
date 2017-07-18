@@ -1,5 +1,5 @@
-defmodule Healthlocker.EPJSUser do
-  use Healthlocker.Web, :model
+defmodule App.EPJSUser do
+  use App.Web, :model
 
   @primary_key {:Patient_ID, :integer, autogenerate: false}
   schema "mhlPatIndex" do

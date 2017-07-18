@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddForDateToSleepTracker do
+defmodule App.Repo.Migrations.AddForDateToSleepTracker do
   use Ecto.Migration
 
   def change do

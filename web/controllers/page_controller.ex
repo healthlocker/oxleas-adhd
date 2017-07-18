@@ -1,6 +1,6 @@
-defmodule Healthlocker.PageController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.Post
+defmodule App.PageController do
+  use App.Web, :controller
+  alias App.Post
 
   def index(conn, _params) do
     featured_story = Post

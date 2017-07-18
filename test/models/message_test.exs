@@ -1,7 +1,7 @@
-defmodule Healthlocker.MessageTest do
-  use Healthlocker.ModelCase
+defmodule App.MessageTest do
+  use App.ModelCase
 
-  alias Healthlocker.Message
+  alias App.Message
 
   @valid_attrs %{body: "some content", user_id: 1, room_id: 1}
   @invalid_attrs %{}

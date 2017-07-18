@@ -1,5 +1,5 @@
-defmodule Healthlocker.Goal do
-  use Healthlocker.Web, :model
+defmodule App.Goal do
+  use App.Web, :model
 
   schema "goals" do
     field :content, :string
@@ -7,9 +7,9 @@ defmodule Healthlocker.Goal do
     field :notes, :string
     field :important, :boolean
     field :achieved_at, :date
-    has_many :steps, Healthlocker.Step, on_delete: :delete_all,
+    has_many :steps, App.Step, on_delete: :delete_all,
                                         on_replace: :delete
-    belongs_to :user, Healthlocker.User
+    belongs_to :user, App.User
 
     timestamps()
   end
@@ -57,7 +57,7 @@ defmodule Healthlocker.Goal do
   end
 
   def get_goal_by_user(query, id, user_id) do
-    steps_query = from s in Healthlocker.Step, order_by: s.inserted_at
+    steps_query = from s in App.Step, order_by: s.inserted_at
     from g in query,
     where: g.id == ^id and g.user_id == ^user_id,
     preload: [steps: ^steps_query]

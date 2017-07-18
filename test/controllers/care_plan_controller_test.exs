@@ -1,7 +1,7 @@
-defmodule Healthlocker.CarePlanControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.CarePlanControllerTest do
+  use App.ConnCase
 
-  alias Healthlocker.User
+  alias App.User
 
   describe "current_user is assigned in the session" do
     setup do

@@ -1,6 +1,6 @@
-defmodule Healthlocker.CaseloadUsersTest do
-  use Healthlocker.FeatureCase
-  alias Healthlocker.{Carer, EPJSPatientAddressDetails, EPJSTeamMember, ReadOnlyRepo, Repo, User}
+defmodule App.CaseloadUsersTest do
+  use App.FeatureCase
+  alias App.{Carer, EPJSPatientAddressDetails, EPJSTeamMember, ReadOnlyRepo, Repo, User}
 
   setup %{session: session} do
     service_user_1 = EctoFactory.insert(:user,
@@ -14,7 +14,7 @@ defmodule Healthlocker.CaseloadUsersTest do
       slam_id: 202
     )
 
-    ReadOnlyRepo.insert!(%Healthlocker.EPJSUser{
+    ReadOnlyRepo.insert!(%App.EPJSUser{
       Patient_ID: 202,
       Surname: "Tony",
       Forename: "Daly",
@@ -89,7 +89,7 @@ defmodule Healthlocker.CaseloadUsersTest do
       User_Guid: "randomstring"
     } |> ReadOnlyRepo.insert
 
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
+    Mix.Tasks.App.Room.Create.run("run")
 
     {:ok, %{session: session}}
   end

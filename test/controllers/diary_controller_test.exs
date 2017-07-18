@@ -1,6 +1,6 @@
-defmodule Healthlocker.DiaryControllerTest do
-  use Healthlocker.ConnCase
-  alias Healthlocker.{User, Diary}
+defmodule App.DiaryControllerTest do
+  use App.ConnCase
+  alias App.{User, Diary}
 
   @valid_attrs %{entry: "a problem"}
   @invalid_attrs %{entry: ""}

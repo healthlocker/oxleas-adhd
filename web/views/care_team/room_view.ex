@@ -1,3 +1,3 @@
-defmodule Healthlocker.CareTeam.RoomView do
-  use Healthlocker.Web, :view
+defmodule App.CareTeam.RoomView do
+  use App.Web, :view
 end

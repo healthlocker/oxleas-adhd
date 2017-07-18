@@ -1,7 +1,7 @@
-defmodule Healthlocker.CaseloadControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.CaseloadControllerTest do
+  use App.ConnCase
 
-  alias Healthlocker.{EPJSTeamMember, ReadOnlyRepo, User}
+  alias App.{EPJSTeamMember, ReadOnlyRepo, User}
 
   describe "current_user is assigned in the session with epjs User_Guid" do
     setup do

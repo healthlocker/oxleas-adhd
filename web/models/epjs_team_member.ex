@@ -1,5 +1,5 @@
-defmodule Healthlocker.EPJSTeamMember do
-  use Healthlocker.Web, :model
+defmodule App.EPJSTeamMember do
+  use App.Web, :model
 
   @primary_key {:Staff_ID, :integer, autogenerate: false}
   schema "mhlTeamMembers" do

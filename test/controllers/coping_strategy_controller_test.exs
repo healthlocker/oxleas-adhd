@@ -1,8 +1,8 @@
-defmodule Healthlocker.CopingStrategyControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.CopingStrategyControllerTest do
+  use App.ConnCase
 
-  alias Healthlocker.Post
-  alias Healthlocker.User
+  alias App.Post
+  alias App.User
 
 
   @valid_attrs %{content: "some content"}

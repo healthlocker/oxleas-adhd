@@ -1,9 +1,9 @@
-defmodule Healthlocker.UserRoom do
-  use Healthlocker.Web, :model
+defmodule App.UserRoom do
+  use App.Web, :model
 
   schema "user_rooms" do
-    belongs_to :user, Healthlocker.User
-    belongs_to :room, Healthlocker.Room
+    belongs_to :user, App.User
+    belongs_to :room, App.Room
 
     timestamps()
   end

@@ -1,6 +1,6 @@
-defmodule Healthlocker.EPJSUserTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.EPJSUser
+defmodule App.EPJSUserTest do
+  use App.ModelCase, async: true
+  alias App.EPJSUser
 
   dob = DateTime.from_naive!(~N[1975-01-14 00:00:00.00], "Etc/UTC")
   start = DateTime.from_naive!(~N[1997-01-14 00:00:00.00], "Etc/UTC")

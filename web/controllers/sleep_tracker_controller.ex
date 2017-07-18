@@ -1,7 +1,7 @@
-defmodule Healthlocker.SleepTrackerController do
-  use Healthlocker.Web, :controller
+defmodule App.SleepTrackerController do
+  use App.Web, :controller
   use Timex
-  alias Healthlocker.{SleepTracker}
+  alias App.{SleepTracker}
 
   def new(conn, _params) do
     user = conn.assigns.current_user
@@ -43,6 +43,6 @@ defmodule Healthlocker.SleepTrackerController do
   end
 
   defp track_created(conn, %SleepTracker{} = sleep_data) do
-    Healthlocker.Analytics.track(conn.assigns.current_user, :create, sleep_data)
+    App.Analytics.track(conn.assigns.current_user, :create, sleep_data)
   end
 end

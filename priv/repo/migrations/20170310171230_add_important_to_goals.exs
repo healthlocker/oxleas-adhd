@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddImportantToGoals do
+defmodule App.Repo.Migrations.AddImportantToGoals do
   use Ecto.Migration
 
   def change do

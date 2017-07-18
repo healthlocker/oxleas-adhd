@@ -1,6 +1,6 @@
-defmodule Healthlocker.CopingStrategyController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.Post
+defmodule App.CopingStrategyController do
+  use App.Web, :controller
+  alias App.Post
 
   def index(conn, _params) do
     user_id = conn.assigns.current_user.id
@@ -92,6 +92,6 @@ defmodule Healthlocker.CopingStrategyController do
   end
 
   defp track_created(conn, %Post{} = coping_strategy) do
-    Healthlocker.Analytics.track(conn.assigns.current_user, :create, coping_strategy)
+    App.Analytics.track(conn.assigns.current_user, :create, coping_strategy)
   end
 end

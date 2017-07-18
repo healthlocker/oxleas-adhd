@@ -1,15 +1,15 @@
-defmodule Healthlocker.Step do
+defmodule App.Step do
 
   @moduledoc """
   Defines steps schema and defines methods for interacting with it 
   """
 
-  use Healthlocker.Web, :model
+  use App.Web, :model
 
   schema "steps" do
     field :details, :string
     field :complete, :boolean
-    belongs_to :goal, Healthlocker.Goal
+    belongs_to :goal, App.Goal
 
     timestamps()
   end

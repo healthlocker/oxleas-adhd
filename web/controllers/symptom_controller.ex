@@ -1,6 +1,6 @@
-defmodule Healthlocker.SymptomController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.Symptom
+defmodule App.SymptomController do
+  use App.Web, :controller
+  alias App.Symptom
 
   def new(conn, _params) do
     changeset = Symptom.changeset(%Symptom{})

@@ -1,5 +1,5 @@
-defmodule Healthlocker.Analytics.Local do
-  @behaviour Healthlocker.Analytics
+defmodule App.Analytics.Local do
+  @behaviour App.Analytics
   require Logger
 
   def identify(user_id, _traits) do

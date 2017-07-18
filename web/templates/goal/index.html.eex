@@ -32,7 +32,7 @@
             <%= markdown String.trim_trailing(goal.content, " #Goal") %>
           </div>
           <p class="i hl-dark-blue ma2 w-80 w-90-m w-90-l center">Achieved:
-            <%= Healthlocker.ComponentView.pretty_date(goal.achieved_at) %>
+            <%= App.ComponentView.pretty_date(goal.achieved_at) %>
           </p>
       </section>
     <% end %>

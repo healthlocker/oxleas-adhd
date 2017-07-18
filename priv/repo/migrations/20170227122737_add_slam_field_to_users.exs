@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddSlamFieldToUsers do
+defmodule App.Repo.Migrations.AddSlamFieldToUsers do
   use Ecto.Migration
 
   def change do

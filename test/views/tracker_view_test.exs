@@ -1,6 +1,6 @@
-defmodule Healthlocker.TrackerViewTest do
-  use Healthlocker.ConnCase, async: true
-  alias Healthlocker.{TrackerView, SleepTracker}
+defmodule App.TrackerViewTest do
+  use App.ConnCase, async: true
+  alias App.{TrackerView, SleepTracker}
 
   doctest TrackerView
 

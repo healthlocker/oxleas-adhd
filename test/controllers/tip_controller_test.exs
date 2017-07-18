@@ -1,5 +1,5 @@
-defmodule Healthlocker.TipControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.TipControllerTest do
+  use App.ConnCase
 
   test "successfully loads tips index", %{conn: conn} do
     conn = get conn, tip_path(conn, :index)

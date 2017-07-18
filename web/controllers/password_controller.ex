@@ -1,7 +1,7 @@
-defmodule Healthlocker.PasswordController do
-  use Healthlocker.Web, :controller
+defmodule App.PasswordController do
+  use App.Web, :controller
 
-  alias Healthlocker.User
+  alias App.User
   use Timex
 
   def new(conn, _params) do
@@ -31,8 +31,8 @@ defmodule Healthlocker.PasswordController do
       user ->
         user = reset_password_token(user)
         # send password token to pw_params["email"]
-        Healthlocker.Email.send_reset_email(email, user.reset_password_token)
-        |> Healthlocker.Mailer.deliver_now()
+        App.Email.send_reset_email(email, user.reset_password_token)
+        |> App.Mailer.deliver_now()
 
         conn
         |> put_flash(:info, "If your email address exists in our database, you will receive a password reset link at your email address in a few minutes.")

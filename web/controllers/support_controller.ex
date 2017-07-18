@@ -1,6 +1,6 @@
-defmodule Healthlocker.SupportController do
-  use Healthlocker.Web, :controller
-  import Healthlocker.Plugs.FindRoom
+defmodule App.SupportController do
+  use App.Web, :controller
+  import App.Plugs.FindRoom
   plug :find_room
 
   def index(conn, _params) do

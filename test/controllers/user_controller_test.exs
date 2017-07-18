@@ -1,7 +1,7 @@
-defmodule Healthlocker.UserControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.UserControllerTest do
+  use App.ConnCase
 
-  alias Healthlocker.User
+  alias App.User
   @step1_attrs %{
     email: "me@example.com",
     first_name: "My",

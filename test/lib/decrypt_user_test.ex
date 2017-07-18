@@ -1,6 +1,6 @@
-defmodule Healthlocker.DecryptUserTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.DecryptUser
+defmodule App.DecryptUserTest do
+  use App.ModelCase, async: true
+  alias App.DecryptUser
 
   test "string is split & returns correct portion" do
     user_data = "UserName=robert_macmurray@nhs.co.uk&UserId=randomstringtotestwith&tokenexpiry=2017-06-23T11:15:53"

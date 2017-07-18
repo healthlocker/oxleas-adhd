@@ -1,9 +1,9 @@
-defmodule Healthlocker.LayoutView do
-  use Healthlocker.Web, :view
-  alias Healthlocker.Repo
+defmodule App.LayoutView do
+  use App.Web, :view
+  alias App.Repo
 
   def segment_snippet do
-    if segment_write_key(), do: render(Healthlocker.LayoutView, "_segment.html")
+    if segment_write_key(), do: render(App.LayoutView, "_segment.html")
   end
 
   def segment? do

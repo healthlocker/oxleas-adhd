@@ -1,5 +1,5 @@
-defmodule Healthlocker.ErrorView do
-  use Healthlocker.Web, :view
+defmodule App.ErrorView do
+  use App.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

@@ -1,5 +1,5 @@
-defmodule Healthlocker.PostView do
-  use Healthlocker.Web, :view
+defmodule App.PostView do
+  use App.Web, :view
   use Timex
 
   def markdown(body) do

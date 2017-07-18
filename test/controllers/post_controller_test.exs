@@ -1,9 +1,9 @@
-defmodule Healthlocker.PostControllerTest do
-  use Healthlocker.ConnCase
-  import Healthlocker.Fixtures
+defmodule App.PostControllerTest do
+  use App.ConnCase
+  import App.Fixtures
 
-  alias Healthlocker.Post
-  alias Healthlocker.User
+  alias App.Post
+  alias App.User
   @valid_attrs %{content: "some content #story"}
   @invalid_attrs %{}
 

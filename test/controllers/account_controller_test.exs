@@ -1,7 +1,7 @@
-defmodule Healthlocker.AccountControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.AccountControllerTest do
+  use App.ConnCase
 
-  alias Healthlocker.{User, EPJSUser, ReadOnlyRepo, Room, UserRoom,
+  alias App.{User, EPJSUser, ReadOnlyRepo, Room, UserRoom,
                       ClinicianRooms, Message, Room}
 
   @valid_attrs %{

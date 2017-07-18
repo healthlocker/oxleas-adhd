@@ -1,6 +1,6 @@
 <section class="absolute w-100 left-0 hl-bg-grey">
   <div class="hl-bg-grey w-100 pa3 mw7 center">
-    <h2 class="hl-dark-blue ma0 tc"><%= Healthlocker.ComponentView.full_name(@user) %> <span class="normal">(friend/family/carer) of </span><%= Healthlocker.ComponentView.full_name(@service_user) %></h2>
+    <h2 class="hl-dark-blue ma0 tc"><%= App.ComponentView.full_name(@user) %> <span class="normal">(friend/family/carer) of </span><%= App.ComponentView.full_name(@service_user) %></h2>
   </div>
   <div class="w-100 mw7 center">
     <%= cond do %>

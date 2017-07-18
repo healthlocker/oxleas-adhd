@@ -1,5 +1,5 @@
-defmodule Healthlocker.ViewHomepageTest do
-  use Healthlocker.FeatureCase, async: true
+defmodule App.ViewHomepageTest do
+  use App.FeatureCase, async: true
 
   test "shows a story", %{session: session} do
     page_body = session

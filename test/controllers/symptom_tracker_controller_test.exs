@@ -1,7 +1,7 @@
-defmodule Healthlocker.SymptomTrackerControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.SymptomTrackerControllerTest do
+  use App.ConnCase
   use Timex
-  alias Healthlocker.{User, Symptom, SymptomTracker}
+  alias App.{User, Symptom, SymptomTracker}
 
   @valid_attrs %{affected_scale: "1"}
   @invalid_attrs %{affected_scale: ""}

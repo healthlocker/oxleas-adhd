@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.EditSleepTrackerNotes do
+defmodule App.Repo.Migrations.EditSleepTrackerNotes do
   use Ecto.Migration
 
   def change do

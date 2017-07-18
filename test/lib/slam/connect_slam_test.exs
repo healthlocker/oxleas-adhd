@@ -1,6 +1,6 @@
-defmodule Healthlocker.Slam.ConnectSlamTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.{User, EPJSTeamMember, ReadOnlyRepo,
+defmodule App.Slam.ConnectSlamTest do
+  use App.ModelCase, async: true
+  alias App.{User, EPJSTeamMember, ReadOnlyRepo,
                       Slam.ConnectSlam, ClinicianRooms, Room}
 
   describe "success paths for connecting as slam su" do

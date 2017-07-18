@@ -1,3 +1,3 @@
-defmodule Healthlocker.SleepTrackerView do
-  use Healthlocker.Web, :view
+defmodule App.SleepTrackerView do
+  use App.Web, :view
 end

@@ -1,5 +1,5 @@
-defmodule Healthlocker.GoalView do
-  use Healthlocker.Web, :view
+defmodule App.GoalView do
+  use App.Web, :view
 
   def markdown(body) do
     body

@@ -1,8 +1,8 @@
-defmodule Healthlocker.Mixfile do
+defmodule App.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :healthlocker,
+    [app: :app,
      version: "1.0.2",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule Healthlocker.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {Healthlocker, []},
+    [mod: {App, []},
        applications: [
         :phoenix,
         :phoenix_pubsub,

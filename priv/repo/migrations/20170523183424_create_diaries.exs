@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.CreateDiaries do
+defmodule App.Repo.Migrations.CreateDiaries do
   use Ecto.Migration
 
   def change do

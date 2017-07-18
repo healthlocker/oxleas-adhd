@@ -1,6 +1,6 @@
-defmodule Healthlocker.SUConnectSlam do
-  use Healthlocker.FeatureCase
-  alias Healthlocker.{ReadOnlyRepo, EPJSUser, Room, UserRoom}
+defmodule App.SUConnectSlam do
+  use App.FeatureCase
+  alias App.{ReadOnlyRepo, EPJSUser, Room, UserRoom}
 
   setup %{session: session} do
     user = EctoFactory.insert(:user_with_defaults,

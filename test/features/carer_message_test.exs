@@ -1,5 +1,5 @@
-defmodule Healthlocker.CarerMessageTest do
-  use Healthlocker.FeatureCase
+defmodule App.CarerMessageTest do
+  use App.FeatureCase
 
   setup %{session: session} do
     carer = EctoFactory.insert(:user,
@@ -19,9 +19,9 @@ defmodule Healthlocker.CarerMessageTest do
       data_access: true
     )
 
-    Repo.insert!(%Healthlocker.Carer{carer: carer, caring: service_user})
+    Repo.insert!(%App.Carer{carer: carer, caring: service_user})
 
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
+    Mix.Tasks.App.Room.Create.run("run")
 
     {:ok, %{session: session}}
   end

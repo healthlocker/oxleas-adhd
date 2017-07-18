@@ -1,6 +1,6 @@
-defmodule Healthlocker.CareTeamTest do
-  use Healthlocker.FeatureCase
-  alias Healthlocker.Carer
+defmodule App.CareTeamTest do
+  use App.FeatureCase
+  alias App.Carer
 
   setup %{session: session} do
     carer = EctoFactory.insert(:user,
@@ -23,7 +23,7 @@ defmodule Healthlocker.CareTeamTest do
     relationship = %Carer{caring: bob, carer: carer}
     Repo.insert(relationship)
 
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
+    Mix.Tasks.App.Room.Create.run("run")
 
     session = session |> log_in
     {:ok, %{session: session}}

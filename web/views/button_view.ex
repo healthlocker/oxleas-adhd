@@ -1,3 +1,3 @@
-defmodule Healthlocker.ButtonView do
-  use Healthlocker.Web, :view
+defmodule App.ButtonView do
+  use App.Web, :view
 end

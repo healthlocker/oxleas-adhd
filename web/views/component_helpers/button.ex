@@ -1,4 +1,4 @@
-defmodule Healthlocker.ComponentHelpers.Button do
+defmodule App.ComponentHelpers.Button do
 
   @moduledoc """
   Convenience methods for generating styled `<a>`, `<button>` and `<input>`

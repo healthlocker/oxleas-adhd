@@ -6,19 +6,19 @@
 use Mix.Config
 
 # General application configuration
-config :healthlocker,
-  ecto_repos: [Healthlocker.Repo, Healthlocker.ReadOnlyRepo]
+config :app,
+  ecto_repos: [App.Repo, App.ReadOnlyRepo]
 
 # Configures the endpoint
-config :healthlocker, Healthlocker.Endpoint,
+config :app, App.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "ea7BnffOt5Z35L3NrzDAoCrR9eakAXLVfFEDgw3tpuynIEnF9meMlqGZP1bWT4kI",
-  render_errors: [view: Healthlocker.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Healthlocker.PubSub, adapter: Phoenix.PubSub.PG2],
+  render_errors: [view: App.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: App.PubSub, adapter: Phoenix.PubSub.PG2],
   instrumenters: [Appsignal.Phoenix.Instrumenter]
 
 # Configure mailing
-config :healthlocker, Healthlocker.Mailer,
+config :app, App.Mailer,
   adapter: Bamboo.SMTPAdapter,
   server: System.get_env("SES_SERVER"),
   port: System.get_env("SES_PORT"),
@@ -40,13 +40,13 @@ config :phoenix, :template_engines,
   eex: Appsignal.Phoenix.Template.EExEngine,
   exs: Appsignal.Phoenix.Template.ExsEngine
 
-config :healthlocker, Healthlocker.Repo,
+config :app, App.Repo,
   loggers: [Appsignal.Ecto, Ecto.LogEntry]
 
-config :ecto_factory, repo: Healthlocker.Repo
+config :ecto_factory, repo: App.Repo
 config :ecto_factory, factories: [
-  user: Healthlocker.User,
-  user_with_defaults: { Healthlocker.User, [
+  user: App.User,
+  user_with_defaults: { App.User, [
     slam_id: nil
   ]}
 ]

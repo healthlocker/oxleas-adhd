@@ -1,7 +1,7 @@
-defmodule Healthlocker.SleepTrackerTest do
-  use Healthlocker.ModelCase
+defmodule App.SleepTrackerTest do
+  use App.ModelCase
 
-  alias Healthlocker.SleepTracker
+  alias App.SleepTracker
 
   @valid_attrs %{hours_slept: "42", notes: "some content", wake_count: "42"}
   @invalid_attrs %{}

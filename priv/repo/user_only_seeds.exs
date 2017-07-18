@@ -1,4 +1,4 @@
-alias Healthlocker.{Repo, User}
+alias App.{Repo, User}
 
 Repo.insert!(%User{
   email: "evan@email.com",

@@ -1,7 +1,7 @@
-defmodule Healthlocker.TipViewTest do
-  use Healthlocker.ConnCase, async: true
+defmodule App.TipViewTest do
+  use App.ConnCase, async: true
 
-  alias Healthlocker.TipView
+  alias App.TipView
 
   test "get_category finds the correct category" do
     actual = TipView.get_category("tag=Connect")

@@ -1,7 +1,7 @@
-defmodule Healthlocker.TrackerView do
-  use Healthlocker.Web, :view
+defmodule App.TrackerView do
+  use App.Web, :view
   use Timex
-  import Healthlocker.PostView, only: [markdown: 1]
+  import App.PostView, only: [markdown: 1]
 
   def get_symptom(data) do
     case data do
@@ -39,7 +39,7 @@ defmodule Healthlocker.TrackerView do
 
   ## Example
 
-      iex> import Healthlocker.TrackerView
+      iex> import App.TrackerView
       iex> format_average_sleep(7.375)
       "7h 22m"
 

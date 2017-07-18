@@ -34,7 +34,7 @@
           <p class="di i">Achieved</p>
         <% end %>
         <p class="mv3 f6 i fr">
-          Created <%= Healthlocker.ComponentView.pretty_date(goal.inserted_at) %>
+          Created <%= App.ComponentView.pretty_date(goal.inserted_at) %>
         </p>
         </div>
       <% end %>
@@ -50,7 +50,7 @@
       <div class="bw2 br3 dib w-100 pv1 ph3 mv1 hl-bg-light-yellow tl word-wrap">
         <p><%= markdown String.trim_trailing(strategy.content, " #CopingStrategy") %></p>
         <p class="mv3 f6 i tr">
-          Created <%= Healthlocker.ComponentView.pretty_date(strategy.inserted_at) %>
+          Created <%= App.ComponentView.pretty_date(strategy.inserted_at) %>
         </p>
       </div>
       <% end %>

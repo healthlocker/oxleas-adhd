@@ -1,10 +1,10 @@
-defmodule Healthlocker.Plugs.RequireLoginTest do
-  use Healthlocker.ConnCase
+defmodule App.Plugs.RequireLoginTest do
+  use App.ConnCase
 
   setup %{conn: conn} do
     conn =
       conn
-      |> bypass_through(Healthlocker.Router, :browser)
+      |> bypass_through(App.Router, :browser)
       |> get("/")
 
     {:ok, conn: conn}
@@ -21,11 +21,11 @@ defmodule Healthlocker.Plugs.RequireLoginTest do
   end
 
   defp require_login(conn) do
-    conn |> Healthlocker.Plugs.RequireLogin.call(%{})
+    conn |> App.Plugs.RequireLogin.call(%{})
   end
 
   defp authenticate(conn) do
-    conn |> assign(:current_user, %Healthlocker.User{})
+    conn |> assign(:current_user, %App.User{})
   end
 
   defp not_redirected?(conn) do

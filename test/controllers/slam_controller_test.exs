@@ -1,6 +1,6 @@
-defmodule Healthlocker.SlamControllerTest do
-  use Healthlocker.ConnCase
-  alias Healthlocker.{User, EPJSUser, ReadOnlyRepo}
+defmodule App.SlamControllerTest do
+  use App.ConnCase
+  alias App.{User, EPJSUser, ReadOnlyRepo}
 
   @valid_attrs %{
     first_name: "Kat",
@@ -48,7 +48,7 @@ defmodule Healthlocker.SlamControllerTest do
       DOB: birthday,
     } |> ReadOnlyRepo.insert
 
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
+    Mix.Tasks.App.Room.Create.run("run")
 
     {:ok, conn: build_conn() |> assign(:current_user, Repo.get(User, 123456)) }
   end

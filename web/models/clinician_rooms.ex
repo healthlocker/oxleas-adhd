@@ -1,8 +1,8 @@
-defmodule Healthlocker.ClinicianRooms do
-  use Healthlocker.Web, :model
+defmodule App.ClinicianRooms do
+  use App.Web, :model
 
   schema "clinician_rooms" do
-    belongs_to :room, Healthlocker.Room
+    belongs_to :room, App.Room
     field :clinician_id, :integer
 
     timestamps()

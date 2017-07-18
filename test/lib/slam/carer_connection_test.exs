@@ -1,7 +1,7 @@
-defmodule Healthlocker.Slam.CarerConnectionTest do
-  use Healthlocker.ModelCase, async: true
-  alias Healthlocker.Slam.CarerConnection
-  alias Healthlocker.{EPJSUser, ReadOnlyRepo}
+defmodule App.Slam.CarerConnectionTest do
+  use App.ModelCase, async: true
+  alias App.Slam.CarerConnection
+  alias App.{EPJSUser, ReadOnlyRepo}
 
   @valid_attrs %{
     forename: "Kat",

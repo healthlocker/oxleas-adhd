@@ -1,5 +1,5 @@
-defmodule Healthlocker.MessageView do
-  use Healthlocker.Web, :view
+defmodule App.MessageView do
+  use App.Web, :view
 
   def dom_id(message) do
     "message-" <> Integer.to_string(message.id)

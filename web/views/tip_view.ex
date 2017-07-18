@@ -1,6 +1,6 @@
-defmodule Healthlocker.TipView do
-  use Healthlocker.Web, :view
-  import Healthlocker.ComponentView, only: [markdown: 1]
+defmodule App.TipView do
+  use App.Web, :view
+  import App.ComponentView, only: [markdown: 1]
 
   @tips ["Connect", "KeepLearning", "GiveToOthers", "BeActive", "TakeNotice"]
   @descriptions %{

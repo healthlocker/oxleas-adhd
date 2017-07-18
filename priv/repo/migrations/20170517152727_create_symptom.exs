@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.CreateSymptom do
+defmodule App.Repo.Migrations.CreateSymptom do
   use Ecto.Migration
 
   def change do

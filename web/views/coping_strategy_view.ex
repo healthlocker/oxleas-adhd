@@ -1,5 +1,5 @@
-defmodule Healthlocker.CopingStrategyView do
-  use Healthlocker.Web, :view
+defmodule App.CopingStrategyView do
+  use App.Web, :view
 
   def markdown(body) do
     body

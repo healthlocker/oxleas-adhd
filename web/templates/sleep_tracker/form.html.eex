@@ -2,9 +2,9 @@
   <%= form_for @changeset, @action, fn f -> %>
     <div class="form-group">
       <%= label f, "Total hours sleep:", class: "f5 b db mb2" %>
-      <%= select f, :hours_slept, Healthlocker.ComponentView.get_options("hours_slept"),
+      <%= select f, :hours_slept, App.ComponentView.get_options("hours_slept"),
         class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-        Healthlocker.ComponentView.highlight_errors(@changeset, :hours_slept),
+        App.ComponentView.highlight_errors(@changeset, :hours_slept),
         prompt: "" %>
       <span class="hl-pink"><%= error_tag f, :hours_slept %></span>
     </div>
@@ -13,9 +13,9 @@
       <%= label f, :wake_count, class: "f5 b db mb2 mt4" do %>
         Times I woke up:
       <% end %>
-      <%= select f, :wake_count, Healthlocker.ComponentView.get_options("wake_count"),
+      <%= select f, :wake_count, App.ComponentView.get_options("wake_count"),
         class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-        Healthlocker.ComponentView.highlight_errors(@changeset, :wake_count),
+        App.ComponentView.highlight_errors(@changeset, :wake_count),
         prompt: "" %>
       <span class="hl-pink"><%= error_tag f, :wake_count%></span>
     </div>
@@ -29,7 +29,7 @@
         <li class="i">did you do something to try to get a better sleep?</li>
       </ul>
       <%= textarea f, :notes, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :notes) %>
+      App.ComponentView.highlight_errors(@changeset, :notes) %>
       <span class="hl-pink"><%= error_tag f, :notes %></span>
     </div>
 
@@ -109,7 +109,7 @@
     <p>
       Or explore
       <%= link_to("more tips", to: tip_path(@conn, :index)) %>
-      on Healthlocker.
+      on App.
     </p>
   </div>
 </div>

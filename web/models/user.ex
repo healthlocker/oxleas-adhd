@@ -1,5 +1,5 @@
-defmodule Healthlocker.User do
-  use Healthlocker.Web, :model
+defmodule App.User do
+  use App.Web, :model
 
   alias Comeonin.Bcrypt
 
@@ -20,17 +20,17 @@ defmodule Healthlocker.User do
     field :user_guid, :string
     field :reset_password_token, :string
     field :reset_token_sent_at, :utc_datetime
-    has_many :posts, Healthlocker.Post
-    many_to_many :likes, Healthlocker.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
-    many_to_many :relationships, Healthlocker.User, join_through: Healthlocker.Relationship, on_replace: :delete, on_delete: :delete_all
+    has_many :posts, App.Post
+    many_to_many :likes, App.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
+    many_to_many :relationships, App.User, join_through: App.Relationship, on_replace: :delete, on_delete: :delete_all
 
-    many_to_many :carers, Healthlocker.User, join_through: Healthlocker.Carer, join_keys: [caring_id: :id, carer_id: :id]
-    many_to_many :caring, Healthlocker.User, join_through: Healthlocker.Carer, join_keys: [carer_id: :id, caring_id: :id]
+    many_to_many :carers, App.User, join_through: App.Carer, join_keys: [caring_id: :id, carer_id: :id]
+    many_to_many :caring, App.User, join_through: App.Carer, join_keys: [carer_id: :id, caring_id: :id]
 
-    many_to_many :rooms, Healthlocker.Room, join_through: "user_rooms"
-    has_many :messages, Healthlocker.Message
-    has_many :symptoms, Healthlocker.Symptom
-    has_many :diaries, Healthlocker.Diary
+    many_to_many :rooms, App.Room, join_through: "user_rooms"
+    has_many :messages, App.Message
+    has_many :symptoms, App.Symptom
+    has_many :diaries, App.Diary
 
     timestamps()
   end

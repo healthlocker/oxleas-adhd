@@ -61,8 +61,8 @@ mix local.rebar --force
 mix deps.clean --all
 mix deps.get --force
 mix deps.compile
-mix ecto.create -r Healthlocker.Repo
-mix ecto.migrate -r Healthlocker.Repo
+mix ecto.create -r App.Repo
+mix ecto.migrate -r App.Repo
 mix run priv/repo/seeds.exs
 mix phoenix.server
 

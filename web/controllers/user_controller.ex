@@ -1,8 +1,8 @@
-defmodule Healthlocker.UserController do
-  use Healthlocker.Web, :controller
+defmodule App.UserController do
+  use App.Web, :controller
 
-  alias Healthlocker.User
-  alias Healthlocker.Plugs.Auth
+  alias App.User
+  alias App.Plugs.Auth
 
   def index(conn, _params) do
     render conn, "index.html"

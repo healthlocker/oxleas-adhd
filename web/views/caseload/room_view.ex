@@ -1,3 +1,3 @@
-defmodule Healthlocker.Caseload.RoomView do
-  use Healthlocker.Web, :view
+defmodule App.Caseload.RoomView do
+  use App.Web, :view
 end

@@ -1,5 +1,5 @@
-defmodule Healthlocker.Email do
-  use Bamboo.Phoenix, view: Healthlocker.FeedbackView
+defmodule App.Email do
+  use Bamboo.Phoenix, view: App.FeedbackView
 
   def send_feedback(subject, message) do
     new_email()

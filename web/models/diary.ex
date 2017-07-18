@@ -1,9 +1,9 @@
-defmodule Healthlocker.Diary do
-  use Healthlocker.Web, :model
+defmodule App.Diary do
+  use App.Web, :model
 
   schema "diaries" do
     field :entry, :string, null: false
-    belongs_to :user, Healthlocker.User
+    belongs_to :user, App.User
 
     timestamps()
   end

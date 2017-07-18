@@ -1,9 +1,9 @@
-defmodule Healthlocker.DecryptUser do
-  alias Healthlocker.ReadOnlyRepo
+defmodule App.DecryptUser do
+  alias App.ReadOnlyRepo
 
   def decrypt_user_data(user_str) do
 
-    case Application.get_env(:healthlocker, :environment) do
+    case Application.get_env(:app, :environment) do
       :test ->
         ["randomstringtotestwith", "3000-06-23T11:15:53"]
       _ ->

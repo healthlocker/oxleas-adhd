@@ -1,4 +1,4 @@
-defmodule Healthlocker.ReadOnlyRepo.Migrations.CreateTeamMembers do
+defmodule App.ReadOnlyRepo.Migrations.CreateTeamMembers do
   use Ecto.Migration
 
   def change do

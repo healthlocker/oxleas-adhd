@@ -1,4 +1,4 @@
-defmodule Healthlocker.ReadOnlyRepo.Migrations.CreateAddressesTable do
+defmodule App.ReadOnlyRepo.Migrations.CreateAddressesTable do
   use Ecto.Migration
 
   def change do

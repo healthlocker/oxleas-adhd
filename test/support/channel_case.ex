@@ -1,4 +1,4 @@
-defmodule Healthlocker.ChannelCase do
+defmodule App.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,23 +20,23 @@ defmodule Healthlocker.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias Healthlocker.Repo
+      alias App.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint Healthlocker.Endpoint
+      @endpoint App.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.Repo)
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.ReadOnlyRepo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(App.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(App.ReadOnlyRepo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Healthlocker.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(App.Repo, {:shared, self()})
     end
 
     :ok

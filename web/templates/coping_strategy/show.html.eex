@@ -9,6 +9,6 @@
     </span>
   </div>
   <p class="mv3 f6 i">
-    Created <%= Healthlocker.ComponentView.pretty_date(@coping_strategy.inserted_at) %>
+    Created <%= App.ComponentView.pretty_date(@coping_strategy.inserted_at) %>
   </p>
 </div>

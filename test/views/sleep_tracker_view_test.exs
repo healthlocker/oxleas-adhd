@@ -1,3 +1,3 @@
-defmodule Healthlocker.SleepTrackerViewTest do
-  use Healthlocker.ConnCase, async: true
+defmodule App.SleepTrackerViewTest do
+  use App.ConnCase, async: true
 end

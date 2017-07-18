@@ -1,5 +1,5 @@
-defmodule Healthlocker.Slam.CareTeam do
-  alias Healthlocker.{EPJSTeamMember, ReadOnlyRepo}
+defmodule App.Slam.CareTeam do
+  alias App.{EPJSTeamMember, ReadOnlyRepo}
   import Ecto.Query
 
   @moduledoc """

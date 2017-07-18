@@ -1,7 +1,7 @@
-defmodule Healthlocker.TrackerController do
-  use Healthlocker.Web, :controller
+defmodule App.TrackerController do
+  use App.Web, :controller
   use Timex
-  alias Healthlocker.{Diary, Symptom, SymptomTracker, SleepTracker}
+  alias App.{Diary, Symptom, SymptomTracker, SleepTracker}
 
   def create_date_list(list, date, 6) do
     list

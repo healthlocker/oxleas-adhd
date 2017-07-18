@@ -1,7 +1,7 @@
-defmodule Healthlocker.UserTest do
-  use Healthlocker.ModelCase
+defmodule App.UserTest do
+  use App.ModelCase
 
-  alias Healthlocker.User
+  alias App.User
 
   @step1_attrs %{
     email: "me@example.com",

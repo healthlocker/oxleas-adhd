@@ -1,6 +1,6 @@
-defmodule Healthlocker.PageView do
-  use Healthlocker.Web, :view
-  import Healthlocker.ComponentView, only: [markdown: 1]
+defmodule App.PageView do
+  use App.Web, :view
+  import App.ComponentView, only: [markdown: 1]
 
   def find_redirect(conn) do
     last_page = last_page(conn)

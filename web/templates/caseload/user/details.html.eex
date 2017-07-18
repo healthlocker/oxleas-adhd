@@ -4,7 +4,7 @@
     <table class="hl-bg-light-yellow br3 w-80 tl center pa3">
       <tr>
         <th class="b tl pv2 mw3">Date of Birth: </th>
-        <td class="pv2"><%= Healthlocker.ComponentView.pretty_date(@slam_user."DOB") %></td>
+        <td class="pv2"><%= App.ComponentView.pretty_date(@slam_user."DOB") %></td>
       </tr>
       <tr>
         <th class="b tl pv2 mw3">Email: </th>
@@ -45,5 +45,5 @@
   </div>
 <%= else %>
   <%= render "carer_menu.html", assigns %>
-  <p class="mt0 pt-10em"><strong><%= Healthlocker.ComponentView.full_name(@user) %></strong> (friend/family/carer) of <strong><%= Healthlocker.ComponentView.full_name(@service_user) %></strong></p>
+  <p class="mt0 pt-10em"><strong><%= App.ComponentView.full_name(@user) %></strong> (friend/family/carer) of <strong><%= App.ComponentView.full_name(@service_user) %></strong></p>
 <% end %>

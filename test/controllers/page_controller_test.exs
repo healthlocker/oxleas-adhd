@@ -1,6 +1,6 @@
-defmodule Healthlocker.PageControllerTest do
-  use Healthlocker.ConnCase
-  import Healthlocker.Fixtures
+defmodule App.PageControllerTest do
+  use App.ConnCase
+  import App.Fixtures
 
   test "gets page when there are no stories or tips", %{conn: conn} do
     conn = get conn, page_path(conn, :index)

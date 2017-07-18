@@ -1,11 +1,11 @@
-defmodule Healthlocker.ComponentView do
-  use Healthlocker.Web, :view
+defmodule App.ComponentView do
+  use App.Web, :view
 
   def get_options(option_type) do
     # load security questions from file
-    options = case Application.get_env(:healthlocker, :environment) do
+    options = case Application.get_env(:app, :environment) do
       :prod ->
-        Application.app_dir(:healthlocker, "priv")
+        Application.app_dir(:app, "priv")
         |> Path.join("/static/#{option_type}.txt")
         |> File.read!
       _ ->

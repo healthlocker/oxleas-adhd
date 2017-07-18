@@ -1,4 +1,4 @@
-defmodule Healthlocker.Plugs.Auth do
+defmodule App.Plugs.Auth do
   import Plug.Conn
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
@@ -11,7 +11,7 @@ defmodule Healthlocker.Plugs.Auth do
     cond do
       user = conn.assigns[:current_user] ->
         put_current_user(conn, user)
-      user = user_id && repo.get(Healthlocker.User, user_id) |> repo.preload(:likes) ->
+      user = user_id && repo.get(App.User, user_id) |> repo.preload(:likes) ->
         put_current_user(conn, user)
       true ->
         assign(conn, :current_user, nil)
@@ -35,7 +35,7 @@ defmodule Healthlocker.Plugs.Auth do
 
   def check_password(conn, id, given_pass, opts) do
     repo = Keyword.fetch!(opts, :repo)
-    user = repo.get(Healthlocker.User, id) |> repo.preload(:likes)
+    user = repo.get(App.User, id) |> repo.preload(:likes)
 
     cond do
       user && checkpw(given_pass, user.password_hash) ->
@@ -47,7 +47,7 @@ defmodule Healthlocker.Plugs.Auth do
 
   def email_and_pass_login(conn, email, given_pass, opts) do
     repo = Keyword.fetch!(opts, :repo)
-    user = repo.get_by(Healthlocker.User, email: email) |> repo.preload(:likes)
+    user = repo.get_by(App.User, email: email) |> repo.preload(:likes)
 
     cond do
       user && checkpw(given_pass, user.password_hash) ->

@@ -1,7 +1,7 @@
-defmodule Healthlocker.Slam.DisconnectSlam do
+defmodule App.Slam.DisconnectSlam do
   alias Ecto.Multi
   import Ecto.Query
-  alias Healthlocker.{User, Repo, UserRoom, ClinicianRooms, Message, Room}
+  alias App.{User, Repo, UserRoom, ClinicianRooms, Message, Room}
 
   def disconnect_su(user) do
     Multi.new

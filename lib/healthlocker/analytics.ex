@@ -1,7 +1,7 @@
-defmodule Healthlocker.Analytics do
+defmodule App.Analytics do
   @moduledoc """
   This module defines the behaviour required by any Analytics provider
-  supported by Healthlocker.
+  supported by App.
   """
 
   @type user_id :: String.t
@@ -20,16 +20,16 @@ defmodule Healthlocker.Analytics do
 
   # These are the methods for the public interface
 
-  alias Healthlocker.Analytics.EventNameBuilder
-  alias Healthlocker.Analytics.PropertiesBuilder
+  alias App.Analytics.EventNameBuilder
+  alias App.Analytics.PropertiesBuilder
 
-  @api Application.get_env(:healthlocker, :analytics)
+  @api Application.get_env(:app, :analytics)
 
-  def identify(%Healthlocker.User{} = user) do
+  def identify(%App.User{} = user) do
     @api.identify(user.id, {})
   end
 
-  def track(%Healthlocker.User{} = user, action, model) do
+  def track(%App.User{} = user, action, model) do
     event_name = EventNameBuilder.build(action, model)
     properties = PropertiesBuilder.build(model)
     @api.track(user.id, event_name, properties)

@@ -1,7 +1,7 @@
-defmodule Healthlocker.SlamController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.Slam.CarerConnection
-  alias Healthlocker.{Repo, User, Slam.ConnectCarer}
+defmodule App.SlamController do
+  use App.Web, :controller
+  alias App.Slam.CarerConnection
+  alias App.{Repo, User, Slam.ConnectCarer}
 
   def new(conn, _param) do
     changeset = CarerConnection.changeset(%CarerConnection{})

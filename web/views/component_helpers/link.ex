@@ -1,4 +1,4 @@
-defmodule Healthlocker.ComponentHelpers.Link do
+defmodule App.ComponentHelpers.Link do
 
   @moduledoc """
   Convenience methods for generating links in HTML. This enforces our

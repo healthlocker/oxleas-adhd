@@ -1,7 +1,7 @@
-defmodule Healthlocker.ToolkitController do
-  use Healthlocker.Web, :controller
+defmodule App.ToolkitController do
+  use App.Web, :controller
 
-  alias Healthlocker.Post
+  alias App.Post
 
   def index(conn, _params) do
     user_id = conn.assigns.current_user.id

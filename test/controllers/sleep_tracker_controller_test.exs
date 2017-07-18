@@ -1,8 +1,8 @@
-defmodule Healthlocker.SleepTrackerControllerTest do
-  use Healthlocker.ConnCase, async: false
+defmodule App.SleepTrackerControllerTest do
+  use App.ConnCase, async: false
 
-  alias Healthlocker.SleepTracker
-  alias Healthlocker.User
+  alias App.SleepTracker
+  alias App.User
   @valid_attrs %{
     hours_slept: "7",
     wake_count: "4",

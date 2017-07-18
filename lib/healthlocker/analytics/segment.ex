@@ -1,4 +1,4 @@
-defmodule Healthlocker.Analytics.Segment do
+defmodule App.Analytics.Segment do
   @moduledoc """
   Interface to the Segment API via [`analytics-elixir`](https://github.com/stueccles/analytics-elixir)
   """

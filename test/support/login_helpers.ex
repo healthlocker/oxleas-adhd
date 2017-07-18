@@ -1,4 +1,4 @@
-defmodule Healthlocker.LoginHelpers do
+defmodule App.LoginHelpers do
   use Wallaby.DSL
 
   @login_form     Query.css("form")

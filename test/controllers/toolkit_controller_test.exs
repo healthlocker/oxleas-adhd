@@ -1,6 +1,6 @@
-defmodule Healthlocker.ToolkitControllerTest do
-  use Healthlocker.ConnCase
-  alias Healthlocker.User
+defmodule App.ToolkitControllerTest do
+  use App.ConnCase
+  alias App.User
 
   setup do
     %User{

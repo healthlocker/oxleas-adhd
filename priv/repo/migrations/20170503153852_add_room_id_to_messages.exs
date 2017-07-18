@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddRoomIdToMessages do
+defmodule App.Repo.Migrations.AddRoomIdToMessages do
   use Ecto.Migration
 
   def change do

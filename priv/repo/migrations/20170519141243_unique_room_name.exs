@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.UniqueRoomName do
+defmodule App.Repo.Migrations.UniqueRoomName do
   use Ecto.Migration
 
   def change do

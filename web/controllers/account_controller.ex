@@ -1,8 +1,8 @@
-defmodule Healthlocker.AccountController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.{User, EPJSUser, ReadOnlyRepo, Slam.ConnectSlam,
+defmodule App.AccountController do
+  use App.Web, :controller
+  alias App.{User, EPJSUser, ReadOnlyRepo, Slam.ConnectSlam,
                       Slam.DisconnectSlam}
-  alias Healthlocker.Plugs.Auth
+  alias App.Plugs.Auth
   use Timex
 
   def index(conn, _params) do

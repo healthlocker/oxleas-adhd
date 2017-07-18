@@ -1,7 +1,7 @@
-defmodule Healthlocker.GoalControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.GoalControllerTest do
+  use App.ConnCase
 
-  alias Healthlocker.{Goal, User}
+  alias App.{Goal, User}
 
   @valid_attrs %{content: "some content"}
   @invalid_attrs %{content: ""}

@@ -1,6 +1,6 @@
-defmodule Healthlocker.GoalController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.{Goal, Step}
+defmodule App.GoalController do
+  use App.Web, :controller
+  alias App.{Goal, Step}
 
   def index(conn, _params) do
     user_id = conn.assigns.current_user.id
@@ -113,6 +113,6 @@ defmodule Healthlocker.GoalController do
   end
 
   defp track_created(conn, %Goal{} = goal) do
-    Healthlocker.Analytics.track(conn.assigns.current_user, :create, goal)
+    App.Analytics.track(conn.assigns.current_user, :create, goal)
   end
 end

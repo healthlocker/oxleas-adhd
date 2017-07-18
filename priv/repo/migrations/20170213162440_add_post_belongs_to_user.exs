@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddPostBelongsToUser do
+defmodule App.Repo.Migrations.AddPostBelongsToUser do
   use Ecto.Migration
 
   def change do

@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddContactConsentToUsers do
+defmodule App.Repo.Migrations.AddContactConsentToUsers do
   use Ecto.Migration
 
   def change do

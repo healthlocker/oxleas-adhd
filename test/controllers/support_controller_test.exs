@@ -1,5 +1,5 @@
-defmodule Healthlocker.SupportControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.SupportControllerTest do
+  use App.ConnCase
 
   test "GET /support", %{conn: conn} do
     conn = get conn, "/support"

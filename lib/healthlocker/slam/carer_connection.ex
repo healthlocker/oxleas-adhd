@@ -1,8 +1,8 @@
-defmodule Healthlocker.Slam.CarerConnection do
+defmodule App.Slam.CarerConnection do
   use Ecto.Schema
   import Ecto.Changeset
   import Ecto.Query
-  alias Healthlocker.{EPJSUser, ReadOnlyRepo}
+  alias App.{EPJSUser, ReadOnlyRepo}
 
   embedded_schema do
     field :forename

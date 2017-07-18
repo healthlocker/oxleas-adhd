@@ -1,7 +1,7 @@
-defmodule Healthlocker.PostViewTest do
-  use Healthlocker.ConnCase, async: true
-  alias Healthlocker.Post
-  alias Healthlocker.PostView
+defmodule App.PostViewTest do
+  use App.ConnCase, async: true
+  alias App.Post
+  alias App.PostView
 
   test "converts markdown to html" do
     {:safe, result} = PostView.markdown("**Hello, world!**")

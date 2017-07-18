@@ -1,6 +1,6 @@
-defmodule Healthlocker.Caseload.RoomController do
-  alias Healthlocker.{EPJSUser, Message, Room, User, Slam.ServiceUser}
-  use Healthlocker.Web, :controller
+defmodule App.Caseload.RoomController do
+  alias App.{EPJSUser, Message, Room, User, Slam.ServiceUser}
+  use App.Web, :controller
 
   def show(conn, %{"id" => id, "user_id" => user_id}) do
     if conn.assigns.current_user.user_guid do

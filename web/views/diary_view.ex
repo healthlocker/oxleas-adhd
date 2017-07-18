@@ -1,3 +1,3 @@
-defmodule Healthlocker.DiaryView do
-  use Healthlocker.Web, :view
+defmodule App.DiaryView do
+  use App.Web, :view
 end

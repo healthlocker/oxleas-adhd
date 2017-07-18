@@ -1,6 +1,6 @@
-defmodule Healthlocker.SymptomTracker do
-  use Healthlocker.Web, :model
-  alias Healthlocker.{Symptom, SleepTracker}
+defmodule App.SymptomTracker do
+  use App.Web, :model
+  alias App.{Symptom, SleepTracker}
 
   schema "symptom_trackers" do
     field :affected_scale, :string, null: false

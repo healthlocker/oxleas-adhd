@@ -1,11 +1,11 @@
-defmodule Healthlocker.CareTeam.RoomController do
-  alias Healthlocker.{Message, ClinicianRooms}
-  use Healthlocker.Web, :controller
+defmodule App.CareTeam.RoomController do
+  alias App.{Message, ClinicianRooms}
+  use App.Web, :controller
 
   def show(conn, %{"id" => id}) do
     room = Repo.get! assoc(conn.assigns.current_user, :rooms), id
-    service_user = Healthlocker.Slam.ServiceUser.for(conn.assigns.current_user)
-    clinicians_list = Healthlocker.Slam.CareTeam.for(service_user)
+    service_user = App.Slam.ServiceUser.for(conn.assigns.current_user)
+    clinicians_list = App.Slam.CareTeam.for(service_user)
     clinician_rooms = Repo.all(from cr in ClinicianRooms, where: cr.room_id == ^id)
 
     messages = Repo.all from m in Message,

@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddPasswordResetToUsers do
+defmodule App.Repo.Migrations.AddPasswordResetToUsers do
   use Ecto.Migration
 
   def change do

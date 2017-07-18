@@ -1,6 +1,6 @@
-defmodule Healthlocker.ComponentController do
-  use Healthlocker.Web, :controller
-  alias Healthlocker.Post
+defmodule App.ComponentController do
+  use App.Web, :controller
+  alias App.Post
 
   def index(conn, _params) do
     post = Post |> first |> Repo.one

@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddC4cToUsers do
+defmodule App.Repo.Migrations.AddC4cToUsers do
   use Ecto.Migration
 
   def change do

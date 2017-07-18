@@ -1,6 +1,6 @@
-defmodule Healthlocker.Caseload.UserViewTest do
-  use Healthlocker.ConnCase, async: true
-  alias Healthlocker.Caseload.UserView
+defmodule App.Caseload.UserViewTest do
+  use App.ConnCase, async: true
+  alias App.Caseload.UserView
 
   test "format_nhs_number returns correct nhs number format" do
     actual = UserView.format_nhs_number("1234567890")

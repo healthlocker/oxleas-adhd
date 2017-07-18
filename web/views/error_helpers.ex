@@ -1,4 +1,4 @@
-defmodule Healthlocker.ErrorHelpers do
+defmodule App.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule Healthlocker.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(Healthlocker.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(App.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(Healthlocker.Gettext, "errors", msg, opts)
+      Gettext.dgettext(App.Gettext, "errors", msg, opts)
     end
   end
 end

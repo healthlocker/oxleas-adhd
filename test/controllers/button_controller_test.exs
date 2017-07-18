@@ -1,5 +1,5 @@
-defmodule Healthlocker.ButtonControllerTest do
-  use Healthlocker.ConnCase
+defmodule App.ButtonControllerTest do
+  use App.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, button_path(conn, :index)
