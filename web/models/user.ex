@@ -20,6 +20,7 @@ defmodule App.User do
     field :user_guid, :string
     field :reset_password_token, :string
     field :reset_token_sent_at, :utc_datetime
+    field :dob, :date
     has_many :posts, App.Post
     many_to_many :likes, App.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
     many_to_many :relationships, App.User, join_through: App.Relationship, on_replace: :delete, on_delete: :delete_all
