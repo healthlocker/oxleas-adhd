@@ -1,0 +1,6 @@
+<%= if @slam_user."Patient_ID" == @user.slam_id do %>
+  <%= render App.Caseload.UserView, "menu.html", assigns %>
+<%= else %>
+  <%= render App.Caseload.UserView, "carer_menu.html", assigns %>
+<% end %>
+<%= render App.RoomView, "_room.html", assigns %>

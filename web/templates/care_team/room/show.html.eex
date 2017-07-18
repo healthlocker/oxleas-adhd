@@ -1,0 +1,2 @@
+<%= render App.CareTeamView, "menu.html", assigns %>
+<%= render App.RoomView, "_room.html", assigns %>

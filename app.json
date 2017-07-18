@@ -1,0 +1,27 @@
+{
+  "name": "app",
+  "scripts": {
+    "postdeploy": "POOL_SIZE=2 mix ecto.migrate"
+  },
+  "env": {
+    "POOL_SIZE": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git"
+    },
+    {
+      "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git"
+    }
+  ]
+}
