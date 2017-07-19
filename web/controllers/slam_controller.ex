@@ -3,11 +3,6 @@ defmodule App.SlamController do
   alias App.Slam.CarerConnection
   alias App.{Repo, User, Slam.ConnectCarer}
 
-  def new(conn, _param) do
-    changeset = CarerConnection.changeset(%CarerConnection{})
-    render(conn, "new.html", changeset: changeset)
-  end
-
   def create(conn, %{"carer_connection" => params}) do
     update_params = if params["nhs_number"] do
       params
