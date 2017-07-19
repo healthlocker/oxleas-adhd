@@ -53,11 +53,6 @@ defmodule App.SlamControllerTest do
     {:ok, conn: build_conn() |> assign(:current_user, Repo.get(User, 123456)) }
   end
 
-  test "renders form to connect with slam", %{conn: conn} do
-    conn = get(conn, slam_path(conn, :new))
-    assert html_response(conn, 200) =~ ~r/Connect/
-  end
-
   test "POST /slam with valid attrs", %{conn: conn} do
     conn = post(conn, slam_path(conn, :create), carer_connection: @valid_attrs)
     assert redirected_to(conn) == account_path(conn, :index)
