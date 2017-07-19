@@ -40,8 +40,6 @@ defmodule App.Router do
     put "/account/security/update", AccountController, :update_security
     get "/account/password/edit", AccountController, :edit_password
     put "/account/password/update", AccountController, :update_password
-    get "/account/slam", AccountController, :slam
-    put "/account/check-slam", AccountController, :check_slam
     resources "/components", ComponentController, only: [:index]
     resources "/messages", MessageController, only: [:index]
     resources "/sleep-tracker", SleepTrackerController, only: [:new, :create]
@@ -58,7 +56,7 @@ defmodule App.Router do
       end
     end
 
-    resources "/slam", SlamController, only: [:new, :create]
+    resources "/slam", SlamController, only: [:create]
     resources "/symptom", SymptomController, only: [:new, :create]
     resources "/symptom-tracker", SymptomTrackerController, only: [:new, :create]
     resources "/tracking-overview", TrackerController, only: [:index] do
