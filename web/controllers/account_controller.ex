@@ -1,6 +1,6 @@
 defmodule App.AccountController do
   use App.Web, :controller
-  alias App.{User, EPJSUser, ReadOnlyRepo, Slam.ConnectSlam,
+  alias App.{User, EPJSUser, Slam.ConnectSlam,
                       Slam.DisconnectSlam}
   alias App.Plugs.Auth
   use Timex
