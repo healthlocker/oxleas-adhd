@@ -22,14 +22,13 @@ defmodule App.CaseloadController do
   end
 
   def get_patients(clinician) do
-    patient_ids = EPJSTeamMember
-                  |> EPJSTeamMember.patient_ids(clinician.email)
-                  |> ReadOnlyRepo.all
+    query = from c in Clinician, where: c.clinician_id == ^clinician.id
+    patient_ids = Repo.all(query)
 
     hl_users = patient_ids
-              |> Enum.map(fn id ->
+              |> Enum.map(fn map ->
                 Repo.all(from u in User,
-                where: u.slam_id == ^id,
+                where: u.id == ^map.caring_id,
                 preload: [carers: :rooms],
                 preload: [:rooms])
               end)
