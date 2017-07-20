@@ -26,10 +26,9 @@ defmodule App.User do
     many_to_many :relationships, App.User, join_through: App.Relationship, on_replace: :delete, on_delete: :delete_all
 
     many_to_many :carers, App.User, join_through: App.Carer, join_keys: [caring_id: :id, carer_id: :id]
-    many_to_many :caring, App.User, join_through: App.Carer, join_keys: [carer_id: :id, caring_id: :id]
+    many_to_many :caring, App.User, join_through: App.Carer, join_through: App.Clinician, join_keys: [carer_id: :id, caring_id: :id]
 
     many_to_many :clinicians, App.User, join_through: App.Clinician, join_keys: [caring_id: :id, clinician_id: :id]
-    many_to_many :service_user, App.User, join_through: App.Clinician, join_keys: [clinician_id: :id, caring_id: :id]
 
     many_to_many :rooms, App.Room, join_through: "user_rooms"
     has_many :messages, App.Message
