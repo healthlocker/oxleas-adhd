@@ -34,26 +34,6 @@ defmodule App.CaseloadController do
               end)
               |> Enum.concat
 
-    non_hl = patient_ids
-              |> Enum.map(fn id ->
-                ReadOnlyRepo.all(from e in EPJSUser,
-                where: e."Patient_ID" == ^id)
-              end)
-              |> Enum.concat
-              |> Enum.reject(fn user ->
-                Enum.any?(hl_users, fn hl ->
-                  user."Patient_ID" == hl.slam_id
-                end)
-              end)
-    %{hl_users: hl_users, non_hl: non_hl}
-  end
-
-  def compare_time(time_str) do
-    case DateTime.from_iso8601(time_str <> "Z") do
-      {:ok, datetime, _} ->
-        DateTime.compare(datetime, DateTime.utc_now)
-      _ ->
-        :lt
-    end
+    %{hl_users: hl_users}
   end
 end
