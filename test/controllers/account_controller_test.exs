@@ -1,7 +1,7 @@
 defmodule App.AccountControllerTest do
   use App.ConnCase
 
-  alias App.{User, EPJSUser, ReadOnlyRepo, Room, UserRoom,
+  alias App.{User, EPJSUser, Room, UserRoom,
                       ClinicianRooms, Message, Room}
 
   @valid_attrs %{

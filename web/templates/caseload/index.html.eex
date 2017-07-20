@@ -20,10 +20,3 @@
     <% end %>
   <% end %>
 </div>
-
-<h3 class="pt4 pb3 b--hl-grey bt bw1">Users not signed up to Healthlocker</h3>
-<%= for user <- @non_hl do %>
-  <div class="w-100 hl-bg-grey pa3 mv2 br3 hl-dark-blue">
-       <p class="b di o-50"><%= user."Forename" %> <%= user."Surname" %></p>
-   </div>
-<% end %>
