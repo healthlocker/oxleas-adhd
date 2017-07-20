@@ -4,6 +4,6 @@ defmodule App.Clinician do
   @primary_key false
   schema "clinicians" do
     belongs_to :clinician, App.User
-    belongs_to :service_user, App.User
+    belongs_to :caring, App.User
   end
 end
