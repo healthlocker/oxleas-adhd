@@ -1,7 +1,7 @@
 defmodule App.CaseloadController do
   use App.Web, :controller
 
-  alias App.{EPJSTeamMember, EPJSUser, User, Plugs.Auth, DecryptUser}
+  alias App.{User, Plugs.Auth, DecryptUser, Clinician}
 
   def index(conn, _params) do
     cond do
@@ -10,10 +10,10 @@ defmodule App.CaseloadController do
         |> put_flash(:error,  "You must be logged in to access that page!")
         |> redirect(to: login_path(conn, :index))
         |> halt
-      conn.assigns.current_user.user_guid ->
+      conn.assigns.current_user.role == "clinician" ->
         clinician = conn.assigns.current_user
         patients = get_patients(clinician)
-        render(conn, "index.html", hl_users: patients.hl_users, non_hl: patients.non_hl)
+        render(conn, "index.html", hl_users: patients.hl_users)
       true ->
         conn
         |> put_flash(:error, "Authentication failed")
