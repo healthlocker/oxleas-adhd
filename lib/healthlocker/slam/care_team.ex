@@ -12,4 +12,10 @@ defmodule App.Slam.CareTeam do
 
     ReadOnlyRepo.all(query)
   end
+
+  # select all the clinicians where caring_id == user.id
+  # def for(user) do
+  #   query = from c in Clinician,
+  #   where: c.caring_id == ^user.id
+  # end
 end
