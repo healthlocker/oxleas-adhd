@@ -99,3 +99,37 @@ If you are happy with the changes, change the label to `awaiting-review`:
 ![awaiting-review](https://cloud.githubusercontent.com/assets/1287388/24214001/21fe0ac0-0f2c-11e7-96a5-8f58110637c5.png)
 
 Then add a `Reviewer` and `Assignee` of your choice.
+
+## Carrying on work from a pull request
+
+If you are not yet done making changes, you should still make the pull request
+so it is easy to access your work later. However, instead of adding the
+`awaiting-review` label, you can add an `in-progress` label and add yourself as
+an assignee.
+
+When you are ready to continue working on the same branch, you can go to the
+[pull request section on GitHub](https://github.com/healthlocker/oxleas-adhd/pulls)
+and select your pull request. Click on the `Files changed` tab.
+
+![files-changed](https://user-images.githubusercontent.com/1287388/28664895-d06c4fb8-72b9-11e7-8133-2c4712205cb7.png)
+
+Click on the pencil again.
+
+![edit-pencil](https://user-images.githubusercontent.com/1287388/28665071-4ab80dc0-72ba-11e7-8ff8-497c19de56c8.png)
+
+Make any other changes you wish. Then you are going to make another commit
+using the `Commit changes` box underneath the file again. However, this time
+it looks slightly different.
+
+![image](https://user-images.githubusercontent.com/1287388/28665151-a143b644-72ba-11e7-9de5-7af53011edcc.png)
+
+Notice that the options underneath the optional description box have changed.
+Instead of an option to commit directly to master, it says
+`Commit directly to <your-branch-name-here> branch.`
+
+We want to keep all the changes on this same branch, so you are going to
+select this option.
+
+Then click the `Commit changes` button, which will add your new changes as a
+commit to the pull request. If you are done, you can follow the instructions
+above for changing labels and assignees and reviewers. 
