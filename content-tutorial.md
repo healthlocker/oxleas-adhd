@@ -16,12 +16,20 @@ which is the correct page. You can usually identify the correct file by looking
 at the path. For example, a snippet from the about section also appears on the
 homepage, and the project README.
 ![image](https://user-images.githubusercontent.com/1287388/28595293-349b23d6-718b-11e7-931c-4bbe3b43acf8.png)
+  * We can already rule out the README as the file that needs editing because it is
+  not in `web/templates`. If we are editing the `about` page, about is in the file
+  path. If we are editing the homepage, then `page` is in the file path.
+  * If you are still unsure which file you want to edit then trying opening the
+  file and checking to see if other text also matches the page you wish to edit
+  on the website.
+5. Once you have found the file, we need to follow that file path from
+the main code page on the repo. We need to do this because in search, you
+are not allowed to edit the file.
+  * If you are editing the `Get Support` page, the path will be
+  `web/templates/support/index.html.eex.`, which you will have found from search.
+  * Go to the [code on GitHub](https://github.com/healthlocker/oxleas-adhd)
+  * Click on `web` -> `templates` -> `support` -> `index.html.eex`
 
-We can already rule out the README as the file that needs editing because it is
-not in `web/templates`. If we are editing the `about` page, about is in the file
-path. If we are editing the homepage, then `page` is in the file path.
-
-If you are still unsure which file you want to edit then trying opening the file and checking to see if other text also matches the page you wish to edit on the website.
 
 ## How to change and add paragraphs
 
@@ -33,12 +41,14 @@ If we are keeping a paragraph, but only changing the text, then all we need to d
 is change the text between the `<p>` tags.
 
 Eg.
+
 ```
 <p class="b">
   It is currently in development, more
   features and improvements will be added in the coming months.
 </p>
 ```
+
 can change to
 
 ```
