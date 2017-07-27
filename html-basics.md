@@ -165,6 +165,14 @@ leave them as is, or delete the entire image. This would required you to delete 
 that images are usually wrapped in. If there are other items inside the div, then
 delete the `<%= img_tag... %>` only.
 
+E.g. from about page. You would delete the whole `div` and `img_tag`.
+
+```html
+<div class="tc mv3">
+  <%= img_tag("/images/About_Clinician.png", class: "w4") %>
+</div>
+```
+
 ## HTML Entities
 There are some reserved characters in HTML which may not display as expected unless you use a special character entity. `&` is one of these reserved characters.
 
