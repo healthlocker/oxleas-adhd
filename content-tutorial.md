@@ -59,7 +59,8 @@ can change to
 
 NB: The `class="b"` will leave the text as **bold**. This can be removed if you
 want it to be normal text, or change it to `class="i"` if you want the
-text to be *italics*. If there are any other `classes` on the `<p>` tag, then leave them as is. (DO NOT TOUCH!!)
+text to be *italics*. If there are any other `classes` on the `<p>` tag, then leave them as is. There are more details on styling, as well as using other HTML tags
+[here](/html-basics.md).
 
 If you need to add an entirely new paragraph, then you need to wrap the text in
 new `<p></p>` tags. Note the closing tag starts with a `/`.
@@ -69,6 +70,8 @@ new `<p></p>` tags. Note the closing tag starts with a `/`.
   Adding a new paragraph!
 </p>
 ```
+
+Please ensure that if you are adding new HTML tags and content to the bottom on the page, that it stays within the closing `</div>`s.
 
 ## Making a pull request
 
@@ -132,4 +135,4 @@ select this option.
 
 Then click the `Commit changes` button, which will add your new changes as a
 commit to the pull request. If you are done, you can follow the instructions
-above for changing labels and assignees and reviewers. 
+above for changing labels and assignees and reviewers.
