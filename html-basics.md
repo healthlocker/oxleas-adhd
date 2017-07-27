@@ -131,7 +131,7 @@ You need to include `mailto:` before the email address for the url
 This is used for any phone number (mobile, landline, etc). You include `tel:`
 before the number for the url.
 
-```html
+```
 <%= link "Random phone number", to: "tel:07512345689", class: "hl-aqua flex-wrap underline" %>
 ```
 
@@ -165,14 +165,14 @@ leave them as is, or delete the entire image. This would required you to delete 
 that images are usually wrapped in. If there are other items inside the div, then
 delete the `<%= img_tag... %>` only.
 
-## HTML Special Characters
-There are some special characters in HTML which may not display as expected unless you use a special character code. `&` is one of these special characters.
+## HTML Entities
+There are some reserved characters in HTML which may not display as expected unless you use a special character entity. `&` is one of these reserved characters.
 
 For example, instead of writing:
 
 ```html
 <p>
-  Special character example using an & symbol
+  HTML entity example using an & symbol
 </p>
 ```
 
@@ -180,10 +180,9 @@ You would instead need to write:
 
 ```html
 <p>
-  Special character example using an &amp symbol
+  HTML entity example using an &amp symbol
 </p>
 ```
 
-A good hint for this is if the character appears with a red background.
-A list of common special characters, and the correct way to write this in html
-can be found [here](link to special character page)
+A list of reserved characters, and the corresponding character entity,
+can be found [here](https://www.w3schools.com/html/html_entities.asp)
