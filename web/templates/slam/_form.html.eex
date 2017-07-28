@@ -1,0 +1,58 @@
+<%= form_for @changeset, @action, [method: "post"],fn f -> %>
+  <div class="w-100">
+    <div class="w-100 bb b--hl-dark-blue pb4 flex items-center justify-between">
+      <div class="dib w-40">
+        <%= label f, :first_name, class: "f5 b db mt2 mb2" %>
+        <%= text_input f, :first_name, class: "ph3 input-reset bn hl-bg-grey w-100" %>
+        <span class="hl-pink"><%= error_tag f, :first_name %></span>
+      </div>
+
+      <div class="dib w-50">
+        <%= label f, :last_name,  "Last name", class: "f5 b db mt2 mb2" %>
+        <%= text_input f, :last_name, class: "ph3 input-reset bn hl-bg-grey w-100" %>
+        <span class="hl-pink"><%= error_tag f, :last_name %></span>
+      </div>
+    </div>
+
+    <div class="pt3">
+      <h3>Person you support</h3>
+      <p class="f5 lh-copy">
+        These details will be matched against their South London and Maudsley
+        NHS Foundation Trust health record - they must match perfectly.
+      </p>
+      <div class="dib w-40">
+        <%= label f, :forename, "First name", class: "f5 b db mt2 mb2" %>
+        <%= text_input f, :forename, class: "ph3 input-reset bn hl-bg-grey w-100" %>
+        <%= error_tag f, :forename %>
+      </div>
+
+      <div class="dib w-50 fr">
+        <%= label f, :surname,  "Last name", class: "f5 b db mt2 mb2" %>
+        <%= text_input f, :surname, class: "ph3 input-reset bn hl-bg-grey w-100" %>
+        <%= error_tag f, :surname %>
+      </div>
+
+      <div>
+        <%= label f, :date_of_birth, "Date of birth", class: "f5 b db mt2 mb2" %>
+        <%= text_input f, :date_of_birth, class: "ph3 input-reset bn hl-bg-grey w-40" %>
+        <p class="di gray">DD/MM/YYYY</p>
+        <%= error_tag f, :date_of_birth %>
+      </div>
+
+      <div>
+        <%= label f, :nhs_number, class: "f5 b db mt2 mb2" do %>
+          NHS number
+          <%= link to: page_path(@conn, :show, "nhs_help"), target: "_blank" do %>
+            <%= img_tag("/images/Tooltip.png", class: "w1 h1") %>
+          <% end %>
+        <% end %>
+        <%= text_input f, :nhs_number,
+            class: "ph3 input-reset bn hl-bg-grey w-100" %>
+        <%= error_tag f, :nhs_number %>
+      </div>
+    </div>
+
+  <div class="tr mt4">
+    <%= submit_primary "Connect" %>
+  </div>
+<% end %>

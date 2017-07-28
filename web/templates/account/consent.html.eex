@@ -1,0 +1,50 @@
+<div class="ma3 ma4-m ma4-l mv2 mv3-m mv4-l">
+  <%= render "menu.html", conn: @conn %>
+  <div class="mt6">
+    <%= form_for @changeset, @action, fn f -> %>
+    <%= if @current_user.slam_id do %>
+      <p>
+        Are you interested in being contacted if you are eligible to take part
+        in research that contributes to better health for people with mental
+        health related problems? If so you can sign up to a register called
+        <%= link_to("Consent for Contact (C4C)",
+        to: "http://www.slam.nhs.uk/research/patient-involvement/current-opportunities/consent-for-contact") %>.
+        All researchers work for or are approved by
+        South London and Maudsley NHS Foundation Trust.
+      </p>
+
+      <div>
+        <%= checkbox f, :c4c, class: "checkbox" %>
+        <%= label f, :c4c do %>
+        I agree to join the
+        <%= link_to("C4C register", to: "http://www.slam.nhs.uk/research/patient-involvement/current-opportunities/consent-for-contact") %>
+        <% end %>
+      </div>
+    <% end %>
+
+      <div class="mt3">
+        <%= checkbox f, :data_access, class: "checkbox" %>
+        <%= label f, "I allow my anonymous data to be accessed by researchers to
+        drive forward the future of mental health and care" %>
+        <span class="hl-pink"><%= error_tag f, :data_access %></span>
+      </div>
+
+      <%= if care_team?(@current_user) or @current_user.slam_id do %>
+        <div class="mt3">
+          <%= checkbox f, :comms_consent, class: "checkbox" %>
+          <%= label f, :comms_consent do %>
+            I agree to be contacted with relevant newsletters and communications
+            from the trust or their partner organisation the Institute of
+            Psychiatry, Psychology & Neuroscience at King's College London
+            (IoPPN), such as the C4C newsletter. I understand that my details
+            will not be passed onto anyone else.
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="tr mt4">
+        <%= submit_primary "Update" %>
+      </div>
+    <% end %>
+  </div>
+</div>
