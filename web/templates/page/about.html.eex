@@ -1,115 +1,84 @@
 <div class="ma3 ma4-m ma4-l">
   <h2 class="tc">About</h2>
   <div class="bb bw2 bb--hl-dark-blue pb3 pt4">
-    <p class="b">What is Healthlocker?</p>
-
+    <p class="b tc">The Greenwich integrated Children's service ADHD team</p>
     <p>
-      Healthlocker is a secure platform powered by the
-      <%= link "South London and Maudsley NHS Foundation Trust (the trust)", to: "http://www.slam.nhs.uk/",
+    <p class="b">What do we do?</p>
+   <p>
+      The team provide assessment and diagnostic services for children and young people, aged 5-18, in the 
+      Greenwich borough who are presenting with symptoms of ADHD.
+   <p>
+      We also provide support to children and young people with ADHD and their families which includes 
+      psycho-education, parent support, school liaison and, where necessary, medication. The team work 
+      closely with CAMHS and Community Paediatrics.
+  </p>
+  <p>
+    
+  <p class="b">Who can refer to our service?</p>
+   <p>
+      Referrals are accepted from all professionals in healthcare, social care and education.
+   </p>
+   <p>
+     
+  <p class="b">Who is this ADHD service for?</p>
+<ul>
+  <li>children and young people aged 5-18</li>
+  <li>children and young people registered with a GP in the Greenwich Borough</li>
+  <li>children and young people presenting with a persistent pattern of inattention and / or hyperactivity / impulsivity 
+    that is more frequent and severe than expected compared to children of the same age. These difficulties occur in more 
+    than one setting and are causing impairment to the child's day to day functioning.</li>
+</ul>
+   <p class="i">If a child appears to have complex mental health needs, in addition to possible ADHD, a GP referral should 
+     be made to <%= link "CAMHS", to: "http://oxleas.nhs.uk/services/service/child-and-adolescent-mental-1/",
+          class: "hl-aqua flex-wrap underline" %> in the first instance.
+   <p>  
+        If a child appears to have social communication difficulties, for example possible ASD, a GP referral should be 
+        made to <%= link "Community Paediatrics", to: "http://oxleas.nhs.uk/services/service/community-paediatrics-medical-/",
+        class: "hl-aqua flex-wrap underline" %> in the first instance.
+   </p>
+     
+   <p> Who are the team?</p>
+ <ul>
+  <li>Dr Nicola Reynolds, Highly Specialist Clinical Psychologist / Clinical Lead and Team Manager</li>   
+ <li>Dr James Woollard, Consultant Psychiatrist</li> 
+ <li>Christine Hutchings, Clinical Nurse Specialist</li> 
+ <li>Claire Stott, Clinical Nurse Specialist</li> 
+ <li>Mayoor Dhokia, Assistant Psychologist.</li>
+ </ul>
+ <p>
+   
+ <p class="b">What is Headscape Focus and who is it for?</p>
+     If your child is under the care of the Greenwich Integrated Children's Service ADHD team from Oxleas NHS Foundation 
+     Trust, your account will be linked with to the ADHD care team. This will enable you to send and receive messages with 
+     your care team, share tracking, goals and coping strategies with them.
+ <p> 
+   If your child is over the age of 16, you will be able to access a separate carers account from which you can send and 
+   receive messages with their care team. Your child can use their own account to send and receive messages and update and 
+   share their tracking, goals and coping strategies with the team. 
+ <p> 
+    If you need help or support using Healthlocker, please "send a message" to your team.
+ <p>
+   If you are staff in the ADHD team at Oxleas, you can send and receive messages with service users and their carers and 
+   view updates (goals, coping strategies and tracking) that your caseload has chosen to share with you.
+  <p>
+
+  <p class="b">How does it work / what next?</p>
+    <p>
+       Headscape Focus is based on Healthlocker, a platform powered by the
+      <%= link "South London and Maudsley NHS Foundation Trust.", to: "http://www.slam.nhs.uk/",
           class: "hl-aqua flex-wrap underline" %>
-      that promotes supported self-management and opportunities to improve
-      communication between service users, carers and clinicians.
     </p>
-
-    <p class="b">
-      It is currently in development, more
-      features and improvements will be added in the coming months.
-    </p>
-
-    <div class="tc mv3">
-      <%= img_tag("/images/About_Clinician.png", class: "w4") %>
-    </div>
-  </div>
-
-  <div class="mt4 mb5">
-    <p class="b">Who is Healthlocker for?</p>
-
-    <p>
-      Anyone can
-      <%= link "sign up to Healthlocker", to: user_path(@conn, :new),
-          class: "hl-aqua flex-wrap underline" %>
-      to explore wellbeing tips and recovery stories and create goals and coping
-      strategies.
-      If you need help or support using Healthlocker, please email
-      <%= link_to "healthlocker@slam.nhs.uk", to: "mailto:healthlocker@slam.nhs.uk" %>
-    </p>
-
-    <div class="flex items-start justify-between mt4">
-      <div class="w3 w-10-m w-10-l">
-        <%= img_tag("/images/About_Service_user.png") %>
-      </div>
-
-      <p class="w-80 w-90-m w-90-l mv0">
-        If you are a service user at the South London and Maudsley NHS
-        Foundation Trust, you can choose to connect your Healthlocker account
-        with your health record and care team. This will enable you to send and
-        receive messages with your care team, share tracking, goals and coping
-        strategies with them.
-      </p>
-    </div>
-
-    <div class="flex items-start justify-between mv4">
-      <p class="w-80 w-90-m w-90-l mv0">
-        If you are a close family member, friend or carer of a service user at the
-        trust, you can connect with their care team and let the team know how
-        the person you support is doing.
-      </p>
-
-      <div class="w3 w-10-m w-10-l">
-        <%= img_tag("/images/About_Carers.png", class: "w-100") %>
-      </div>
-    </div>
-
-    <div class="flex items-start justify-between mv4">
-      <div class="w3 w-10-m w-10-l">
-        <%= img_tag("/images/About_Researchers.png", class: "w-100") %>
-      </div>
-
-      <p class="w-80 w-90-m w-90-l mv0">
-        If you are staff at the trust, you can access Healthlocker via the icon
-        in the top panel in ePJS. You can send and receive messages with service
-        users and their carers and view updates that your caseload has chosen
-        to share with you. As staff, if you need help or support using
-        Healthlocker, please contact the trust service desk.
-      </p>
-    </div>
-
-    <p>
-      Healthlocker is powered by South London and Maudsley NHS Foundation Trust,
-      if you are interested in using Healthlocker in your trust or organisation,
-      contact:
-      <%= link_to "DigitalServices@slam.nhs.uk", to: "mailto:DigitalServices@slam.nhs.uk" %>
-    </p>
-  </div>
-
-  <div class="mv5">
-    <p class="b">Why Healthlocker?</p>
-
-    <p>
-      Healthlocker aims to demonstrate how personalised health records (PHRs)
-      could enhance NHS service delivery and support people to stay well.
-    </p>
-  </div>
-
-  <div class="mv5">
-    <p class="b">How does it work / what next?</p>
-
     <p>
       Healthlocker is built using agile development processes which enable
       iteration through user-centred build, test and learn cycles.
     </p>
-
     <p>
-      Healthlocker integrates with the trust's clinical record system (ePJS).
+      Healthlocker is built using agile development processes which enable iteration through user-centred build, test and learn cycles.
     </p>
-
     <p>
       The platform is being built open source and in a modular way that allows
-      for future integrations, features and partnerships. Development of
-      Healthlocker so far has been funded by
-      <%= link_to("Maudsley Charity", to: "http://www.maudsleycharity.org/")%>.
+      for future integrations, features and partnerships.
     </p>
-
     <p>
       Healthlocker will continue to grow and develop. If you are interested in
       using Healthlocker in your trust or organisation or have ideas for how to
