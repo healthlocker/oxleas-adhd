@@ -62,8 +62,7 @@
       <strong>Avoid sugary food and stimulant drinks (e.g. coffee and energy drinks) before bedtime</strong><br>These can keep your body and mind awake.
       </p>
     <p>
-      Explore
-      <%= link_to("more tips", to: tip_path(@conn, :index)) %>
+      Explore <%= link_to("more tips", to: tip_path(@conn, :index)) %>
       on Headscape Focus.
     </p>
   </div>
