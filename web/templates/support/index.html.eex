@@ -1,69 +1,41 @@
 <div class="ma3 ma4-m ma4-l">
   <h2 class="tc">Get support</h2>
-  <p class="b">If you need help or advice you have lots of options:</p>
+  <p class="b">The Greenwich ADHD Service:</p>
   <ul class="pl3">
     <li class="mb3">
-      If you can wait to see your GP they can help you find the best service for you
+      Correspondence address: c/o SPA, Memorial Hospital, Shooters Hill, London, SE18 3RZ
     </li>
     <li class="mb3">
-      If you are under a mental health team follow your care plan if you have one,
-      and call your care co-ordinator (or speak to a duty worker) during office hours
+      Phone: <%= link_to("0208 836 8621", to: "tel:02088368621") %> 
     </li>
     <li class="mb3">
-      There are various local and national support services you can contact (see below).
+      Email: <%= link "oxl-tr.icsadhdservice@nhs.net",
+      to: "mailto:oxl-tr.icsadhdservice@nhs.net",
+      class: "hl-aqua flex-wrap underline" %>  
+    </li>
+    <li class="mb3">
+     Office hours: 9am - 5pm, Monday to Friday
+    </li>
+    <li class="mb3">
+    Find out more <%= link "about", to: "/pages/about", class: "hl-aqua flex-wrap underline" %> the Greenwich ADHD service.
     </li>
   </ul>
 
   <div class="hl-bg-grey pa3">
-    <h3 class="tc">Free 24-hour support services</h3>
+    <h3 class="tc">In an emergency</h3>
     <div class="tc">
       <%= img_tag("/images/Get_Support.png", class: "w-20 tc") %>
     </div>
 
-    <h4>Local support</h4>
-    <p><strong>South London and Maudsley NHS Foundation Trust mental health support line </strong>
-    <%= link_to("0800 731 2864", to: "tel:08007312864") %> for anyone in Southwark, Lambeth, Lewisham or Croydon.
-    Calls will be answered by a nurse who can give advice on mental health, medication and accessing services</p>
-
-    <p><strong>Solidarity in a crisis</strong>
-      <%= link "0300 123 1922",
-      to: "tel:03001231922", class: "hl-aqua flex-wrap underline" %>, or text
-      <%= link "07595864103", to: "tel:07595864103",
-      class: "hl-aqua flex-wrap underline" %> or email
-      <%= link "outofhours-solidarity@certitude.org.uk",
-      to: "mailto:outofhours-solidarity@certitude.org.uk",
-      class: "hl-aqua flex-wrap underline" %>.
-      Free emotional support for people living in Lambeth, Southwark and Lewisham.
-      The service is run by peer supporters who have their own experience of facing and overcoming crisis.
-      Mon to Fri 6pm – 12 midnight, and Sat &amp Sun 12 midday – 12 midnight</p>
-
-    <h4 class="mt-3rem">National support</h4>
-    <p><strong>The Samaritans</strong> <%= link "116 123", to: "tel:116123", class: "hl-aqua flex-wrap underline" %>
-      is a national service (and you don't have to be suicidal to call for support)</p>
-
-    <p><strong>Childline</strong>
-      <%= link "0800 1111", to: "tel:0800 1111",
-      class: "hl-aqua flex-wrap underline" %> or
-      <%= link "chat online to a counsellor",
-      to: "https://www.childline.org.uk/get-support/1-2-1-counsellor-chat/",
-      class: "hl-aqua flex-wrap underline" %>.
-      A free confidential line for children &amp young people (you don’t have to give your name if you don’t want to)</p>
-
-    <p><strong>FRANK</strong> <%= link "0300 123 6600", to: "tel:0300 123 6600",
-      class: "hl-aqua flex-wrap underline" %>
-      A free confidential helpline for anyone concerned about drug use.
-      <%= link "Chat online 2-6pm",
-      to: "http://www.talktofrank.com/livechat",
-      class: "hl-aqua flex-wrap underline" %> or read
-      <%= link "what to do", to: "http://www.talktofrank.com/emergency-help",
-      class: "hl-aqua flex-wrap underline" %>
-      if a friend or relative is having a bad reaction to a drug</p>
-
-    <p><strong>NHS</strong> <%= link_to("111", to: "tel:111") %> call for urgent, but non-emergency advice</p>
-
+    If you have immediate concerns about your physical safety and/ or wellbeing, or the physical safety and
+      wellbeing of your child, you should contact the emergency services:
     <p><strong>Emergency services</strong> <%= link_to("999", to: "tel:999") %>
       or find your nearest <%= link_to("A&E", to: "http://www.nhs.uk/Service-Search/Accident-and-emergency-services/LocationSearch/428") %></p>
-  </div>
+
+    <p><strong>NHS</strong> <%= link_to("111", to: "tel:111") %> call for urgent, but non-emergency advice.
+    </p>
+    <p>You can also contact your <strong>out of hours GP service.</strong> Check the website of your GP surgery to find out details of how to contact this service.
+</div>
 
   <p>
     If you need help or support using Healthlocker, please email
@@ -71,20 +43,15 @@
   </p>
 
   <div class="hl-bg-grey pa3 mt4">
-    <h3 class="tc">For family, friends and carers</h3>
+    <h3 class="tc">Local support</h3>
     <div class="tc">
       <%= img_tag("/images/Family,friends,carers_hand.png", class: "w-20 tc") %>
     </div>
 
-    <h4 class="mt-3rem">Local support</h4>
-
-    <p><strong><%= link "South London and Maudsley NHS Foundation Trust",
-      to: "http://www.slam.nhs.uk/",
-      class: "hl-aqua flex-wrap underline" %></strong>
-      have a <%= link_to("Carer FAQs", to: "http://www.slam.nhs.uk/patients-and-carers/carer-information/frequently-asked-questions") %>
-      resource, a <%= link_to("handbook for families", to: "http://www.slam.nhs.uk/media/176078/CARERS%20HANDBOOK%204TH%20DESIGN%20WEBSITE.pdf") %>
-      and guidance on <%= link "confidentiality and sharing information with carers", to: "http://www.slam.nhs.uk/media/425250/slam_carers_confidentiality.pdf", class: "hl-aqua flex-wrap underline" %>
-      on their website
+    <p><strong><%= link "Greenwich CAMHS",
+      to: "http://oxleas.nhs.uk/services/service/child-and-adolescent-mental-1/",
+      class: "hl-aqua flex-wrap underline" %></strong> (Child and Adolescent Mental Health Service) supports young people who have mental health problems. If you have concerns about your own mental health in addition to your ADHD or your parents have concerns about your mental health, please discuss this with ADHD team who can think with you about whether a referral to CAMHS would be appropriate. 
+If you feel you are in an emergency situation related to your own mental health, or your child's - follow the advice above about seeking help. 
     </p>
 
     <p><strong><%= link_to("Southwark Carers", to: "http://www.southwarkcarers.org.uk/") %></strong>
