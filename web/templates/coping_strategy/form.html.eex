@@ -1,10 +1,10 @@
-<p class="b">Note down an action you can take to stay well.
-<p>
-  Something you can do, or avoid doing when you notice a change in your
-  feelings, thoughts or behaviour.
+<p class="b">Note down and action you can take to stay well, improve your focus and feel calmer.
 </p>
-<p>For example, practice relaxation techniques, leave the room if things are
-  too tense, take a break or tell someone you trust.</p>
+<p>The ADHD team have put together some resources about ADHD and coping strategies on <%= link "here", to: "http://www.scoop.it/u/focusadhd", class: "hl-aqua flex-wrap underline" %> 
+  and some videos <%= link "here.", to: "http://??", class: "hl-aqua flex-wrap underline" %>
+</p>
+<p>We would like to hear your views on what you find useful and should be included directly on the platform in the future.
+</p>
 <%= form_for @changeset, @action, fn f -> %>
   <div class="center">
     <div class="center">
