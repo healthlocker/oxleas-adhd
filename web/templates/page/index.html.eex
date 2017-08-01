@@ -1,18 +1,16 @@
 <%= if !@current_user do %>
   <section class="bb bw2 b--hl-dark-blue pb3 center pb4">
-    <h3 class="b tc bb pb2 b--hl-aqua hl-aqua">Welcome to Healthlocker</h3>
+    <h3 class="b tc bb pb2 b--hl-aqua hl-aqua">Welcome to Headscape Focus</h3>
     <p>
-      Healthlocker is a secure platform powered by the South London and
-      Maudsley NHS Foundation Trust (the trust) that promotes supported
-      self-management and opportunities to improve communication between
-      service users, carers and clinicians.
+      Headscape Focus creates opportunities to improve communication between
+      service users, families and clinicians. It is based on Healthlocker 
+      (a platform powered by South London and Maudsley NHS Foundation Trust).
     </p>
     <p>
-      It is currently in development, more features and improvements will be
-      added in the coming months.
+      Headscape Focus is currently in development, more features and improvements will be
+      added in the coming months. Give anonymous feedback via the banner at the top of each page.
     </p>
     <div class="w-50 dib mr3-m mr1"><%= link_to "Read more", to: page_path(@conn, :show, "about") %></div>
-    <div class="w-40 dib tr ml5-l ml4-m ml3"><%= link_primary "Sign up", to: user_path(@conn, :new) %></div>
   </section>
 <%= end %>
 
@@ -21,8 +19,7 @@
   <div>
     <p>Small improvements in our wellbeing can help to decrease some mental
       health problems and also help us to get more out of life.</p>
-    <p>These 5 actions are proven to improve personal wellbeing. <br>
-      <%= link_to "Read the full document", to: "https://www.gov.uk/government/publications/five-ways-to-mental-wellbeing" %>
+    <p>These 5 actions are proven to improve personal wellbeing. <%= link_to "Read the full document", to: "https://www.gov.uk/government/publications/five-ways-to-mental-wellbeing", class: "hl-aqua flex-wrap underline" %>
     </p>
   </div>
 
@@ -43,8 +40,8 @@
       <div class="pt1 pb3 ph3 bg-near-white b--black-10 relative">
         <%= img_tag("/images/Connect_Mini.png",
         class: "miniIcon absolute") %>
-        <p class="b">Have you considered telling a friend about a goal you want to reach?</p>
-        <p>See if they can help you get there. By allowing others to help not only increases the likelihood of you succeeding but can also strengthen your relationship.</p>
+        <p class="b">Talk to someone you trust about your feelings - it’s ok to ask for help!</p>
+        <p>We all need support sometimes.</p>
         <%= link_to "#Tip", to: "/tips"%> <%= link_to "#Connect", to: "/tips?tag=Connect"%>
       </div>
     </article>
@@ -73,8 +70,8 @@
       <div class="pt1 pb3 ph3 bg-near-white b--black-10 relative">
         <%= img_tag("/images/BeActive_Mini.png",
         class: "miniIcon absolute") %>
-        <p class="b">Today, how about walking a bit more than you usually would.</p>
-        <p>Evidence shows moods can improve after 10 minutes of exercise.</p>
+        <p class="b">Exercise regularly.</p>
+        <p>This keeps you healthy, helps you feel good and sleep better.</p>
         <%= link_to "#Tip", to: "/tips"%> <%= link_to "#BeActive", to: "/tips?tag=BeActive"%>
       </div>
     </article>
@@ -100,8 +97,8 @@
       <div class="pt1 pb3 ph3 bg-near-white b--black-10 relative">
         <%= img_tag("/images/KeepLearning_Mini.png",
         class: "miniIcon absolute") %>
-        <p class="b">Why not cook something different today.</p>
-        <p>Learning can boost your self confidence.</p>
+        <p class="b">Break a task down in to smaller steps and plan breaks in between each step. </p>
+        <p>Perhaps aim for each step to take 10-15 minutes, you can then build up to bigger steps as you get better at focusing for longer.</p>
         <%= link_to "#Tip", to: "/tips"%> <%= link_to "#KeepLearning", to: "/tips?tag=KeepLearning"%>
       </div>
     </article>
@@ -117,8 +114,7 @@
       </a>
       <div class="w-80 w-90-m w-90-l dib">
         <p class="mt0"><strong><%= link_to "#GiveToOthers", to: "/tips?tag=GiveToOthers"%></strong>
-          Doing even little things for others can give us a sense of purpose and self-worth.
-          It can make us feel happier and more satisfied with life. Being kind to others can stimulate the reward areas in our brain, creating positive feelings.
+          Doing even little things for others can make us feel happier and more satisfied with life. Being kind to others can stimulate the reward areas in our brain, creating positive feelings.
           Even doing something small for someone else can give us a buzz.
         </p>
         <p class="i mv1">How might you do something kind for someone today?</p>
@@ -129,8 +125,8 @@
       <div class="pt1 pb3 ph3 bg-near-white b--black-10 relative">
         <%= img_tag("/images/GiveToOthers_Mini.png",
         class: "miniIcon absolute") %>
-        <p class="b">You could find opportunities to volunteer.</p>
-        <p>Small acts of kindness towards other people can make you feel happier and more fulfilled.</p>
+        <p class="b">If you do something wrong, or hurt someone's feelings (even without meaning to), be honest and apologise.</p>
+        <p>This helps to build trust and build relationships.</p>
         <%= link_to "#Tip", to: "/tips"%> <%= link_to "#GiveToOthers", to: "/tips?tag=GiveToOthers"%>
       </div>
     </article>
@@ -156,8 +152,8 @@
       <div class="pt1 pb3 ph3 bg-near-white b--black-10 relative">
         <%= img_tag("/images/TakeNotice_Mini.png",
         class: "miniIcon absolute") %>
-        <p class="b">Where possible try to remove distractions from your bedroom.</p>
-        <p>It is better to watch TV, play computer games and eat in another room. This will allow you to relax with no distractions in your bedroom.</p>
+        <p class="b">Notice the things that you do well and celebrate your successes!</p>
+        <p>Try and notice something that went well at the end of everyday – calming down after becoming upset counts.</p>
         <%= link_to "#Tip", to: "/tips"%> <%= link_to "#TakeNotice", to: "/tips?tag=TakeNotice"%>
       </div>
     </article>
