@@ -9,6 +9,14 @@ defmodule OxleasAdhd.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :logged_in do
+    plug OxleasAdhd.Plugs.RequireLogin
+  end
+
+  pipeline :super_admin do
+    plug OxleasAdhd.Plugs.RequireSuperAdmin
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -17,6 +25,12 @@ defmodule OxleasAdhd.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+  end
+
+  scope "/super-admin", OxleasAdhd do
+    pipe_through [:browser, :super_admin]
+
+    resources "/users", UserController, only: [:index]
   end
 
   # Other scopes may use custom stacks.
