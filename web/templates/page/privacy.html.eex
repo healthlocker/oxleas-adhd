@@ -3,26 +3,30 @@
   <p class="b">Introduction</p>
   <p>
     We are committed to protecting and respecting your privacy. The following
-    Privacy Statement applies to Healthlocker in its entirety, and sets out how
+    Privacy Statement applies to Headscape Focus in its entirety, and sets out how
     your personal data is handled by us. We strongly recommend that you take
     some time to read this policy carefully to understand how we treat your
     personal data.
+  <p>
+    If you are the parent of a child who is under the age of 16, this policy refers 
+    to data you enter on behalf of your child or data added to the platform on your 
+    child's named account by professionals.
   </p>
 
   <h3>What information do we collect?</h3>
   <p class="b">Information you provide</p>
   <p>
     We collect information directly from you in a number of ways. You have a
-    choice about the data we collect.  When you are asked to provide data, you
-    may decline.  However, some information will need to be provided in order
-    to have a Healthlocker account. This will include your email and password.
+    choice about the data we collect. When you are asked to provide data, you
+    may decline. However, some information will need to be provided in order
+    to have a Headscape Focus account. This will include your email address and password.
   </p>
 
   <p>
-    Healthlocker also uses cookies. Cookies are small text files that save and
+    Headscape Focus also uses cookies. Cookies are small text files that save and
     retrieve information about your visit, such as how you entered and
     navigated the app and what information was of interest to you. In addition
-    to this, if you personalise any part of Healthlocker, the information is
+    to this, if you personalise any part of Headscape Focus, the information is
     stored in a cookie and is remembered for your next visit. Cookies provide
     an anonymised label for each user. If you are uncomfortable with the use of
     cookies, you can disable cookies on your electronic device by changing the
@@ -31,18 +35,18 @@
 
   <p>
     Data may be collected when you enter information as part of your
-    Healthlocker Personal Record. When this data is collected, we will notify
+    Headscape Focus Personal Record. When this data is collected, we will notify
     you as to why we are asking you for this information, and how this
     information will be used. It is completely up to you whether or not you
     provide it, and if you do not feel comfortable providing this information,
-    you are under no obligation to do so. Healthlocker uses a temporary session
+    you are under no obligation to do so. Headscape Focus uses a temporary session
     cookie to reference the active server session. The cookie is in-memory
     only and is not active after the browser session is closed.
   </p>
 
   <p class="b">Networks and Devices</p>
   <p>
-    When you access Healthlocker, we use technology to collect information
+    When you access Headscape Focus, we use technology to collect information
     indirectly, such as your internet address (IP Address), which is then kept
     in our internet logs. This is collected for aggregate information purposes
     and represents statistical data about our users’ browsing actions and
@@ -74,7 +78,7 @@
 
   <p class="b">How is your information shared?</p>
   <p>
-    South London and Maudsley NHS Foundation Trust will not share your data
+    Oxleas NHS Foundation Trust will not share your data
     with other organisations without your consent, unless the law permits us
     to do so. We share data only with our authorised Data Processors, who must
     act at all times on our instructions as the Data Controller under the Data
@@ -85,11 +89,19 @@
 
   <h3>Is your information safe?</h3>
   <p>
-    The files transmitted between Healthlocker, powered by the trust and the
-    Electronic Patient Journey System (ePJS, the trust’s electronic record
-    system) is a secure data flow which sits within the Azure data centre.
-    Any data transferred is treated with due care in accordance with
-    Confidentiality: NHS Code of Practice by the Department of Health.
+    There is no current ability to directly transfer data electronically out of 
+    the Headscape Focus platform to other systems used by Oxleas NHS Foundation 
+    Trust. The platform is hosted on a secure Azure server managed by South London
+    and Maudsley (SLaM) NHS Foundation Trust on behalf of the ICS ADHD Team, Oxleas
+    NHS Foundation Trust, for the duration of the initial trial of the platform.  
+ <p>
+    Access to the platform by SLaM IT staff will be limited to technical activity to 
+    ensure the safety and integrity of the platform hosted on the Azure server, and 
+    not related to a specific individual's account or the information with in it. 
+ <p>
+    This statement will be updated and will you be notified should the platform hosting
+    arrangements, or capability change such that data can be directly transferred 
+    electronically out of the platform. 
   </p>
 
   <h3>How do we respond to legal requests?</h3>
@@ -109,12 +121,13 @@
     If you have any additional questions regarding this policy, please feel
     free to contact us at:
   </p>
-  <%= link_to("Healthlocker@slam.nhs.uk", to: "mailto:Healthlocker@slam.nhs.uk") %>
+  <%= link_to("Oxl-tr.focusadhd@nhs.net", to: "Oxl-tr.focusadhd@nhs.net"), 
+     class: "hl-aqua flex-wrap underline" %>
   <p>
-    Healthlocker <br>
-    South London and Maudsley NHS Foundation Trust <br>
-    Maudsley Hospital <br>
-    London <br>
-    SE5 8AZ
+    Headscape Focus, ICS ADHD Team <br>
+    Bungalow 3 <br>
+    Wenlsey Close <br>
+    Eltham <br>
+    SE9 5AB
   </p>
 </div>
