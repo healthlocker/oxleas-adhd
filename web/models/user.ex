@@ -22,6 +22,7 @@ defmodule OxleasAdhd.User do
     field :reset_token_sent_at, :utc_datetime
     field :job_role, :string
     field :dob, :string
+    field :relationship, :string
     has_many :posts, OxleasAdhd.Post
     many_to_many :likes, OxleasAdhd.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
     many_to_many :relationships, OxleasAdhd.User, join_through: OxleasAdhd.Relationship, on_replace: :delete, on_delete: :delete_all
@@ -44,6 +45,7 @@ defmodule OxleasAdhd.User do
     struct
     |> cast(params, [:first_name, :last_name, :job_role, :email, :password])
     |> update_change(:email, &(String.downcase(&1)))
+    |> put_change(:role, "clinician")
     |> validate_format(:email, ~r/@/)
     |> validate_required([:first_name, :last_name, :job_role, :email, :password])
     |> unique_constraint(:email, message: "Sorry you cannot create an account at
@@ -60,6 +62,18 @@ defmodule OxleasAdhd.User do
     |> unique_constraint(:email, message: "Sorry you cannot create an account at
     this time, try again later or with different details.")
   end
+
+  def changeset_carer(struct, params \\ :invalid) do
+    struct
+    |> cast(params, [:first_name, :last_name, :relationship, :email, :password])
+    |> update_change(:email, &(String.downcase(&1)))
+    |> put_change(:role, "carer")
+    |> validate_format(:email, ~r/@/)
+    |> validate_required([:first_name, :last_name, :relationship, :email, :password])
+    |> unique_constraint(:email, message: "Sorry you cannot create an account at
+    this time, try again later or with different details.")
+  end
+
   def update_changeset(struct, params \\ :invalid) do
     struct
     |> cast(params, [:email, :first_name, :last_name, :phone_number])
