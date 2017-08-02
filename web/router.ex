@@ -28,13 +28,15 @@ defmodule OxleasAdhd.Router do
   end
 
   scope "/super-admin", OxleasAdhd do
-    pipe_through [:browser, :super_admin]
+    pipe_through [:browser] #, :super_admin
 
-    resources "/users", UserController, only: [:index]
+    resources "/users", UserController, only: [:index, :new]#, :create
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", OxleasAdhd do
-  #   pipe_through :api
-  # end
+  scope "/", OxleasAdhd do
+    pipe_through [:browser] #, :logged_in
+
+    resources "/medication", MedicationController, only: [:index, :new, :edit] #, :create, :update
+    resources "/about-me", AboutMeController, only: [:new, :edit] #, :create, :update
+  end
 end
