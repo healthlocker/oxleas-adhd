@@ -8,14 +8,14 @@ defmodule OxleasAdhd.UserController do
   end
 
   def new(conn, %{"user_type" => user_type}) do
-    changeset = User.changeset_staff(%User{})
+    changeset = changeset_from_user_type(user_type)
     conn
     |> render(String.to_atom(user_type), changeset: changeset, user_type: user_type)
   end
 
   def create(conn, %{"user" => user}) do
     user_type = user["user_type"]
-    changeset = User.changeset_staff(%User{}, user)
+    changeset = changeset_from_user_type(user_type, user)
 
     case Repo.insert(changeset) do
       {:ok, _entry} ->
@@ -26,6 +26,17 @@ defmodule OxleasAdhd.UserController do
         conn
         |> put_flash(:error, "User could not be created")
         |> render(String.to_atom(user_type), changeset: changeset, user_type: user_type)
+    end
+  end
+
+  def changeset_from_user_type(user_type, user \\ %{}) do
+    case user_type do
+      "new_staff" ->
+        User.changeset_staff(%User{}, user)
+      "new_service_user" ->
+        User.changeset_service_user(%User{}, user)
+      "new_carer" ->
+        User.changeset_carer(%User{}, user)
     end
   end
 end
