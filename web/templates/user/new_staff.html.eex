@@ -1,43 +1,38 @@
 <!-- <> Healthlocker.ComponentView.highlight_errors(@changeset, :first_name) -->
 <div class="ma3 ma4-m ma4-l">
-  <h2 class="tc">Create new staff</h2>
+  <h2 class="tc normal mb4">Add staff</h2>
 
   <div class="br2 mv3 center">
     <%= form_for @changeset, user_path(@conn, :create), fn f -> %>
       <%= hidden_input f, :user_type, value: @user_type %>
 
-      <div class="w-40 dib">
+      <div class="w-50 mv3 pr4 dib">
         <%= label f, :first_name, "First name", class: "f5 b db mb2" %>
-        <%= text_input f, :first_name, class: "ph3 input-reset bn hl-bg-grey w-100 " %>
+        <%= text_input f, :first_name, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>
         <span class="hl-pink"><%= error_tag f, :first_name %></span>
-      </div>
-
-      <div class="w-40 dib">
+      </div><div class="w-50 mv3 dib">
         <%= label f, :last_name, "Last name", class: "f5 b db mb2" %>
-        <%= text_input f, :last_name, class: "ph3 input-reset bn hl-bg-grey w-100 " %>
+        <%= text_input f, :last_name, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>
         <span class="hl-pink"><%= error_tag f, :first_name %></span>
       </div>
-
-      <div class="w-40 dib">
+      <div class="w-100 mv3 dib">
         <%= label f, :job_role, "Job role/Title", class: "f5 b db mb2" %>
-        <%= text_input f, :job_role, class: "ph3 input-reset bn hl-bg-grey w-100 " %>
+        <%= text_input f, :job_role, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>
         <span class="hl-pink"><%= error_tag f, :first_name %></span>
       </div>
-
-      <div class="w-40 dib">
+      <div class="w-100 mv3 dib">
         <%= label f, :email, "Email", class: "f5 b db mb2" %>
-        <%= text_input f, :email, class: "ph3 input-reset bn hl-bg-grey w-100 " %>
+        <%= text_input f, :email, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>
         <span class="hl-pink"><%= error_tag f, :first_name %></span>
       </div>
-
-      <div class="w-40 dib">
-        <%= label f, :password, "password", class: "f5 b db mb2" %>
-        <%= text_input f, :password, class: "ph3 input-reset bn hl-bg-grey w-100 " %>
+      <div class="w-100 mv3 dib">
+        <%= label f, :password, "Password", class: "f5 b db mb2" %>
+        <%= password_input f, :password, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>
         <span class="hl-pink"><%= error_tag f, :first_name %></span>
       </div>
 
       <div class="tr mt4">
-        <%= submit "Save" %>
+        <%= submit "Save", class: "shadow-hover f4 dib ph4 pv3 b--none br3 input-reset bg-yellow" %>
       </div>
     <% end %>
   </div>
