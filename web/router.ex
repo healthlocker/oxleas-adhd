@@ -36,7 +36,9 @@ defmodule OxleasAdhd.Router do
   scope "/", OxleasAdhd do
     pipe_through [:browser] #, :logged_in
 
-    resources "/medication", MedicationController, only: [:index, :new, :edit] #, :create, :update
+    resources "/users", UserController, only: [:show] do
+      resources "/medication", MedicationController
+    end
     resources "/about-me", AboutMeController, only: [:new, :edit] #, :create, :update
   end
 end
