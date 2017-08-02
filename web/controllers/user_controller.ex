@@ -20,11 +20,11 @@ defmodule OxleasAdhd.UserController do
     case Repo.insert(changeset) do
       {:ok, _entry} ->
         conn
-        |> put_flash(:info, ["User created successfully"])
+        |> put_flash(:info, "User created successfully")
         |> redirect(to: user_path(conn, :index))
       {:error, changeset} ->
         conn
-        |> put_flash(:error, ["User could not be created"])
+        |> put_flash(:error, "User could not be created")
         |> render(String.to_atom(user_type), changeset: changeset, user_type: user_type)
     end
   end
