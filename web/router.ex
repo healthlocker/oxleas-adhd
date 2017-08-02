@@ -30,7 +30,7 @@ defmodule OxleasAdhd.Router do
   scope "/super-admin", OxleasAdhd do
     pipe_through [:browser] #, :super_admin
 
-    resources "/users", UserController, only: [:index, :new]#, :create
+    resources "/users", UserController, only: [:index, :new, :create]
   end
 
   scope "/", OxleasAdhd do
