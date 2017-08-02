@@ -1,1 +1,42 @@
-<h1>form that will be loaded into edit.html and new.html</h1>
+<%= form_for @changeset, @action, fn f -> %>
+  <div>
+    <%= label f, :name, class: "" do %>
+      <p class="b">What medication do I take for my adhd?</p>
+      <small>Who prescribes this?</small>
+    <% end %>
+    <%= textarea f, :name %>
+  </div>
+
+  <div>
+    <%= label f, :dosage, "How much?", class: "" %>
+    <%= textarea f, :dosage %>
+  </div>
+
+  <div>
+    <%= label f, :frequency, "How often? and when?", class: "" %>
+    <%= textarea f, :frequency %>
+  </div>
+
+  <div>
+    <%= label f, :other_medicine, class: "" do %>
+      <p class="b">Other medication I take:</p>
+      <small>Who prescribes this?</small>
+    <% end %>
+    <%= textarea f, :other_medicine %>
+  </div>
+
+  <div>
+    <%= label f, :allergies, "My medication allergies:", class: "" %>
+    <%= textarea f, :allergies %>
+  </div>
+
+  <div>
+    <%= label f, :past_medication, class: "" do %>
+      <p class="b">What medication have I taken in the past for my ADHD?</p>
+      <small>Why did this change?</small>
+    <% end %>
+    <%= textarea f, :past_medication %>
+  </div>
+
+  <%= submit "Save" %>
+<% end %>
