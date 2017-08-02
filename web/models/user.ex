@@ -21,6 +21,7 @@ defmodule OxleasAdhd.User do
     field :reset_password_token, :string
     field :reset_token_sent_at, :utc_datetime
     field :job_role, :string
+    field :dob, :string
     has_many :posts, OxleasAdhd.Post
     many_to_many :likes, OxleasAdhd.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
     many_to_many :relationships, OxleasAdhd.User, join_through: OxleasAdhd.Relationship, on_replace: :delete, on_delete: :delete_all
@@ -49,6 +50,16 @@ defmodule OxleasAdhd.User do
     this time, try again later or with different details.")
   end
 
+  def changeset_service_user(struct, params \\ :invalid) do
+    struct
+    |> cast(params, [:first_name, :last_name, :dob, :email, :password])
+    |> update_change(:email, &(String.downcase(&1)))
+    |> put_change(:role, "service_user")
+    |> validate_format(:email, ~r/@/)
+    |> validate_required([:first_name, :last_name, :dob, :email, :password])
+    |> unique_constraint(:email, message: "Sorry you cannot create an account at
+    this time, try again later or with different details.")
+  end
   def update_changeset(struct, params \\ :invalid) do
     struct
     |> cast(params, [:email, :first_name, :last_name, :phone_number])
