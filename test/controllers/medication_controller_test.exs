@@ -1,6 +1,6 @@
 defmodule OxleasAdhd.MedicationControllerTest do
   use OxleasAdhd.ConnCase
-  alias OxleasAdhd.User
+  alias OxleasAdhd.{User, Medication}
 
   @valid_attrs %{
     name: "XYZ",
@@ -20,7 +20,23 @@ defmodule OxleasAdhd.MedicationControllerTest do
       email: "email@example.com"
     } |> Repo.insert!
 
-    {:ok, user: user}
+    user2 = %User{
+      id: 4321,
+      email: "user@example.com"
+    } |> Repo.insert!
+
+    medication = %Medication{
+      id: 4321,
+      name: "ABC",
+      dosage: "1mg",
+      frequency: "twice",
+      other_medicine: "none",
+      allergies: "none",
+      past_medication: "none",
+      user_id: 4321
+    } |> Repo.insert!
+
+    {:ok, user: user, user2: user2, medication: medication}
   end
 
   test "GET new", %{conn: conn, user: user} do
@@ -38,4 +54,10 @@ defmodule OxleasAdhd.MedicationControllerTest do
     assert html_response(conn, 200) =~ "Medication"
     assert get_flash(conn, :error) == "Error adding medication"
   end
+
+  test "GET edit", %{conn: conn, user2: user, medication: medication} do
+    conn = get conn, user_medication_path(conn, :edit, user, medication)
+    assert html_response(conn, 200) =~ "Edit Medication"
+  end
+
 end
