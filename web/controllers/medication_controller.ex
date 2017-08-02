@@ -39,5 +39,22 @@ defmodule OxleasAdhd.MedicationController do
     conn
     |> render("edit.html", changeset: changeset, user: user, medication: medication)
   end
+
+  def update(conn, %{"user_id" => user_id, "id" => id, "medication" => medication_params}) do
+    user = Repo.get!(User, user_id)
+    medication = Medication
+                |> Repo.get!(id)
+    changeset = Medication.changeset(medication, medication_params)
+
+    case Repo.update(changeset) do
+      {:ok, _medication} ->
+        conn
+        |> put_flash(:info, "Medication edited")
+        |> redirect(to: user_path(conn, :index))
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "Error editing medication")
+        |> render("edit.html", changeset: changeset, user: user, medication: medication)
+    end
   end
 end
