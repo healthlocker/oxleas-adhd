@@ -12,7 +12,15 @@ defmodule OxleasAdhd.MedicationControllerTest do
     user_id: 1234
   }
 
-  @invalid_attrs %{}
+  @invalid_attrs %{
+    name: "",
+    dosage: "",
+    frequency: "",
+    other_medicine: "",
+    allergies: "",
+    past_medication: "",
+    user_id: 4321
+  }
 
   setup %{} do
     user = %User{
@@ -60,4 +68,14 @@ defmodule OxleasAdhd.MedicationControllerTest do
     assert html_response(conn, 200) =~ "Edit Medication"
   end
 
+  test "PUT update is successful with valid attrs", %{conn: conn, user2: user, medication: medication} do
+    conn = put conn, user_medication_path(conn, :update, user, medication), medication: @valid_attrs
+    assert redirected_to(conn, 302) =~ user_path(conn, :index)
+  end
+
+  test "PUT update is unsuccessful with invalid attrs", %{conn: conn, user2: user, medication: medication} do
+    conn = put conn, user_medication_path(conn, :update, user, medication), medication: @invalid_attrs
+    assert html_response(conn, 200) =~ "Edit Medication"
+    assert get_flash(conn, :error) == "Error editing medication"
+  end
 end
