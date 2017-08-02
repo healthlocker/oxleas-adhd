@@ -1,3 +1,4 @@
-edit page
+<h3 class="tc">Edit Medication</h3>
 
-load form here
+<%= render "form.html", changeset: @changeset,
+    action: user_medication_path(@conn, :update, @user, @medication) %>
