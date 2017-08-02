@@ -20,6 +20,7 @@ defmodule OxleasAdhd.User do
     field :user_guid, :string
     field :reset_password_token, :string
     field :reset_token_sent_at, :utc_datetime
+    field :job_role, :string
     has_many :posts, OxleasAdhd.Post
     many_to_many :likes, OxleasAdhd.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
     many_to_many :relationships, OxleasAdhd.User, join_through: OxleasAdhd.Relationship, on_replace: :delete, on_delete: :delete_all
@@ -38,43 +39,14 @@ defmodule OxleasAdhd.User do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ :invalid) do
+  def changeset_staff(struct, params \\ :invalid) do
     struct
-    |> cast(params, [:email, :first_name, :last_name])
+    |> cast(params, [:first_name, :last_name, :job_role, :email, :password])
     |> update_change(:email, &(String.downcase(&1)))
     |> validate_format(:email, ~r/@/)
-    |> validate_required(:email)
+    |> validate_required([:first_name, :last_name, :job_role, :email, :password])
     |> unique_constraint(:email, message: "Sorry you cannot create an account at
     this time, try again later or with different details.")
-  end
-
-  def clinician_changeset(struct, epjs_user) do
-    [first_name | last_name] = get_first_last_name(epjs_user)
-    struct
-    |> change(%{
-      email: epjs_user."Email",
-      first_name: first_name,
-      last_name: Enum.join(last_name, " "),
-      data_access: false,
-      role: "clinician",
-      user_guid: epjs_user."User_Guid",
-      password: generate_random_password()
-    })
-    |> put_pass_hash()
-  end
-
-  def get_first_last_name(epjs_user) do
-    %{Staff_Name: name} = epjs_user
-
-    name
-    |> String.split(" ")
-  end
-
-  def generate_random_password do
-    15
-    |> :crypto.strong_rand_bytes
-    |> Base.url_encode64
-    |> binary_part(0, 15)
   end
 
   def update_changeset(struct, params \\ :invalid) do
@@ -93,47 +65,15 @@ defmodule OxleasAdhd.User do
     |> validate_required([:first_name, :last_name])
   end
 
-  def connect_slam(struct, params \\ :invalid) do
-    struct
-    |> cast(params, [:slam_id, :first_name, :last_name, :c4c])
-    |> validate_required([:slam_id, :first_name, :last_name, :c4c])
-  end
-
-  def disconnect_changeset(struct) do
-    struct
-    |> change(slam_id: nil)
-  end
-
   def security_question(struct, params \\ :invalid) do
     struct
     |> cast(params, [:security_question, :security_answer])
     |> validate_required([:security_question, :security_answer])
   end
 
-  def data_access(struct, params \\ :invalid) do
-    struct
-    |> cast(params, [:data_access])
-    |> validate_acceptance(:terms_conditions)
-    |> validate_acceptance(:privacy)
-  end
-
   def update_data_access(struct, params \\ :invalid) do
     struct
     |> cast(params, [:data_access, :c4c, :comms_consent])
-  end
-
-  def registration_changeset(model, params) do
-    model
-    |> security_question(params)
-    |> cast(params, [:password])
-    |> validate_length(:password, min: 6, max: 100)
-    |> validate_confirmation(:password, message: "Passwords do not match")
-    |> put_pass_hash()
-  end
-
-  def email_changeset(struct, params \\ :invalid) do
-    struct
-    |> cast(params, [:email])
   end
 
   def password_token_changeset(struct, params \\ :invalid) do
