@@ -9,14 +9,14 @@ defmodule OxleasAdhd.Plugs.RequireSuperAdmin do
         "super_admin" ->
           conn
         _ ->
-          conn |> redirect_to_login
+          conn |> redirect_to_home
       end
     else
-      conn |> redirect_to_login
+      conn |> redirect_to_home
     end
   end
 
-  defp redirect_to_login(conn) do
+  defp redirect_to_home(conn) do
     conn
     |> Phoenix.Controller.put_flash(:error,  "You must be super admin to access that page!")
     |> Phoenix.Controller.redirect(to: OxleasAdhd.Router.Helpers.page_path(conn, :index))
