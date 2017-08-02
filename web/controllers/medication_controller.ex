@@ -19,7 +19,7 @@ defmodule OxleasAdhd.MedicationController do
     changeset = Medication.changeset(%Medication{}, medication_params)
       |> Ecto.Changeset.put_change(:user_id, String.to_integer(id))
     case Repo.insert(changeset) do
-      {:ok, medication} ->
+      {:ok, _medication} ->
         conn
         |> put_flash(:info, "Medication added")
         |> redirect(to: user_path(conn, :index))
@@ -30,8 +30,14 @@ defmodule OxleasAdhd.MedicationController do
     end
   end
 
-  def edit(conn, params) do
+  def edit(conn, %{"user_id" => user_id, "id" => id}) do
+    user = Repo.get!(User, user_id)
+    medication = Medication
+                |> Repo.get!(id)
+    changeset = Medication.changeset(medication)
+
     conn
-    |> render("edit.html")
+    |> render("edit.html", changeset: changeset, user: user, medication: medication)
+  end
   end
 end
