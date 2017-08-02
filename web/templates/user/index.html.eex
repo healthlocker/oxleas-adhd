@@ -1,3 +1,6 @@
-<h2 class="tc">Welcome! Get started by adding new content</h2>
+<h1>su create users</h1>
 
-<%= link_to("New post", to: post_path(@conn, :new)) %>
+
+<%= link "New Staff", to: user_path(@conn, :new, user_type: "new_staff"), class: "" %>
+<%= link "New Service User", to: user_path(@conn, :new, user_type: "new_service_user"), class: "" %>
+<%= link "New Carer", to: user_path(@conn, :new, user_type: "new_carer"), class: "" %>
