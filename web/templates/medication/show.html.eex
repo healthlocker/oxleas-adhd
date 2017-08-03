@@ -1,0 +1,18 @@
+<h3 class="tc">Medication</h3>
+
+<p class="b">What medication do I take for my adhd?</p>
+<%= @medication.name %>
+<p class="b">How much?</p>
+<%= @medication.dosage %>
+<p class="b">How often? and when?</p>
+<%= @medication.frequency %>
+<p class="b">Other medication I take:</p>
+<%= @medication.other_medicine %>
+<p class="b">My medication allergies:</p>
+<%= @medication.allergies %>
+<p class="b">What medication have I taken in the past for my ADHD?</p>
+<%= @medication.past_medication %>
+
+<%= render "faq.html" %>
+
+<%= link "Ask your team a question about your medication", to: "#" %>
