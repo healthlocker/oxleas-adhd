@@ -44,34 +44,25 @@ defmodule OxleasAdhd.User do
   def changeset_staff(struct, params \\ :invalid) do
     struct
     |> cast(params, [:first_name, :last_name, :job_role, :email, :password])
-    |> update_change(:email, &(String.downcase(&1)))
     |> put_change(:role, "clinician")
-    |> validate_format(:email, ~r/@/)
     |> validate_required([:first_name, :last_name, :job_role, :email, :password])
-    |> unique_constraint(:email, message: "Sorry you cannot create an account at
-    this time, try again later or with different details.")
+    |> registration_changeset
   end
 
   def changeset_service_user(struct, params \\ :invalid) do
     struct
     |> cast(params, [:first_name, :last_name, :dob, :email, :password])
-    |> update_change(:email, &(String.downcase(&1)))
     |> put_change(:role, "service_user")
-    |> validate_format(:email, ~r/@/)
     |> validate_required([:first_name, :last_name, :dob, :email, :password])
-    |> unique_constraint(:email, message: "Sorry you cannot create an account at
-    this time, try again later or with different details.")
+    |> registration_changeset
   end
 
   def changeset_carer(struct, params \\ :invalid) do
     struct
     |> cast(params, [:first_name, :last_name, :relationship, :email, :password])
-    |> update_change(:email, &(String.downcase(&1)))
     |> put_change(:role, "carer")
-    |> validate_format(:email, ~r/@/)
     |> validate_required([:first_name, :last_name, :relationship, :email, :password])
-    |> unique_constraint(:email, message: "Sorry you cannot create an account at
-    this time, try again later or with different details.")
+    |> registration_changeset
   end
 
   def update_changeset(struct, params \\ :invalid) do
@@ -127,5 +118,15 @@ defmodule OxleasAdhd.User do
       _ ->
         changeset
     end
+  end
+
+  def registration_changeset(changeset) do
+    changeset
+    |> update_change(:email, &(String.downcase(&1)))
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email, message: "Sorry you cannot create an account at
+    this time, try again later or with different details.")
+    |> validate_length(:password, min: 6, max: 100)
+    |> put_pass_hash()
   end
 end
