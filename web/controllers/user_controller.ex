@@ -29,6 +29,17 @@ defmodule OxleasAdhd.UserController do
             |> put_flash(:error, "User could not be created")
             |> render(String.to_atom(user_type), changeset: changeset, user_type: user_type)
         end
+      "new_carer" ->
+        case Repo.insert(changeset) do
+          {:ok, carer} ->
+            conn
+            |> put_flash(:info, "Please enter the service user this carer should connect to")
+            |> redirect(to: user_carer_path(conn, :new, carer))
+          {:error, changeset} ->
+            conn
+            |> put_flash(:error, "Carer could not be created")
+            |> render(String.to_atom(user_type), changeset: changeset, user_type: user_type)
+        end
       _ ->
         case Repo.insert(changeset) do
           {:ok, _entry} ->
