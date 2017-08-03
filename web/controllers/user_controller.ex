@@ -17,15 +17,50 @@ defmodule OxleasAdhd.UserController do
     user_type = user["user_type"]
     changeset = changeset_from_user_type(user_type, user)
 
-    case Repo.insert(changeset) do
+    case user_type do
+      "new_service_user" ->
+        case Repo.insert(changeset) do
+          {:ok, service_user} ->
+            conn
+            |> put_flash(:info, "Please pick the care team for this user")
+            |> redirect(to: user_path(conn, :edit, service_user.id))
+          {:error, changeset} ->
+            conn
+            |> put_flash(:error, "User could not be created")
+            |> render(String.to_atom(user_type), changeset: changeset, user_type: user_type)
+        end
+      _ ->
+        case Repo.insert(changeset) do
+          {:ok, _entry} ->
+            conn
+            |> put_flash(:info, "User created successfully")
+            |> redirect(to: user_path(conn, :index))
+          {:error, changeset} ->
+            conn
+            |> put_flash(:error, "User could not be created")
+            |> render(String.to_atom(user_type), changeset: changeset, user_type: user_type)
+        end
+    end
+  end
+
+  def edit(conn, %{"id" => user_id}) do
+    service_user = Repo.get(User, user_id)
+    changeset = User.changeset_service_user(service_user)
+    conn
+    |> render("edit.html", changeset: changeset, service_user: service_user)
+  end
+
+  def update(conn, %{"id" => user_id, "user" => user}) do
+    old_user = Repo.get(User, user_id)
+    changeset = User.changeset_service_user(old_user, user)
+
+    case Repo.update(changeset) do
       {:ok, _entry} ->
         conn
-        |> put_flash(:info, "User created successfully")
+        |> put_flash(:info, "User created with care team")
         |> redirect(to: user_path(conn, :index))
       {:error, changeset} ->
-        conn
-        |> put_flash(:error, "User could not be created")
-        |> render(String.to_atom(user_type), changeset: changeset, user_type: user_type)
+        render conn, "edit.html", changeset: changeset, service_user: old_user
     end
   end
 
