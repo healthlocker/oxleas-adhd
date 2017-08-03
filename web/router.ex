@@ -37,7 +37,7 @@ defmodule OxleasAdhd.Router do
     pipe_through [:browser] #, :logged_in
 
     resources "/users", UserController, only: [:show] do
-      resources "/medication", MedicationController
+      resources "/medication", MedicationController, only: [:show, :new, :create, :edit, :update]
     end
     resources "/about-me", AboutMeController, only: [:new, :edit] #, :create, :update
   end
