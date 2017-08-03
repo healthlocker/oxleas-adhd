@@ -1,4 +1,4 @@
-<h3 class="tc">Medication</h3>
+<h3 class="tc normal mb4 b">Medication</h3>
 
 <%= render "form.html", changeset: @changeset,
     action: user_medication_path(@conn, :create, @user) %>
