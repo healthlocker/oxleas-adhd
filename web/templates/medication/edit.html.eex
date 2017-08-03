@@ -1,4 +1,7 @@
-<h3 class="tc">Edit Medication</h3>
+<h3 class="tc normal mb0 b dark-blue">Edit Medication</h3>
+
+<img src="/images/Toolkit_diary.png" alt="a graphic of a pen writing on a pad of paper"
+     class="mw-100 w-30 db center">
 
 <%= render "form.html", changeset: @changeset,
     action: user_medication_path(@conn, :update, @user, @medication) %>
