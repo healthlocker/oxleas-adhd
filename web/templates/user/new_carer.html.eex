@@ -32,7 +32,7 @@
       </div>
 
       <div class="tr mt4">
-        <%= submit "Save", class: "shadow-hover f4 dib ph4 pv3 b--none br3 input-reset bg-yellow" %>
+        <%= submit "Locate", class: "shadow-hover f4 dib ph4 pv3 b--none br3 input-reset bg-yellow" %>
       </div>
     <% end %>
   </div>
