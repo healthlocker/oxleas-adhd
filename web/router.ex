@@ -34,6 +34,11 @@ defmodule OxleasAdhd.Router do
     resources "/users", UserController, only: [:show] do
       resources "/clinician-connection", ClinicianController, only: [:new, :create]
     end
+    resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
+      resources "/carer-connection", CarerController, only: [:new]
+      post "/carer-connection", CarerController, :submit_SU_details
+      post "/carer-connection/confirm", CarerController, :confirm_SU_details
+    end
   end
 
   scope "/", OxleasAdhd do
