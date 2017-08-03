@@ -21,7 +21,7 @@ defmodule OxleasAdhd.CarerController do
       nil ->
         conn
         |> put_flash(:error, "could not find service user")
-        |> render("new.html", carer: carer)
+        |> redirect(to: user_carer_path(conn, :new, carer))
       _ ->
         conn
         |> render("confirm.html", carer: carer, service_user: service_user)
@@ -31,15 +31,14 @@ defmodule OxleasAdhd.CarerController do
   def confirm_SU_details(conn, %{"su_info" => su_info, "user_id" => carer_id}) do
     %{"service_user_id" => service_user_id} = su_info
     changeset = Carer.changeset(%Carer{carer_id: String.to_integer(carer_id), caring_id: String.to_integer(service_user_id)})
-                # Carer.changeset(%Carer{carer_id: user.id, caring_id: service_user.id})
     carer = Repo.get(User, carer_id)
     service_user = Repo.get(User, service_user_id)
     case Repo.insert(changeset) do
-      {:ok, connect} ->
+      {:ok, _connect} ->
         conn
         |> put_flash(:info, "Carer connected to Service user")
         |> redirect(to: page_path(conn, :index))
-      {:error, changeset} ->
+      {:error, _error} ->
         conn
         |> put_flash(:error, "Carer could not connect")
         |> render("confirm.html", carer: carer, service_user: service_user)
