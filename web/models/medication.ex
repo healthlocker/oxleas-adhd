@@ -15,7 +15,7 @@ defmodule OxleasAdhd.Medication do
 
   def changeset(struct, params \\ :invalid) do
     struct
-    |> cast(params, [:name, :dosage, :frequency, :other_medicine, :allergies])
+    |> cast(params, [:name, :dosage, :frequency, :other_medicine, :allergies, :past_medication])
     |> validate_required([:name, :dosage, :frequency])
   end
 end
