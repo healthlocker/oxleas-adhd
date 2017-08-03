@@ -31,7 +31,7 @@
   </div>
 
   <div class="mb4">
-    <p class="b db f6 dark-blue mt2 mb2">What medication have I taken in the past for my ADHD?</p>
+    <p class="b db f5 dark-blue mt2 mb2">What medication have I taken in the past for my ADHD?</p>
     <%= label f, :past_medication, class: "b db f6 dark-blue mt2 mb2" do %>
       Why did this change?
     <% end %>
