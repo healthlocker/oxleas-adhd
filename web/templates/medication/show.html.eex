@@ -13,6 +13,10 @@
 <p class="b">What medication have I taken in the past for my ADHD?</p>
 <%= @medication.past_medication %>
 
+<p>Most recent update:</p>
+<%= format_date(@medication.updated_at) %>
+
+
 <%= render "faq.html" %>
 
 <%= link "Ask your team a question about your medication", to: "#" %>
