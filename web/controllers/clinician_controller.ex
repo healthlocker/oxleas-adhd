@@ -1,6 +1,6 @@
 defmodule OxleasAdhd.ClinicianController do
   use OxleasAdhd.Web, :controller
-  alias OxleasAdhd.{User, UserQuery, Clinician}
+  alias OxleasAdhd.{User, UserQuery, Clinician, ClinicianQuery}
 
   def new(conn, %{"user_id" => user_id}) do
     service_user = Repo.get!(User, user_id)
@@ -25,17 +25,22 @@ defmodule OxleasAdhd.ClinicianController do
         selection == "false"
       end)
 
-    clinicians = make_clinicians(id, clinician_ids)
-    case Repo.insert_all(Clinician, clinicians) do
-      {n, nil} ->
-        conn
-        |> put_flash(:info, "Staff connected")
-        |> redirect(to: user_path(conn, :index))
-      _err ->
-        conn
-        |> put_flash(:error, "Could not create connection. Please try again.")
-        |> render("new.html", user: service_user, changeset: changeset)
+    query = Clinician |> ClinicianQuery.get_by_user_id(id)
+    case Repo.delete_all(query) do
+      _ ->
+        clinicians = make_clinicians(id, clinician_ids)
+        case Repo.insert_all(Clinician, clinicians) do
+          {n, nil} ->
+            conn
+            |> put_flash(:info, "Staff connected")
+            |> redirect(to: user_path(conn, :index))
+          _err ->
+            conn
+            |> put_flash(:error, "Could not create connection. Please try again.")
+            |> render("new.html", user: service_user, changeset: changeset)
+        end
     end
+
   end
 
   defp make_clinicians(user_id, clinicians_list) do
