@@ -1,0 +1,26 @@
+<div class="bb b--light-silver bw1 pv4">
+  <p class="f5 b db mb2">First name</p>
+  <%= @user.first_name %>
+  <p class="f5 b db mb2">Last name</p>
+  <%= @user.last_name %>
+  <p class="f5 b db mb2">Date of birth</p>
+  <%= @user.dob %>
+  <p class="f5 b db mb2">Email</p>
+  <%= @user.email %>
+
+</div>
+
+<div class="pv4">
+  <p class="f5 b db mb3">Connect to staff</p>
+  <%= form_for @changeset, @action, fn f -> %>
+    <%= for clinician <- @clinicians do %>
+      <div class="w-100 mv3">
+        <%= checkbox f, String.to_atom("#{clinician.id}"), checked_value: clinician.id %>
+        <%= label f, String.to_atom("#{clinician.id}") do %>
+          <%= clinician.first_name <> " " <> clinician.last_name %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= submit "Save" %>
+  <% end %>
+</div>

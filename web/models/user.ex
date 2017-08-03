@@ -28,7 +28,9 @@ defmodule OxleasAdhd.User do
     many_to_many :relationships, OxleasAdhd.User, join_through: OxleasAdhd.Relationship, on_replace: :delete, on_delete: :delete_all
 
     many_to_many :carers, OxleasAdhd.User, join_through: OxleasAdhd.Carer, join_keys: [caring_id: :id, carer_id: :id]
-    many_to_many :caring, OxleasAdhd.User, join_through: OxleasAdhd.Carer, join_keys: [carer_id: :id, caring_id: :id]
+    many_to_many :caring, OxleasAdhd.User, join_through: OxleasAdhd.Carer, join_through: OxleasAdhd.Clinician, join_keys: [carer_id: :id, caring_id: :id]
+
+    many_to_many :clinician, OxleasAdhd.User, join_through: OxleasAdhd.Clinician, join_keys: [caring_id: :id, clinician_id: :id]
 
     many_to_many :rooms, OxleasAdhd.Room, join_through: "user_rooms"
     has_many :messages, OxleasAdhd.Message

@@ -23,7 +23,7 @@ defmodule OxleasAdhd.UserController do
           {:ok, service_user} ->
             conn
             |> put_flash(:info, "Please pick the care team for this user")
-            |> redirect(to: user_path(conn, :edit, service_user.id))
+            |> redirect(to: user_clinician_path(conn, :new, service_user))
           {:error, changeset} ->
             conn
             |> put_flash(:error, "User could not be created")
