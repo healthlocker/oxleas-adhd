@@ -1,44 +1,46 @@
 <%= form_for @changeset, @action, fn f -> %>
-  <div>
-    <%= label f, :name, class: "" do %>
-      <p class="b">What medication do I take for my adhd?</p>
-      <small>Who prescribes this?</small>
+  <div class="mb4">
+    <p class="b f5 dark-blue mv3">What medication do I take for my adhd?</p>
+    <%= label f, :name, class: "b db f6 dark-blue mt2 mb2" do %>
+      Who prescribes this?
     <% end %>
-    <%= textarea f, :name %>
+    <%= textarea f, :name, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100" %>
   </div>
 
-  <div>
-    <%= label f, :dosage, "How much?", class: "" %>
-    <%= textarea f, :dosage %>
+  <div class="mb4">
+    <div class="dib w-50 pr3">
+      <%= label f, :dosage, "How much?", class: "b db f5 dark-blue mt2 mb2" %>
+      <%= textarea f, :dosage, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100" %>
+    </div><div class="dib w-50 pl3">
+      <%= label f, :frequency, "How often? and when?", class: "b db f5 dark-blue mt2 mb2" %>
+      <%= textarea f, :frequency, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100" %>
+    </div>
   </div>
 
-  <div>
-    <%= label f, :frequency, "How often? and when?", class: "" %>
-    <%= textarea f, :frequency %>
-  </div>
-
-  <div>
-    <%= label f, :other_medicine, class: "" do %>
-      <p class="b">Other medication I take:</p>
-      <small>Who prescribes this?</small>
+  <div class="mb4">
+    <p class="b f5 dark-blue mv3">Other medication I take:</p>
+    <%= label f, :other_medicine, class: "b db f6 dark-blue mt2 mb2" do %>
+      Who prescribes this?
     <% end %>
-    <%= textarea f, :other_medicine %>
+    <%= textarea f, :other_medicine, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100" %>
   </div>
 
-  <div>
-    <%= label f, :allergies, "My medication allergies:", class: "" %>
-    <%= textarea f, :allergies %>
+  <div class="mb4">
+    <%= label f, :allergies, "My medication allergies:", class: "db b f5 dark-blue mv3 mb2" %>
+    <%= textarea f, :allergies, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100" %>
   </div>
 
-  <div>
-    <%= label f, :past_medication, class: "" do %>
-      <p class="b">What medication have I taken in the past for my ADHD?</p>
-      <small>Why did this change?</small>
+  <div class="mb4">
+    <p class="b db f6 dark-blue mt2 mb2">What medication have I taken in the past for my ADHD?</p>
+    <%= label f, :past_medication, class: "b db f6 dark-blue mt2 mb2" do %>
+      Why did this change?
     <% end %>
-    <%= textarea f, :past_medication %>
+    <%= textarea f, :past_medication, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100" %>
+  </div>
+  <div class="tr">
+    <%= submit "Save", class: "shadow-hover f4 dib ph4 pv2 b--none br3 input-reset bg-yellow" %>
   </div>
 
-  <%= submit "Save" %>
 <% end %>
 
 <%= render "faq.html" %>
