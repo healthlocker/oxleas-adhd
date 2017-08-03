@@ -47,6 +47,11 @@ defmodule OxleasAdhd.MedicationControllerTest do
     {:ok, user: user, user2: user2, medication: medication}
   end
 
+  test "GET show", %{conn: conn, user2: user, medication: medication} do
+    conn = get conn, user_medication_path(conn, :show, user, medication)
+    assert html_response(conn, 200) =~ "Medication"
+  end
+
   test "GET new", %{conn: conn, user: user} do
     conn = get conn, user_medication_path(conn, :new, user)
     assert html_response(conn, 200) =~ "Medication"
