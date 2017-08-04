@@ -24,6 +24,7 @@ defmodule OxleasAdhd.User do
     field :dob, :string
     field :relationship, :string
     has_many :posts, OxleasAdhd.Post
+    has_one :medication, OxleasAdhd.Medication, on_delete: :delete_all, on_replace: :delete
     many_to_many :likes, OxleasAdhd.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
     many_to_many :relationships, OxleasAdhd.User, join_through: OxleasAdhd.Relationship, on_replace: :delete, on_delete: :delete_all
 
