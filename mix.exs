@@ -19,7 +19,7 @@ defmodule OxleasAdhd.Mixfile do
   def application do
     [mod: {OxleasAdhd, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :timex]]
+                    :phoenix_ecto, :postgrex, :timex, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,6 +37,7 @@ defmodule OxleasAdhd.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
+     {:comeonin, "~> 3.0"},
      {:timex, "~> 3.1"},
      {:plug, "~> 1.3.5", override: true},
      {:cowboy, "~> 1.0"}]

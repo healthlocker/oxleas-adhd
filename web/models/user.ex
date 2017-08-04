@@ -20,13 +20,18 @@ defmodule OxleasAdhd.User do
     field :user_guid, :string
     field :reset_password_token, :string
     field :reset_token_sent_at, :utc_datetime
+    field :job_role, :string
+    field :dob, :string
+    field :relationship, :string
     has_many :posts, OxleasAdhd.Post
     has_one :medication, OxleasAdhd.Medication, on_delete: :delete_all, on_replace: :delete
     many_to_many :likes, OxleasAdhd.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
     many_to_many :relationships, OxleasAdhd.User, join_through: OxleasAdhd.Relationship, on_replace: :delete, on_delete: :delete_all
 
     many_to_many :carers, OxleasAdhd.User, join_through: OxleasAdhd.Carer, join_keys: [caring_id: :id, carer_id: :id]
-    many_to_many :caring, OxleasAdhd.User, join_through: OxleasAdhd.Carer, join_keys: [carer_id: :id, caring_id: :id]
+    many_to_many :caring, OxleasAdhd.User, join_through: OxleasAdhd.Carer, join_through: OxleasAdhd.Clinician, join_keys: [carer_id: :id, caring_id: :id]
+
+    many_to_many :clinician, OxleasAdhd.User, join_through: OxleasAdhd.Clinician, join_keys: [caring_id: :id, clinician_id: :id]
 
     many_to_many :rooms, OxleasAdhd.Room, join_through: "user_rooms"
     has_many :messages, OxleasAdhd.Message
@@ -39,43 +44,28 @@ defmodule OxleasAdhd.User do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ :invalid) do
+  def changeset_staff(struct, params \\ :invalid) do
     struct
-    |> cast(params, [:email, :first_name, :last_name])
-    |> update_change(:email, &(String.downcase(&1)))
-    |> validate_format(:email, ~r/@/)
-    |> validate_required(:email)
-    |> unique_constraint(:email, message: "Sorry you cannot create an account at
-    this time, try again later or with different details.")
+    |> cast(params, [:first_name, :last_name, :job_role, :email, :password])
+    |> put_change(:role, "clinician")
+    |> validate_required([:first_name, :last_name, :job_role, :email, :password])
+    |> registration_changeset
   end
 
-  def clinician_changeset(struct, epjs_user) do
-    [first_name | last_name] = get_first_last_name(epjs_user)
+  def changeset_service_user(struct, params \\ :invalid) do
     struct
-    |> change(%{
-      email: epjs_user."Email",
-      first_name: first_name,
-      last_name: Enum.join(last_name, " "),
-      data_access: false,
-      role: "clinician",
-      user_guid: epjs_user."User_Guid",
-      password: generate_random_password()
-    })
-    |> put_pass_hash()
+    |> cast(params, [:first_name, :last_name, :dob, :email, :password])
+    |> put_change(:role, "service_user")
+    |> validate_required([:first_name, :last_name, :dob, :email, :password])
+    |> registration_changeset
   end
 
-  def get_first_last_name(epjs_user) do
-    %{Staff_Name: name} = epjs_user
-
-    name
-    |> String.split(" ")
-  end
-
-  def generate_random_password do
-    15
-    |> :crypto.strong_rand_bytes
-    |> Base.url_encode64
-    |> binary_part(0, 15)
+  def changeset_carer(struct, params \\ :invalid) do
+    struct
+    |> cast(params, [:first_name, :last_name, :relationship, :email, :password])
+    |> put_change(:role, "carer")
+    |> validate_required([:first_name, :last_name, :relationship, :email, :password])
+    |> registration_changeset
   end
 
   def update_changeset(struct, params \\ :invalid) do
@@ -94,47 +84,15 @@ defmodule OxleasAdhd.User do
     |> validate_required([:first_name, :last_name])
   end
 
-  def connect_slam(struct, params \\ :invalid) do
-    struct
-    |> cast(params, [:slam_id, :first_name, :last_name, :c4c])
-    |> validate_required([:slam_id, :first_name, :last_name, :c4c])
-  end
-
-  def disconnect_changeset(struct) do
-    struct
-    |> change(slam_id: nil)
-  end
-
   def security_question(struct, params \\ :invalid) do
     struct
     |> cast(params, [:security_question, :security_answer])
     |> validate_required([:security_question, :security_answer])
   end
 
-  def data_access(struct, params \\ :invalid) do
-    struct
-    |> cast(params, [:data_access])
-    |> validate_acceptance(:terms_conditions)
-    |> validate_acceptance(:privacy)
-  end
-
   def update_data_access(struct, params \\ :invalid) do
     struct
     |> cast(params, [:data_access, :c4c, :comms_consent])
-  end
-
-  def registration_changeset(model, params) do
-    model
-    |> security_question(params)
-    |> cast(params, [:password])
-    |> validate_length(:password, min: 6, max: 100)
-    |> validate_confirmation(:password, message: "Passwords do not match")
-    |> put_pass_hash()
-  end
-
-  def email_changeset(struct, params \\ :invalid) do
-    struct
-    |> cast(params, [:email])
   end
 
   def password_token_changeset(struct, params \\ :invalid) do
@@ -163,5 +121,15 @@ defmodule OxleasAdhd.User do
       _ ->
         changeset
     end
+  end
+
+  def registration_changeset(changeset) do
+    changeset
+    |> update_change(:email, &(String.downcase(&1)))
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email, message: "Sorry you cannot create an account at
+    this time, try again later or with different details.")
+    |> validate_length(:password, min: 6, max: 100)
+    |> put_pass_hash()
   end
 end

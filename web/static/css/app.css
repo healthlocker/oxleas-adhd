@@ -1,4 +1,7 @@
 /* This file is for your main application css. */
+#body {
+  padding-bottom: 80px;
+}
 
 /* vendor fix for tachyons hover-shadow effect. Shadow is displayed
 using pseudo-element and does not match the border radius of the

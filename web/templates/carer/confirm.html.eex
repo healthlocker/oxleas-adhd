@@ -1,0 +1,35 @@
+<p class="f5 b">Connect to service user</p>
+
+<div class="br2 mv3 center">
+
+  <h1>carer stuff</h1>
+
+  <p>first name</p>
+  <%= @carer.first_name %>
+  <p>last name</p>
+  <%= @carer.last_name %>
+  <p>relationship to service user</p>
+  <%= @carer.relationship %>
+  <p>email</p>
+  <%= @carer.email %>
+
+  <h1>service_user stuff</h1>
+  <p>first name</p>
+  <%= @service_user.first_name %>
+  <p>last name</p>
+  <%= @service_user.last_name %>
+  <p>dob</p>
+  <%= @service_user.dob %>
+
+
+  <p>Are you sure?</p>
+
+  <p>Connect <%= @carer.first_name %> <%= @carer.last_name %> to <%= @service_user.first_name %> <%= @service_user.last_name %></p>
+
+  <%= form_for @conn, user_carer_path(@conn, :confirm_SU_details, @carer), [as: :su_info], fn f -> %>
+    <%= hidden_input f, :service_user_id, value: @service_user.id %>
+    <div class="tr mt4">
+      <%= submit "Confirm & save", class: "shadow-hover f4 dib ph4 pv3 b--none br3 input-reset bg-yellow" %>
+    </div>
+  <% end %>
+</div>
