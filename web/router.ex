@@ -25,6 +25,7 @@ defmodule OxleasAdhd.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/login", LoginController, only: [:index, :create, :delete]
   end
 
   scope "/super-admin", OxleasAdhd do
