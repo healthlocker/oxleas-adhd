@@ -1,7 +1,7 @@
 <p class="b">Note down and action you can take to stay well, improve your focus and feel calmer.
 </p>
 <p>The ADHD team have put together some resources about ADHD and coping strategies on <%= link "here", to: "http://www.scoop.it/u/focusadhd", class: "hl-aqua flex-wrap underline" %> 
-  and some videos <%= link "here.", to: "http://??", class: "hl-aqua flex-wrap underline" %>
+  and some videos <%= link "here.", to: "https://m.youtube.com/channel/UCFYtqN0xKKvx0vWksYfEveA", class: "hl-aqua flex-wrap underline" %>
 </p>
 <p>We would like to hear your views on what you find useful and should be included directly on the platform in the future.
 </p>
