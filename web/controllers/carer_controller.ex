@@ -1,6 +1,6 @@
 defmodule OxleasAdhd.CarerController do
   use OxleasAdhd.Web, :controller
-  alias OxleasAdhd.{User, Carer}
+  alias OxleasAdhd.{User, Carer, UserQuery}
 
   def new(conn, %{"user_id" => user_id}) do
     carer = Repo.get(User, user_id)
@@ -9,11 +9,7 @@ defmodule OxleasAdhd.CarerController do
   end
 
   def submit_SU_details(conn, %{"su_info" => su_info, "user_id" => user_id}) do
-    %{"su_dob" => su_dob, "su_first_name" => su_first_name, "su_last_name" => su_last_name} = su_info
-    query =
-      from u in User,
-      where: u.dob == ^su_dob and u.first_name == ^su_first_name and u.last_name == ^su_last_name
-
+    query = UserQuery.get_user_by_details(User, su_info)
     carer = Repo.get(User, user_id)
     service_user = Repo.one(query)
 
