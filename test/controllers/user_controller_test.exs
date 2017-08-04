@@ -20,15 +20,6 @@ defmodule OxleasAdhd.UserControllerTest do
     password: "password"
   }
 
-  @carer_in_db %{
-    user_type: "new_carer",
-    first_name: "test",
-    last_name: "test",
-    relationship: "parent",
-    email: "carer@example.com",
-    password: "password"
-  }
-
   @carer_not_in %{
     user_type: "new_carer",
     first_name: "not",

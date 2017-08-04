@@ -64,11 +64,5 @@ defmodule OxleasAdhd.CarerControllerTest do
       assert html_response(conn, 302)
       assert carer_connection.caring_id == 2
     end
-
-    test "post to submit_SU_details incorrect with params gets redirected", %{conn: conn} do
-      carer = Repo.get(User, 1)
-      conn = post conn, user_carer_path(conn, :confirm_SU_details, carer), su_info: %{"service_user_id" => "9999"}
-      assert html_response(conn, 200)
-    end
   end
 end
