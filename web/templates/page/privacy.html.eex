@@ -7,7 +7,8 @@
     your personal data is handled by us. We strongly recommend that you take
     some time to read this policy carefully to understand how we treat your
     personal data.
-  <p>
+</p>
+<p>
     If you are the parent of a child who is under the age of 16, this policy refers 
     to data you enter on behalf of your child or data added to the platform on your 
     child's named account by professionals.
@@ -94,15 +95,17 @@
     Trust. The platform is hosted on a secure Azure server managed by South London
     and Maudsley (SLaM) NHS Foundation Trust on behalf of the ICS ADHD Team, Oxleas
     NHS Foundation Trust, for the duration of the initial trial of the platform.  
- <p>
+</p>
+<p>
     Access to the platform by SLaM IT staff will be limited to technical activity to 
     ensure the safety and integrity of the platform hosted on the Azure server, and 
     not related to a specific individual's account or the information with in it. 
- <p>
+</p>
+<p>
     This statement will be updated and will you be notified should the platform hosting
     arrangements, or capability change such that data can be directly transferred 
     electronically out of the platform. 
-  </p>
+</p>
 
   <h3>How do we respond to legal requests?</h3>
   <p>
@@ -120,14 +123,14 @@
   <p>
     If you have any additional questions regarding this policy, please feel
     free to contact us at:
-  </p>
   <%= link_to("Oxl-tr.focusadhd@nhs.net", to: "Oxl-tr.focusadhd@nhs.net"), 
      class: "hl-aqua flex-wrap underline" %>
+  </p>
   <p>
     Headscape Focus, ICS ADHD Team <br>
     Bungalow 3 <br>
     Wenlsey Close <br>
     Eltham <br>
-    SE9 5AB
+    SE9 5AB.
   </p>
 </div>
