@@ -22,15 +22,17 @@
     <div class="tc">
       <%= img_tag("/images/Get_Support.png", class: "w-20 tc") %>
     </div>
-
+<p>
     If you have immediate concerns about your physical safety and/ or wellbeing, or the physical safety and
       wellbeing of your child, you should contact the emergency services:
+</p>
     <p><strong>Emergency services</strong> <%= link "999", to: "tel:999" %>
       or find your nearest <%= link "A&E", to: "http://www.nhs.uk/Service-Search/Accident-and-emergency-services/LocationSearch/428" %></p>
 
     <p><strong>NHS</strong> <%= link "111", to: "tel:111" %> call for urgent, but non-emergency advice.
     </p>
     <p>You can also contact your <strong>out of hours GP service.</strong> Check the website of your GP surgery to find out details of how to contact this service.
+    </p>
 </div>
 
   <p>
@@ -48,6 +50,7 @@
       who have mental health problems. If you have concerns about your own mental health in addition to your ADHD or your 
       parents have concerns about your mental health, please discuss this with ADHD team who can think with you about whether
       a referral to CAMHS would be appropriate. 
+    </p>
     <p>If you feel you are in an emergency situation related to your own mental health, or your child's - follow the advice above
       about seeking help 
     </p>
@@ -81,11 +84,11 @@
       find us at The Tramshed, 51-53 Woolwich New Road, London SE18 6ES 
   </p>
       
-    <p><strong><%= link "National Autistic Society (NAS) - Greenwich Branch", to: "https://nasgreenwich.org.uk/", class: "hl-aqua flex-wrap underline" %></strong> was 
+  <p><strong><%= link "National Autistic Society (NAS) - Greenwich Branch", to: "https://nasgreenwich.org.uk/", class: "hl-aqua flex-wrap underline" %></strong> was 
       started in 1998 by a group of parents of autistic children who wanted to share their knowledge and experience to support other 
       families connected to Autism Spectrum Conditions (ASCs). The branch has over 400 members with an increasing number of 
-      adults and professionals represented.
-   <p> The NAS Greenwich branch: 
+      adults and professionals represented.<br>
+   The NAS Greenwich branch: 
    <ul>
    <li>provides local information on where to obtain advice and support for autism related issues</li>
    <li>runs community support groups for adults and children, (soon to come) more speaker events and meet ups</li>
