@@ -2,25 +2,25 @@
   <h2 class="tc">About</h2>
   <div class="bb bw2 bb--hl-dark-blue pb3 pt4">
     <p class="b tc">The Greenwich integrated Children's service ADHD team</p>
-    <p>
+  
     <p class="b">What do we do?</p>
-   <p>
+  <p>
       The team provide assessment and diagnostic services for children and young people, aged 5-18, in the 
       Greenwich borough who are presenting with symptoms of ADHD.
-   <p>
+  </p>
+  <p>
       We also provide support to children and young people with ADHD and their families which includes 
       psycho-education, parent support, school liaison and, where necessary, medication. The team work 
       closely with CAMHS and Community Paediatrics.
   </p>
+  <p class="b">Who can refer to our service?
+  </p>
   <p>
-    
-  <p class="b">Who can refer to our service?</p>
-   <p>
       Referrals are accepted from all professionals in healthcare, social care and education.
-   </p>
-   <p>
-     
-  <p class="b">Who is this ADHD service for?</p>
+  </p>
+  
+  <p class="b">Who is this ADHD service for?
+  </p>
 <ul>
   <li>children and young people aged 5-18</li>
   <li>children and young people registered with a GP in the Greenwich Borough</li>
@@ -31,35 +31,39 @@
    <p class="i">If a child appears to have complex mental health needs, in addition to possible ADHD, a GP referral should 
      be made to <%= link "CAMHS", to: "http://oxleas.nhs.uk/services/service/child-and-adolescent-mental-1/",
           class: "hl-aqua flex-wrap underline" %> in the first instance.
-   <p>  
+  </p>
+  <p>  
         If a child appears to have social communication difficulties, for example possible ASD, a GP referral should be 
         made to <%= link "Community Paediatrics", to: "http://oxleas.nhs.uk/services/service/community-paediatrics-medical-/",
         class: "hl-aqua flex-wrap underline" %> in the first instance.
    </p>
      
-   <p> Who are the team?</p>
- Dr Nicola Reynolds, Highly Specialist Clinical Psychologist / Clinical Lead and Team Manager<br>   
- Dr James Woollard, Consultant Psychiatrist<br>   
- Christine Hutchings, Clinical Nurse Specialist<br>  
- Claire Stott, Clinical Nurse Specialist<br>   
- Mayoor Dhokia, Assistant Psychologist.<br>  
- <p>
+   <p>Who are the team?</p>
+ <p>Dr Nicola Reynolds, Highly Specialist Clinical Psychologist / Clinical Lead and Team Manager<br>   
+    Dr James Woollard, Consultant Psychiatrist<br>   
+    Christine Hutchings, Clinical Nurse Specialist<br>  
+    Claire Stott, Clinical Nurse Specialist<br>   
+    Mayoor Dhokia, Assistant Psychologist.<br>  
+ </p>
    
  <p class="b">What is Headscape Focus and who is it for?</p>
-     If your child is under the care of the Greenwich Integrated Children's Service ADHD team from Oxleas NHS Foundation 
+ <p>If your child is under the care of the Greenwich Integrated Children's Service ADHD team from Oxleas NHS Foundation 
      Trust, your account will be linked with to the ADHD care team. This will enable you to send and receive messages with 
      your care team, share tracking, goals and coping strategies with them.
+ </p>
  <p> 
    If your child is over the age of 16, you will be able to access a separate carers account from which you can send and 
    receive messages with their care team. Your child can use their own account to send and receive messages and update and 
    share their tracking, goals and coping strategies with the team. 
+ </p>
  <p> 
     If you need help or support using Healthlocker, please "send a message" to your team.
+ </p>
  <p>
    If you are staff in the ADHD team at Oxleas, you can send and receive messages with service users and their carers and 
    view updates (goals, coping strategies and tracking) that your caseload has chosen to share with you.
-  <p>
-
+ </p>
+ 
   <p class="b">How does it work / what next?</p>
     <p>
        Headscape Focus is based on Healthlocker, a platform powered by the
