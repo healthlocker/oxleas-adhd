@@ -8,11 +8,11 @@ defmodule OxleasAdhd.CreateCarerRoom do
     |> Multi.insert(:room, Room.changeset(%Room{
       name: "carer-care-team:" <> Integer.to_string(carer.id)
     }))
-    |> Multi.run(:carer_room, &add_su_to_room(&1, carer))
+    |> Multi.run(:carer_room, &add_carer_to_room(&1, carer))
     |> Multi.run(:clinician_room, &add_clinicians_to_room(&1, clinician_ids))
   end
 
-  defp add_su_to_room(multi, user) do
+  defp add_carer_to_room(multi, user) do
     changeset = UserRoom.changeset(%UserRoom{
       user_id: user.id,
       room_id: multi.room.id
