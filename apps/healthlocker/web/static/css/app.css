@@ -116,6 +116,13 @@ select:focus {
   padding-bottom: 80px;
 }
 
+/* vendor fix for tachyons hover-shadow effect. Shadow is displayed
+using pseudo-element and does not match the border radius of the
+button itself */
+.shadow-hover:after {
+  border-radius: .5rem;
+}
+
 #footer {
    position:absolute;
    bottom:0;
