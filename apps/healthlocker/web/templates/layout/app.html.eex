@@ -28,7 +28,7 @@
 
     <div class="hl-bg-pink pa1">
       <div class="pa1">
-        <p class="di b white">Healthlocker is in progress -</p>
+        <p class="di b white">Oxleas is in progress -</p>
         <small>
           <%= link "share feedback and suggestions",
           to: feedback_path(@conn, :index), class: "white" %>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="container">
-      <header id="header" class="hl-bg-aqua w-100 ph3 pv3 pv4-ns ph4-m ph4-l tc">
+      <header id="header" class="bg-black w-100 ph3 pv3 pv4-ns ph4-m ph4-l tc">
         <nav class="f2 fw3 relative">
           <div class="tc">
             <a href="/"><%= img_tag("/images/logo.png", class: "w-60 w-50-m mw5") %></a>

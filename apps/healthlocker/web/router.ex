@@ -25,9 +25,28 @@ defmodule Healthlocker.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/super-admin", Healthlocker.OxleasAdhd, as: :oxleas_adhd do
+    pipe_through [:browser] #, :super_admin
+
+    resources "/users", UserController, only: [:index, :new, :create, :edit, :update]
+    resources "/users", UserController, only: [:show] do
+      resources "/clinician-connection", ClinicianController, only: [:new, :create]
+    end
+    resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
+      resources "/carer-connection", CarerController, only: [:new]
+      post "/carer-connection", CarerController, :submit_SU_details
+      post "/carer-connection/confirm", CarerController, :confirm_SU_details
+    end
+  end
+
   # endpoints requiring a logged in user
   scope "/", Healthlocker do
     pipe_through [:browser, :logged_in]
+
+    resources "/users", OxleasAdhd.UserController, only: [:show] do
+      resources "/medication", OxleasAdhd.MedicationController, only: [:show, :new, :create, :edit, :update]
+    end
+    resources "/about-me", OxleasAdhd.AboutMeController, only: [:new, :edit] #, :create, :update
 
     resources "/posts", PostController, only: [:new, :create, :edit, :update] do
       post "/likes", PostController, :likes
@@ -80,12 +99,14 @@ defmodule Healthlocker.Router do
     get "/", PageController, :index
     resources "/feedback", FeedbackController, only: [:index, :create]
     resources "/login", LoginController, only: [:index, :create, :delete]
+
     resources "/users", UserController, only: [:index, :new, :create, :update] do
       get "/signup2", UserController, :signup2
       put "/create2", UserController, :create2
       get "/signup3", UserController, :signup3
       put "/create3", UserController, :create3
     end
+
     resources "/pages", PageController, only: [:index, :show]
     resources "/posts", PostController, only: [:show, :index]
     resources "/support", SupportController, only: [:index]
