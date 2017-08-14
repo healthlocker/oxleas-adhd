@@ -1,6 +1,6 @@
 defmodule OxleasAdhd.CreateRooms do
   alias Ecto.Multi
-  alias OxleasAdhd.{Room, UserRoom, Repo, Clinician, ClinicianRooms, ClinicianQuery}
+  alias OxleasAdhd.{Room, UserRoom, Repo, Clinician, ClinicianRooms}
 
   def connect_clinicians_and_create_rooms(user, clinician_ids, clinicians, query) do
     Multi.new
@@ -10,7 +10,7 @@ defmodule OxleasAdhd.CreateRooms do
       name: "service-user-care-team:" <> Integer.to_string(user.id)
     }))
     |> Multi.run(:user_room, &add_su_to_room(&1, user))
-    |> Multi.run(:clinician_room, &add_clinicians_to_room(&1, user, clinician_ids))
+    |> Multi.run(:clinician_room, &add_clinicians_to_room(&1, clinician_ids))
   end
 
   defp add_su_to_room(multi, user) do
@@ -26,7 +26,7 @@ defmodule OxleasAdhd.CreateRooms do
     end
   end
 
-  defp add_clinicians_to_room(multi, user, clinician_ids) do
+  defp add_clinicians_to_room(multi, clinician_ids) do
     clinicians = clinician_ids |> make_clinicians(multi.room.id)
 
     case Repo.insert_all(ClinicianRooms, clinicians) do
