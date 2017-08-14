@@ -1,6 +1,6 @@
-<h3 class="tc normal mb0 b dark-blue">New Medication</h3>
+<h3 class="tc normal mb3 b dark-blue">New Medication</h3>
 
-<img src="/images/Toolkit_diary.png" alt="a graphic of a pen writing on a pad of paper"
+<img src="/images/pill-bottle.png" alt="a graphic of a screw-top bottle of medicine"
      class="mw-100 w-30 db center">
 
 <%= render "form.html", changeset: @changeset,
