@@ -16,7 +16,6 @@ defmodule OxleasAdhd.ClinicianController do
   def create(conn, %{"user_id" => user_id, "clinician" => clinician_params}) do
     id = user_id |> String.to_integer
     service_user = Repo.get!(User, id)
-    # changeset = Clinician.changeset(%Clinician{})
 
     clinician_ids =
       clinician_params
