@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.CreateRooms do
+defmodule OxleasAdhd.CreateRoom do
   alias Ecto.Multi
   alias OxleasAdhd.{Room, UserRoom, Repo, Clinician, ClinicianRooms}
 

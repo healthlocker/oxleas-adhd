@@ -1,7 +1,7 @@
-defmodule OxleasAdhd.CreateRoomsTest do
+defmodule OxleasAdhd.CreateRoomTest do
   use OxleasAdhd.ModelCase, async: true
   alias OxleasAdhd.{User, Repo, Clinician, ClinicianRooms,
-    ClinicianQuery, CreateRooms}
+    ClinicianQuery, CreateRoom}
 
   describe "success paths for connecting as slam su" do
     setup %{} do
@@ -23,7 +23,7 @@ defmodule OxleasAdhd.CreateRoomsTest do
 
       query = Clinician |> ClinicianQuery.get_by_user_id(1234)
 
-      multi = CreateRooms.connect_clinicians_and_create_rooms(
+      multi = CreateRoom  .connect_clinicians_and_create_rooms(
         user,
         [1235],
         [%{caring_id: 1234, clinician_id: 1235}],

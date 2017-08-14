@@ -1,6 +1,6 @@
 defmodule OxleasAdhd.CarerController do
   use OxleasAdhd.Web, :controller
-  alias OxleasAdhd.{User, Carer, UserQuery, ClinicianQuery, Clinician, CreateCarerRooms}
+  alias OxleasAdhd.{User, UserQuery, ClinicianQuery, Clinician, CreateCarerRoom}
 
   def new(conn, %{"user_id" => user_id}) do
     carer = Repo.get(User, user_id)
@@ -32,7 +32,7 @@ defmodule OxleasAdhd.CarerController do
     clinician_ids = Clinician
       |> ClinicianQuery.get_clinician_ids_for_user(service_user_id)
       |> Repo.all
-    multi = CreateCarerRooms.connect_carers_and_create_rooms(carer, service_user, clinician_ids)
+    multi = CreateCarerRoom.connect_carers_and_create_rooms(carer, service_user, clinician_ids)
     case Repo.transaction(multi) do
       {:ok, _connect} ->
         conn
