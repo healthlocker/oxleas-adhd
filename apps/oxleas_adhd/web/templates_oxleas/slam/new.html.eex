@@ -1,7 +1,0 @@
-<div class="ma0 ma3-ns ma4-m ma4-l">
-  <h2 class="tc">Connect</h2>
-
-  <h3>Your details</h3>
-
-  <%= render "_form.html", changeset: @changeset, action: slam_path(@conn, :create), conn: @conn %>
-</div>
