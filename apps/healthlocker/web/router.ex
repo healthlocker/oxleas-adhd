@@ -17,6 +17,10 @@ defmodule Healthlocker.Router do
     plug :find_room
   end
 
+  pipeline :super_admin do
+    plug Healthlocker.Plugs.RequireSuperAdmin
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
