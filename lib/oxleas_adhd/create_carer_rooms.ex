@@ -37,14 +37,14 @@ defmodule OxleasAdhd.CreateCarerRooms do
   end
 
   defp make_clinicians(clinician_ids, room_id) do
-  clinician_ids
-  |> Enum.map(fn(id) ->
-    %{
-      room_id: room_id,
-      clinician_id: id,
-      inserted_at: DateTime.utc_now(),
-      updated_at: DateTime.utc_now()
-    }
-    end)
+    clinician_ids
+    |> Enum.map(fn(id) ->
+      %{
+        room_id: room_id,
+        clinician_id: id,
+        inserted_at: DateTime.utc_now(),
+        updated_at: DateTime.utc_now()
+      }
+      end)
   end
 end
