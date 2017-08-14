@@ -1,0 +1,55 @@
+<p class="normal b">Connect to service user</p>
+
+<div class="bb b--light-silver bw1 pb4">
+
+  <div class="dib-ns mb3 w-50">
+    <p class="dark-blue f5 b mt0 mb2">first name</p>
+    <p class="f5 mv3">
+      <%= @carer.first_name %>
+    </p>
+  </div><div class="dib-ns mb3 w-50">
+    <p class="dark-blue f5 b mt0 mb2">last name</p>
+    <p class="f5 mv3">
+      <%= @carer.last_name %>
+    </p>
+  </div>
+
+  <div class="mb4">
+    <p class="dark-blue f5 b mt0 mb2">relationship to service user</p>
+    <p class="f5 mv3">
+      <%= @carer.relationship %>
+    </p>
+  </div>
+
+  <div class="mb4">
+    <p class="dark-blue f5 b mt0 mb2">email</p>
+    <p class="f5 mv3">
+      <%= @carer.email %>
+    </p>
+  </div>
+
+</div>
+
+<div class="pv4">
+  <%= form_for @conn, oxleas_adhd_user_carer_path(@conn, :submit_SU_details, @carer), [as: :su_info], fn f -> %>
+    <div class="w-50-ns mb3 dib-ns pr2-ns">
+      <%= label f, :su_first_name, "Service users's first name", class: "f5 b db mb2" %>
+      <%= text_input f, :su_first_name, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>
+      <span class="hl-pink"><%= error_tag f, :su_first_name %></span>
+    </div><div class="w-50-ns mb3 dib-ns pl2-ns">
+      <%= label f, :su_last_name, "Service users's last name", class: "f5 b db mb2" %>
+      <%= text_input f, :su_last_name, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>
+      <span class="hl-pink"><%= error_tag f, :su_last_name %></span>
+    </div>
+
+    <div class="w-50-ns mb4 dib-ns pr2-ns">
+      <%= label f, :su_dob, "Service users's date of birth", class: "f5 b db mb2" %>
+      <%= text_input f, :su_dob, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>
+      <span class="hl-pink"><%= error_tag f, :su_dob %></span>
+    </div>
+
+    <div class="tr mt4">
+      <%= submit "Locate", class: "shadow-hover f4 dib ph4 pv3 b--none br3 input-reset bg-yellow" %>
+    </div>
+  <% end %>
+</div>
