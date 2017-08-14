@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Healthlocker</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.6.1/css/tachyons.min.css"/>
+    <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/images/favicon-hl-32x32.png">
+    <link rel=”apple-touch-icon” href=”/images/apple-touch-icon.png”/>
+    <link rel=”apple-touch-icon-precomposed” href=”/images/apple-touch-icon.png”/>
+
+  </head>
+  <body class="w-100 bg-white">
+      <main id="body">
+        <section class="h-100 ph3 ph5-ns pb3 bt b--black-10 bg-white">
+          <section class="mw7 center">
+            <%
+              info = get_flash(@conn, :info)
+              error = get_flash(@conn, :error)
+            %>
+            <%= if info do %>
+              <div class="ba bw2 br3 b--hl-yellow hl-bg-success center tc pv2 pv3-l mh4-l mt4" role="alert"><%= get_flash(@conn, :info) %></div>
+            <% end %>
+            <%= if error do %>
+              <div class="ba bw2 br3 b--hl-pink hl-bg-error center tc pv2 pv3-l mh4-l mt4" role="alert"><%= get_flash(@conn, :error) %></div>
+            <% end %>
+            <%= render @view_module, @view_template, assigns %>
+          </section>
+        </section>
+      </main>
+  </body>
+</html>

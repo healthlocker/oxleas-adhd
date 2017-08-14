@@ -1,0 +1,69 @@
+<div class="br2 mv4 center">
+  <%= form_for @changeset, @action, fn f -> %>
+    <div class="form-group">
+      <%= label f, "Total hours sleep:", class: "f5 b db mb2" %>
+      <%= select f, :hours_slept, Healthlocker.ComponentView.get_options("hours_slept"),
+        class: "pa3 input-reset bn hl-bg-grey w-100 " <>
+        Healthlocker.ComponentView.highlight_errors(@changeset, :hours_slept),
+        prompt: "" %>
+      <span class="hl-pink"><%= error_tag f, :hours_slept %></span>
+    </div>
+
+    <div class="form-group">
+      <%= label f, :wake_count, class: "f5 b db mb2 mt4" do %>
+        Times I woke up:
+      <% end %>
+      <%= select f, :wake_count, Healthlocker.ComponentView.get_options("wake_count"),
+        class: "pa3 input-reset bn hl-bg-grey w-100 " <>
+        Healthlocker.ComponentView.highlight_errors(@changeset, :wake_count),
+        prompt: "" %>
+      <span class="hl-pink"><%= error_tag f, :wake_count%></span>
+    </div>
+
+    <div class="form-group">
+      <%= label f, "Notes:", class: "f5 b db mb2 mt4" %>
+      <p>For example:</p>
+      <ul>
+        <li class="i">what affected your sleep?</li>
+        <li class="i">did you have nightmares or terrors?</li>
+        <li class="i">did you do something to try to get a better sleep?</li>
+      </ul>
+      <%= textarea f, :notes, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :notes) %>
+      <span class="hl-pink"><%= error_tag f, :notes %></span>
+    </div>
+
+    <div class="mt4 tr">
+      <%= submit_primary "Save" %>
+    </div>
+  <% end %>
+
+  <div class="hl-bg-grey pa3 mt4 br2">
+    <h2 class="tc">Sleep tips</h2>
+    <p>
+      Good sleep helps promote both mental and physical wellbeing.
+      Here are some ideas to try.
+    </p>
+
+    <div class="tc">
+      <%= img_tag("/images/Toolkit_sleep.png", class: "w4") %>
+    </div>
+
+    <p>
+      <strong>Try to go to bed at the same time each night and get up at the same time</strong><br>A regular sleep / wake cycle can help you concentrate and feel better.
+    </p>
+    <p>
+      <strong>Avoid stimulating activities such as iPads, computer games and social media at least an hour before going to bed</strong><br>The backlight on devices suppresses the hormone that helps you sleep.
+    </p>
+    <p>
+      <strong>Include some relaxing activities in your regular bedtime routine</strong><br>Try reading or having a bath or warm shower.
+    </p>
+    <p>
+      <strong>Avoid sugary food and stimulant drinks (e.g. coffee and energy drinks) before bedtime</strong><br>These can keep your body and mind awake.
+      </p>
+    <p>
+      Explore <%= link_to("more tips", to: tip_path(@conn, :index)) %>
+      on Headscape Focus.
+    </p>
+  </div>
+</div>

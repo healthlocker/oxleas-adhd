@@ -1,0 +1,54 @@
+<div>
+  <h3 class="tc">Medication FAQs</h3>
+
+  <img src="/images/question-mark-meds.png" alt="a graphic of a question-mark with a pill"
+       class="mw-100 w-30 db center">
+
+  <p class="b lh-title">Who do I get my prescriptions from?</p>
+  <p class="lh-copy">
+    The ADHD team usually prescribe your medication for the first 3 months or
+    so whilst we are getting the dose right for you. Once we get to a dose
+    that appears to work for you, will discuss with you about going on to
+    "Shared Care" with your GP, which means your GP will prescribe the
+    medication and you can pick it up from them.
+  </p>
+
+  <p class="b lh-title">
+    If I get my prescriptions from the ADHD team, how much notice
+    do I have to give?
+  </p>
+  <p class="lh-copy">
+    You need to let the ADHD team know that you need a prescription at least
+    5 working days before you run out of medication. You can let them know by
+    <%= link "sending a message", to: "#", class: "link" %>.
+  </p>
+  <p class="lh-copy">
+    Put a note on your mobile phone diary or calendar to remind you when
+    you need to order your next prescription. See more
+    <%= link "#Tips", to: "#", class: "link" %>.
+  </p>
+
+  <p class="b lh-title">How long are prescriptions valid for?</p>
+  <p class="lh-copy">
+    Prescriptions of controlled medications, like Methylphenidate, including
+    extended-release formulations of it like Medikinet XL, Concerta XL or
+    Equasym XL, are only valid for 28 days from the date they were written
+    so you need to take them to a pharmacy before the end of that period.
+  </p>
+  <p class="lh-copy">
+    Prescriptions for medications that are not controlled drugs are valid
+    for 6 months from the date of the prescription. These includes Circadin
+    and Atomoxetine which are prescribed by the ADHD team.
+  </p>
+  <p class="b lh-title">What do I do if I get side effects from the medication?</p>
+  <p class="lh-copy">
+    Let the ADHD team know that you think you are getting side effects from
+    the medication and they can discuss with you what to do about it. The
+    ADHD team is available Monday to Friday 9-5pm, so outside of these hours,
+    if you are unwell and experiencing symptoms that might be related to
+    medication, particularly chest pain or your heart racing in your chest,
+    contact your local out-of-hours GP service or visit your local
+    <%= link "A&E", to: "http://www.nhs.uk/Service-Search/Accident-and-emergency-services/LocationSearch/428", class: "link" %>
+    to get checked out.
+  </p>
+</div>
