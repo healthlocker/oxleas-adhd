@@ -1,5 +1,5 @@
-defmodule OxleasAdhd.Medication do
-  use OxleasAdhd.Web, :model
+defmodule Healthlocker.Medication do
+  use Healthlocker.Web, :model
 
   schema "medications" do
     field :name, :string
@@ -8,7 +8,7 @@ defmodule OxleasAdhd.Medication do
     field :other_medicine, :string
     field :allergies, :string
     field :past_medication, :string
-    belongs_to :user, OxleasAdhd.User
+    belongs_to :user, Healthlocker.User
 
     timestamps()
   end

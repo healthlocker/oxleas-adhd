@@ -1,10 +1,10 @@
-defmodule OxleasAdhd.Clinician do
-  use OxleasAdhd.Web, :model
+defmodule Healthlocker.Clinician do
+  use Healthlocker.Web, :model
 
   @primary_key false
   schema "clinicians" do
-    belongs_to :clinician, OxleasAdhd.User
-    belongs_to :caring, OxleasAdhd.User
+    belongs_to :clinician, Healthlocker.User
+    belongs_to :caring, Healthlocker.User
   end
 
   def changeset(struct, params \\ %{}) do
