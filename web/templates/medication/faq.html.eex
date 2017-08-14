@@ -1,6 +1,9 @@
 <div>
   <h3 class="tc">Medication FAQs</h3>
 
+  <img src="/images/question-mark-meds.png" alt="a graphic of a question-mark with a pill"
+       class="mw-100 w-30 db center">
+
   <p class="b lh-title">Who do I get my prescriptions from?</p>
   <p class="lh-copy">
     The ADHD team usually prescribe your medication for the first 3 months or
