@@ -75,6 +75,7 @@ defmodule Healthlocker.Mixfile do
      {:mssql_ecto, "~> 0.1"},
      {:mssqlex, "~> 0.6"},
      {:edeliver, "~> 1.4.1"},
+     {:oxleas_adhd, in_umbrella: true},
      {:distillery, "~> 1.4", runtime: false, warn_missing: false}
    ]
   end
