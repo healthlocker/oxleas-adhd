@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.CreateRooms do
+defmodule Healthlocker.Repo.Migrations.CreateRoom do
   use Ecto.Migration
 
   def change do
@@ -7,5 +7,7 @@ defmodule Healthlocker.Repo.Migrations.CreateRooms do
 
       timestamps()
     end
+
+    create unique_index(:rooms, [:name])
   end
 end

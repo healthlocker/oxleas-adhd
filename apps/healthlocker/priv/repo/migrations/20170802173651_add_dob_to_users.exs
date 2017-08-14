@@ -1,9 +1,9 @@
-defmodule Healthlocker.Repo.Migrations.AddSlamId do
+defmodule Healthlocker.Repo.Migrations.AddDobToUsers do
   use Ecto.Migration
 
   def change do
     alter table(:users) do
-      add :slam_id, :integer
+      add :dob, :string
     end
   end
 end

@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.Repo.Migrations.AddRoleToUsers do
+defmodule Healthlocker.Repo.Migrations.AddRoleToUsers do
   use Ecto.Migration
 
   def change do

@@ -1,4 +1,4 @@
-defmodule Healthlocker.Repo.Migrations.AddPostsLikesJoinTable do
+defmodule Healthlocker.Repo.Migrations.CreatePostsLikesJoinTable do
   use Ecto.Migration
 
   def change do

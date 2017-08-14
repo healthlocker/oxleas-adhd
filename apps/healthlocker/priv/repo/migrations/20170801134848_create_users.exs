@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.Repo.Migrations.CreateUsers do
+defmodule Healthlocker.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def change do
@@ -17,11 +17,10 @@ defmodule OxleasAdhd.Repo.Migrations.CreateUsers do
       add :reset_token_sent_at, :utc_datetime
       add :c4c, :boolean
       add :comms_consent, :boolean
-      add :user_guid, :string
 
       timestamps()
     end
-    
+
     create unique_index(:users, [:email])
   end
 end

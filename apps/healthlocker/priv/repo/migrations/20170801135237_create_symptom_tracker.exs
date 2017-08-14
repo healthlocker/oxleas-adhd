@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.Repo.Migrations.CreateSymptomTracker do
+defmodule Healthlocker.Repo.Migrations.CreateSymptomTracker do
   use Ecto.Migration
 
   def change do

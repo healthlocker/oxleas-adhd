@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.Repo.Migrations.AddRelationshipToUsers do
+defmodule Healthlocker.Repo.Migrations.AddRelationshipToUsers do
   use Ecto.Migration
 
   def change do

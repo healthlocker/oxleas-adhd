@@ -1,4 +1,4 @@
-defmodule OxleasAdhd.Repo.Migrations.CreateDiary do
+defmodule Healthlocker.Repo.Migrations.CreateDiary do
   use Ecto.Migration
 
   def change do
