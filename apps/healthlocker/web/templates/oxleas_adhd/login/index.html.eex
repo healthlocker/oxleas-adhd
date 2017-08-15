@@ -1,12 +1,6 @@
 <div class="ma3 ma4-m ma4-l">
   <h3 class="hl-darkBlue tc">Log in</h3>
   <section class="mw7 center">
-    <div class="bb b--black-20 pb4 mt4">
-      <span class="fl mt0">Not an existing user?</span>
-      <div class="tr">
-        <%= link_to("Sign up", to: user_path(@conn, :new)) %>
-      </div>
-    </div>
     <%= form_for @conn, login_path(@conn, :create), [as: :login, class: "mw6 br2 mv3 center"], fn f -> %>
       <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
         <div>

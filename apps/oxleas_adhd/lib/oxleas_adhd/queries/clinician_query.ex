@@ -11,4 +11,10 @@ defmodule OxleasAdhd.ClinicianQuery do
     where: c.clinician_id == ^staff_id,
     select: c.caring_id
   end
+
+  def get_clinician_ids_for_user(struct, user_id) do
+    from c in struct,
+    where: c.caring_id == ^user_id,
+    select: c.clinician_id
+  end
 end

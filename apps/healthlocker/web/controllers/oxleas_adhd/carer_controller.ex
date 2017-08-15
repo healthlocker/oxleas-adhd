@@ -1,7 +1,7 @@
 defmodule Healthlocker.OxleasAdhd.CarerController do
   use Healthlocker.Web, :controller
-  alias Healthlocker.{User, Carer}
-  alias OxleasAdhd.UserQuery
+  alias Healthlocker.User
+  alias OxleasAdhd.{ClinicianQuery, CreateCarerRoom, UserQuery}
 
   def new(conn, %{"user_id" => user_id}) do
     carer = Repo.get(User, user_id)
@@ -17,7 +17,7 @@ defmodule Healthlocker.OxleasAdhd.CarerController do
     case service_user do
       nil ->
         conn
-        |> put_flash(:error, "could not find service user")
+        |> put_flash(:error, "Could not find service user")
         |> redirect(to: oxleas_adhd_user_carer_path(conn, :new, carer))
       _ ->
         conn
@@ -27,10 +27,14 @@ defmodule Healthlocker.OxleasAdhd.CarerController do
 
   def confirm_SU_details(conn, %{"su_info" => su_info, "user_id" => carer_id}) do
     %{"service_user_id" => service_user_id} = su_info
-    changeset = Carer.changeset(%Carer{carer_id: String.to_integer(carer_id), caring_id: String.to_integer(service_user_id)})
+
     carer = Repo.get(User, carer_id)
     service_user = Repo.get(User, service_user_id)
-    case Repo.insert(changeset) do
+    clinician_ids = Clinician
+      |> ClinicianQuery.get_clinician_ids_for_user(service_user_id)
+      |> Repo.all
+    multi = CreateCarerRoom.connect_carers_and_create_rooms(carer, service_user, clinician_ids)
+    case Repo.transaction(multi) do
       {:ok, _connect} ->
         conn
         |> put_flash(:info, "Carer connected to Service user")
