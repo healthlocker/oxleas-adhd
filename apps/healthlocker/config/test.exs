@@ -16,7 +16,7 @@ config :healthlocker, Healthlocker.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "healthlocker_test",
+  database: "oxleas_adhd_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
