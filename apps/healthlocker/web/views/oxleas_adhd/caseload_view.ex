@@ -1,4 +1,4 @@
-defmodule Healthlocker.CaseloadView do
+defmodule Healthlocker.OxleasAdhd.CaseloadView do
   use Healthlocker.Web, :view
 
   def room_for(user) do
