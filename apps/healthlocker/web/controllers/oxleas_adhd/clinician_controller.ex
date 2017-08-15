@@ -1,7 +1,7 @@
 defmodule Healthlocker.OxleasAdhd.ClinicianController do
   use Healthlocker.Web, :controller
-  alias Healthlocker.{User, Clinician}
-  alias OxleasAdhd.{ClinicianQuery, CreateRoom, UserQuery}
+  alias Healthlocker.{User, Clinician, OxleasAdhd.CreateRoom}
+  alias OxleasAdhd.{ClinicianQuery, UserQuery}
 
   def new(conn, %{"user_id" => user_id}) do
     service_user = Repo.get!(User, user_id)
