@@ -30,7 +30,7 @@ defmodule Healthlocker.PageControllerTest do
 
   test "render security.html on /pages/security", %{conn: conn} do
     conn = get conn, page_path(conn, :show, "security")
-    assert html_response(conn, 200) =~ "Update security question"
+    assert html_response(conn, 200) =~ "Update password"
   end
 
   test "render nhs_help.html on /pages/nhs_help", %{conn: conn} do

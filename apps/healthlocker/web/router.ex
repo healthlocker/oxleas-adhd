@@ -57,6 +57,12 @@ defmodule Healthlocker.Router do
   # logged in routes for oxleas
   scope "/", Healthlocker.OxleasAdhd do
     pipe_through [:browser, :logged_in]
+    resources "/account", AccountController, only: [:index]
+    put "/account/update", AccountController, :update
+    get "/account/consent", AccountController, :consent
+    put "/account/consent/update", AccountController, :update_consent
+    get "/account/password/edit", AccountController, :edit_password
+    put "/account/password/update", AccountController, :update_password
 
     resources "/users", UserController do
       resources "/medication", MedicationController, only: [:show, :new, :create, :edit, :update]
@@ -85,12 +91,6 @@ defmodule Healthlocker.Router do
     resources "/coping-strategy", CopingStrategyController
     resources "/goal", GoalController
     resources "/toolkit", ToolkitController, only: [:index]
-    resources "/account", AccountController, only: [:index]
-    put "/account/update", AccountController, :update
-    get "/account/consent", AccountController, :consent
-    put "/account/consent/update", AccountController, :update_consent
-    get "/account/password/edit", AccountController, :edit_password
-    put "/account/password/update", AccountController, :update_password
     resources "/components", ComponentController, only: [:index]
     resources "/messages", MessageController, only: [:index]
     resources "/sleep-tracker", SleepTrackerController, only: [:new, :create]
