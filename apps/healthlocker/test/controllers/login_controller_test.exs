@@ -2,13 +2,23 @@ defmodule Healthlocker.LoginControllerTest do
   use Healthlocker.ConnCase
   alias Healthlocker.User
 
-  @valid_attrs %{
-    email: "abc@gmail.com",
+  @su_attrs %{
+    email: "service_user@gmail.com",
+    password: "password"
+  }
+
+  @clinician_attrs %{
+    email: "clinician@gmail.com",
+    password: "password"
+  }
+
+  @super_admin_attrs %{
+    email: "super_admin@gmail.com",
     password: "password"
   }
 
   @invalid_attrs %{
-    email: "abc@gmail.com",
+    email: "clinician@gmail.com",
     password: "wrong_password"
   }
 
@@ -17,26 +27,58 @@ defmodule Healthlocker.LoginControllerTest do
     assert html_response(conn, 200) =~ "Email"
   end
 
-  describe "with valid data for user who has completed all sign up steps" do
+  describe "with valid data for signed up user" do
     setup do
       %User{
-        id: 123456,
+        id: 1234,
         first_name: "My",
         last_name: "Name",
-        email: "abc@gmail.com",
+        email: "service_user@gmail.com",
+        password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
+        role: "service_user"
+      } |> Repo.insert
+
+      %User{
+        id: 1235,
+        first_name: "My",
+        last_name: "Name",
+        email: "clinician@gmail.com",
         password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
         security_question: "Question?",
         security_answer: "Answer",
-        data_access: false
+        role: "clinician"
+      } |> Repo.insert
+
+      %User{
+        id: 1236,
+        first_name: "My",
+        last_name: "Name",
+        email: "super_admin@gmail.com",
+        password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
+        security_question: "Question?",
+        security_answer: "Answer",
+        role: "super_admin"
       } |> Repo.insert
 
       :ok
     end
 
-    test "/login :: create with valid data", %{conn: conn} do
-      conn = post conn, login_path(conn, :create), login: @valid_attrs
-      assert get_flash(conn, :info) == "Welcome to Healthlocker!"
+    test "/login :: create with valid data for service user", %{conn: conn} do
+      conn = post conn, login_path(conn, :create), login: @su_attrs
+      assert get_flash(conn, :info) == "Welcome to Headscape Focus!"
       assert redirected_to(conn) == toolkit_path(conn, :index)
+    end
+
+    test "/login :: create with valid data for super admin", %{conn: conn} do
+      conn = post conn, login_path(conn, :create), login: @super_admin_attrs
+      assert get_flash(conn, :info) == "Logged in as super admin"
+      assert redirected_to(conn) == oxleas_adhd_user_path(conn, :index)
+    end
+
+    test "/login :: create with valid data for clinician", %{conn: conn} do
+      conn = post conn, login_path(conn, :create), login: @clinician_attrs
+      assert get_flash(conn, :info) == "Logged in as clinician"
+      assert redirected_to(conn) == page_path(conn, :index)
     end
 
     test "/login :: create with invalid data" do
@@ -46,46 +88,9 @@ defmodule Healthlocker.LoginControllerTest do
     end
 
     test "/login :: delete", %{conn: conn} do
-      user = Repo.get(User, 123456)
+      user = Repo.get(User, 1234)
       conn = delete conn, login_path(conn, :delete, user)
       assert redirected_to(conn) == page_path(conn, :index)
-    end
-  end
-
-  describe "with valid data for user who has only completed sign up steps 1&2" do
-    setup do
-      %User{
-        id: 123456,
-        first_name: "My",
-        last_name: "Name",
-        email: "abc@gmail.com",
-        password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
-        security_question: "Question?",
-        security_answer: "Answer"
-      } |> Repo.insert
-
-      :ok
-    end
-
-    test "/login :: create", %{conn: conn} do
-      user = Repo.get(User, 123456)
-      conn = post conn, login_path(conn, :create), login: @valid_attrs
-      assert get_flash(conn, :error) == "You must accept terms of service and privacy statement"
-      assert redirected_to(conn) == user_user_path(conn, :signup3, user)
-    end
-
-    test "/login :: create with invalid data" do
-      conn = post build_conn(), login_path(build_conn(), :create), login: @invalid_attrs
-      assert get_flash(conn, :error) == "Invalid email/password combination"
-      assert html_response(conn, 200) =~ "Email"
-    end
-  end
-
-  describe "without signed up user" do
-    test "/login :: create", %{conn: conn} do
-      conn = post conn, login_path(conn, :create), login: @valid_attrs
-      assert get_flash(conn, :error) == "Invalid email/password combination"
-      assert html_response(conn, 200) =~ "Email"
     end
   end
 end
