@@ -26,7 +26,7 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
         selection == "false"
       end)
 
-    query = Clinician |> ClinicianQuery.get_by_user_id(id)
+    query = Clinician |> ClinicianQuery.get_staff_for_service_user(id)
     case Repo.delete_all(query) do
       _ ->
         clinicians = make_clinicians(id, clinician_ids)
