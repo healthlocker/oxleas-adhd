@@ -28,8 +28,7 @@ defmodule Healthlocker.Router do
   scope "/super-admin", Healthlocker.OxleasAdhd, as: :oxleas_adhd do
     pipe_through [:browser] #, :super_admin
 
-    resources "/users", UserController, only: [:index, :new, :create, :edit, :update]
-    resources "/users", UserController, only: [:show] do
+    resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
       resources "/clinician-connection", ClinicianController, only: [:new, :create]
     end
     resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
@@ -39,19 +38,22 @@ defmodule Healthlocker.Router do
     end
   end
 
+  scope "/", Healthlocker.OxleasAdhd do
+    pipe_through [:browser]
+
+    resources "/users", UserController do
+      resources "/medication", MedicationController, only: [:show, :new, :create, :edit, :update]
+    end
+    resources "/about-me", AboutMeController, only: [:new, :edit] #, :create, :update
+  end
+
   # endpoints requiring a logged in user
   scope "/", Healthlocker do
     pipe_through [:browser, :logged_in]
 
-    resources "/users", OxleasAdhd.UserController, only: [:show] do
-      resources "/medication", OxleasAdhd.MedicationController, only: [:show, :new, :create, :edit, :update]
-    end
-    resources "/about-me", OxleasAdhd.AboutMeController, only: [:new, :edit] #, :create, :update
-
     resources "/posts", PostController, only: [:new, :create, :edit, :update] do
       post "/likes", PostController, :likes
     end
-
     resources "/coping-strategy", CopingStrategyController
     resources "/goal", GoalController
     resources "/toolkit", ToolkitController, only: [:index]
