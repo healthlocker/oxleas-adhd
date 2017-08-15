@@ -1,4 +1,4 @@
-defmodule Healthlocker.CareTeam.RoomController do
+defmodule Healthlocker.OxleasAdhd.CareTeam.RoomController do
   use Healthlocker.Web, :controller
   alias Healthlocker.Message
 

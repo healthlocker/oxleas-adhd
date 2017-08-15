@@ -1,4 +1,4 @@
-defmodule Healthlocker.CareTeam.ContactController do
+defmodule Healthlocker.OxleasAdhd.CareTeam.ContactController do
   use Healthlocker.Web, :controller
   alias OxleasAdhd.ClinicianQuery
   alias Healthlocker.{Clinician, User}

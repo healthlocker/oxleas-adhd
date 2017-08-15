@@ -1,4 +1,4 @@
-defmodule Healthlocker.Caseload.RoomController do
+defmodule Healthlocker.OxleasAdhd.Caseload.RoomController do
   alias Healthlocker.{EPJSUser, Message, Room, User, Slam.ServiceUser}
   use Healthlocker.Web, :controller
 

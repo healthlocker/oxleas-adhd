@@ -1,4 +1,4 @@
-defmodule Healthlocker.Caseload.UserController do
+defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
   use Healthlocker.Web, :controller
   use Timex
   alias Healthlocker.SleepTracker

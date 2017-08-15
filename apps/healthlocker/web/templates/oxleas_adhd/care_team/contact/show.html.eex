@@ -1,4 +1,4 @@
-<%= render Healthlocker.CareTeamView, "menu.html", assigns %>
+<%= render Healthlocker.OxleasAdhd.CareTeamView, "menu.html", assigns %>
 
 <div class="pt6">
   <%= if @current_user.role == "service_user" do %>

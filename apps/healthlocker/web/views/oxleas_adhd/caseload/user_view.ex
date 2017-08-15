@@ -1,4 +1,4 @@
-defmodule Healthlocker.Caseload.UserView do
+defmodule Healthlocker.OxleasAdhd.Caseload.UserView do
   use Healthlocker.Web, :view
 
   def format_nhs_number(nhs_number) do
