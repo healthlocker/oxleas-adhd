@@ -6,28 +6,29 @@ defmodule Healthlocker.LoginController do
 
   def index(conn, _) do
     conn
-    |> Healthlocker.SetView.set_view("LoginView")
     |> render("index.html")
   end
 
   def create(conn, %{"login" => %{"email" => email, "password" => pass}}) do
     case Auth.email_and_pass_login(conn, String.downcase(email), pass, repo: Repo) do
       {:ok, conn} ->
-        user = conn.assigns.current_user
-        if user.data_access == nil do
-          conn
-          |> Auth.logout()
-          |> put_flash(:error, "You must accept terms of service and privacy statement")
-          |> redirect(to: user_user_path(conn, :signup3, user))
-        else
-          conn
-          |> put_flash(:info, "Welcome to Healthlocker!")
-          |> redirect(to: toolkit_path(conn, :index))
+        case conn.assigns.current_user.role do
+          "super_admin" ->
+            conn
+            |> put_flash(:info, "Logged in as super admin")
+            |> redirect(to: oxleas_adhd_user_path(conn, :index))
+          "clinician" ->
+            conn
+            |> put_flash(:info, "Logged in as clinician")
+            |> redirect(to: page_path(conn, :index))
+          _ ->
+            conn
+            |> put_flash(:info, "Welcome to Headscape Focus!")
+            |> redirect(to: toolkit_path(conn, :index))
         end
       {:error, _reason, conn} ->
         conn
         |> put_flash(:error, "Invalid email/password combination")
-        |> Healthlocker.SetView.set_view("LoginView")
         |> render("index.html")
     end
   end
