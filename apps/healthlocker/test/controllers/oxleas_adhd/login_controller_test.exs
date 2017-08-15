@@ -1,4 +1,4 @@
-defmodule Healthlocker.LoginControllerTest do
+defmodule Healthlocker.OxleasAdhd.LoginControllerTest do
   use Healthlocker.ConnCase
   alias Healthlocker.User
 

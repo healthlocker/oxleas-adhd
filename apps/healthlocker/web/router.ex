@@ -100,7 +100,7 @@ defmodule Healthlocker.Router do
 
     get "/", PageController, :index
     resources "/feedback", FeedbackController, only: [:index, :create]
-    resources "/login", LoginController, only: [:index, :create, :delete]
+    resources "/login", OxleasAdhd.LoginController, only: [:index, :create, :delete]
     resources "/pages", PageController, only: [:index, :show]
     resources "/posts", PostController, only: [:show, :index]
     resources "/support", SupportController, only: [:index]

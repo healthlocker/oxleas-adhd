@@ -1,4 +1,4 @@
-defmodule Healthlocker.LoginController do
+defmodule Healthlocker.OxleasAdhd.LoginController do
   use Healthlocker.Web, :controller
 
   alias Healthlocker.User
