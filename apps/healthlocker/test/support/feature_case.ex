@@ -17,11 +17,9 @@ defmodule Healthlocker.FeatureCase do
 
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.Repo)
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Healthlocker.ReadOnlyRepo)
 
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Healthlocker.Repo, {:shared, self()})
-      Ecto.Adapters.SQL.Sandbox.mode(Healthlocker.ReadOnlyRepo, {:shared, self()})
     end
 
     metadata = Phoenix.Ecto.SQL.Sandbox.metadata_for(Healthlocker.Repo, self())

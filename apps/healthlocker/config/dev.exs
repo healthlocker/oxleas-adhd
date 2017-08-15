@@ -42,11 +42,4 @@ config :healthlocker, Healthlocker.Repo,
   hostname: "localhost",
   pool_size: 10
 
-config :healthlocker, Healthlocker.ReadOnlyRepo,
-  adapter: MssqlEcto,
-  hostname: System.get_env("READ_ONLY_HOSTNAME"),
-  username: System.get_env("READ_ONLY_USERNAME"),
-  password: System.get_env("READ_ONLY_PASSWORD"),
-  database: System.get_env("READ_ONLY_DATABASE")
-
 config :healthlocker, :analytics, Healthlocker.Analytics.Segment

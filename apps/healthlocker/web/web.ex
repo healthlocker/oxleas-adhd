@@ -31,7 +31,6 @@ defmodule Healthlocker.Web do
       use Phoenix.Controller
 
       alias Healthlocker.Repo
-      alias Healthlocker.ReadOnlyRepo
       import Ecto
       import Ecto.Query
 

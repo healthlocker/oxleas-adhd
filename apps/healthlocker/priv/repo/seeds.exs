@@ -186,5 +186,3 @@ Repo.insert!(%User{
 (1..200) |> Enum.each(fn _ -> Healthlocker.DemoDataSeeder.add_users end)
 (1..10) |> Enum.each(fn _ -> Healthlocker.DemoDataSeeder.add_clinicians end)
 (1..20) |> Enum.each(fn _ -> Healthlocker.DemoDataSeeder.add_carers end)
-
-Mix.Tasks.Healthlocker.Room.Create.run("run")
