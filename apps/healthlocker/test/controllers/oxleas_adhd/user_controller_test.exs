@@ -1,160 +1,97 @@
-# defmodule Healthlocker.OxleasAdhd.UserControllerTest do
-#   use Healthlocker.ConnCase
-#
-#   alias Healthlocker.User
-#   @step1_attrs %{
-#     email: "me@example.com",
-#     first_name: "My",
-#     last_name: "Name",
-#   }
-#   @step1_caps_attrs %{
-#     email: "User@example.com",
-#     first_name: "My",
-#     last_name: "Name",
-#   }
-#   @step2_attrs %{
-#     password: "abc123",
-#     password_confirmation: "abc123",
-#     security_answer: "B658H",
-#     security_question: "4"
-#   }
-#   @step3_attrs %{
-#     terms_conditions: true,
-#     privacy: true,
-#     data_access: true
-#   }
-#   @invalid_attrs %{}
-#
-#   test "loads index.html on /users", %{conn: conn} do
-#     Repo.insert %User{
-#       id: 123456,
-#       first_name: "My",
-#       last_name: "Name",
-#       email: "abc@gmail.com",
-#       password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
-#       security_question: "Question?",
-#       security_answer: "Answer"
-#     }
-#     conn = build_conn()
-#           |> assign(:current_user, Repo.get(User, 123456))
-#           |> get(user_path(conn, :index))
-#     assert html_response(conn, 200) =~ "Welcome! Get started by adding new content"
-#   end
-#
-#   test "renders form for new name and email", %{conn: conn} do
-#     conn = get conn, user_path(conn, :new)
-#     assert html_response(conn, 200) =~ "Sign up"
-#   end
-#
-#   test "renders form for new user password and security Q&A", %{conn: conn} do
-#     conn =
-#       case Repo.insert %User{
-#         email: "me@example.com",
-#         first_name: "My",
-#         last_name: "Name",
-#         } do
-#           {:ok, user} ->
-#             get conn, "/users/#{user.id}/signup2"
-#           end
-#     assert html_response(conn, 200) =~ "Password"
-#   end
-#
-#   test "renders form for accepting T&Cs, privacy, and data access request", %{conn: conn} do
-#     conn =
-#       case Repo.insert %User{
-#         email: "me@example.com",
-#         password: "password",
-#         security_question: "Favourite food?",
-#         security_answer: "pizza"
-#       } do
-#         {:ok, user} ->
-#           get conn, "/users/#{user.id}/signup3"
-#       end
-#     assert html_response(conn, 200) =~ "terms of service"
-#   end
-#
-#   test "creates resource and redirects when data is valid and not duplicate", %{conn: conn} do
-#     conn = post conn, user_path(conn, :create), user: @step1_attrs
-#     user = Repo.get_by(User, email: "me@example.com")
-#     assert redirected_to(conn) == "/users/#{user.id}/signup2"
-#     assert user
-#   end
-#
-#   test "converts email to lowercase, creates resource and redirects with valid non-duplicate data", %{conn: conn} do
-#     conn = post conn, user_path(conn, :create), user: @step1_caps_attrs
-#     user = Repo.get_by(User, email: "user@example.com")
-#     assert redirected_to(conn) == "/users/#{user.id}/signup2"
-#     assert user
-#   end
-#
-#   test "does not create duplicate resource and redirects when email is duplicate", %{conn: conn} do
-#     Repo.insert %User{email: "me@example.com"}
-#     conn = post conn, user_path(conn, :create), user: @step1_attrs
-#     user = Repo.get_by(User, email: "me@example.com")
-#     assert redirected_to(conn) == "/users/#{user.id}/signup2"
-#   end
-#
-#   test "does not create duplicate resource and redirects when user has completed step1 & 2 of signup", %{conn: conn} do
-#     Repo.insert %User{email: "me@example.com", password_hash: Comeonin.Bcrypt.hashpwsalt("password"), data_access: nil}
-#     conn = post conn, user_path(conn, :create), user: @step1_attrs
-#     user = Repo.get_by(User, email: "me@example.com")
-#     assert redirected_to(conn) == "/users/#{user.id}/signup3"
-#   end
-#
-#   test "does not create duplicate resource and redirects when user has previously signed up with false data_access", %{conn: conn} do
-#     Repo.insert %User{email: "me@example.com", password_hash: Comeonin.Bcrypt.hashpwsalt("password"), data_access: false}
-#     conn = post conn, user_path(conn, :create), user: @step1_attrs
-#     assert html_response(conn, 200) =~ "Sign up"
-#   end
-#
-#   test "does not create duplicate resource and redirects when user has previously signed up with true data_access", %{conn: conn} do
-#     Repo.insert %User{email: "me@example.com", password_hash: Comeonin.Bcrypt.hashpwsalt("password"), data_access: true}
-#     conn = post conn, user_path(conn, :create), user: @step1_attrs
-#     assert html_response(conn, 200) =~ "Sign up"
-#   end
-#
-#   test "creates resource and redirects when only email is input", %{conn: conn} do
-#     conn = post conn, user_path(conn, :create), user: %{email: "user@mail.com"}
-#     user = Repo.get_by(User, email: "user@mail.com")
-#     assert redirected_to(conn) == "/users/#{user.id}/signup2"
-#     assert user
-#   end
-#
-#   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-#     conn = post conn, user_path(conn, :create), user: @invalid_attrs
-#     assert html_response(conn, 200) =~ "Sign up"
-#   end
-#
-#   test "update resourse with password, security Q&A and redirects when data is valid", %{conn: conn} do
-#     Repo.insert %User{email: "me@example.com"}
-#     user = Repo.get_by(User, email: "me@example.com")
-#     conn = put conn, "/users/#{user.id}/#{:create2}", user: @step2_attrs
-#     assert redirected_to(conn) == "/users/#{user.id}/signup3"
-#   end
-#
-#   test "does not update resource with password, security Q&A and renders errors when data is invalid", %{conn: conn} do
-#     Repo.insert %User{email: "me@example.com"}
-#     user = Repo.get_by(User, email: "me@example.com")
-#     conn = put conn, "/users/#{user.id}/#{:create2}", user: @invalid_attrs
-#     assert html_response(conn, 200) =~ "Password"
-#   end
-#
-#   test "update resourse with data_access and redirects when data is valid", %{conn: conn} do
-#     Repo.insert %User{
-#       email: "me@example.com",
-#       password: "password",
-#       security_question: "Favourite food?",
-#       security_answer: "pizza"
-#     }
-#     user = Repo.get_by(User, email: "me@example.com")
-#     conn = put conn, "/users/#{user.id}/#{:create3}", user: @step3_attrs
-#     assert redirected_to(conn) == toolkit_path(conn, :index)
-#   end
-#
-#   test "does not update resource with data_access and renders errors when data is invalid", %{conn: conn} do
-#     Repo.insert %User{email: "me@example.com"}
-#     user = Repo.get_by(User, email: "me@example.com")
-#     conn = put conn, "/users/#{user.id}/#{:create3}", user: @invalid_attrs
-#     assert html_response(conn, 200) =~ "terms of service"
-#   end
-# end
+defmodule Healthlocker.OxleasAdhd.UserControllerTest do
+  use Healthlocker.ConnCase
+
+  alias Healthlocker.User
+  @su_attrs %{
+    first_name: "SU",
+    last_name: "SU",
+    dob: "01/01/1989",
+    email: "su@mail.com",
+    password: "password",
+    user_type: "new_service_user"
+  }
+  @carer_attrs %{
+    first_name: "Carer",
+    last_name: "Carer",
+    relationship: "Parent",
+    email: "carer@mail.com",
+    password: "password",
+    user_type: "new_carer"
+  }
+  @staff_attrs %{
+    first_name: "Staff",
+    last_name: "Staff",
+    job_role: "Clinician",
+    email: "staff@mail.com",
+    password: "password",
+    user_type: "new_staff"
+  }
+  @invalid_attrs %{}
+
+  describe "super-admin can access user routes" do
+    setup %{} do
+      user = %User{
+        id: 1234,
+        first_name: "My",
+        last_name: "Name",
+        email: "abc@gmail.com",
+        password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
+        role: "super_admin"
+      } |> Repo.insert!
+
+      {:ok, conn: build_conn() |> assign(:current_user, user)}
+    end
+
+    test "GET index", %{conn: conn} do
+      conn = get conn, user_path(conn, :index)
+      assert html_response(conn, 200) =~ "Accounts"
+    end
+
+    test "GET new for service user", %{conn: conn} do
+      conn = get conn, user_path(conn, :new), user_type: "new_service_user"
+      assert html_response(conn, 200) =~ "Add service user"
+    end
+
+    test "GET new for staff", %{conn: conn} do
+      conn = get conn, user_path(conn, :new), user_type: "new_staff"
+      assert html_response(conn, 200) =~ "Add staff"
+    end
+
+    test "GET new for carer", %{conn: conn} do
+      conn = get conn, user_path(conn, :new), user_type: "new_carer"
+      assert html_response(conn, 200) =~ "Add carer"
+    end
+
+    test "POST create for service_user", %{conn: conn} do
+      conn = post conn, user_path(conn, :create), user: @su_attrs
+      user = Repo.get_by(User, email: "su@mail.com")
+      assert redirected_to(conn) == user_clinician_path(conn, :new, user)
+      assert get_flash(conn, :info) == "Please pick the care team for this user"
+    end
+
+    test "POST create for carer", %{conn: conn} do
+      conn = post conn, user_path(conn, :create), user: @carer_attrs
+      user = Repo.get_by(User, email: "carer@mail.com")
+      assert redirected_to(conn) == user_carer_path(conn, :new, user)
+      assert get_flash(conn, :info) == "Please enter the service user this carer should connect to"
+    end
+
+    test "POST create for staff", %{conn: conn} do
+      conn = post conn, user_path(conn, :create), user: @staff_attrs
+      assert redirected_to(conn) == user_path(conn, :index)
+      assert get_flash(conn, :info) == "User created successfully"
+    end
+
+    test "GET edit service user", %{conn: conn} do
+      user = %User{
+        first_name: "SU",
+        last_name: "SU",
+        dob: "01/01/1989",
+        email: "su@mail.com",
+        password: "password",
+      } |> Repo.insert!
+      conn = get conn, user_path(conn, :edit, user)
+      assert html_response(conn, 200) =~ "Add service user"
+    end
+  end
+end
