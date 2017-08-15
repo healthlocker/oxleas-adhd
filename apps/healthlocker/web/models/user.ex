@@ -67,6 +67,11 @@ defmodule Healthlocker.User do
     |> registration_changeset
   end
 
+  def email_changeset(struct, params \\ :invalid) do
+    struct
+    |> cast(params, [:email])
+  end
+
   def update_changeset(struct, params \\ :invalid) do
     struct
     |> cast(params, [:email, :first_name, :last_name, :phone_number])
