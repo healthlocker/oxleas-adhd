@@ -12,7 +12,6 @@ defmodule Healthlocker.ServiceUserMessageTest do
       data_access: true,
       slam_id: 202
     )
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
 
     {:ok, %{session: session}}
   end

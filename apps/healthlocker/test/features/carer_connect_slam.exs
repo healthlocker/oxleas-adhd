@@ -19,14 +19,6 @@ defmodule Healthlocker.CarerConnectSlam do
       slam_id: 200
     )
 
-    Healthlocker.ReadOnlyRepo.insert!(%Healthlocker.EPJSUser{
-      Patient_ID: 200,
-      Surname: "Bow",
-      Forename: "Kat",
-      NHS_Number: "9434765919",
-      DOB: DateTime.from_naive!(~N[1989-01-01 00:00:00.00], "Etc/UTC"),
-    })
-
     session = session |> log_in
     {:ok, %{session: session}}
   end

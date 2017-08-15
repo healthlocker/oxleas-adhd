@@ -1,6 +1,6 @@
 defmodule Healthlocker.SUConnectSlam do
   use Healthlocker.FeatureCase
-  alias Healthlocker.{ReadOnlyRepo, EPJSUser, Room, UserRoom}
+  alias Healthlocker.{Room, UserRoom}
 
   setup %{session: session} do
     user = EctoFactory.insert(:user_with_defaults,
@@ -10,14 +10,6 @@ defmodule Healthlocker.SUConnectSlam do
       privacy: true,
       data_access: true
     )
-
-    ReadOnlyRepo.insert!(%EPJSUser{
-      Patient_ID: 200,
-      Surname: "Bow",
-      Forename: "Kat",
-      NHS_Number: "9434765919",
-      DOB: DateTime.from_naive!(~N[1989-01-01 00:00:00.00], "Etc/UTC"),
-    })
 
     session = session |> log_in
     {:ok, %{session: session}}

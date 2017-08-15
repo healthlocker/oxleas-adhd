@@ -21,8 +21,6 @@ defmodule Healthlocker.CarerMessageTest do
 
     Repo.insert!(%Healthlocker.Carer{carer: carer, caring: service_user})
 
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
-
     {:ok, %{session: session}}
   end
 

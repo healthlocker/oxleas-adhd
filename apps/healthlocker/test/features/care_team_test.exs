@@ -23,8 +23,6 @@ defmodule Healthlocker.CareTeamTest do
     relationship = %Carer{caring: bob, carer: carer}
     Repo.insert(relationship)
 
-    Mix.Tasks.Healthlocker.Room.Create.run("run")
-
     session = session |> log_in
     {:ok, %{session: session}}
   end
