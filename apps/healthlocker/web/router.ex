@@ -101,14 +101,6 @@ defmodule Healthlocker.Router do
     get "/", PageController, :index
     resources "/feedback", FeedbackController, only: [:index, :create]
     resources "/login", LoginController, only: [:index, :create, :delete]
-
-    resources "/users", UserController, only: [:index, :new, :create, :update] do
-      get "/signup2", UserController, :signup2
-      put "/create2", UserController, :create2
-      get "/signup3", UserController, :signup3
-      put "/create3", UserController, :create3
-    end
-
     resources "/pages", PageController, only: [:index, :show]
     resources "/posts", PostController, only: [:show, :index]
     resources "/support", SupportController, only: [:index]
