@@ -87,15 +87,10 @@ defmodule Healthlocker.Router do
     resources "/toolkit", ToolkitController, only: [:index]
     resources "/account", AccountController, only: [:index]
     put "/account/update", AccountController, :update
-    put "/account/disconnect", AccountController, :disconnect
     get "/account/consent", AccountController, :consent
     put "/account/consent/update", AccountController, :update_consent
-    get "/account/security/edit", AccountController, :edit_security
-    put "/account/security/update", AccountController, :update_security
     get "/account/password/edit", AccountController, :edit_password
     put "/account/password/update", AccountController, :update_password
-    get "/account/slam", AccountController, :slam
-    put "/account/check-slam", AccountController, :check_slam
     resources "/components", ComponentController, only: [:index]
     resources "/messages", MessageController, only: [:index]
     resources "/sleep-tracker", SleepTrackerController, only: [:new, :create]
