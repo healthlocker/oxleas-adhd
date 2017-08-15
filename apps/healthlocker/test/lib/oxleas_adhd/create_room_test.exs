@@ -1,7 +1,7 @@
 defmodule Healthlocker.OxleasAdhd.CreateRoomTest do
   use Healthlocker.ModelCase, async: true
-  alias Healthlocker.{User, Repo, Clinician, ClinicianRooms,
-    ClinicianQuery, CreateRoom}
+  alias Healthlocker.{User, Repo, Clinician, ClinicianRooms, OxleasAdhd.CreateRoom}
+  alias OxleasAdhd.ClinicianQuery
 
   describe "success paths for connecting as slam su" do
     setup %{} do
@@ -21,9 +21,9 @@ defmodule Healthlocker.OxleasAdhd.CreateRoomTest do
         security_answer: "Answer"
       } |> Repo.insert!
 
-      query = Clinician |> ClinicianQuery.get_by_user_id(1234)
+      query = Clinician |> ClinicianQuery.get_staff_for_service_user(1234)
 
-      multi = CreateRoom  .connect_clinicians_and_create_rooms(
+      multi = CreateRoom.connect_clinicians_and_create_rooms(
         user,
         [1235],
         [%{caring_id: 1234, clinician_id: 1235}],

@@ -1,6 +1,6 @@
 defmodule Healthlocker.ComponentViewTest do
   use Healthlocker.ConnCase, async: true
-  alias Healthlocker.{ComponentView,User}
+  alias Healthlocker.{ComponentView, User}
 
   # @valid_changeset <action: nil, changes: %{}, errors: [], valid?: false>
   describe "changeset with and without errors" do
@@ -81,18 +81,6 @@ defmodule Healthlocker.ComponentViewTest do
 
   test "full_name gives empty string with first & last name are nil" do
     actual = ComponentView.full_name(%{first_name: nil, last_name: nil})
-    expected = ""
-    assert actual == expected
-  end
-
-  test "epjs_full_name gives the full name of clinician" do
-    actual = ComponentView.epjs_full_name(%{Staff_Name: "First Last"})
-    expected = "First Last"
-    assert actual == expected
-  end
-
-  test "epjs_full_name gives empty string with first & last name are nil" do
-    actual = ComponentView.epjs_full_name(%{Staff_Name: nil})
     expected = ""
     assert actual == expected
   end
