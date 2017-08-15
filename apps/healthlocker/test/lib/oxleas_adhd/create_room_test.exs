@@ -1,6 +1,6 @@
-defmodule OxleasAdhd.CreateRoomTest do
-  use OxleasAdhd.ModelCase, async: true
-  alias OxleasAdhd.{User, Repo, Clinician, ClinicianRooms,
+defmodule Healthlocker.OxleasAdhd.CreateRoomTest do
+  use Healthlocker.ModelCase, async: true
+  alias Healthlocker.{User, Repo, Clinician, ClinicianRooms,
     ClinicianQuery, CreateRoom}
 
   describe "success paths for connecting as slam su" do

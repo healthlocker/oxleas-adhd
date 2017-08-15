@@ -1,5 +1,5 @@
-defmodule OxleasAdhd.ServiceUser do
-  alias OxleasAdhd.Repo
+defmodule Healthlocker.OxleasAdhd.ServiceUser do
+  alias Healthlocker.Repo
 
   @moduledoc """
   If the user has role of service_user, then the same user is returned.

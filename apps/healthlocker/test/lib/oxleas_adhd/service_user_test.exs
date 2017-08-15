@@ -1,6 +1,6 @@
-defmodule OxleasAdhd.ServiceUserTest do
-  use OxleasAdhd.ModelCase, async: true
-  alias OxleasAdhd.{User, Carer, ServiceUser}
+defmodule Healthlocker.OxleasAdhd.ServiceUserTest do
+  use Healthlocker.ModelCase, async: true
+  alias Healthlocker.{User, Carer, ServiceUser}
 
   setup %{} do
     user = %User{

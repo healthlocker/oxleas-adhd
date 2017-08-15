@@ -1,6 +1,6 @@
-defmodule OxleasAdhd.CreateCarerRoom do
+defmodule Healthlocker.OxleasAdhd.CreateCarerRoom do
   alias Ecto.Multi
-  alias OxleasAdhd.{Room, UserRoom, Repo, ClinicianRooms, Carer}
+  alias Healthlocker.{Room, UserRoom, Repo, ClinicianRooms, Carer}
 
   def connect_carers_and_create_rooms(carer, service_user, clinician_ids) do
     Multi.new

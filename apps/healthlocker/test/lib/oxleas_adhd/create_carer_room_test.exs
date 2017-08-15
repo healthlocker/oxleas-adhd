@@ -1,6 +1,6 @@
-defmodule OxleasAdhd.CreateCarerRoomTest do
-  use OxleasAdhd.ModelCase, async: true
-  alias OxleasAdhd.{User, CreateCarerRoom, ClinicianRooms, Room}
+defmodule Healthlocker.OxleasAdhd.CreateCarerRoomTest do
+  use Healthlocker.ModelCase, async: true
+  alias Healthlocker.{User, CreateCarerRoom, ClinicianRooms, Room}
 
   describe "success paths for connecting carer" do
     setup %{} do
