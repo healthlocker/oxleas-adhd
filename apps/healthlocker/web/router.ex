@@ -21,6 +21,10 @@ defmodule Healthlocker.Router do
     plug Healthlocker.Plugs.RequireSuperAdmin
   end
 
+  pipeline :staff do
+    plug Healthlocker.Plugs.RequireStaff
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -39,7 +43,14 @@ defmodule Healthlocker.Router do
   end
 
   scope "/", Healthlocker.OxleasAdhd do
+    pipe_through [:browser, :staff]
+    resources "/caseload", CaseloadController, only: [:index]
+
+  end
+
+  scope "/", Healthlocker.OxleasAdhd do
     pipe_through [:browser]
+    resources "/login", LoginController, only: [:index, :create, :delete]
 
     resources "/users", UserController do
       resources "/medication", MedicationController, only: [:show, :new, :create, :edit, :update]
@@ -100,14 +111,12 @@ defmodule Healthlocker.Router do
 
     get "/", PageController, :index
     resources "/feedback", FeedbackController, only: [:index, :create]
-    resources "/login", OxleasAdhd.LoginController, only: [:index, :create, :delete]
     resources "/pages", PageController, only: [:index, :show]
     resources "/posts", PostController, only: [:show, :index]
     resources "/support", SupportController, only: [:index]
     resources "/tips", TipController, only: [:index]
     resources "/password", PasswordController, only: [:new, :create, :edit, :update]
     resources "/epjs-button", ButtonController, only: [:index]
-    resources "/caseload", CaseloadController, only: [:index]
   end
 
   scope "/", Healthlocker do
