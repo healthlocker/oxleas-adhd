@@ -88,12 +88,4 @@ defmodule Healthlocker.ComponentView do
       ""
     end
   end
-
-  def epjs_full_name(user) do
-    if user."Staff_Name" do
-      user."Staff_Name"
-    else
-      ""
-    end
-  end
 end
