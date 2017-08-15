@@ -1,7 +1,7 @@
 defmodule Healthlocker.Caseload.UserControllerTest do
   use Healthlocker.ConnCase
 
-  alias Healthlocker.{User, ReadOnlyRepo, EPJSUser, EPJSPatientAddressDetails, EPJSTeamMember, Room, UserRoom}
+  alias Healthlocker.{User, Room, UserRoom}
 
   describe "clinician current_user is assigned" do
     setup do
@@ -26,36 +26,6 @@ defmodule Healthlocker.Caseload.UserControllerTest do
         security_answer: "Answer",
         role: "clinician"
       } |> Repo.insert
-
-      %EPJSTeamMember{
-        Staff_ID: 12345678,
-        Patient_ID: 201,
-        Staff_Name: "Robert MacMurray",
-        Job_Title: "GP",
-        Team_Member_Role_Desc: "Care team lead",
-        Email: "robert_macmurray@nhs.co.uk"
-      } |> ReadOnlyRepo.insert
-
-      %EPJSUser{
-        Patient_ID: 201,
-        Surname: "Hernandez",
-        Forename: "Angela",
-        Title: "Ms.",
-        Patient_Name: "Angela Hernandez",
-        Trust_ID: "fYXSryfK7N",
-        NHS_Number: "LbweJ2oXsNl14ayv37d7",
-        DOB: DateTime.from_naive!(~N[1988-05-24 00:00:00.00], "Etc/UTC"),
-      } |> ReadOnlyRepo.insert
-
-      %EPJSPatientAddressDetails{
-        Patient_ID: 201,
-        Address_ID: 1,
-        Address1: "123 High Street",
-        Address2: "London",
-        Address3: "UK",
-        Post_Code: "E1 8UW",
-        Tel_home: "02085 123 456"
-      } |> ReadOnlyRepo.insert
 
       %Room{
         id: 1,
