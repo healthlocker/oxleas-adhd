@@ -18,7 +18,7 @@ defmodule Healthlocker.OxleasAdhd.CarerController do
       nil ->
         conn
         |> put_flash(:error, "Could not find service user")
-        |> redirect(to: oxleas_adhd_user_carer_path(conn, :new, carer))
+        |> redirect(to: user_carer_path(conn, :new, carer))
       _ ->
         conn
         |> render("confirm.html", carer: carer, service_user: service_user)

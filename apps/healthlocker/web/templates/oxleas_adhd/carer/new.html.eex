@@ -31,7 +31,7 @@
 </div>
 
 <div class="pv4">
-  <%= form_for @conn, oxleas_adhd_user_carer_path(@conn, :submit_SU_details, @carer), [as: :su_info], fn f -> %>
+  <%= form_for @conn, user_carer_path(@conn, :submit_SU_details, @carer), [as: :su_info], fn f -> %>
     <div class="w-50-ns mb3 dib-ns pr2-ns">
       <%= label f, :su_first_name, "Service users's first name", class: "f5 b db mb2" %>
       <%= text_input f, :su_first_name, class: "br2 ph3 pv2 input-reset bn bg-light-gray w-100 " %>

@@ -34,7 +34,7 @@
 
 <p>Connect&nbsp;<span class="bb b"><%= @carer.first_name %>&nbsp;<%= @carer.last_name %></span>&nbsp;to&nbsp;<span class="bb b"><%= @service_user.first_name %>&nbsp;<%= @service_user.last_name %></span></p>
 
-<%= form_for @conn, oxleas_adhd_user_carer_path(@conn, :confirm_SU_details, @carer), [as: :su_info], fn f -> %>
+<%= form_for @conn, user_carer_path(@conn, :confirm_SU_details, @carer), [as: :su_info], fn f -> %>
   <%= hidden_input f, :service_user_id, value: @service_user.id %>
   <div class="tr mt4">
     <%= submit "Confirm & save", class: "shadow-hover f4 dib ph4 pv3 b--none br3 input-reset bg-yellow" %>

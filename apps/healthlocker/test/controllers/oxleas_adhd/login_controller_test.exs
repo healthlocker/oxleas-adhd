@@ -72,7 +72,7 @@ defmodule Healthlocker.OxleasAdhd.LoginControllerTest do
     test "/login :: create with valid data for super admin", %{conn: conn} do
       conn = post conn, login_path(conn, :create), login: @super_admin_attrs
       assert get_flash(conn, :info) == "Logged in as super admin"
-      assert redirected_to(conn) == oxleas_adhd_user_path(conn, :index)
+      assert redirected_to(conn) == user_path(conn, :index)
     end
 
     test "/login :: create with valid data for clinician", %{conn: conn} do

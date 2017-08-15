@@ -1,7 +1,7 @@
 <div class="flex flex-row items-start justify-between">
-  <%= link "1. Add Staff", to: oxleas_adhd_user_path(@conn, :new, user_type: "new_staff"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
-  <%= link "2. Add Service User", to: oxleas_adhd_user_path(@conn, :new, user_type: "new_service_user"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
-  <%= link "3. Add Carer", to: oxleas_adhd_user_path(@conn, :new, user_type: "new_carer"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
+  <%= link "1. Add Staff", to: user_path(@conn, :new, user_type: "new_staff"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
+  <%= link "2. Add Service User", to: user_path(@conn, :new, user_type: "new_service_user"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
+  <%= link "3. Add Carer", to: user_path(@conn, :new, user_type: "new_carer"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
 </div>
 
 <h3 class="normal mv4 bt bw2 b--light-gray pt4">Accounts</h3>

@@ -23,7 +23,7 @@ defmodule Healthlocker.OxleasAdhd.UserController do
           {:ok, service_user} ->
             conn
             |> put_flash(:info, "Please pick the care team for this user")
-            |> redirect(to: oxleas_adhd_user_clinician_path(conn, :new, service_user))
+            |> redirect(to: user_clinician_path(conn, :new, service_user))
           {:error, changeset} ->
             conn
             |> put_flash(:error, "User could not be created")
@@ -34,7 +34,7 @@ defmodule Healthlocker.OxleasAdhd.UserController do
           {:ok, carer} ->
             conn
             |> put_flash(:info, "Please enter the service user this carer should connect to")
-            |> redirect(to: oxleas_adhd_user_carer_path(conn, :new, carer))
+            |> redirect(to: user_carer_path(conn, :new, carer))
           {:error, changeset} ->
             conn
             |> put_flash(:error, "Carer could not be created")

@@ -16,7 +16,7 @@ defmodule Healthlocker.OxleasAdhd.LoginController do
           "super_admin" ->
             conn
             |> put_flash(:info, "Logged in as super admin")
-            |> redirect(to: oxleas_adhd_user_path(conn, :index))
+            |> redirect(to: user_path(conn, :index))
           "clinician" ->
             conn
             |> put_flash(:info, "Logged in as clinician")

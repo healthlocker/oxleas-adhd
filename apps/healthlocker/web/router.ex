@@ -28,7 +28,8 @@ defmodule Healthlocker.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/super-admin", Healthlocker.OxleasAdhd, as: :oxleas_adhd do
+  # routes for oxleas only super admin can access
+  scope "/super-admin", Healthlocker.OxleasAdhd do
     pipe_through [:browser] #, :super_admin
 
     resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
@@ -41,23 +42,40 @@ defmodule Healthlocker.Router do
     end
   end
 
+  # routes for oxleas only staff can access
   scope "/", Healthlocker.OxleasAdhd do
     pipe_through [:browser, :staff]
     resources "/caseload", CaseloadController, only: [:index]
 
+    scope "/caseload", Caseload, as: :caseload do
+      resources "/users", UserController, only: [:show] do
+        resources "/rooms", RoomController, only: [:show]
+      end
+    end
   end
 
+  # logged in routes for oxleas
   scope "/", Healthlocker.OxleasAdhd do
-    pipe_through [:browser]
-    resources "/login", LoginController, only: [:index, :create, :delete]
+    pipe_through [:browser, :logged_in]
 
     resources "/users", UserController do
       resources "/medication", MedicationController, only: [:show, :new, :create, :edit, :update]
     end
     resources "/about-me", AboutMeController, only: [:new, :edit] #, :create, :update
+    scope "/care-team", CareTeam, as: :care_team do
+      resources "/rooms", RoomController, only: [:show]
+      resources "/contacts", ContactController, only: [:show], singleton: true
+    end
   end
 
-  # endpoints requiring a logged in user
+  # logged out routes for oxleas
+  scope "/", Healthlocker.OxleasAdhd do
+    pipe_through [:browser]
+
+    resources "/login", LoginController, only: [:index, :create, :delete]
+  end
+
+  # generic routes requiring a logged in user
   scope "/", Healthlocker do
     pipe_through [:browser, :logged_in]
 
@@ -83,16 +101,7 @@ defmodule Healthlocker.Router do
     resources "/sleep-tracker", SleepTrackerController, only: [:new, :create]
     resources "/care-plan", CarePlanController, only: [:index]
 
-    scope "/care-team", CareTeam, as: :care_team do
-      resources "/rooms", RoomController, only: [:show]
-      resources "/contacts", ContactController, only: [:show], singleton: true
-    end
 
-    scope "/caseload", Caseload, as: :caseload do
-      resources "/users", UserController, only: [:show] do
-        resources "/rooms", RoomController, only: [:show]
-      end
-    end
 
     resources "/slam", SlamController, only: [:new, :create]
     resources "/symptom", SymptomController, only: [:new, :create]
@@ -104,7 +113,7 @@ defmodule Healthlocker.Router do
     resources "/diary", DiaryController, only: [:new, :create, :edit, :update]
   end
 
-  # endpoints not requiring a logged in user
+  # generic routes not requiring a logged in user
   scope "/", Healthlocker do
     pipe_through :browser
 
