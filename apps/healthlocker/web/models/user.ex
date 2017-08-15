@@ -83,12 +83,6 @@ defmodule Healthlocker.User do
     |> validate_required([:first_name, :last_name])
   end
 
-  def security_question(struct, params \\ :invalid) do
-    struct
-    |> cast(params, [:security_question, :security_answer])
-    |> validate_required([:security_question, :security_answer])
-  end
-
   def update_data_access(struct, params \\ :invalid) do
     struct
     |> cast(params, [:data_access, :c4c, :comms_consent])
@@ -122,7 +116,7 @@ defmodule Healthlocker.User do
     end
   end
 
-  def registration_changeset(changeset) do
+  defp registration_changeset(changeset) do
     changeset
     |> update_change(:email, &(String.downcase(&1)))
     |> validate_format(:email, ~r/@/)

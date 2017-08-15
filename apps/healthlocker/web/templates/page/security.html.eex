@@ -4,8 +4,5 @@
       <div class="mt6">
         <%= link_secondary "Update password", to: account_path(@conn, :edit_password) %>
       </div>
-      <div class="mt4">
-        <%= link_secondary "Update security question", to: account_path(@conn, :edit_security) %>
-      </div>
     </section>
 </div>
