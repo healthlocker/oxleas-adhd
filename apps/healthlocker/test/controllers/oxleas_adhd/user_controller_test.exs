@@ -26,7 +26,6 @@ defmodule Healthlocker.OxleasAdhd.UserControllerTest do
     password: "password",
     user_type: "new_staff"
   }
-  @invalid_attrs %{}
 
   describe "super-admin can access user routes" do
     setup %{} do

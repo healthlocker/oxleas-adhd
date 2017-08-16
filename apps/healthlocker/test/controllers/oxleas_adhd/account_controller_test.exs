@@ -1,8 +1,7 @@
 defmodule Healthlocker.OxleasAdhd.AccountControllerTest do
   use Healthlocker.ConnCase
 
-  alias Healthlocker.{User, Room, UserRoom,
-                      ClinicianRooms, Message, Room}
+  alias Healthlocker.User
 
   @valid_attrs %{
     first_name: "My",
