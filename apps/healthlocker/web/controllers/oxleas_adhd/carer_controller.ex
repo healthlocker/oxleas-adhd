@@ -1,6 +1,6 @@
 defmodule Healthlocker.OxleasAdhd.CarerController do
   use Healthlocker.Web, :controller
-  alias Healthlocker.{User, OxleasAdhd.CreateCarerRoom}
+  alias Healthlocker.{User, Clinician, OxleasAdhd.CreateCarerRoom}
   alias OxleasAdhd.{ClinicianQuery, UserQuery}
 
   def new(conn, %{"user_id" => user_id}) do
@@ -30,7 +30,8 @@ defmodule Healthlocker.OxleasAdhd.CarerController do
 
     carer = Repo.get(User, carer_id)
     service_user = Repo.get(User, service_user_id)
-    clinician_ids = Clinician
+    clinician_ids =
+      Clinician
       |> ClinicianQuery.get_clinician_ids_for_user(service_user_id)
       |> Repo.all
     multi = CreateCarerRoom.connect_carers_and_create_rooms(carer, service_user, clinician_ids)
