@@ -33,8 +33,6 @@ defmodule Healthlocker.Mixfile do
         :segment,
         :faker,
         :appsignal,
-        :mssqlex,
-        :mssql_ecto,
         :edeliver,
         :earmark,
         :bamboo_smtp,
@@ -72,8 +70,6 @@ defmodule Healthlocker.Mixfile do
      {:appsignal, "~> 1.0"},
      {:wallaby, "~> 0.16.1"},
      {:ecto_factory, "~> 0.0.6"},
-     {:mssql_ecto, "~> 0.1"},
-     {:mssqlex, "~> 0.6"},
      {:edeliver, "~> 1.4.1"},
      {:oxleas_adhd, in_umbrella: true},
      {:distillery, "~> 1.4", runtime: false, warn_missing: false}
