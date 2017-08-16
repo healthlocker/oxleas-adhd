@@ -1,6 +1,36 @@
 <%= if @service_user == @user do %>
-  <%= render "menu.html", assigns %>
-  <div class=" pt-10em hl-dark-blue w-100">
+<%= render "menu.html", assigns %>
+  <div class=" pt6 hl-dark-blue w-100">
+
+    <div class="w-100 mw6 center flex items-end justify-between">
+      <div class="tc w-40 dib fr">
+        <%= link to: about_me_path(@conn, :new) do %>
+          <%= img_tag("/images/Toolkit_diary.png",
+        class: "w-100") %>
+        <% end %>
+      </div>
+
+      <div class="tc w-40 dib fr">
+        <%= link to: tracker_path(@conn, :index) do %>
+          <%= img_tag("/images/pill-bottle.png",
+        class: "w-100") %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="w-100 mw6 center flex items-start justify-between pb5">
+      <div class="tc w-40 dib">
+        <%= link to: about_me_path(@conn, :new) do %>
+          <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">About Me</span>
+        <% end %>
+      </div>
+      <div class="tc w-40 dib fr">
+        <%= link to: tracker_path(@conn, :index) do %>
+          <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
+        <% end %>
+      </div>
+    </div>
+
     <table class="hl-bg-light-yellow br3 w-80 tl center pa3">
       <tr>
         <th class="b tl pv2 mw3">Date of Birth: </th>

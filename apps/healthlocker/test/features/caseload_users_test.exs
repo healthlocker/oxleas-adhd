@@ -109,7 +109,7 @@ defmodule Healthlocker.CaseloadUsersTest do
     |> resize_window(768, 1024)
     |> click(Query.link("Caseload"))
     |> click(Query.link("Tony Daly"))
-    |> click(Query.link("Details and contacts"))
+    |> click(Query.link("Details and Meds"))
     |> take_screenshot
 
     assert session |> has_text?("Phone number")
@@ -129,7 +129,7 @@ defmodule Healthlocker.CaseloadUsersTest do
     |> resize_window(768, 1024)
     |> click(Query.link("Caseload"))
     |> click(Query.link("Jimmy Smits (friend/family/carer)"))
-    |> click(Query.link("Details and contacts"))
+    |> click(Query.link("Details and Meds"))
     |> take_screenshot
 
     assert session |> has_text?("Jimmy Smits")
