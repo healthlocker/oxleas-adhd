@@ -1,18 +1,30 @@
 defmodule Healthlocker.ServiceUserMessageTest do
   use Healthlocker.FeatureCase
+  alias Healthlocker.{Room, User, UserRoom}
 
   setup %{session: session} do
-    EctoFactory.insert(:user,
+    %User{
+      id: 1234,
+      first_name: "My",
+      last_name: "Name",
       email: "tony@dwyl.io",
-      first_name: "Tony",
-      last_name: "Daly",
+      dob: "01/01/2000",
       password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
-      terms_conditions: true,
-      privacy: true,
-      data_access: true,
-      slam_id: 202
-    )
+      role: "service_user"
+    } |> Repo.insert!
 
+    %Room{
+      id: 1,
+      name: "service-user-care-team:1236"
+    } |> Repo.insert
+
+    %UserRoom{
+      id: 1,
+      user_id: 1234,
+      room_id: 1
+    } |> Repo.insert
+
+    session = session |> log_in
     {:ok, %{session: session}}
   end
 
@@ -23,7 +35,6 @@ defmodule Healthlocker.ServiceUserMessageTest do
 
   test "view messages", %{session: session} do
     session
-    |> log_in("tony@dwyl.io")
     |> click(@nav)
     |> click(@care_team_link)
 
@@ -33,7 +44,6 @@ defmodule Healthlocker.ServiceUserMessageTest do
 
   test "send messages", %{session: session} do
     session
-    |> log_in("tony@dwyl.io")
     |> click(@nav)
     |> click(@care_team_link)
     |> fill_in(@message_input, with: "Hi there")
@@ -43,7 +53,6 @@ defmodule Healthlocker.ServiceUserMessageTest do
 
   test "can click on contacts", %{session: session} do
     session
-    |> log_in("tony@dwyl.io")
     |> click(@nav)
     |> click(@care_team_link)
     |> click(@contacts_link)
