@@ -16,7 +16,7 @@ defmodule Healthlocker.CaseloadUsersTest do
       id: 1235
     })
 
-    service_user_1 = EctoFactory.insert(:user,
+    EctoFactory.insert(:user,
       email: "tony@dwyl.io",
       first_name: "Tony",
       last_name: "Daly",
@@ -28,7 +28,7 @@ defmodule Healthlocker.CaseloadUsersTest do
       id: 12345
     )
 
-    carer = EctoFactory.insert(:user,
+    EctoFactory.insert(:user,
       email: "carer@dwyl.io",
       first_name: "Jimmy",
       last_name: "Smits",
