@@ -5,7 +5,9 @@ defmodule OxleasUmbrella.Mixfile do
     [apps_path: "apps",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     aliases: aliases()
+   ]
   end
 
   # Dependencies can be Hex packages:
@@ -22,5 +24,9 @@ defmodule OxleasUmbrella.Mixfile do
   # and cannot be accessed from applications inside the apps folder
   defp deps do
     [{:distillery, "~> 1.4", runtime: false}]
+  end
+
+  defp aliases do
+    ["test": ["ecto.create --quiet", "ecto.migrate", "test"]]
   end
 end
