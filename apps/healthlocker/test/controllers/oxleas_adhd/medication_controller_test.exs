@@ -44,7 +44,14 @@ defmodule Healthlocker.OxleasAdhd.MedicationControllerTest do
       user_id: 4321
     } |> Repo.insert!
 
-    {:ok, user: user, user2: user2, medication: medication}
+    staff = %User{
+      id: 12345,
+      email: "staff@mail.com",
+      role: "clinician"
+    } |> Repo.insert!
+
+    {:ok, user: user, user2: user2, medication: medication,
+      conn: build_conn() |> assign(:current_user, staff)}
   end
 
   test "GET show", %{conn: conn, user2: user, medication: medication} do

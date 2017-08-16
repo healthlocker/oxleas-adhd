@@ -69,6 +69,14 @@ defmodule Healthlocker.OxleasAdhd.UserControllerTest do
         role: "super_admin"
       } |> Repo.insert!
 
+      %User{
+        first_name: "test",
+        last_name: "test",
+        job_role: "clinician",
+        email: "test@example.com",
+        password: "password"
+      } |> Repo.insert!
+
       {:ok, conn: build_conn() |> assign(:current_user, user)}
     end
 
@@ -110,7 +118,7 @@ defmodule Healthlocker.OxleasAdhd.UserControllerTest do
 
     test "POST create for staff", %{conn: conn} do
       conn = post conn, user_path(conn, :create), user: @staff_attrs
-      user = Repo.get_by(User, email: "clinician@mail.com")
+      user = Repo.get_by(User, email: "staff@mail.com")
       assert user
       assert redirected_to(conn) == user_path(conn, :index)
       assert get_flash(conn, :info) == "User created successfully"
