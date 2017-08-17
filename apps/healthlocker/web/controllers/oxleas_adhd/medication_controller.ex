@@ -3,6 +3,11 @@ defmodule Healthlocker.OxleasAdhd.MedicationController do
   alias Healthlocker.{Medication, User}
   alias OxleasAdhd.{MedicationQuery}
 
+  def index(conn, %{"user_id" => user_id}) do
+    render(conn, "faq.html", user: user_id)
+  end
+
+
   def show(conn, %{"user_id" => user_id, "id" => id}) do
     user = Repo.get!(User, user_id)
     medication = Medication
