@@ -90,7 +90,7 @@
 
     <div class="tc w-40 dib fr">
       <%= link to: about_me_path(@conn, :new) do %>
-        <%= img_tag("/images/Toolkit_diary.png",
+        <%= img_tag("/images/Toolkit_about.png",
       class: "w-100") %>
       <% end %>
     </div>

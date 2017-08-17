@@ -5,13 +5,13 @@
     <div class="w-100 mw6 center flex items-end justify-between">
       <div class="tc w-40 dib fr">
         <%= link to: about_me_path(@conn, :new) do %>
-          <%= img_tag("/images/Toolkit_diary.png",
+          <%= img_tag("/images/Toolkit_about.png",
         class: "w-100") %>
         <% end %>
       </div>
 
       <div class="tc w-40 dib fr">
-        <%= link to: tracker_path(@conn, :index) do %>
+        <%= link to: user_medication_path(@conn, :edit, @user.id, @medication.id) do %>
           <%= img_tag("/images/pill-bottle.png",
         class: "w-100") %>
         <% end %>
@@ -25,7 +25,7 @@
         <% end %>
       </div>
       <div class="tc w-40 dib fr">
-        <%= link to: tracker_path(@conn, :index) do %>
+        <%= link to: user_medication_path(@conn, :edit, @user.id, @medication.id) do %>
           <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
         <% end %>
       </div>
