@@ -9,8 +9,8 @@
     personal data.
 </p>
 <p>
-    If you are the parent of a child who is under the age of 16, this policy refers 
-    to data you enter on behalf of your child or data added to the platform on your 
+    If you are the parent of a child who is under the age of 16, this policy refers
+    to data you enter on behalf of your child or data added to the platform on your
     child's named account by professionals.
   </p>
 
@@ -90,21 +90,21 @@
 
   <h3>Is your information safe?</h3>
   <p>
-    There is no current ability to directly transfer data electronically out of 
-    the Headscape Focus platform to other systems used by Oxleas NHS Foundation 
+    There is no current ability to directly transfer data electronically out of
+    the Headscape Focus platform to other systems used by Oxleas NHS Foundation
     Trust. The platform is hosted on a secure Azure server managed by South London
     and Maudsley (SLaM) NHS Foundation Trust on behalf of the ICS ADHD Team, Oxleas
-    NHS Foundation Trust, for the duration of the initial trial of the platform.  
+    NHS Foundation Trust, for the duration of the initial trial of the platform.
 </p>
 <p>
-    Access to the platform by SLaM IT staff will be limited to technical activity to 
-    ensure the safety and integrity of the platform hosted on the Azure server, and 
-    not related to a specific individual's account or the information with in it. 
+    Access to the platform by SLaM IT staff will be limited to technical activity to
+    ensure the safety and integrity of the platform hosted on the Azure server, and
+    not related to a specific individual's account or the information with in it.
 </p>
 <p>
     This statement will be updated and will you be notified should the platform hosting
-    arrangements, or capability change such that data can be directly transferred 
-    electronically out of the platform. 
+    arrangements, or capability change such that data can be directly transferred
+    electronically out of the platform.
 </p>
 
   <h3>How do we respond to legal requests?</h3>
@@ -123,7 +123,7 @@
   <p>
     If you have any additional questions regarding this policy, please feel
     free to contact us at:
-  <%= link_to("Oxl-tr.focusadhd@nhs.net", to: "Oxl-tr.focusadhd@nhs.net"), 
+  <%= link "Oxl-tr.focusadhd@nhs.net", to: "Oxl-tr.focusadhd@nhs.net", 
      class: "hl-aqua flex-wrap underline" %>
   </p>
   <p>
