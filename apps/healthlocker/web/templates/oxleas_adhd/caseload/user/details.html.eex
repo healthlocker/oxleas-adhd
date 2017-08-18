@@ -11,9 +11,14 @@
       </div>
 
       <div class="tc w-40 dib fr">
-        <%= link to: user_medication_path(@conn, :edit, @user.id, @medication.id) do %>
-          <%= img_tag("/images/pill-bottle.png",
-        class: "w-100") %>
+        <%= if @medication do %>
+          <%= link to: user_medication_path(@conn, :edit, @user.id, @medication.id) do %>
+            <%= img_tag "/images/pill-bottle.png", class: "w-100" %>
+          <% end %>
+        <% else %>
+          <%= link to: user_medication_path(@conn, :new, @current_user) do %>
+            <%= img_tag "/images/pill-bottle.png", class: "w-100" %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -25,8 +30,14 @@
         <% end %>
       </div>
       <div class="tc w-40 dib fr">
-        <%= link to: user_medication_path(@conn, :edit, @user.id, @medication.id) do %>
-          <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
+        <%= if @medication do %>
+          <%= link to: user_medication_path(@conn, :edit, @user.id, @medication.id) do %>
+            <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
+          <% end %>
+        <% else %>
+          <%= link to: user_medication_path(@conn, :new, @current_user) do %>
+            <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
+          <% end %>
         <% end %>
       </div>
     </div>

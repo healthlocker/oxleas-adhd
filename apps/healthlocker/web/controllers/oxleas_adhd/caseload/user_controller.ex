@@ -39,10 +39,10 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
   end
 
   defp get_details(id, date) do
-    user = Repo.get!(User, id)
+    user = Repo.get!(User, id) |> Repo.preload(:medication)
     room = Repo.one! assoc(user, :rooms)
     service_user = ServiceUser.for(user)
-    medication = Repo.one! assoc(user, :medication)
+    medication = user.medication
 
     goals = Goal
           |> Goal.get_goals(id)
