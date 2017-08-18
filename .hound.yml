@@ -1,0 +1,3 @@
+elixir:
+  enabled: true
+  config_file: .credo.exs
