@@ -1,0 +1,317 @@
+/* This file is for your main application css. */
+
+/*fonts*/
+body {
+  font-family: 'century-gothic', sans-serif;
+  color: #242F4F;
+  min-height: 100%;
+  height: 100%;
+}
+
+.default-font {
+  font-family: 'century-gothic', sans-serif;
+}
+
+button {
+  border: none;
+}
+
+/*elements*/
+a {
+  outline: none;
+}
+
+input {
+  height: 35px;
+  background-color: #3D3D3D;
+  opacity: 10%;
+  border-radius: 5px;
+  font-family: 'century-gothic', sans-serif;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border:1px solid #25bdc3;
+}
+
+.link {
+  display: inline-block;
+}
+
+.checkbox {
+  width:20px;
+  height:20px;
+}
+
+label.star::before {
+  top: 1px;
+  left: 150px;
+  content: url(/images/star_unselected.svg);
+  display: block;
+  position: absolute;
+  width:20px;
+  height:20px;
+}
+
+.checkbox.star:checked~label::before {
+  content: url(/images/star_selected.svg);
+  display: block;
+  position: absolute;
+ }
+
+ label.complete::before {
+   top: 0px;
+   left: 150px;
+   content: url(/images/Goal-Pending.svg);
+   display: inline-block;
+   position: absolute;
+   width: 20px;
+   height: 20px;
+ }
+
+ .checkbox.complete:checked~label::before {
+   content: url(/images/Goal-Achieved.svg);
+   display: inline-block;
+   position: absolute;
+  }
+
+select:focus {
+  outline: none;
+  border:1px solid #25bdc3;
+}
+
+.sidenav {
+    width: 0;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    text-decoration: none;
+    transition: 0.3s;
+    display: block;
+}
+
+.container {
+  min-height:100vh;
+  position:relative;
+}
+
+.text-wrap {
+  word-wrap:break-word;
+}
+
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+.miniIcon {
+  width: 25px;
+  right: -15px;
+  top: -15px;
+  border: white solid;
+  border-radius: 50%;
+}
+
+#body {
+  padding-bottom: 80px;
+}
+
+/* vendor fix for tachyons hover-shadow effect. Shadow is displayed
+using pseudo-element and does not match the border radius of the
+button itself */
+.shadow-hover:after {
+  border-radius: .5rem;
+}
+
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:80px;
+ }
+
+/* color palette */
+.hl-aqua {
+  color: #25bdc3;
+}
+
+.hl-bg-aqua {
+  background-color: #25BDC3;
+}
+
+.hl-bg-light-aqua {
+  background-color: #B8EBED
+}
+
+.bg-beta-yellow {
+  background-color: #FFED66;
+}
+
+.hl-pink {
+  color: #EC4067;
+}
+
+.hl-bg-pink {
+  background-color: #EC4067;
+}
+
+.hl-dark-blue {
+  color: #242F4F;
+}
+
+.hl-bg-dark-blue {
+  background-color: #242F4F;
+}
+
+.hl-grey {
+  color: #EBEBEB;
+}
+
+.hl-bg-grey {
+  background-color: #EBEBEB;
+}
+
+.hl-yellow {
+  color: #FDC300;
+}
+
+.hl-bg-yellow {
+  background-color: #FDC300;
+}
+
+.hl-bg-light-yellow {
+  background-color: #FEECB5;
+}
+
+.hl-bg-success {
+  background-color: #FEF3CC;
+}
+
+.hl-dark-grey {
+  color: #242F4F;
+  opacity: 50%;
+}
+
+.hl-bg-dark-grey {
+  background-color: #3D3D3D;
+}
+
+.hl-bg-white {
+  background-color: white;
+}
+
+.hl-terracotta {
+  color: #ED6A5A;
+}
+
+.hl-bg-terracotta {
+  background-color: #ED6A5A;
+}
+
+.hl-bg-error {
+  background-color: #FBD9E1;
+}
+
+.b--hl-aqua {
+  border-width: medium;
+  border-color: #25bdc3;
+}
+
+.b--hl-yellow {
+  border-color: #FDC300;
+}
+
+.b--hl-pink {
+  border-color: #EC4067;
+}
+
+.b--hl-dark-blue {
+  border-color: #242F4F;
+}
+
+.b--hl-grey {
+  border-color: #EBEBEB;
+}
+
+.hl-input-error {
+  outline: none;
+  border: 1px solid #EC4067;
+}
+
+.hl-shadow-hover:hover {
+  box-shadow:0px 2px 3px 1px rgba( 0, 0, 0, 0.2 )
+}
+
+.s-top {
+  top: 2.3rem;
+}
+
+.bm-top {
+  top: 1rem;
+}
+
+.pt-10em {
+  padding-top: 10em;
+}
+
+.pt-9em {
+  padding-top: 9em;
+}
+
+/* Messages */
+
+#message-feed {
+  min-height: 15rem;
+  max-height: 25rem;
+}
+
+#message-input:focus {
+  outline: none;
+  border: none;
+}
+
+.bottom-1-6 {
+  bottom: 2.4rem;
+}
+
+.left--1-1 {
+  left: -1.1rem;
+}
+/* Styleguide */
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+.min-checkbox-height {
+  min-height: 33.5px;
+}
+
+.pt-10em {
+  padding-top: 10em;
+}
+
+.mt-3rem {
+  margin-top: 3rem;
+}
+
+.ml-20 {
+  margin-left: 20%;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.word-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.h0-6 {
+  height: 0.6rem;
+}
