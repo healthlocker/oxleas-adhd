@@ -1,0 +1,42 @@
+<p class="normal b f4">Connect to service user</p>
+
+<div class="bb b--light-silver bw1 pb4">
+
+  <div class="dib-ns mb3 w-50">
+    <p class="dark-blue f5 b mt0 mb2">first name</p>
+    <p class="f5 mv3">
+      <%= @carer.first_name %>
+    </p>
+  </div><div class="dib-ns mb3 w-50">
+    <p class="dark-blue f5 b mt0 mb2">last name</p>
+    <p class="f5 mv3">
+      <%= @carer.last_name %>
+    </p>
+  </div>
+
+  <div class="mb4">
+    <p class="dark-blue f5 b mt0 mb2">relationship to service user</p>
+    <p class="f5 mv3">
+      <%= @carer.relationship %>
+    </p>
+  </div>
+
+  <div class="mb4">
+    <p class="dark-blue f5 b mt0 mb2">email</p>
+    <p class="f5 mv3">
+      <%= @carer.email %>
+    </p>
+  </div>
+
+</div>
+
+<p class="normal b f4">Are you sure?</p>
+
+<p>Connect&nbsp;<span class="bb b"><%= @carer.first_name %>&nbsp;<%= @carer.last_name %></span>&nbsp;to&nbsp;<span class="bb b"><%= @service_user.first_name %>&nbsp;<%= @service_user.last_name %></span></p>
+
+<%= form_for @conn, user_carer_path(@conn, :confirm_SU_details, @carer), [as: :su_info], fn f -> %>
+  <%= hidden_input f, :service_user_id, value: @service_user.id %>
+  <div class="tr mt4">
+    <%= submit "Confirm & save", class: "shadow-hover f4 dib ph4 pv3 b--none br3 input-reset bg-yellow" %>
+  </div>
+<% end %>
