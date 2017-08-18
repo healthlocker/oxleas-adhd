@@ -1,0 +1,2 @@
+<%= render Healthlocker.OxleasAdhd.CareTeamView, "menu.html", assigns %>
+<%= render Healthlocker.RoomView, "_room.html", assigns %>
