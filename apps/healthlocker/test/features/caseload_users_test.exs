@@ -109,7 +109,7 @@ defmodule Healthlocker.CaseloadUsersTest do
     |> resize_window(768, 1024)
     |> click(Query.link("Caseload"))
     |> click(Query.link("Tony Daly"))
-    |> click(Query.link("Details and contacts"))
+    |> click(Query.link("Details and Meds"))
     |> take_screenshot
 
     assert session |> has_text?("Phone number")
@@ -151,7 +151,7 @@ defmodule Healthlocker.CaseloadUsersTest do
     |> resize_window(768, 1024)
     |> click(Query.link("Caseload"))
     |> click(Query.link("Tony Daly"))
-    |> click(Query.link("Goals and strategies"))
+    |> click(Query.link("Goals and Strategies"))
     |> take_screenshot
 
     assert has_text?(session, "No goals yet created")
