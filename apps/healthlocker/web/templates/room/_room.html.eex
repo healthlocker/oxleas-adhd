@@ -24,8 +24,47 @@
       </p>
       <p class="i hl-pink">
         Messaging should not be used in emergency situations. If you need urgent help or advice, go to <%= link_to( "Get support", to: "/support") %>.
-        Your message will be visible to the whole care team. Do not expect an immediate response.
+        Your message will be visible to the whole care team. Do not expect an immediate response, <strong>the standard availability of the team is Monday to Friday 
+        9am until 5pm currently.</strong>
       </p>
+      <p>
+      The NHS has a zero tolerance policy on violence and aggression towards staff. 
+      This policy applies to the chat function on this platform.
+  </p>
+  <p>
+      <strong>Chat rules</strong>
+  </p>
+  <p>
+      As with any interaction with the team, no aggressive or offensive language will be tolerated and may result in access
+        to the clinical team via the platform being removed. In such circumstances you will still be able to access the other 
+        functions on your account. Further appropriate action to safeguard staff, young people and others may be taken by the 
+        team depending on the circumstances.  
+  </p>
+  <p>
+        Adding any offensive or illicit material to the account in any form may also result in access to the clinical team via
+        the platform being removed and appropriate actions being taken with regards to child protection and/or informing the police.
+   </p>
+   <p>
+        If we have any concerns about the safety of a child through the chat or content added to the child's account, we will:
+<ul>
+   <li>if a child is under 16, we will initially telephone the parent or care giver of the child to explore the concerns further
+        </li>
+   <li>if they are over 16, we will initially call the young person directly, and if we are unable to reach them, we will call the 
+     primary parent or care giver for that young person.
+        </li>
+ </ul>
+</p>
+<p>
+  As in any situation, whether in person, over the phone, or on the platform, when the team have concerns about the safety of
+  child or another, we may share those concerns with other agencies involved in health, child protection, safeguarding or law enforcement. 
+</p>
+<p>
+  As with any phone call conversation to our service, the ADHD team will make a summary of the important points of conversation on 
+  to the electronic health records system used in Oxleas.  
+</p>
+<p>
+  Neither the ADHD team or you will be able to delete messages on this platform.
+</p>
     <%= @current_user.role != "clinician" -> %>
       <p class="hl-pink">
         Messaging should <strong>not</strong> be used in emergency situations.
@@ -34,7 +73,46 @@
         Your message will be visible to
         <%= if @service_user == @current_user, do: "your" %>
         <%= if @service_user != @current_user, do: "their" %> whole
-        care team. Do not expect an immediate response.
-      </p>
+        care team. Do not expect an immediate response, <strong>the standard availability of the team is Monday to Friday 
+        9am until 5pm currently.</strong>
+   </p>
+   <p>
+      The NHS has a zero tolerance policy on violence and aggression towards staff. 
+      This policy applies to the chat function on this platform.
+   </p>
+   <p> 
+        <strong>Chat rules</strong>
+   </p>
+   <p>
+      As with any interaction with the team, no aggressive or offensive language will be tolerated and may result in access
+        to the clinical team via the platform being removed. In such circumstances you will still be able to access the other 
+        functions on your account. Further appropriate action to safeguard staff, young people and others may be taken by the 
+        team depending on the circumstances.  
+  </p>
+  <p>
+        Adding any offensive or illicit material to the account in any form may also result in access to the clinical team via
+        the platform being removed and appropriate actions being taken with regards to child protection and/or informing the police.
+</p>
+<p>
+        If we have any concerns about the safety of a child through the chat or content added to the child's account, we will:
+<ul>
+   <li>if a child is under 16, we will initially telephone the parent or care giver of the child to explore the concerns further
+        </li>
+   <li>if they are over 16, we will initially call the young person directly, and if we are unable to reach them, we will call the 
+     primary parent or care giver for that young person.
+        </li>
+ </ul>
+</p>
+<p>
+ As in any situation, whether in person, over the phone, or on the platform, when the team have concerns about the safety of
+  child or another, we may share those concerns with other agencies involved in health, child protection, safeguarding or law enforcement. 
+</p>
+<p>
+  As with any phone call conversation to our service, the ADHD team will make a summary of the important points of conversation on 
+  to the electronic health records system used in Oxleas.  
+</p>
+<p>
+  Neither the ADHD team or you will be able to delete messages on this platform.
+</p>
   <% end %>
 </div>
