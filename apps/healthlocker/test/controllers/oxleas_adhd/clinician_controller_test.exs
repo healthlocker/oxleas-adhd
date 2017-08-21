@@ -43,6 +43,11 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
     assert html_response(conn, 200) =~ "Connect to staff"
   end
 
+  test "GET :edit renders edit.html", %{conn: conn, user: user} do
+    conn = get conn, user_clinician_path(conn, :edit, user, "1")
+    assert html_response(conn, 200) =~ "Edit Service User"
+  end
+
   test "POST /create with valid attributes", %{conn: conn, user: user} do
     conn = post conn, user_clinician_path(conn, :create, user), clinician: @valid_attrs
     assert redirected_to(conn, 302) =~ user_path(conn, :index)

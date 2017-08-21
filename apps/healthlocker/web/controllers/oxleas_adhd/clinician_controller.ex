@@ -3,6 +3,17 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
   alias Healthlocker.{User, Clinician, OxleasAdhd.CreateRoom}
   alias OxleasAdhd.{ClinicianQuery, UserQuery}
 
+  def edit(conn, %{"user_id" => user_id}) do
+    service_user = Repo.get!(User, user_id)
+    clinicians = User
+              |> UserQuery.get_by_user_type("clinician")
+              |> Repo.all
+    changeset = Clinician.changeset(%Clinician{})
+
+    conn
+    |> render("edit.html", user: service_user, changeset: changeset, clinicians: clinicians)
+  end
+
   def new(conn, %{"user_id" => user_id}) do
     service_user = Repo.get!(User, user_id)
     clinicians = User

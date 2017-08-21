@@ -1,0 +1,4 @@
+<h3 class="tc normal mb5 b dark-blue">Edit Service User</h3>
+
+<%= render "form.html", changeset: @changeset, user: @user, clinicians: @clinicians,
+    action: user_clinician_path(@conn, :create, @user)%>
