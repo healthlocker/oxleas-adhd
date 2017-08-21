@@ -21,7 +21,9 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
     strategies: details.strategies, room: details.room,
     service_user: details.service_user, sleep_data: details.sleep_data,
     date: details.date, symptom_data: details.symptom_data,
-    diary_data: details.diary_data, merged_data: details.merged_data)
+    diary_data: details.diary_data, merged_data: details.merged_data,
+    medication: details.medication
+    )
   end
 
   def show(conn, %{"id" => id, "section" => section}) do
@@ -32,13 +34,15 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
     strategies: details.strategies, room: details.room,
     service_user: details.service_user, sleep_data: details.sleep_data,
     date: details.date, symptom_data: details.symptom_data,
-    diary_data: details.diary_data, merged_data: details.merged_data)
+    diary_data: details.diary_data, merged_data: details.merged_data,
+    medication: details.medication)
   end
 
   defp get_details(id, date) do
-    user = Repo.get!(User, id)
+    user = Repo.get!(User, id) |> Repo.preload(:medication)
     room = Repo.one! assoc(user, :rooms)
     service_user = ServiceUser.for(user)
+    medication = user.medication
 
     goals = Goal
           |> Goal.get_goals(id)
@@ -61,6 +65,6 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
     %{user: user, room: room, service_user: service_user, goals: goals,
     strategies: strategies, sleep_data: sleep_data,
     date: date, symptom_data: symptom_data, diary_data: diary_data,
-    merged_data: merged_data}
+    merged_data: merged_data, medication: medication}
   end
 end
