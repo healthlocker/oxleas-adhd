@@ -1,8 +1,8 @@
-APP="oxleas_umbrella"
+APP="oxleas_adhd"
 
 BUILD_HOST="51.140.117.78"
 BUILD_USER="root"
-BUILD_AT="/home/oxleasadmin/oxleas_umbrella/builds"
+BUILD_AT="/home/oxleasadmin/oxleas_adhsh/builds"
 
 PRODUCTION_HOSTS="51.140.117.78"
 PRODUCTION_USER="root"
