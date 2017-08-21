@@ -1,7 +1,6 @@
 defmodule Healthlocker.OxleasAdhd.CreateRoomTest do
   use Healthlocker.ModelCase, async: true
-  alias Healthlocker.{User, Repo, Clinician, ClinicianRooms, OxleasAdhd.CreateRoom}
-  alias OxleasAdhd.ClinicianQuery
+  alias Healthlocker.{User, Repo, ClinicianRooms, OxleasAdhd.CreateRoom}
 
   describe "success paths for connecting as slam su" do
     setup %{} do
@@ -21,13 +20,10 @@ defmodule Healthlocker.OxleasAdhd.CreateRoomTest do
         security_answer: "Answer"
       } |> Repo.insert!
 
-      query = Clinician |> ClinicianQuery.get_staff_for_service_user(1234)
-
       multi = CreateRoom.connect_clinicians_and_create_rooms(
         user,
         [1235],
-        [%{caring_id: 1234, clinician_id: 1235}],
-        query
+        [%{caring_id: 1234, clinician_id: 1235}]
       )
 
       {:ok, result} = Repo.transaction(multi)
@@ -36,16 +32,10 @@ defmodule Healthlocker.OxleasAdhd.CreateRoomTest do
     end
 
     test "dry connect slam run", %{multi: multi} do
-      assert [delete_clinicians: {:delete_all, _, []},
-              insert_clinicians: {:insert_all, _, _clinicians, []},
+      assert [insert_clinicians: {:insert_all, _, _clinicians, []},
               room: {:insert, _, []},
               user_room: {:run, _},
               clinician_room: {:run, _}] = Ecto.Multi.to_list(multi)
-    end
-
-    test "delete_clinicians in multi contains number of clinicians deleted", %{result: result} do
-      # this should be 0 for the test as no clinicians are there to remove
-      assert result.delete_clinicians == {0, nil}
     end
 
     test "insert_clinicians in multi contains number of clinicians inserted", %{result: result} do
