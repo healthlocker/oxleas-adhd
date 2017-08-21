@@ -16,7 +16,7 @@
             <%= img_tag "/images/pill-bottle.png", class: "w-100" %>
           <% end %>
         <% else %>
-          <%= link to: user_medication_path(@conn, :new, @current_user) do %>
+          <%= link to: user_medication_path(@conn, :new, @user) do %>
             <%= img_tag "/images/pill-bottle.png", class: "w-100" %>
           <% end %>
         <% end %>
