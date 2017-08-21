@@ -33,7 +33,7 @@ defmodule Healthlocker.OxleasAdhd.MedicationController do
       {:ok, _medication} ->
         conn
         |> put_flash(:info, "Medication added")
-        |> redirect(to: user_path(conn, :index))
+        |> redirect(to: caseload_user_path(conn, :show, user, section: "details"))
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Error adding medication")
@@ -61,7 +61,7 @@ defmodule Healthlocker.OxleasAdhd.MedicationController do
       {:ok, _medication} ->
         conn
         |> put_flash(:info, "Medication edited")
-        |> redirect(to: user_path(conn, :index))
+        |> redirect(to: caseload_user_path(conn, :show, user, section: "details"))
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Error editing medication")
