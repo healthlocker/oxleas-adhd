@@ -315,3 +315,9 @@ code {
 .h0-6 {
   height: 0.6rem;
 }
+
+@media screen and (min-width: 48em) and (max-width: 64em) {
+  .w-15-m {
+    width: 15%;
+  }
+}

@@ -65,7 +65,7 @@ defmodule Healthlocker.Router do
     put "/account/password/update", AccountController, :update_password
 
     resources "/users", UserController do
-      resources "/medication", MedicationController, only: [:show, :new, :create, :edit, :update]
+      resources "/medication", MedicationController
     end
     resources "/about-me", AboutMeController, only: [:new, :edit] #, :create, :update
     scope "/care-team", CareTeam, as: :care_team do
