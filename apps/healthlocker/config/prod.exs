@@ -17,7 +17,7 @@ config :healthlocker, Healthlocker.Endpoint,
   version: Mix.Project.config[:version],
   http: [port: 4000],
   debug_errors: true,
-  url: [host: "localhost"],
+  url: [host: "localhost"]
   # http: [port: System.get_env("PORT")],
   # url: [scheme: "http", host: System.get_env("HEROKU_URL")], # port: 443],
   # force_ssl: [rewrite_on: [:x_forwarded_proto]],
