@@ -37,4 +37,3 @@ release :oxleas_adhd do
     oxleas_adhd: :permanent
   ]
 end
-
