@@ -44,7 +44,6 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
     service_user = ServiceUser.for(user)
     medication = user.medication
 
-
     goals = Goal
           |> Goal.get_goals(id)
           |> Repo.all
