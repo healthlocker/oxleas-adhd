@@ -6,6 +6,6 @@ defmodule Healthlocker.ViewHomepageTest do
       |> visit("/")
       |> find(Query.css("#body"))
 
-    assert has_text?(page_body, "Welcome to Healthlocker")
+    assert has_text?(page_body, "Stories")
   end
 end

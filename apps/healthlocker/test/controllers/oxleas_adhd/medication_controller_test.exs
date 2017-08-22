@@ -50,12 +50,23 @@ defmodule Healthlocker.OxleasAdhd.MedicationControllerTest do
       role: "clinician"
     } |> Repo.insert!
 
+    medication2 = %Medication{
+      id: 4322,
+      name: "ABC",
+      dosage: "1mg",
+      frequency: "twice",
+      other_medicine: "none",
+      allergies: "none",
+      past_medication: "none",
+      user_id: 12345
+    } |> Repo.insert!
+
     {:ok, user: user, user2: user2, medication: medication,
-      conn: build_conn() |> assign(:current_user, staff)}
+      conn: build_conn() |> assign(:current_user, staff), medication2: medication2}
   end
 
-  test "GET show", %{conn: conn, user2: user, medication: medication} do
-    conn = get conn, user_medication_path(conn, :show, user, medication)
+  test "GET show", %{conn: conn, medication2: medication2} do
+    conn = get conn, user_medication_path(conn, :show, conn.assigns.current_user, medication2)
     assert html_response(conn, 200) =~ "Medication"
   end
 
@@ -66,7 +77,7 @@ defmodule Healthlocker.OxleasAdhd.MedicationControllerTest do
 
   test "POST create is successful with valid attrs", %{conn: conn, user: user} do
     conn = post conn, user_medication_path(conn, :create, user), medication: @valid_attrs
-    assert redirected_to(conn, 302) =~ user_path(conn, :index)
+    assert redirected_to(conn, 302) =~ caseload_user_path(conn, :show, user, section: "details")
   end
 
   test "POST create is unsuccessful with invalid attrs", %{conn: conn, user: user} do
@@ -82,7 +93,7 @@ defmodule Healthlocker.OxleasAdhd.MedicationControllerTest do
 
   test "PUT update is successful with valid attrs", %{conn: conn, user2: user, medication: medication} do
     conn = put conn, user_medication_path(conn, :update, user, medication), medication: @valid_attrs
-    assert redirected_to(conn, 302) =~ user_path(conn, :index)
+    assert redirected_to(conn, 302) =~ caseload_user_path(conn, :show, user, section: "details")
   end
 
   test "PUT update is unsuccessful with invalid attrs", %{conn: conn, user2: user, medication: medication} do

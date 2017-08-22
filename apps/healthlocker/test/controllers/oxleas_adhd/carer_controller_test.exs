@@ -3,6 +3,7 @@ defmodule Healthlocker.OxleasAdhd.CarerControllerTest do
   alias Healthlocker.{User, Carer}
 
   setup %{} do
+
     %User{
       id: 1,
       first_name: "test",
@@ -21,7 +22,16 @@ defmodule Healthlocker.OxleasAdhd.CarerControllerTest do
       password: "password"
     } |> Repo.insert!
 
-    { :ok, conn: build_conn() |> assign(:current_user, Repo.get(User, 1)) }
+    %User{
+      id: 3,
+      first_name: "super",
+      last_name: "admin",
+      email: "super_admin@example.com",
+      password: "password",
+      role: "super_admin"
+    } |> Repo.insert!
+
+    { :ok, conn: build_conn() |> assign(:current_user, Repo.get(User, 3)) }
   end
 
   @valid_attrs %{
@@ -37,7 +47,6 @@ defmodule Healthlocker.OxleasAdhd.CarerControllerTest do
   }
 
   describe "endpoints in carer controller work as expected" do
-
     test "get new html at when a carer has been created", %{conn: conn} do
       conn = get conn, "/super-admin/users/1/carer-connection/new"
       assert html_response(conn, 200)

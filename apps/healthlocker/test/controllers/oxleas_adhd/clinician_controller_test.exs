@@ -35,7 +35,13 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
       password: "password"
     } |> Repo.insert!
 
-    {:ok, user: user}
+    admin = %User{
+      id: 1237,
+      email: "super@admin.com",
+      role: "super_admin"
+    } |> Repo.insert!
+
+    {:ok, user: user, conn: build_conn() |> assign(:current_user, admin)}
   end
 
   test "GET /new renders new.html", %{conn: conn, user: user} do
