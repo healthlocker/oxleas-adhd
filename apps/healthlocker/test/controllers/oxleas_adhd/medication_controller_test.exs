@@ -101,4 +101,9 @@ defmodule Healthlocker.OxleasAdhd.MedicationControllerTest do
     assert html_response(conn, 200) =~ "Edit Medication"
     assert get_flash(conn, :error) == "Error editing medication"
   end
+
+  test "FAQs only page for service_user's without any medication data", %{conn: conn, user: user} do
+    conn = get conn, user_medication_path(conn, :index, user)
+    assert html_response(conn, 200) =~ "Medication FAQs"
+  end
 end

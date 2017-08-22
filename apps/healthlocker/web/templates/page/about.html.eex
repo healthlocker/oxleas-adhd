@@ -32,19 +32,19 @@
      be made to <%= link "CAMHS", to: "http://oxleas.nhs.uk/services/service/child-and-adolescent-mental-1/",
           class: "hl-aqua flex-wrap underline" %> in the first instance.
   </p>
-  <p>  
-        If a child appears to have social communication difficulties, for example possible ASD, a GP referral should be 
+  <p class="i">If a child appears to have social communication difficulties, for example possible ASD, a GP referral should be 
         made to <%= link "Community Paediatrics", to: "http://oxleas.nhs.uk/services/service/community-paediatrics-medical-/",
         class: "hl-aqua flex-wrap underline" %> in the first instance.
    </p>
      
-   <p>Who are the team?</p>
- <p>Dr Nicola Reynolds, Highly Specialist Clinical Psychologist / Clinical Lead and Team Manager<br>   
-    Dr James Woollard, Consultant Psychiatrist<br>   
-    Christine Hutchings, Clinical Nurse Specialist<br>  
-    Claire Stott, Clinical Nurse Specialist<br>   
-    Mayoor Dhokia, Assistant Psychologist.<br>  
- </p>
+  <p class="b">Who are the team?</p>
+<ul>
+      <li>Dr Nicola Reynolds, Highly Specialist Clinical Psychologist / Clinical Lead and Team Manager</li>   
+      <li>Dr James Woollard, Consultant Psychiatrist</li>   
+      <li>Christine Hutchings, Clinical Nurse Specialist</li>  
+      <li>Claire Stott, Clinical Nurse Specialist</li>  
+      <li>Mayoor Dhokia, Assistant Psychologist.</li>
+    </ul>
    
  <p class="b">What is Headscape Focus and who is it for?</p>
  <p>If your child is under the care of the Greenwich Integrated Children's Service ADHD team from Oxleas NHS Foundation 
@@ -57,7 +57,7 @@
    share their tracking, goals and coping strategies with the team. 
  </p>
  <p> 
-    If you need help or support using Healthlocker, please "send a message" to your team.
+    If you need help or support using Healthlocker, please <%= link "send a message", to: "/care-team/contacts", class: "hl-aqua flex-wrap underline" %>.
  </p>
  <p>
    If you are staff in the ADHD team at Oxleas, you can send and receive messages with service users and their carers and 

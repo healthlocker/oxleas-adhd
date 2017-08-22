@@ -2,9 +2,8 @@ defmodule Healthlocker.OxleasAdhd.CreateRoom do
   alias Ecto.Multi
   alias Healthlocker.{Room, UserRoom, Repo, Clinician, ClinicianRooms}
 
-  def connect_clinicians_and_create_rooms(user, clinician_ids, clinicians, query) do
+  def connect_clinicians_and_create_rooms(user, clinician_ids, clinicians) do
     Multi.new
-    |> Multi.delete_all(:delete_clinicians, query)
     |> Multi.insert_all(:insert_clinicians, Clinician, clinicians)
     |> Multi.insert(:room, Room.changeset(%Room{}, %{
       name: "service-user-care-team:" <> Integer.to_string(user.id)
