@@ -3,8 +3,15 @@ defmodule Healthlocker.OxleasAdhd.UserController do
   alias Healthlocker.User
 
   def index(conn, _params) do
+    query = OxleasAdhd.UserQuery.get_by_user_type(User, "service_user")
+    users =
+      Repo.all(query)
+      |> Enum.map(fn user ->
+        user |> Repo.preload(:carers)
+      end )
+    staff = User |> OxleasAdhd.UserQuery.get_by_user_type("clinician") |> Repo.all
     conn
-    |> render("index.html")
+    |> render("index.html", users: users, staff: staff)
   end
 
   def new(conn, %{"user_type" => user_type}) do

@@ -10,10 +10,12 @@
   <%= if Kernel.length(@care_team) == 0 do %>
     <p class="hl-pink">No staff are associated with your account at this time.</p>
     <p class="hl-pink">
-      If you are currently receiving support from SLaM, either call your team
-      or email: <%= link "healthlocker@slam.nhs.uk",
-      to: "mailto:healthlocker@slam.nhs.uk", class: "hl-aqua underline di" %>
+      If you are currently receiving support from the Oxleas ADHD team and would
+      like to use Headscape Focus with your care team email:
+      <%= link "oxl-tr.focusadhd@nhs.net",
+      to: "mailto:oxl-tr.focusadhd@nhs.net", class: "hl-aqua underline di" %>
     </p>
+
   <% end %>
   <%= for member <- @care_team do %>
     <div class="w-100 hl-bg-grey pa3 mv3 br3">
