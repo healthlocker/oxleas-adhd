@@ -1,6 +1,6 @@
 defmodule Healthlocker.OxleasAdhd.MedicationController do
   use Healthlocker.Web, :controller
-  alias Healthlocker.{Medication, User}
+  alias Healthlocker.{Medication, User, Plugs.RequireCorrectUser}
   alias OxleasAdhd.{MedicationQuery}
 
   def index(conn, %{"user_id" => user_id}) do
@@ -15,6 +15,7 @@ defmodule Healthlocker.OxleasAdhd.MedicationController do
                 |> Repo.one
 
     conn
+    |> RequireCorrectUser.redirect_to_home(user_id)
     |> render("show.html", user: user, medication: medication)
   end
 
