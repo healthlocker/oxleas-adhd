@@ -57,7 +57,7 @@
    share their tracking, goals and coping strategies with the team. 
  </p>
  <p> 
-    If you need help or support using Healthlocker, please "send a message" to your team.
+    If you need help or support using Healthlocker, please <%= link "send a message", to: "/care-team/contacts", class: "hl-aqua flex-wrap underline" %>.
  </p>
  <p>
    If you are staff in the ADHD team at Oxleas, you can send and receive messages with service users and their carers and 
