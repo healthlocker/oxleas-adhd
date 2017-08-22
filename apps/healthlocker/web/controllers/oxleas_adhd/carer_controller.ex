@@ -38,8 +38,8 @@ defmodule Healthlocker.OxleasAdhd.CarerController do
     case Repo.transaction(multi) do
       {:ok, _connect} ->
         conn
-        |> put_flash(:info, "Carer connected to Service user")
-        |> redirect(to: page_path(conn, :index))
+        |> put_flash(:info, "Carer connected to service user")
+        |> redirect(to: user_path(conn, :index))
       {:error, _error} ->
         conn
         |> put_flash(:error, "Carer could not connect")

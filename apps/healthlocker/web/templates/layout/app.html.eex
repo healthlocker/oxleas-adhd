@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Healthlocker</title>
+    <title>Headscape Focus</title>
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.6.1/css/tachyons.min.css"/>
     <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
@@ -28,7 +28,7 @@
 
     <div class="hl-bg-pink pa1">
       <div class="pa1">
-        <p class="di b white">Oxleas is in progress -</p>
+        <p class="di b white">Work in progress -</p>
         <small>
           <%= link "share feedback and suggestions",
           to: feedback_path(@conn, :index), class: "white" %>
@@ -85,8 +85,6 @@
                              to: login_path(@conn, :delete, @current_user),
                              method: "delete" %>
         <%= else %>
-          <%= link "Sign up", class: "pa3 f3 white-80 db hover-white",
-              to: user_path(@conn, :new) %>
           <%= link "Log in", class: "pa3 f3 white-80 db hover-white mb6 mb0-m mb0-l",
               to: login_path(@conn, :index) %>
         <%= end %>
