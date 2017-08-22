@@ -33,7 +33,7 @@ defmodule Healthlocker.Router do
     pipe_through [:browser] #, :super_admin
 
     resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
-      resources "/clinician-connection", ClinicianController, only: [:new, :create]
+      resources "/clinician-connection", ClinicianController, only: [:new, :create, :edit, :update]
     end
     resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
       resources "/carer-connection", CarerController, only: [:new]

@@ -5,3 +5,32 @@
 </div>
 
 <h3 class="normal mv4 bt bw2 b--light-gray pt4">Accounts</h3>
+
+<div class="cf">
+  <%= for user <- @users do %>
+    <%= link to: user_clinician_path(@conn, :edit, user.id, "1"),
+     class: "b di link hl-dark-blue w-100" do %>
+      <div class="w-100 hl-bg-light-aqua ph3 pv1 mv1 br3 justify-between">
+        <p>
+          <%= user.first_name <> " " <> user.last_name %>
+          <span class="fr hl-pink fw9">></span>
+        </p>
+      </div>
+    <% end %>
+
+  </div>
+  <div class="">
+    <%= for carer <- user.carers do %>
+      <div class="w-80 pa3 mv1 b--hl-yellow ba bw1 br3 hl-dark-blue ml-20 flex justify-between">
+        <p class="b di mv0"><%= carer.first_name <> " " <> carer.last_name %> <span class="normal i">(friend/family/carer)</span></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<h3 class="pt4 pb3 b--hl-grey bt bw2 normal">Staff accounts</h3>
+<%= for staff_member <- @staff do %>
+  <div class="w-100 hl-bg-grey pa3 mv2 br3 hl-dark-blue">
+    <p class="b di o-50"><%= staff_member.first_name %> <%= staff_member.last_name %></p>
+  </div>
+<% end %>

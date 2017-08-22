@@ -30,7 +30,7 @@
 
 <div class="pv4">
   <p class="f5 b mt0 mb3">Connect to staff</p>
-  <%= form_for @changeset, @action, fn f -> %>
+  <%= form_for @changeset, @action, @method, fn f -> %>
     <%= for clinician <- @clinicians do %>
       <div class="mv3">
         <%= checkbox f, String.to_atom("#{clinician.id}"), checked_value: clinician.id %>

@@ -1,6 +1,6 @@
 defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
   use Healthlocker.ConnCase
-  alias Healthlocker.User
+  alias Healthlocker.{User, Room}
 
   @valid_attrs %{
     clin1235: "1235",
@@ -14,6 +14,15 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
       last_name: "test",
       role: "service_user",
       email: "test@example.com",
+      password: "password"
+    } |> Repo.insert!
+
+    user2 = %User{
+      id: 1237,
+      first_name: "test",
+      last_name: "test",
+      role: "service_user",
+      email: "service_user@example.com",
       password: "password"
     } |> Repo.insert!
 
@@ -35,7 +44,11 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
       password: "password"
     } |> Repo.insert!
 
-    {:ok, user: user}
+    %Room{
+      name: "service-user-care-team:1237"
+    } |> Repo.insert!
+
+    {:ok, user: user, user2: user2}
   end
 
   test "GET /new renders new.html", %{conn: conn, user: user} do
@@ -43,8 +56,20 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
     assert html_response(conn, 200) =~ "Connect to staff"
   end
 
+  test "GET :edit renders edit.html", %{conn: conn, user: user} do
+    conn = get conn, user_clinician_path(conn, :edit, user, "1")
+    assert html_response(conn, 200) =~ "Edit Service User"
+  end
+
+  test "PUT /update with valid attributes", %{conn: conn, user2: user2} do
+    conn = put conn, user_clinician_path(conn, :update, user2, "1"), clinician: @valid_attrs
+    assert redirected_to(conn, 302) =~ user_path(conn, :index)
+    assert get_flash(conn, :info) == "Staff updated"
+  end
+
   test "POST /create with valid attributes", %{conn: conn, user: user} do
     conn = post conn, user_clinician_path(conn, :create, user), clinician: @valid_attrs
     assert redirected_to(conn, 302) =~ user_path(conn, :index)
+    assert get_flash(conn, :info) == "Staff connected"
   end
 end
