@@ -22,7 +22,7 @@ exports.config = {
     stylesheets: {
       joinTo: "css/app.css",
       order: {
-        after: ["web/static/css/app.css"] // concat app.css last
+        after: ["apps/healthlocker/web/static/css/app.css"] // concat app.css last
       }
     },
     templates: {
@@ -34,19 +34,19 @@ exports.config = {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/web/static/assets". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: /^(web\/static\/assets)/
+    assets: /^(apps\/healthlocker\/web\/static\/assets)/
   },
 
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
     watched: [
-      "web/static",
-      "test/static"
+      "apps/healthlocker/web/static",
+      "apps/healthlocker/test/static"
     ],
 
     // Where to compile files to
-    public: "priv/static"
+    public: "apps/healthlocker/priv/static"
   },
 
   // Configure your plugins
@@ -59,7 +59,7 @@ exports.config = {
 
   modules: {
     autoRequire: {
-      "js/app.js": ["web/static/js/app"]
+      "js/app.js": ["apps/healthlocker/web/static/js/app"]
     }
   },
 

@@ -1,11 +1,3 @@
-# Import all plugins from `rel/plugins`
-# They can then be used by adding `plugin MyPlugin` to
-# either an environment, or release definition, where
-# `MyPlugin` is the name of the plugin module.
-Path.join(["rel", "plugins", "*.exs"])
-|> Path.wildcard()
-|> Enum.map(&Code.eval_file(&1))
-
 use Mix.Releases.Config,
     # This sets the default release built by `mix release`
     default_release: :default,
@@ -24,15 +16,13 @@ use Mix.Releases.Config,
 environment :dev do
   set dev_mode: true
   set include_erts: false
-  set cookie: :"?J.<C_D^;nAeubhv?qoXqFK_=;y`5c@yN_`ttp)@4QI7:Sm2lTcnG{lD(G6Lu&[<"
+  set cookie: :"M&zF*H0=7].^<NM8mkS?N=hhsXOW?0`vKxXqaclDOY._%(JvJg/J{Ad)]f5ht=(-"
 end
 
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"dAfW2?q9h{m(zcV!3qWp>.c;bn_D;PsJp3?SK&56imsT;s%mnv2f1|dVTmtM@c9O"
-  set vm_args: "rel/vm.args"
-  set sys_config: nil
+  set cookie: :"M&zF*H0=7].^<NM8mkS?N=hhsXOW?0`vKxXqaclDOY._%(JvJg/J{Ad)]f5ht=(-"
 end
 
 # You may define one or more releases in this file.
@@ -40,9 +30,10 @@ end
 # when running `mix release`, the first release in the file
 # will be used by default
 
-release :healthlocker do
-  set version: current_version(:healthlocker)
+release :oxleas_adhd do
+  set version: "0.1.0"
   set applications: [
-    :runtime_tools
+    healthlocker: :permanent,
+    oxleas_adhd: :permanent
   ]
 end
