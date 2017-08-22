@@ -30,7 +30,7 @@ defmodule Healthlocker.Router do
 
   # routes for oxleas only super admin can access
   scope "/super-admin", Healthlocker.OxleasAdhd do
-    pipe_through [:browser] #, :super_admin
+    pipe_through [:browser, :super_admin]
 
     resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
       resources "/clinician-connection", ClinicianController, only: [:new, :create]
@@ -52,6 +52,10 @@ defmodule Healthlocker.Router do
         resources "/rooms", RoomController, only: [:show]
       end
     end
+
+    resources "/users", UserController do
+      resources "/medication", MedicationController, only: [:new, :create, :edit, :update]
+    end
   end
 
   # logged in routes for oxleas
@@ -65,7 +69,7 @@ defmodule Healthlocker.Router do
     put "/account/password/update", AccountController, :update_password
 
     resources "/users", UserController do
-      resources "/medication", MedicationController
+      resources "/medication", MedicationController, only: [:index, :show]
     end
     resources "/about-me", AboutMeController, only: [:new, :edit] #, :create, :update
     scope "/care-team", CareTeam, as: :care_team do
