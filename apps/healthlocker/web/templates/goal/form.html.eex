@@ -1,13 +1,13 @@
 <section class="ma3 ma4-m ma4-l center">
 
   <p class="tl b">What do you want to achieve?</p>
-  <p class="tl">Describe a personal goal.</p>
+  <p class="tl">Describe the goal you want to work on</p>
   <%= form_for @changeset, @action, fn f -> %>
       <div class=" mb3 pb3 bb b--hl-grey bw2">
         <%= textarea f, :content, placeholder: "Content", class: "db border-box hover-black w-100 ba b--black-20 pa2 br2 mb2 default-font" %>
       </div>
       <p class="b pt2 mb0">Steps to take:</p>
-      <p class="mt1">List the things you could do to achieve this goal.</p>
+      <p class="mt1">Think about the steps that you might take to reach this goal.</p>
       <%= inputs_for f, :steps, fn s -> %>
         <div class="mb3">
           <%= checkbox s, :complete, class: "checkbox" %>
