@@ -15,7 +15,6 @@
       <%= label f, "Notes:", class: "f5 b db mb2 mt4" %>
       <p>For example:</p>
       <ul class="i">
-        <li>was there anything that may have triggered this experience?</li>
         <li>did you notice anything that made it better or worse?</li>
         <li>have your experiences been different in the morning, afternoon or night?</li>
         <li>did you find anything you did was helpful or unhelpful?</li>
