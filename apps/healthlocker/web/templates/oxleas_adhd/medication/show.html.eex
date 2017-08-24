@@ -4,27 +4,27 @@
      class="mw-100 w-30 db center">
 
 <div class="mb4">
-  <p class="b f5 dark-blue mv3">What medication do I take for my adhd?</p>
+  <p class="b f5 dark-blue mv3">What medication do I take for my ADHD?</p>
   <%= @medication.name %>
 </div>
 
 <div class="mb4">
   <div class="dib w-50 pr3">
-    <p class="mt0 mb3 b f5 dark-blue">How much?</p>
+    <p class="mt0 mb3 b f5 dark-blue">How much/ what dose?</p>
     <%= @medication.dosage %>
   </div><div class="dib w-50 pl3">
-    <p class="mt0 mb3 b f5 dark-blue">How often? and when?</p>
+    <p class="mt0 mb3 b f5 dark-blue">How often and when? and when?</p>
     <%= @medication.frequency %>
   </div>
 </div>
 
 <div class="mb4">
-  <p class="b f5 dark-blue mv3">Other medication I take:</p>
+  <p class="b f5 dark-blue mv3">Other medication that I take?</p>
   <%= @medication.other_medicine %>
 </div>
 
 <div class="mb4">
-  <p class="b f5 dark-blue mv3">My medication allergies:</p>
+  <p class="b f5 dark-blue mv3">My allergies:</p>
   <%= @medication.allergies %>
 </div>
 
