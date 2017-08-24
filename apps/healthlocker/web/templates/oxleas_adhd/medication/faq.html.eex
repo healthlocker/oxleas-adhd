@@ -20,12 +20,12 @@
   <p class="lh-copy">
     You need to let the ADHD team know that you need a prescription at least
     5 working days before you run out of medication. You can let them know by
-    <%= link "sending a message", to: "#", class: "link" %>.
+    <%= link "sending a message", to: "#", class: "hl-aqua flex-wrap underline" %>.    
   </p>
   <p class="lh-copy">
     Put a note on your mobile phone diary or calendar to remind you when
     you need to order your next prescription. See more
-    <%= link "#Tips", to: "#", class: "link" %>.
+    <%= link "#Tips", to: "#", class: "hl-aqua flex-wrap underline" %>.
   </p>
 
   <p class="b lh-title">How long are prescriptions valid for?</p>
@@ -48,7 +48,7 @@
     if you are unwell and experiencing symptoms that might be related to
     medication, particularly chest pain or your heart racing in your chest,
     contact your local out-of-hours GP service or visit your local
-    <%= link "A&E", to: "http://www.nhs.uk/Service-Search/Accident-and-emergency-services/LocationSearch/428", class: "link" %>
+    <%= link "A&E", to: "http://www.nhs.uk/Service-Search/Accident-and-emergency-services/LocationSearch/428", class: "hl-aqua flex-wrap underline" %>
     to get checked out.
   </p>
 </div>
