@@ -3,7 +3,7 @@ defmodule Healthlocker.Email do
 
   def send_feedback(subject, message) do
     new_email()
-    |> to(System.get_env("TO_EMAIL"))
+    |> to([System.get_env("TO_EMAIL"), System.get_env("FROM_EMAIL")])
     |> from(System.get_env("FROM_EMAIL"))
     |> subject(subject)
     |> text_body(message)
@@ -13,7 +13,7 @@ defmodule Healthlocker.Email do
     new_email()
     |> to(to_email)
     |> from(System.get_env("FROM_EMAIL"))
-    |> subject("Healthlocker Reset Password Instructions")
-    |> text_body("Please visit https://staging.healthlocker.uk/password/#{token}/edit to reset your password")
+    |> subject("Headscape Focus Reset Password Instructions")
+    |> text_body("Please visit http://51.140.117.78/password/#{token}/edit to reset your password")
   end
 end
