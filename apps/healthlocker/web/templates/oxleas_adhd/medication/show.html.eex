@@ -40,4 +40,4 @@
 
 <%= render "faq.html" %>
 
-<%= link "Ask your team a question about your medication", to: "#", class: "db b link underline mv5" %>
+<%= link "Ask your team a question about your medication", to: "/care-team/contacts", class: "hl-aqua flex-wrap underline" %>
