@@ -17,7 +17,9 @@ defmodule Healthlocker.OxleasAdhd.CarerController do
     case service_user do
       nil ->
         conn
-        |> put_flash(:error, "Could not find service user")
+        |> put_flash(:error, "No user found. Check the details you entered and
+        try again. Or go back to see if there is an account for the person you
+        are looking for, and if not create one first.")
         |> redirect(to: user_carer_path(conn, :new, carer))
       _ ->
         conn

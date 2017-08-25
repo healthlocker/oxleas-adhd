@@ -40,7 +40,7 @@
       <header id="header" class="bg-black w-100 ph3 pv3 pt3-ns pb1-ns ph4-ns tc">
         <nav class="f2 fw3 relative">
           <div class="tc">
-            <a href="/"><%= img_tag("/images/headscape-logo.png", class: "w-30 w-15-m mw4") %></a>
+            <a href="/"><%= img_tag("/images/headscape-logo.png", class: "mw3-plus") %></a>
           </div>
           <i id="open-nav" class="fa fa-bars dim white dib fl pointer absolute top-0 left-0"></i>
           <div class="fr dn dib-m dib-l absolute top-0 right-0">
