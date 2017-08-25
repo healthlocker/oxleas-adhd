@@ -13,7 +13,7 @@
     <p class="mt0 mb3 b f5 dark-blue">How much/ what dose?</p>
     <%= @medication.dosage %>
   </div><div class="dib w-50 pl3">
-    <p class="mt0 mb3 b f5 dark-blue">How often and when? and when?</p>
+    <p class="mt0 mb3 b f5 dark-blue">How often and when?</p>
     <%= @medication.frequency %>
   </div>
 </div>
@@ -40,4 +40,4 @@
 
 <%= render "faq.html" %>
 
-<%= link "Ask your team a question about your medication", to: "#", class: "db b link underline mv5" %>
+<%= link "Ask your team a question about your medication", to: "/care-team/contacts", class: "hl-aqua flex-wrap underline" %>

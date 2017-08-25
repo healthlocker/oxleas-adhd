@@ -20,12 +20,12 @@
   <p class="lh-copy">
     You need to let the ADHD team know that you need a prescription at least
     5 working days before you run out of medication. You can let them know by
-    <%= link "sending a message", to: "#", class: "hl-aqua flex-wrap underline" %>.    
+    <%= link "sending a message", to: "/care-team/contacts", class: "hl-aqua flex-wrap underline" %>.    
   </p>
   <p class="lh-copy">
     Put a note on your mobile phone diary or calendar to remind you when
     you need to order your next prescription. See more
-    <%= link "#Tips", to: "#", class: "hl-aqua flex-wrap underline" %>.
+    <%= link "#Tips", to: "/tips", class: "hl-aqua flex-wrap underline" %>.
   </p>
 
   <p class="b lh-title">How long are prescriptions valid for?</p>
