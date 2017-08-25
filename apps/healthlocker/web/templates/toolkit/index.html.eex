@@ -83,7 +83,7 @@
   </div>
 
   <div class="w-100 mw6 center flex items-end justify-between">
-    <div class="tc w-40 dib fr">
+    <div class="tc w-40 dib fr pt3">
       <%= if @medication do %>
         <%= link to: user_medication_path(@conn, :show, @current_user, @medication.id) do %>
           <%= img_tag "/images/pill-bottle.png", class: "w-100" %>
