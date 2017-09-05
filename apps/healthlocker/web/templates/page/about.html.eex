@@ -46,7 +46,7 @@
       <li>Mayoor Dhokia, Assistant Psychologist.</li>
     </ul>
    
- <p class="b">What is Headscape Focus and who is it for?</p>
+ <p class="b">What is HeadScape Focus and who is it for?</p>
  <p>If your child is under the care of the Greenwich Integrated Children's Service ADHD team from Oxleas NHS Foundation 
      Trust, your account will be linked with to the ADHD care team. This will enable you to send and receive messages with 
      your care team, share tracking, goals and coping strategies with them.
@@ -66,7 +66,7 @@
  
   <p class="b">How does it work / what next?</p>
     <p>
-       Headscape Focus is based on Healthlocker, a platform powered by the
+       HeadScape Focus is based on Healthlocker, a platform powered by the
       <%= link "South London and Maudsley NHS Foundation Trust.", to: "http://www.slam.nhs.uk/",
           class: "hl-aqua flex-wrap underline" %>
     </p>
