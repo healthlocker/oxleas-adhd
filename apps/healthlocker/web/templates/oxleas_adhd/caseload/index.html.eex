@@ -1,6 +1,6 @@
 <h2 class="tc">Caseload</h3>
 
-<h3 class="mv4">Headscape Focus users</h3>
+<h3 class="mv4">HeadScape Focus users</h3>
 <div class="cf">
   <%= for patient <- @patients do %>
     <%= link to: caseload_user_room_path(@conn, :show, patient, room_for(patient)),
