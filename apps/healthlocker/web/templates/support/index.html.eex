@@ -36,7 +36,7 @@
 </div>
 
   <p>
-    If you need help or support using Headscape Focus, please email<br> <%= link "oxl-tr.icsadhdservice@nhs.net", to: "mailto:oxl-tr.icsadhdservice@nhs.net", class: "hl-aqua flex-wrap underline" %>.
+    If you need help or support using HeadScape Focus, please email<br> <%= link "oxl-tr.icsadhdservice@nhs.net", to: "mailto:oxl-tr.icsadhdservice@nhs.net", class: "hl-aqua flex-wrap underline" %>.
   </p>
 
   <div class="hl-bg-grey pa3 mt4">
