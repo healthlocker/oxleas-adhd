@@ -23,7 +23,7 @@ defmodule Healthlocker.OxleasAdhd.LoginController do
             |> redirect(to: page_path(conn, :index))
           _ ->
             conn
-            |> put_flash(:info, "Welcome to Headscape Focus!")
+            |> put_flash(:info, "Welcome to HeadScape Focus!")
             |> redirect(to: toolkit_path(conn, :index))
         end
       {:error, _reason, conn} ->
