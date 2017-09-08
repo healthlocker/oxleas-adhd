@@ -65,7 +65,7 @@ defmodule Healthlocker.OxleasAdhd.LoginControllerTest do
 
     test "/login :: create with valid data for service user", %{conn: conn} do
       conn = post conn, login_path(conn, :create), login: @su_attrs
-      assert get_flash(conn, :info) == "Welcome to Headscape Focus!"
+      assert get_flash(conn, :info) == "Welcome to HeadScape Focus!"
       assert redirected_to(conn) == toolkit_path(conn, :index)
     end
 
