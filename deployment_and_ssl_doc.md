@@ -8,9 +8,6 @@ you have both.
 
 To do this `ssh` into your Azure instance with `ssh root@"IP Address of server"`
 and use the following commands
-(should I say anything about all of this being provided by slam and should I
-  mention anything to do with having to first set up the server with your ssh
-  keys to allow you to have access to root)
 
 ### Needed to run the application
 
@@ -98,7 +95,9 @@ For this step you will need to fork the Repo that can be found at this url
 https://github.com/RobStallion/azure_deployment_test
 
 Clone that repo to your local machine with
-`git clone https://github.com/"your organisation name"/azure_deployment_test.git`
+```
+git clone https://github.com/"your organisation name"/azure_deployment_test.git
+```
 
 then change into that directory
 `cd azure_deployment_test`
@@ -125,7 +124,7 @@ entered the domain name that you wish to get a URL for you will be presented
 with something like this...
 ![image](https://user-images.githubusercontent.com/15571853/30211128-97e145a4-9497-11e7-8ff7-e7c76c43ab5a.png)
 
-Once here DO NOT continue the steps.
+Once here **DO NOT** continue the certbot steps.
 
 Go back to your text editor and create the file with the same name as the first
 half of the content that will be entered into the file.
