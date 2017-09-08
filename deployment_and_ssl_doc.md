@@ -81,6 +81,10 @@ echo export PORT=4000 >> ~/.profile
 All the other environment variables you need to add will be done following that
 pattern.
 
+One of the variables you will need to add to the `/.profile` will be the
+`secret_key_base`. You can generate this by running the command
+`mix phoenix.gen.secret` in your local terminal.
+
 Once you have added all the variables you need run the command
 ```
 source ~/.profile
