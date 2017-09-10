@@ -63,7 +63,7 @@
       </p>
     <p>
       Explore <%= link_to("more tips", to: tip_path(@conn, :index)) %>
-      on Headscape Focus.
+      on HeadScape Focus.
     </p>
   </div>
 </div>

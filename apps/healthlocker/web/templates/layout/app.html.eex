@@ -7,16 +7,28 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Headscape Focus</title>
+    <title>HeadScape Focus</title>
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.6.1/css/tachyons.min.css"/>
     <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/images/favicon-hl-32x32.png">
+    <link rel="icon" type="image/png" href="/images/favicon-ox-32x32.png">
     <link rel=”apple-touch-icon” href=”/images/apple-touch-icon.png”/>
     <link rel=”apple-touch-icon-precomposed” href=”/images/apple-touch-icon.png”/>
 
     <%= segment_snippet() %>
+ 
+     <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-106165229-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+      
   </head>
   <body class="w-100 bg-white">
 

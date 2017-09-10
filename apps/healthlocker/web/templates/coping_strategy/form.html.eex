@@ -1,4 +1,4 @@
-<p class="b">Note down and action you can take to stay well, improve your focus and feel calmer.
+<p class="b">Note down an action you can take to stay well, improve your focus and feel calmer.
 </p>
 <p>The ADHD team have put together some resources about ADHD and coping strategies on <%= link "here", to: "http://www.scoop.it/u/focusadhd", target: "_blank", class: "hl-aqua flex-wrap underline" %> 
   and some videos <%= link "here.", to: "https://m.youtube.com/channel/UCFYtqN0xKKvx0vWksYfEveA", target: "_blank", class: "hl-aqua flex-wrap underline" %>
