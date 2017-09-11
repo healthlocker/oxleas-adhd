@@ -232,5 +232,78 @@ Now on the virtual machine run the command
 
 Now exit your sever by typing the command `exit`.
 
+## Add super_admin user to database
+
+On the virtual machine run the commands
+
+```
+sudo -u postgres psql
+\connect "name_of_the_database_your_app_uses" (e.g. \connect oxleas_adhd_dev)
+```
+
+When here you will have to enter a `super_admin` into the `users` table. You can
+get all the information you need to enter a `super_admin` by copying the
+`super_admin` used on the `Oxleas-HL-Test` server.
+
+To get that information open a new tab in your terminal and enter the following
+```
+ssh root@"IP address of Oxleas-HL-Test"
+sudo -u postgres psql
+\connect oxleas_adhd_dev
+select * from users where role = 'super_admin';
+```
+
+That will display the `super_admin` info on screen.
+
+Now go back to the original tab where you wanted to insert a `super_admin` user
+and run the following command filling in the blanks with the information you can
+see in the other tab you opened earlier.
+
+```
+insert into users (id, email, password_hash, role, first_name, last_name, inserted_at, updated_at, job_role) values ('', '', '', '', '', '', '', '', '');
+```
+
+When you have entered this info type `\q` then press `return`
+
+## Make SSL Certificate renew automatically
+
+Now on the virtual machine run the command
+```
+vim /etc/cron.daily/renew_ssl_certbot
+```
+
+Then **type**
+
+```
+:set paste
+```
+
+and press `return`.
+
+Copy the code below
+```
+#!/bin/sh
+
+# this takes less than a minute but will restart nginx once every 60 days
+certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start"
+```
+
+Once you have copied the above follow the instructions below in order
+```
+i
+cmd + v (paste in the code you copied above)
+esc_key
+:wq
+```
+
+Next, paste the following into the terminal on the virtual machine
+```
+chmod a+x /etc/cron.daily/renew_ssl_certbot
+```
+
+Now type `exit`.
+
+## Check site works
+
 If you have followed all of the above steps you should now be able to navigate
 to your domain name in a web browser and see your application running on https.
