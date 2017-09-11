@@ -237,6 +237,9 @@ Now exit your sever by typing the command `exit`.
 On the virtual machine run the commands
 
 ```
+cd /home/"server_name"/"app_name"/builds (example: cd /home/oxleasadmin/oxleas_adhd/builds/)
+mix ecto.create
+mix ecto.migrate
 sudo -u postgres psql
 \connect "name_of_the_database_your_app_uses" (e.g. \connect oxleas_adhd_dev)
 ```
