@@ -15,7 +15,7 @@ defmodule Healthlocker.PostControllerTest do
         last_name: "Name",
         email: "abc@gmail.com",
         password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
-        role: "admin"
+        role: "super_admin"
       } |> Repo.insert
 
       post = Repo.insert!(%Post{
