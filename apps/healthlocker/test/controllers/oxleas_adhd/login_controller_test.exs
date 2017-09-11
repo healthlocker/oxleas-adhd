@@ -65,7 +65,7 @@ defmodule Healthlocker.OxleasAdhd.LoginControllerTest do
 
     test "/login :: create with valid data for service user", %{conn: conn} do
       conn = post conn, login_path(conn, :create), login: @su_attrs
-      assert get_flash(conn, :info) == "Welcome to Headscape Focus!"
+      assert get_flash(conn, :info) == "Welcome to HeadScape Focus!"
       assert redirected_to(conn) == toolkit_path(conn, :index)
     end
 
@@ -78,7 +78,7 @@ defmodule Healthlocker.OxleasAdhd.LoginControllerTest do
     test "/login :: create with valid data for clinician", %{conn: conn} do
       conn = post conn, login_path(conn, :create), login: @clinician_attrs
       assert get_flash(conn, :info) == "Logged in as clinician"
-      assert redirected_to(conn) == page_path(conn, :index)
+      assert redirected_to(conn) == caseload_path(conn, :index)
     end
 
     test "/login :: create with invalid data" do

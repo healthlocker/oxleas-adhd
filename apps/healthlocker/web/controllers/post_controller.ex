@@ -38,7 +38,7 @@ defmodule Healthlocker.PostController do
   end
 
   def edit(conn, %{"id" => id}) do
-    if conn.assigns.current_user.role == "admin" do
+    if conn.assigns.current_user.role == "super_admin" do
       post = Repo.get!(Post, id)
       changeset = Post.changeset(post)
       conn
