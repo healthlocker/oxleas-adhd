@@ -2,7 +2,8 @@
 
 This readme will go through the steps needed to deploy an application similar
 to Oxleas to an Azure instance that has been Provisioned by SLaM and will assume
-you have both.
+you have both. You will also need to have an AWS SES account set up and ready to
+use.
 
 ## Install applications on the Azure instance
 
@@ -84,6 +85,17 @@ pattern.
 One of the variables you will need to add to the `/.profile` will be the
 `secret_key_base`. You can generate this by running the command
 `mix phoenix.gen.secret` in your local terminal.
+
+Here is a list of all the variables you will need to add
+```
+SES_SERVER
+FROM_EMAIL
+SMTP_USERNAME
+SMTP_PASSWORD
+SECRET_KEY_BASE
+SES_PORT
+TO_EMAIL
+```
 
 Once you have added all the variables you need run the command
 ```
