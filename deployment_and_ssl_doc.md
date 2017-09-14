@@ -63,6 +63,16 @@ mix local hex
 mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
 ```
 
+#### Install tools to build release with edeliver
+`wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb`
+
+`sudo apt-get update`
+
+```
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install elixir erlang-base-hipe build-essential erlang-parsetools erlang-dev nodejs -y
+```
+
 ## Needed to configure server
 
 ### Install Nginx
