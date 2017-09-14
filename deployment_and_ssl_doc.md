@@ -134,10 +134,13 @@ word `exit`.
 
 ## Create an SSL Certificate
 
-For this step you will need to fork the Repo that can be found at this url
+Before creating an SSL certificate you must have a domain set up that you want
+to use.
+
+For this step you will need to fork the repo that can be found at this url
 https://github.com/RobStallion/azure_deployment_test
 
-Clone that repo to your local machine with
+Clone your forked repo to your local machine with
 ```
 git clone https://github.com/"your organisation name"/azure_deployment_test.git
 ```
