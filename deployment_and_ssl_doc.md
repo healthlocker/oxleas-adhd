@@ -55,7 +55,7 @@ apt-get install elixir
 
 #### Install Hex
 ```
-mix local hex
+mix local.hex
 ```
 
 #### Install Phoenix
