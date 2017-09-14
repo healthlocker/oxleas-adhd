@@ -5,10 +5,26 @@ to Oxleas to an Azure instance that has been Provisioned by SLaM and will assume
 you have both. You will also need to have an AWS SES account set up and ready to
 use.
 
+This documentation is also used as a basis for deploying similar applications.
+If this document is added to, please ensure the specific instructions in other documentation is updated accordingly.
+
 ## Install applications on the Azure instance
 
-To do this `ssh` into your Azure instance with `ssh root@"IP Address of server"`
-and use the following commands
+Get your public key by entering `cat ~/.ssh/id_rsa.pub` into a terminal. Copy
+this so it can be used when accessing the server.
+
+Log in to the server with `ssh "server_name"@"IP address of server"` and enter
+the password for the server when prompted.
+
+Add your public key to `/home/"server_name"/.ssh/authorized_keys`, then save
+and exit.
+
+You will also need root access to the server. Type `sudo -i` and paste your
+public key into `/root/.ssh/authorized_keys` and type `exit` twice to leave
+the ssh session.
+
+`ssh` into your Azure instance as root with `ssh root@"IP address of server"`
+and use the following commands.
 
 ### Needed to run the application
 
