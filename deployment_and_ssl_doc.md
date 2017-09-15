@@ -222,6 +222,12 @@ mix edeliver start production
 ```
 
 Once you have run the above go back to your terminal and press continue.
+If you entered more than one domain name, for example `www.test.com` and
+`test.com`, then you will get a similar screen again where you will need to make
+another file in `web/static/assets/.well-known/acme-challenge/` with the
+given file name and contents. **DO NOT** delete the file you already made.
+Run through the commands above this paragraph again, and click continue.
+
 Certbot will continue running and when it finishes you should get a screen with
 the following...
 ![image](https://user-images.githubusercontent.com/15571853/30107133-c6288e5c-92f5-11e7-965d-640f19ad40db.png)
