@@ -22,8 +22,12 @@ In order to go through all the steps in this README, you will need:
 
 ## Install applications on the Azure instance
 
-Get your public key by entering `cat ~/.ssh/id_rsa.pub` into a terminal. Copy
-this so it can be used when accessing the server.
+If you are running MacOS, get your public key by entering
+`cat ~/.ssh/id_rsa.pub` into a terminal. Copy this so it can be used when
+accessing the server.  If this command does not work for you (you are running
+a different operating system or you do not have a public key saved here), then
+you will need to refer to specific documentation for creating and/or retrieving
+your public key.
 
 Log in to the server with `ssh "server_name"@"IP address of server"` and enter
 the password for the server when prompted.
@@ -53,7 +57,7 @@ apt-get install postgresql postgresql-contrib -y
 ```
 
 #### Install Erlang
-**Note:** Erlang needs to be installed with odbc, including drivers for
+**Note:** Erlang needs to be installed with odbc, including drivers, for
 Healthlocker. Please see the
 [Healthlocker deployment guide](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
 for instructions on this.
@@ -160,6 +164,8 @@ sudo certbot --nginx certonly
 ```
 
 *You can see the advanced panel at https://certbot.eff.org/#ubuntuxenial-nginx.*
+*If this works, please update the docs accordingly by adding the steps taken,*
+*and removing redundant steps eg. may not need to configure nginx.*
 
 Before creating an SSL certificate you must have a domain set up that you want
 to use.
