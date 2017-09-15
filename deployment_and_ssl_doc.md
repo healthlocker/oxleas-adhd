@@ -5,7 +5,11 @@ to Oxleas to an Azure instance that has been Provisioned by SLaM and will assume
 you have both. You will also need to have an AWS SES account set up and ready to
 use.
 
-This documentation is also used as a basis for deploying similar applications.
+This documentation is also used as a basis for deploying similar applications,
+which are listed below.
+
+* [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
+
 If this document is added to, please ensure the specific instructions in other
 documentation is updated accordingly.
 
@@ -49,6 +53,11 @@ apt-get install postgresql postgresql-contrib -y
 ```
 
 #### Install Erlang
+**Note:** Erlang needs to be installed with odbc, including drivers for
+Healthlocker. Please see the
+[Healthlocker deployment guide](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
+for instructions on this.
+
 ```
 apt-get install erlang -y
 ```
@@ -131,6 +140,9 @@ SECRET_KEY_BASE
 SES_PORT
 TO_EMAIL
 ```
+
+**Note:** **Note:** [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
+had additional environment variables which need to be added.
 
 Once you have added all the variables you need run the command
 ```
@@ -325,6 +337,12 @@ On the virtual machine run the command
 Exit your server by typing the command `exit`.
 
 ## Add super_admin user to database
+
+**Note:** You do not need to add a `super_admin` for
+[Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md).
+However, there are other roles which may need to be updated. Please see the
+Healthlocker deployment guide for more details.
+
 
 On the virtual machine run the commands
 
