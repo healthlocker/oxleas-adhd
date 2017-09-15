@@ -6,7 +6,15 @@ you have both. You will also need to have an AWS SES account set up and ready to
 use.
 
 This documentation is also used as a basis for deploying similar applications.
-If this document is added to, please ensure the specific instructions in other documentation is updated accordingly.
+If this document is added to, please ensure the specific instructions in other
+documentation is updated accordingly.
+
+## Before you get started
+In order to go through all the steps in this README, you will need:
+
+* An Azure instance which you have access to
+* A Phoenix application that you want to deploy to Azure
+* A domain name (or multiple) registered for the IP address of the server
 
 ## Install applications on the Azure instance
 
