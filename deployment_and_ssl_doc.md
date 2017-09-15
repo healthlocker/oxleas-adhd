@@ -232,10 +232,14 @@ Certbot will continue running and when it finishes you should get a screen with
 the following...
 ![image](https://user-images.githubusercontent.com/15571853/30107133-c6288e5c-92f5-11e7-965d-640f19ad40db.png)
 
-You can exit the server now with the command `exit`
+Before exiting the server, run the command `ls /etc/letsencrypt/live` and
+make a note of what displays. You will need this when you set up the nginx
+config.
 
+You can exit the server now with the command `exit`.
+Stop the server once you have exited with the command `mix edeliver stop production`
 
-## Use Edeliver to deploy Application to Azure
+## Use Edeliver to Deploy Application to Azure
 
 Now in the terminal on your local machine `cd` into the directory where you
 have cloned the application you want to deploy.
