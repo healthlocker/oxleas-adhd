@@ -140,7 +140,7 @@ SES_PORT
 TO_EMAIL
 ```
 
-**Note:** **Note:** [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
+**Note:** [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
 had additional environment variables which need to be added.
 
 Once you have added all the variables you need run the command
