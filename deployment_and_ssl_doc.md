@@ -311,10 +311,10 @@ When you have done this press the
 followed by  
 `:wq`
 
-Now on the virtual machine run the command  
+On the virtual machine run the command  
 `service nginx reload`
 
-Now exit your sever by typing the command `exit`.
+Exit your server by typing the command `exit`.
 
 ## Add super_admin user to database
 
