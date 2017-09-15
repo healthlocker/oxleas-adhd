@@ -254,20 +254,22 @@ PRODUCTION_HOSTS="IP address"
 ```
 with the IP address for the Azure server you want to deploy to.
 
-Next run the following command in your terminal  
+Next run the following commands individually in your terminal  
 ```
-mix edeliver build production (this step takes a few minutes to complete)
+mix edeliver build release (this step takes a few minutes to complete)
 mix edeliver deploy release to production
 mix edeliver start production
 ```
-
 
 ## Update nginx configuration file
 
 In your text editor open the file `nginx.config`
 
 Everywhere that it says "enter your domain name" replace that sentence with the
-domain name you will be using. For example
+domain name you will be using. This is what displayed when you typed in
+`ls /etc/letsencrypt/live` while you were on the server.
+
+For example
 
 ```
 server_name "enter your domain name";
