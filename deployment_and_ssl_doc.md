@@ -162,6 +162,36 @@ with the IP address for the Azure server you want to deploy to.
 Now go back onto the server with
 `ssh root@"IP Address of server"`
 
+You will need to update the nginx config so that the site can run on the domain
+you are creating the SSL certificate for. Do this by running the command
+`vim /etc/nginx/sites-enabled/default`.
+
+Type `i` to go into insert mode. Find the section that looks like
+
+```
+location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+                }
+```
+
+Remove the line `try_files $uri $uri/ =404;`.
+Add in `proxy_pass http://localhost:4000;`.
+It should look like:
+
+```
+location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                proxy_pass http://localhost:4000;
+                }
+```
+
+Press `esc`, then `:wq`.
+
+Reload the nginx config with `service nginx reload`.
+
 In the server run the following
 `certbot certonly --manual`
 
