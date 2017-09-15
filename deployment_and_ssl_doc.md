@@ -206,7 +206,7 @@ Go back to your text editor and create the file with the same name as the first
 half of the content that will be entered into the file.
 
 Example based on image above:   
-file name `/acme-challenge/dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0`  
+file name `web/static/assets/.well-known/acme-challenge/dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0`  
 file content `dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0.ofSGgRI932nP_X6z-R1He5F06yk_htZDa-RiUu2ATE4`
 
 Add, commit and push these changes to your master branch and then redeploy your
