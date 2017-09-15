@@ -16,7 +16,7 @@ documentation is updated accordingly.
 ## Before you get started
 In order to go through all the steps in this README, you will need:
 
-* An Azure instance which you have access to
+* An Linux VM which you have access to
 * A Phoenix application that you want to deploy to Azure
 * A domain name (or multiple) registered for the IP address of the server
 
@@ -81,7 +81,6 @@ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoe
 ```
 
 #### Install tools to build release with edeliver
-`wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb`
 
 `sudo apt-get update`
 
@@ -153,6 +152,14 @@ When you have completed all of the steps above exit the server by typing the
 word `exit`.
 
 ## Create an SSL Certificate
+
+*Note for next install: Try the certbot nginx method by running the command*
+
+```
+sudo certbot --nginx certonly
+```
+
+*You can see the advanced panel at https://certbot.eff.org/#ubuntuxenial-nginx.*
 
 Before creating an SSL certificate you must have a domain set up that you want
 to use.
