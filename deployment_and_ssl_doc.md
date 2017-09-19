@@ -433,3 +433,25 @@ Now type `exit`.
 
 If you have followed all of the above steps you should now be able to navigate
 to your domain name in a web browser and see your application running on https.
+
+## Troubleshooting
+If you are redeploying the application and experiences errors such as
+
+![Database connection error](https://user-images.githubusercontent.com/151362/30542909-04c6534c-9c79-11e7-91a7-82be388182af.png)
+
+then it is likely that there is a problem with the application accessing the
+environment variables that were set in the profile. To resolve this, you must
+run **ALL** of the steps to redeploy.
+
+1. Stop the server with mix edeliver stop production
+1. Build the release with mix edeliver build release
+1. Deploy release with mix edeliver deploy release to production
+1. Start application with mix edeliver start production
+
+This issue may occur after:
+
+* Rebooting the server then starting the app again with only step 4 below
+(without running through steps 1-3)
+* Changing the environment variables, then not running through steps 1-3 below.
+The profile is sourced when the release is built, so it's not as simple as
+running step 1 & step 4 again.
