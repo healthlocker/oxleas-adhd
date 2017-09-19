@@ -443,10 +443,10 @@ then it is likely that there is a problem with the application accessing the
 environment variables that were set in the profile. To resolve this, you must
 run **ALL** of the steps to redeploy.
 
-1. Stop the server with mix edeliver stop production
-1. Build the release with mix edeliver build release
-1. Deploy release with mix edeliver deploy release to production
-1. Start application with mix edeliver start production
+1. Stop the server with `mix edeliver stop production`
+1. Build the release with `mix edeliver build release`
+1. Deploy release with `mix edeliver deploy release to production`
+1. Start application with `mix edeliver start production`
 
 This issue may occur after:
 
@@ -455,3 +455,14 @@ This issue may occur after:
 * Changing the environment variables, then not running through steps 1-3 below.
 The profile is sourced when the release is built, so it's not as simple as
 running step 1 & step 4 again.
+
+If you are having trouble stopping the server with
+`mix edeliver stop production` and it just 'hangs', then you can follow through
+a similar process to be able to stop the app this way again.
+ssh into the server containing the app you cannot stop with edeliver. Type
+`reboot` and hit `enter`. You will automatically exit the server. Wait for
+the website to look like below:
+
+![502 error from nginx](https://user-images.githubusercontent.com/151362/30550507-8c337aa6-9c8f-11e7-9f12-c95990c73f01.png)
+
+This means the server has restarted successfully. Run through steps 1-4 above.
