@@ -5,10 +5,42 @@ to Oxleas to an Azure instance that has been Provisioned by SLaM and will assume
 you have both. You will also need to have an AWS SES account set up and ready to
 use.
 
+This documentation is also used as a basis for deploying similar applications,
+which are listed below.
+
+* [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
+
+If this document is added to, please ensure the specific instructions in other
+documentation is updated accordingly.
+
+## Before you get started
+In order to go through all the steps in this README, you will need:
+
+* An Linux VM which you have access to
+* A Phoenix application that you want to deploy to Azure
+* A domain name (or multiple) registered for the IP address of the server
+
 ## Install applications on the Azure instance
 
-To do this `ssh` into your Azure instance with `ssh root@"IP Address of server"`
-and use the following commands
+If you are running MacOS, get your public key by entering
+`cat ~/.ssh/id_rsa.pub` into a terminal. Copy this so it can be used when
+accessing the server.  If this command does not work for you (you are running
+a different operating system or you do not have a public key saved here), then
+you will need to refer to specific documentation for creating and/or retrieving
+your public key.
+
+Log in to the server with `ssh "server_name"@"IP address of server"` and enter
+the password for the server when prompted.
+
+Add your public key to `/home/"server_name"/.ssh/authorized_keys`, then save
+and exit.
+
+You will also need root access to the server. Type `sudo -i` and paste your
+public key into `/root/.ssh/authorized_keys` and type `exit` twice to leave
+the ssh session.
+
+`ssh` into your Azure instance as root with `ssh root@"IP address of server"`
+and use the following commands.
 
 ### Needed to run the application
 
@@ -25,6 +57,11 @@ apt-get install postgresql postgresql-contrib -y
 ```
 
 #### Install Erlang
+**Note:** Erlang needs to be installed with odbc, including drivers, for
+Healthlocker. Please see the
+[Healthlocker deployment guide](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
+for instructions on this.
+
 ```
 apt-get install erlang -y
 ```
@@ -39,12 +76,21 @@ apt-get install elixir
 
 #### Install Hex
 ```
-mix local hex
+mix local.hex
 ```
 
 #### Install Phoenix
 ```
 mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
+```
+
+#### Install tools to build release with edeliver
+
+`sudo apt-get update`
+
+```
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install elixir erlang-base-hipe build-essential erlang-parsetools erlang-dev nodejs -y
 ```
 
 ## Needed to configure server
@@ -62,9 +108,10 @@ sudo apt-get install nginx
 sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install python-certbot-nginx
 ```
+`sudo apt-get update`
+
+`sudo apt-get install python-certbot-nginx`
 
 ## Add environment variables to Azure
 
@@ -97,7 +144,17 @@ SES_PORT
 TO_EMAIL
 ```
 
-Once you have added all the variables you need run the command
+**Note:** [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
+had additional environment variables which need to be added.
+
+If any of the above values have special characters, you may need to open the
+profile and add them in with double quotes.
+
+Eg. run `vim ~/.profile`
+add a line at the bottom which says:
+`export SOME_PASSWORD="$pecial>C%ara<ters"`
+
+Once you have added all the variables you need, run the command
 ```
 source ~/.profile
 ```
@@ -107,10 +164,23 @@ word `exit`.
 
 ## Create an SSL Certificate
 
-For this step you will need to fork the Repo that can be found at this url
+*Note for next install: Try the certbot nginx method by running the command*
+
+```
+sudo certbot --nginx certonly
+```
+
+*You can see the advanced panel at https://certbot.eff.org/#ubuntuxenial-nginx.*
+*If this works, please update the docs accordingly by adding the steps taken,*
+*and removing redundant steps eg. may not need to configure nginx.*
+
+Before creating an SSL certificate you must have a domain set up that you want
+to use.
+
+For this step you will need to fork the repo that can be found at this url
 https://github.com/RobStallion/azure_deployment_test
 
-Clone that repo to your local machine with
+Clone your forked repo to your local machine with
 ```
 git clone https://github.com/"your organisation name"/azure_deployment_test.git
 ```
@@ -132,6 +202,36 @@ with the IP address for the Azure server you want to deploy to.
 Now go back onto the server with
 `ssh root@"IP Address of server"`
 
+You will need to update the nginx config so that the site can run on the domain
+you are creating the SSL certificate for. Do this by running the command
+`vim /etc/nginx/sites-enabled/default`.
+
+Type `i` to go into insert mode. Find the section that looks like
+
+```
+location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+                }
+```
+
+Remove the line `try_files $uri $uri/ =404;`.
+Add in `proxy_pass http://localhost:4000;`.
+It should look like:
+
+```
+location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                proxy_pass http://localhost:4000;
+                }
+```
+
+Press `esc`, then `:wq`.
+
+Reload the nginx config with `service nginx reload`.
+
 In the server run the following
 `certbot certonly --manual`
 
@@ -146,7 +246,7 @@ Go back to your text editor and create the file with the same name as the first
 half of the content that will be entered into the file.
 
 Example based on image above:   
-file name `/acme-challenge/dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0`  
+file name `web/static/assets/.well-known/acme-challenge/dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0`  
 file content `dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0.ofSGgRI932nP_X6z-R1He5F06yk_htZDa-RiUu2ATE4`
 
 Add, commit and push these changes to your master branch and then redeploy your
@@ -162,14 +262,24 @@ mix edeliver start production
 ```
 
 Once you have run the above go back to your terminal and press continue.
+If you entered more than one domain name, for example `www.test.com` and
+`test.com`, then you will get a similar screen again where you will need to make
+another file in `web/static/assets/.well-known/acme-challenge/` with the
+given file name and contents. **DO NOT** delete the file you already made.
+Run through the commands above this paragraph again, and click continue.
+
 Certbot will continue running and when it finishes you should get a screen with
 the following...
 ![image](https://user-images.githubusercontent.com/15571853/30107133-c6288e5c-92f5-11e7-965d-640f19ad40db.png)
 
-You can exit the server now with the command `exit`
+Before exiting the server, run the command `ls /etc/letsencrypt/live` and
+make a note of what displays. You will need this when you set up the nginx
+config.
 
+You can exit the server now with the command `exit`.
+Stop the server once you have exited with the command `mix edeliver stop production`
 
-## Use Edeliver to deploy Application to Azure
+## Use Edeliver to Deploy Application to Azure
 
 Now in the terminal on your local machine `cd` into the directory where you
 have cloned the application you want to deploy.
@@ -184,20 +294,22 @@ PRODUCTION_HOSTS="IP address"
 ```
 with the IP address for the Azure server you want to deploy to.
 
-Next run the following command in your terminal  
+Next run the following commands individually in your terminal  
 ```
-mix edeliver build production (this step takes a few minutes to complete)
+mix edeliver build release (this step takes a few minutes to complete)
 mix edeliver deploy release to production
 mix edeliver start production
 ```
-
 
 ## Update nginx configuration file
 
 In your text editor open the file `nginx.config`
 
 Everywhere that it says "enter your domain name" replace that sentence with the
-domain name you will be using. For example
+domain name you will be using. This is what displayed when you typed in
+`ls /etc/letsencrypt/live` while you were on the server.
+
+For example
 
 ```
 server_name "enter your domain name";
@@ -239,12 +351,18 @@ When you have done this press the
 followed by  
 `:wq`
 
-Now on the virtual machine run the command  
+On the virtual machine run the command  
 `service nginx reload`
 
-Now exit your sever by typing the command `exit`.
+Exit your server by typing the command `exit`.
 
 ## Add super_admin user to database
+
+**Note:** You do not need to add a `super_admin` for
+[Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md).
+However, there are other roles which may need to be updated. Please see the
+Healthlocker deployment guide for more details.
+
 
 On the virtual machine run the commands
 
@@ -322,3 +440,36 @@ Now type `exit`.
 
 If you have followed all of the above steps you should now be able to navigate
 to your domain name in a web browser and see your application running on https.
+
+## Troubleshooting
+If you are redeploying the application and experiences errors such as
+
+![Database connection error](https://user-images.githubusercontent.com/151362/30542909-04c6534c-9c79-11e7-91a7-82be388182af.png)
+
+then it is likely that there is a problem with the application accessing the
+environment variables that were set in the profile. To resolve this, you must
+run **ALL** of the steps to redeploy.
+
+1. Stop the server with `mix edeliver stop production`
+1. Build the release with `mix edeliver build release`
+1. Deploy release with `mix edeliver deploy release to production`
+1. Start application with `mix edeliver start production`
+
+This issue may occur after:
+
+* Rebooting the server then starting the app again with only step 4 below
+(without running through steps 1-3)
+* Changing the environment variables, then not running through steps 1-3 below.
+The profile is sourced when the release is built, so it's not as simple as
+running step 1 & step 4 again.
+
+If you are having trouble stopping the server with
+`mix edeliver stop production` and it just 'hangs', then you can follow through
+a similar process to be able to stop the app this way again.
+ssh into the server containing the app you cannot stop with edeliver. Type
+`reboot` and hit `enter`. You will automatically exit the server. Wait for
+the website to look like below:
+
+![502 error from nginx](https://user-images.githubusercontent.com/151362/30550507-8c337aa6-9c8f-11e7-9f12-c95990c73f01.png)
+
+This means the server has restarted successfully. Run through steps 1-4 above.
