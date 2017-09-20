@@ -147,7 +147,14 @@ TO_EMAIL
 **Note:** [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
 had additional environment variables which need to be added.
 
-Once you have added all the variables you need run the command
+If any of the above values have special characters, you may need to open the
+profile and add them in with double quotes.
+
+Eg. run `vim ~/.profile`
+add a line at the bottom which says:
+`export SOME_PASSWORD="$pecial>C%ara<ters"`
+
+Once you have added all the variables you need, run the command
 ```
 source ~/.profile
 ```
