@@ -41,6 +41,8 @@ mix local.hex --force
 # phoenix
 mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
 
+sudo apt-get install erlang-base-hipe build-essential erlang-parsetools erlang-dev -y
+
 #apt-get install inotify-tools -y
 
 #curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
