@@ -23,7 +23,6 @@ defmodule Healthlocker.Mixfile do
         :phoenix_pubsub,
         :phoenix_html,
         :cowboy,
-        :logger,
         :gettext,
         :phoenix_ecto,
         :postgrex,
@@ -32,12 +31,12 @@ defmodule Healthlocker.Mixfile do
         :bamboo,
         :segment,
         :faker,
-        :appsignal,
         :earmark,
         :bamboo_smtp,
         :ecto_factory,
         :wallaby
-      ]
+      ],
+      extra_applications: [:logger, :appsignal]
     ]
   end
 
@@ -66,7 +65,6 @@ defmodule Healthlocker.Mixfile do
      {:bamboo_smtp, "~> 1.2.1"},
      {:mock, "~> 0.2.0", only: :test},
      {:faker, "~> 0.7"},
-     {:appsignal, "~> 1.0"},
      {:wallaby, "~> 0.16.1"},
      {:ecto_factory, "~> 0.0.6"},
      {:oxleas_adhd, in_umbrella: true},
