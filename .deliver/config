@@ -4,6 +4,10 @@ BUILD_HOST="51.140.117.78"
 BUILD_USER="root"
 BUILD_AT="/home/oxleasadmin/oxleas_adhd/builds"
 
+STAGING_HOSTS="51.140.117.78"
+STAGING_USER="root"
+DELIVER_TO="/home/oxleasadmin"
+
 PRODUCTION_HOSTS="51.140.117.78"
 PRODUCTION_USER="root"
 DELIVER_TO="/home/oxleasadmin"

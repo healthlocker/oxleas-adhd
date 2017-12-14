@@ -36,6 +36,8 @@ defmodule OxleasAdhd.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:phoenix_ecto, "~> 3.0"},
+     {:ecto_factory, "~> 0.0.6"},
+    ]
   end
 end
