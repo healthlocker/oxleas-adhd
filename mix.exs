@@ -10,12 +10,6 @@ defmodule OxleasUmbrella.Mixfile do
    ]
   end
 
-  def application do
-    [
-      extra_applications: [:logger, :appsignal]
-    ]
-  end
-
   # Dependencies can be Hex packages:
   #
   #   {:my_dep, "~> 0.3.0"}

@@ -23,7 +23,6 @@ defmodule Healthlocker.Mixfile do
         :phoenix_pubsub,
         :phoenix_html,
         :cowboy,
-        :logger,
         :gettext,
         :phoenix_ecto,
         :postgrex,
@@ -36,7 +35,8 @@ defmodule Healthlocker.Mixfile do
         :bamboo_smtp,
         :ecto_factory,
         :wallaby
-      ]
+      ],
+      extra_applications: [:logger, :appsignal]
     ]
   end
 
