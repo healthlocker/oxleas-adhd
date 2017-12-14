@@ -362,7 +362,7 @@ mix edeliver start <staging | production>
 This will build and deploy the current `master` branch.  In order to use a different branch, alter the first command as:
 
 ```
-mix edeliver build release --branch=<branch-name>>
+mix edeliver build release --branch=<branch-name>
 ```
 
 
