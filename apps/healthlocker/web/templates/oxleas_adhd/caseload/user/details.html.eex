@@ -35,7 +35,7 @@
             <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
           <% end %>
         <% else %>
-          <%= link to: user_medication_path(@conn, :new, @current_user) do %>
+          <%= link to: user_medication_path(@conn, :new, @user) do %>
             <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
           <% end %>
         <% end %>
