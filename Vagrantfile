@@ -13,18 +13,12 @@ apt-get install curl -y
 
 # nodejs
 apt-get -y install g++ git git-core nodejs npm
-#curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash && source .bashrc
-#nvm install node
-#node -v
 
 # PostgreSQL
 apt-get install postgresql postgresql-contrib -y
-#sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
 # Confirm Postgres is running:
 /etc/init.d/postgresql status
-
-# erlang
-# apt-get install erlang -y
 
 # elixir
 wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && dpkg -i erlang-solutions_1.0_all.deb
@@ -32,46 +26,15 @@ apt-get update
 apt-get install esl-erlang -y
 apt-get install elixir -y
 
-# install erlang-odbc
-# apt-get install erlang-odbc -y
-
 # hex
 mix local.hex --force
+# rebar
+mix local.rebar --force
 
 # phoenix
 mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
 
 sudo apt-get install erlang-base-hipe build-essential erlang-parsetools erlang-dev -y
-
-#apt-get install inotify-tools -y
-
-#curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-#curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
-#apt-get update
-#ACCEPT_EULA=Y apt-get install msodbcsql -y
-#apt-get install unixodbc-utf16 unixodbc-dev-utf16 -y
-## # optional: for bcp and sqlcmd
-#ACCEPT_EULA=Y apt-get install mssql-tools -y
-## Add tools to path
-#echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
-#echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
-#source ~/.bashrc
-## optional: for unixODBC development headers
-#apt-get install unixodbc-dev -y
-
-cd /home/ubuntu/oxleas
-
-
-mix local.rebar --force
-mix deps.clean --all
-mix deps.get --force
-mix deps.compile
-#mix ecto.create -r Healthlocker.Repo
-#mix ecto.migrate -r Healthlocker.Repo
-#mix run priv/repo/seeds.exs
-#mix phoenix.server
-
-#mix edeliver build release
 
 SCRIPT
 

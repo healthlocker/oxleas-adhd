@@ -20,6 +20,58 @@ In order to go through all the steps in this README, you will need:
 * A Phoenix application that you want to deploy to Azure
 * A domain name (or multiple) registered for the IP address of the server
 
+## Local development
+
+A `Vagrantfile` has been created in order to build a consistent and ready-to-roll development environment.  Your *regular* vagrant installation should be able to create a suitably provisioned VM with a command along with lines of:
+
+```
+vagrant up
+```
+
+### Running app locally ###
+
+Note: these commands featured *within* the `Vagrantfile` for the Healthlocker app, however, since spinning up a local VM *might not* be for the purposes of running the app (it could be to deploy), these steps have been moved here.
+
+After provisioning and spinning up the local development VM, ssh on to it as you would usually for your Vagrant setup and run the following two sets of commands (first set only required for the initial set up):
+
+#### One time (provision) commands ####
+
+```
+cd /home/ubuntu/oxleas
+mix deps.clean --all
+mix deps.get --force
+mix deps.compile
+mix ecto.create -r Healthlocker.Repo
+mix ecto.migrate -r Healthlocker.Repo
+mix run priv/repo/seeds.exs
+```
+
+#### Run app ####
+
+```
+cd /home/ubuntu/oxleas
+mix phoenix.server
+```
+
+#### Updating codebase ####
+If changes are made to the codebase and update to the origin git repository, then update the local development VM with:
+
+```
+cd /home/ubuntu/oxleas
+git fetch
+git checkout <alternate-branch>
+git pull 
+mix deps.clean --all
+mix deps.get --force
+mix deps.compile
+```
+
+`git checkout` is optional if a branch change is required.  `git pull` will not be required if switching to a new branch.
+
+`mix deps.<command>` lines are only required if there are any dependency changes, see main `mix.exs` file and others at `apps/*/mix.exs`
+
+### 
+
 ## Install applications on the Azure instance
 
 If you are running MacOS, get your public key by entering
@@ -29,10 +81,10 @@ a different operating system or you do not have a public key saved here), then
 you will need to refer to specific documentation for creating and/or retrieving
 your public key.
 
-Log in to the server with `ssh "server_name"@"IP address of server"` and enter
+Log in to the server with `ssh "server_user_name"@"IP address of server"` and enter
 the password for the server when prompted.
 
-Add your public key to `/home/"server_name"/.ssh/authorized_keys`, then save
+Add your public key to `/home/"server_user_name"/.ssh/authorized_keys`, then save
 and exit.
 
 You will also need root access to the server. Type `sudo -i` and paste your
@@ -130,7 +182,7 @@ All the other environment variables you need to add will be done following that
 pattern.
 
 One of the variables you will need to add to the `/.profile` will be the
-`secret_key_base`. You can generate this by running the command
+`SECRET_KEY_BASE`. You can generate this by running the command
 `mix phoenix.gen.secret` in your local terminal.
 
 Here is a list of all the variables you will need to add
@@ -142,6 +194,7 @@ SMTP_PASSWORD
 SECRET_KEY_BASE
 SES_PORT
 TO_EMAIL
+APPSIGNAL_APP_ENV
 ```
 
 **Note:** [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
@@ -245,8 +298,8 @@ Once here **DO NOT** continue the certbot steps.
 Go back to your text editor and create the file with the same name as the first
 half of the content that will be entered into the file.
 
-Example based on image above:   
-file name `web/static/assets/.well-known/acme-challenge/dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0`  
+Example based on image above:
+file name `web/static/assets/.well-known/acme-challenge/dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0`
 file content `dwOpiOLomA6F96N7yUmZzg1v2gSB7uhVDO_84eo4av0.ofSGgRI932nP_X6z-R1He5F06yk_htZDa-RiUu2ATE4`
 
 Add, commit and push these changes to your master branch and then redeploy your
@@ -288,18 +341,30 @@ Open the `.deliver/config` in a text editor of your choice.
 
 Once in here update these lines... (same as step above)
 ```
-BUILD_HOST="IP address"
-
-PRODUCTION_HOSTS="IP address"
+BUILD_HOST="staging machine IP address"
+...
+STAGING_HOSTS="staging machine IP address"
+...
+PRODUCTION_HOSTS="production machine IP address"
 ```
-with the IP address for the Azure server you want to deploy to.
+with the IP addresses for the staging and production Azure servers you want to deploy to.
 
-Next run the following commands individually in your terminal  
+**Note:** *build* host is singular, whereas *staging* and *production* is plural.  
+
+Next run the following commands individually in your terminal, specifying deployment and app start on *either* `staging` or `production`:
+
 ```
 mix edeliver build release (this step takes a few minutes to complete)
-mix edeliver deploy release to production
-mix edeliver start production
+mix edeliver deploy release to <staging | production> 
+mix edeliver start <staging | production>
 ```
+
+This will build and deploy the current `master` branch.  In order to use a different branch, alter the first command as:
+
+```
+mix edeliver build release --branch=<branch-name>
+```
+
 
 ## Update nginx configuration file
 
@@ -320,7 +385,7 @@ server_name test-focus.headscapegreenwich.co.uk;
 ```
 
 when you have changed all the places where you see that sentence (there should
-be four to change), highlight and copy the entire file to your clipboard.  
+be four to change), highlight and copy the entire file to your clipboard.
 
 `ssh` back into the virtual machine with `ssh root@"IP Address of server"`
 
@@ -336,22 +401,22 @@ this will take you into the vim text editor. When in **type**
 ```
 the press return
 
-Next press  
-`shift_key + v `  
-followed by  
+Next press
+`shift_key + v `
+followed by
 `shift_key + g`
-followed by  
+followed by
 `d`
 
 Then press `i` to enter insert mode and press `cmd/ctrl + v` to paste what you
 copied earlier into this file.
 
-When you have done this press the  
-`esc_key`  
-followed by  
+When you have done this press the
+`esc_key`
+followed by
 `:wq`
 
-On the virtual machine run the command  
+On the virtual machine run the command
 `service nginx reload`
 
 Exit your server by typing the command `exit`.
@@ -367,7 +432,7 @@ Healthlocker deployment guide for more details.
 On the virtual machine run the commands
 
 ```
-cd /home/"server_name"/"app_name"/builds (example: cd /home/oxleasadmin/oxleas_adhd/builds/)
+cd /home/"server_user_name"/"app_name"/builds (example: cd /home/oxleasadmin/oxleas_adhd/builds/)
 mix ecto.create
 mix ecto.migrate
 sudo -u postgres psql
@@ -442,7 +507,8 @@ If you have followed all of the above steps you should now be able to navigate
 to your domain name in a web browser and see your application running on https.
 
 ## Troubleshooting
-If you are redeploying the application and experiences errors such as
+### Phoenix Ecto.Adapters.SQL.query timeout
+If you are redeploying the application and experience errors such as
 
 ![Database connection error](https://user-images.githubusercontent.com/151362/30542909-04c6534c-9c79-11e7-91a7-82be388182af.png)
 
@@ -452,8 +518,8 @@ run **ALL** of the steps to redeploy.
 
 1. Stop the server with `mix edeliver stop production`
 1. Build the release with `mix edeliver build release`
-1. Deploy release with `mix edeliver deploy release to production`
-1. Start application with `mix edeliver start production`
+1. Deploy release with `mix edeliver deploy release to <staging | production>`
+1. Start application with `mix edeliver start <staging | production>`
 
 This issue may occur after:
 
@@ -464,7 +530,7 @@ The profile is sourced when the release is built, so it's not as simple as
 running step 1 & step 4 again.
 
 If you are having trouble stopping the server with
-`mix edeliver stop production` and it just 'hangs', then you can follow through
+`mix edeliver stop <staging | production>` and it just 'hangs', then you can follow through
 a similar process to be able to stop the app this way again.
 ssh into the server containing the app you cannot stop with edeliver. Type
 `reboot` and hit `enter`. You will automatically exit the server. Wait for
@@ -473,3 +539,26 @@ the website to look like below:
 ![502 error from nginx](https://user-images.githubusercontent.com/151362/30550507-8c337aa6-9c8f-11e7-9f12-c95990c73f01.png)
 
 This means the server has restarted successfully. Run through steps 1-4 above.
+
+### 502 Bad Gateway and crash file present
+If a the build, deployment and app start *appeared* to be successful, but the site is just showing an nginx `502 Bad Gateway` error page, then check for an Erlang crash dump file:
+
+1.  SSH on to the staging/production server
+2.  `cd ~<server user name>/<app folder>`
+3.  `ls -al erl_crash.dump`
+
+If the crash dump file is **recent**, then have a peek at the start with `head erl_crash.dump`.
+
+We have seen examples of the following error:
+
+```
+Slogan: could not start kernel pid (application_controller) (error in config file "/home/oxleasadmin/oxleas_adhd/var/sys.config" (none): configuration file must contain ONE list ended by <dot>)
+```
+
+On inspection, the `sys.config` file looks fine and *does* contain only one list ended by <dot>.
+
+Fixing seems to involve some combination of ensuring that the app has been *stopped* **prior** to deployment.  Stop the app from the local deployment VM with:
+
+```
+mix edeliver stop <staging | production>
+```
