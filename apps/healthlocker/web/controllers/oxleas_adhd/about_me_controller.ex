@@ -1,5 +1,5 @@
 defmodule Healthlocker.OxleasAdhd.AboutMeController do
-  alias Healthlocker.AboutMe
+  alias Healthlocker.{AboutMe, User}
   use Healthlocker.Web, :controller
 
   def new(conn, params) do
@@ -40,15 +40,14 @@ defmodule Healthlocker.OxleasAdhd.AboutMeController do
 
   def edit(conn, %{"id" => about_me_id}) do
     about_me = Repo.get(AboutMe, about_me_id)
-    update_info = %{
-      team_last_update: about_me.team_last_update,
-      last_updated_by: about_me.last_updated_by,
-      my_last_update: about_me.my_last_update,
-      user_id: about_me.user_id
-    }
+    user = Repo.get(User, about_me.last_updated_by)
+    formatted_staff_info = AboutMe.format_staff_update_info(about_me, user)
+    formatted_user_info = AboutMe.format_naive_date(about_me.my_last_update)
     changeset = AboutMe.changeset(about_me)
     conn
-    |> render("edit.html", changeset: changeset, about_me: about_me)
+    |> render("edit.html", changeset: changeset, about_me: about_me,
+              formatted_staff_info: formatted_staff_info,
+              formatted_user_info: formatted_user_info)
   end
 
   def update(conn, %{"id" => about_me_id, "about_me" => about_me}) do
