@@ -55,6 +55,7 @@ defmodule Healthlocker.OxleasAdhd.AboutMeController do
     old_about_me = Repo.get(AboutMe, about_me_id)
     changeset =
       AboutMe.changeset(old_about_me, about_me)
+      |> AboutMe.user_updated()
 
     case Repo.update(changeset) do
       {:ok, _entry} ->
