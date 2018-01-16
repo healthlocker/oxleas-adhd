@@ -71,7 +71,7 @@ defmodule Healthlocker.Router do
     resources "/users", UserController do
       resources "/medication", MedicationController, only: [:index, :show]
     end
-    resources "/about-me", AboutMeController, only: [:new, :edit] #, :create, :update
+    resources "/about-me", AboutMeController, only: [:new, :edit, :create, :update]
     scope "/care-team", CareTeam, as: :care_team do
       resources "/rooms", RoomController, only: [:show]
       resources "/contacts", ContactController, only: [:show], singleton: true
