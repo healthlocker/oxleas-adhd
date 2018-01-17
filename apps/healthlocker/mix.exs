@@ -4,7 +4,11 @@ defmodule Healthlocker.Mixfile do
   def project do
     [app: :healthlocker,
      version: "1.0.3",
-     elixir: "~> 1.2",
+     elixir: "~> 1.4",
+     build_path: "../../_build",
+     config_path: "../../config/config.exs",
+     deps_path: "../../deps",
+     lockfile: "../../mix.lock",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,

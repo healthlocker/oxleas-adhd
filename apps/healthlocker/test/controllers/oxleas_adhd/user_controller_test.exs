@@ -27,6 +27,16 @@ defmodule Healthlocker.OxleasAdhd.UserControllerTest do
     user_type: "new_staff"
   }
 
+  @teacher_attrs %{
+    first_name: "Teacher",
+    last_name: "Teacher",
+    org: 'Oxford',
+    job_role: "Math teacher",
+    email: "teacher@mail.com",
+    password: "password",
+    user_type: "new_teacher"
+  }
+
   @in_db %{
     user_type: "new_staff",
     first_name: "test",
@@ -100,6 +110,11 @@ defmodule Healthlocker.OxleasAdhd.UserControllerTest do
       assert html_response(conn, 200) =~ "Add carer"
     end
 
+    test "GET new for teacher", %{conn: conn} do
+      conn = get conn, user_path(conn, :new), user_type: "new_teacher"
+      assert html_response(conn, 200) =~ "Add teacher"
+    end
+
     test "POST create for service_user", %{conn: conn} do
       conn = post conn, user_path(conn, :create), user: @su_attrs
       user = Repo.get_by(User, email: "su@mail.com")
@@ -119,6 +134,14 @@ defmodule Healthlocker.OxleasAdhd.UserControllerTest do
     test "POST create for staff", %{conn: conn} do
       conn = post conn, user_path(conn, :create), user: @staff_attrs
       user = Repo.get_by(User, email: "staff@mail.com")
+      assert user
+      assert redirected_to(conn) == user_path(conn, :index)
+      assert get_flash(conn, :info) == "User created successfully"
+    end
+
+    test "POST create for teacher", %{conn: conn} do
+      conn = post conn, user_path(conn, :create), user: @teacher_attrs
+      user = Repo.get_by(User, email: "teacher@mail.com")
       assert user
       assert redirected_to(conn) == user_path(conn, :index)
       assert get_flash(conn, :info) == "User created successfully"

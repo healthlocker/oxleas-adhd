@@ -10,8 +10,9 @@ defmodule Healthlocker.OxleasAdhd.UserController do
         user |> Repo.preload(:carers)
       end )
     staff = User |> OxleasAdhd.UserQuery.get_by_user_type("clinician") |> Repo.all
+    teachers = User |> OxleasAdhd.UserQuery.get_by_user_type("teacher") |> Repo.all
     conn
-    |> render("index.html", users: users, staff: staff)
+    |> render("index.html", users: users, staff: staff, teachers: teachers)
   end
 
   def new(conn, %{"user_type" => user_type}) do
@@ -90,6 +91,8 @@ defmodule Healthlocker.OxleasAdhd.UserController do
         User.changeset_service_user(%User{}, user)
       "new_carer" ->
         User.changeset_carer(%User{}, user)
+      "new_teacher" ->
+        User.changeset_teacher(%User{}, user)
     end
   end
 end
