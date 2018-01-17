@@ -47,7 +47,6 @@ defmodule Healthlocker.OxleasAdhd.AboutMeController do
   end
 
   def edit(conn, %{"id" => about_me_id, "user_id" => user_id}) do
-        IO.inspect("failing test>>>>>>>")
     user = Repo.get!(User, user_id)
     about_me = Repo.get(AboutMe, about_me_id)
     adhd_team_member =
