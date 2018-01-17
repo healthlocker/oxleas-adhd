@@ -54,3 +54,5 @@ erl_crash.dump
 /.vagrant
 deploy_key
 ubuntu-xenial-16.04-cloudimg-console.log
+
+package-lock.json
