@@ -3,57 +3,57 @@
     <div class="">
       <%= label f, :early_life, "My early life", class: "b db f5 dark-blue mt2 mb2" %>
       <%= textarea f, :early_life, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
-      <span class="hl-pink"><%= error_tag f, :entry %></span>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :early_life) %>
+      <span class="hl-pink"><%= error_tag f, :early_life %></span>
     </div>
 
     <div class="">
       <%= label f, :health, "My health", class: "b db f5 dark-blue mt2 mb2" %>
       <%= textarea f, :health, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
-      <span class="hl-pink"><%= error_tag f, :entry %></span>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :health) %>
+      <span class="hl-pink"><%= error_tag f, :health %></span>
     </div>
 
     <div class="">
       <%= label f, :events, "My life events", class: "b db f5 dark-blue mt2 mb2" %>
       <%= textarea f, :events, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
-      <span class="hl-pink"><%= error_tag f, :entry %></span>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :events) %>
+      <span class="hl-pink"><%= error_tag f, :events %></span>
     </div>
 
     <div class="">
       <%= label f, :hobbies, "My hobbies", class: "b db f5 dark-blue mt2 mb2" %>
       <%= textarea f, :hobbies, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
-      <span class="hl-pink"><%= error_tag f, :entry %></span>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :hobbies) %>
+      <span class="hl-pink"><%= error_tag f, :hobbies %></span>
     </div>
 
     <div class="">
       <%= label f, :school, "My school", class: "b db f5 dark-blue mt2 mb2" %>
       <%= textarea f, :school, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
-      <span class="hl-pink"><%= error_tag f, :entry %></span>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :school) %>
+      <span class="hl-pink"><%= error_tag f, :school %></span>
     </div>
 
     <div class="">
       <%= label f, :important_people, "Important people in my life", class: "b db f5 dark-blue mt2 mb2" %>
       <%= textarea f, :important_people, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
-      <span class="hl-pink"><%= error_tag f, :entry %></span>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :important_people) %>
+      <span class="hl-pink"><%= error_tag f, :important_people %></span>
     </div>
 
     <div class="">
       <%= label f, :difficulties, "Things I find difficult", class: "b db f5 dark-blue mt2 mb2" %>
       <%= textarea f, :difficulties, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
-      <span class="hl-pink"><%= error_tag f, :entry %></span>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :difficulties) %>
+      <span class="hl-pink"><%= error_tag f, :difficulties %></span>
     </div>
 
     <div class="">
       <%= label f, :strengths, "Things I am good at", class: "b db f5 dark-blue mt2 mb2" %>
       <%= textarea f, :strengths, class: "pa3 input-reset bn hl-bg-grey w-100 " <>
-      Healthlocker.ComponentView.highlight_errors(@changeset, :entry) %>
-      <span class="hl-pink"><%= error_tag f, :entry %></span>
+      Healthlocker.ComponentView.highlight_errors(@changeset, :strengths) %>
+      <span class="hl-pink"><%= error_tag f, :strengths %></span>
     </div>
 
     <div class="mt4 tr">
