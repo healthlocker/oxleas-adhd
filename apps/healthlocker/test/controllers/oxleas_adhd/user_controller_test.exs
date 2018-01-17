@@ -30,7 +30,7 @@ defmodule Healthlocker.OxleasAdhd.UserControllerTest do
   @teacher_attrs %{
     first_name: "Teacher",
     last_name: "Teacher",
-    org: 'Oxford',
+    org: "Oxford",
     job_role: "Math teacher",
     email: "teacher@mail.com",
     password: "password",
