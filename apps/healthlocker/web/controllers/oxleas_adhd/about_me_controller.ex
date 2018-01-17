@@ -40,8 +40,12 @@ defmodule Healthlocker.OxleasAdhd.AboutMeController do
 
   def edit(conn, %{"id" => about_me_id}) do
     about_me = Repo.get(AboutMe, about_me_id)
-    user = Repo.get(User, about_me.last_updated_by)
-    formatted_staff_info = AboutMe.format_staff_update_info(about_me, user)
+    adhd_team_member =
+      case about_me.last_updated_by do
+        nil -> nil
+        _   -> Repo.get(User, about_me.last_updated_by)
+      end
+    formatted_staff_info = AboutMe.format_staff_update_info(about_me, adhd_team_member)
     formatted_user_info = AboutMe.format_naive_date(about_me.my_last_update)
     changeset = AboutMe.changeset(about_me)
     conn
