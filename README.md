@@ -22,3 +22,13 @@ the SU
 + Content changes to make things clearer to the intended audience
 + Some changes to the branding and user interface to bring this more in line with
 Oxleas' desired brand name.
+
+## Super Admin user
+
+When running the project on your machine, you can populate the database with users by running:
+```
+mix run apps/healthlocker/priv/repo/user_only_seeds.exs
+```
+
+The list of users will include a super admin (super@admin.com/password).
+Once logged-in with this user you can add more users directly with the application UI.
