@@ -3,8 +3,16 @@
   <%= render "form.html", changeset: @changeset, action: user_about_me_path(@conn, :update, @user, @about_me), method: [method: "put"] %>
 
   <p class="hl-pink b">Most recent update from ADHD team:</p>
-  <p class="hl-pink"><%= @formatted_staff_info %></p>
+  <%= if @team_name do %>
+    <p class="hl-pink"><%= @team_name %> <%= @team_last_update %></p>
+  <% else %>
+    <p class="hl-pink">No one from ADHD team has updated your About me yet</p>
+  <% end %>
 
   <p class="hl-pink b">My most recent update:</p>
-  <p class="hl-pink"><%= @formatted_user_info %></p>
+  <%= if @user_last_update do %>
+    <p class="hl-pink"><%= @user_last_update %></p>
+  <% else %>
+    <p class="hl-pink">You have not updated your About me yet</p>
+  <% end %>
 </div>
