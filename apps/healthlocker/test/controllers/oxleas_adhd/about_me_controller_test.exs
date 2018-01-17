@@ -6,7 +6,7 @@ defmodule Healthlocker.AboutMeControllerTest do
 
   describe "No user logged in" do
     test "GET /about-me/new gets redirected", %{conn: conn} do
-      conn = get conn, about_me_path(conn, :new)
+      conn = get conn, user_about_me_path(conn, :new, %User{id: 1})
       assert html_response(conn, 302)
     end
   end
@@ -25,12 +25,12 @@ defmodule Healthlocker.AboutMeControllerTest do
     end
 
     test "GET /about-me/new", %{conn: conn} do
-      conn = get conn, about_me_path(conn, :new)
+      conn = get conn, user_about_me_path(conn, :new, conn.assigns.current_user)
       assert html_response(conn, 200) =~ "About"
     end
 
     test "POST /about-me with correct details", %{conn: conn} do
-      conn = post conn, about_me_path(conn, :create), about_me: @valid_attrs
+      conn = post conn, user_about_me_path(conn, :create, conn.assigns.current_user), about_me: @valid_attrs
       assert redirected_to(conn) == toolkit_path(conn, :index)
     end
   end
@@ -55,13 +55,13 @@ defmodule Healthlocker.AboutMeControllerTest do
 
     test "GET /about-me/new redirects to edit", %{conn: conn} do
       about_me = Repo.get(AboutMe, 1)
-      conn = get conn, about_me_path(conn, :new)
-      assert redirected_to(conn) == about_me_path(conn, :edit, about_me)
+      conn = get conn, user_about_me_path(conn, :new, conn.assigns.current_user)
+      assert redirected_to(conn) == user_about_me_path(conn, :edit, conn.assigns.current_user, about_me)
     end
 
     test "PUT /about-me/:id to update an entry", %{conn: conn} do
       about_me = Repo.get(AboutMe, 1)
-      conn = put conn, about_me_path(conn, :update, about_me), about_me: @valid_attrs
+      conn = put conn, user_about_me_path(conn, :update, conn.assigns.current_user, about_me), about_me: @valid_attrs
       assert redirected_to(conn) == toolkit_path(conn, :index)
     end
   end
