@@ -123,7 +123,7 @@
   <p>
     If you have any additional questions regarding this policy, please feel
     free to contact us at:
-  <%= link "Oxl-tr.focusadhd@nhs.net", to: "Oxl-tr.focusadhd@nhs.net", 
+    <%= link_to("Oxl-tr.focusadhd@nhs.net", to: "mailto:Oxl-tr.focusadhd@nhs.net") %>
      class: "hl-aqua flex-wrap underline" %>
   </p>
   <p>
