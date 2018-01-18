@@ -22,6 +22,7 @@ defmodule Healthlocker.User do
     field :job_role, :string
     field :dob, :string
     field :relationship, :string
+    field :org, :string
     has_many :posts, Healthlocker.Post
     has_one :medication, Healthlocker.Medication, on_delete: :delete_all, on_replace: :delete
     many_to_many :likes, Healthlocker.Post, join_through: "posts_likes", on_replace: :delete, on_delete: :delete_all
@@ -49,7 +50,7 @@ defmodule Healthlocker.User do
     |> cast(params, [:first_name, :last_name, :job_role, :email, :password])
     |> put_change(:role, "clinician")
     |> validate_required([:first_name, :last_name, :job_role, :email, :password])
-    |> registration_changeset
+    |> registration_changeset()
   end
 
   def changeset_service_user(struct, params \\ :invalid) do
@@ -57,7 +58,7 @@ defmodule Healthlocker.User do
     |> cast(params, [:first_name, :last_name, :dob, :email, :password])
     |> put_change(:role, "service_user")
     |> validate_required([:first_name, :last_name, :dob, :email, :password])
-    |> registration_changeset
+    |> registration_changeset()
   end
 
   def changeset_carer(struct, params \\ :invalid) do
@@ -65,7 +66,15 @@ defmodule Healthlocker.User do
     |> cast(params, [:first_name, :last_name, :relationship, :email, :password])
     |> put_change(:role, "carer")
     |> validate_required([:first_name, :last_name, :relationship, :email, :password])
-    |> registration_changeset
+    |> registration_changeset()
+  end
+
+  def changeset_teacher(struct, params \\ :invalid) do
+    struct
+    |> cast(params, [:first_name, :last_name, :job_role, :org, :email, :password])
+    |> put_change(:role, "teacher")
+    |> validate_required([:first_name, :last_name, :job_role, :org, :email, :password])
+    |> registration_changeset()
   end
 
   def email_changeset(struct, params \\ :invalid) do
