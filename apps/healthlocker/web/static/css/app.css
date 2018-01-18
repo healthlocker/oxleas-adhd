@@ -277,7 +277,20 @@ button itself */
 .left--1-1 {
   left: -1.1rem;
 }
-/* Styleguide */
+
+.w-8 {
+  width: 8%;
+}
+
+@media screen and (min-width: 48em) {
+  .w-97-ns {
+    width: 97%;
+  }
+
+  .v-5-ns {
+    vertical-align: 5px;
+  }
+}/* Styleguide */
 
 code {
   padding: 2px 4px;
