@@ -36,6 +36,7 @@ defmodule Healthlocker.User do
     has_many :messages, Healthlocker.Message
     has_many :symptoms, Healthlocker.Symptom
     has_many :diaries, Healthlocker.Diary
+    has_one :about_mes, Healthlocker.AboutMe
 
     timestamps()
   end
