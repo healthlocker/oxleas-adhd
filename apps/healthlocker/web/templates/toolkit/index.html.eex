@@ -96,7 +96,7 @@
     </div>
 
     <div class="tc w-40 dib fr">
-      <%= link to: about_me_path(@conn, :new) do %>
+      <%= link to: user_about_me_path(@conn, :new, @current_user) do %>
         <%= img_tag("/images/Toolkit_about.png",
       class: "w-100") %>
       <% end %>
@@ -116,7 +116,7 @@
       <% end %>
     </div>
     <div class="tc w-40 dib">
-      <%= link to: about_me_path(@conn, :new) do %>
+      <%= link to: user_about_me_path(@conn, :new, @current_user) do %>
         <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">About Me</span>
       <% end %>
     </div>

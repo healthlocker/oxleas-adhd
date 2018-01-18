@@ -1,1 +1,5 @@
-<p class="pt4 tc">The About Me feature is coming soon...</p>
+<div class="br2 mv4 center">
+  <h2 class="tc dark-blue">About me</h2>
+  <%= render "form.html", changeset: @changeset,
+  action: user_about_me_path(@conn, :create, @user), method: [method: "post"] %>
+</div>
