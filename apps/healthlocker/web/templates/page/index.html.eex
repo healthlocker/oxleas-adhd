@@ -157,9 +157,9 @@
       <div class="tl">
         <%= link_to "Read this story", to: post_path(@conn, :show, @story.id) %>
       </div>
-    <%= else %>
+    <% else %>
       <p class="pv2 lh-copy">No stories found</p>
-    <%= end %>
+    <% end %>
   </article>
   <div class="tr mt2">
     <%= link_secondary "See more stories", to: post_path(@conn, :index) %>

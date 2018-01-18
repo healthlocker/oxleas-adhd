@@ -1,7 +1,6 @@
 defmodule Healthlocker.OxleasAdhd.LoginController do
   use Healthlocker.Web, :controller
 
-  alias Healthlocker.User
   alias Healthlocker.Plugs.Auth
 
   def index(conn, _) do
