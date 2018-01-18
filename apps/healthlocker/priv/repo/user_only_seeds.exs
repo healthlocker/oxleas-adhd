@@ -47,3 +47,15 @@ Repo.insert!(%User{
   data_access: false,
   role: "super_admin"
 })
+
+Repo.insert!(%User{
+  email: "teacher@email.com",
+  password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
+  first_name: "Marc",
+  last_name: "Email",
+  phone_number: "07519 283 475",
+  security_question: "Name of first boss?",
+  security_answer: "Betty",
+  data_access: false,
+  role: "teacher"
+})
