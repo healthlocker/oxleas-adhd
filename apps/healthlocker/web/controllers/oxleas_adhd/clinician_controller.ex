@@ -4,11 +4,19 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
   alias OxleasAdhd.{ClinicianQuery, UserQuery}
 
   def edit(conn, %{"user_id" => user_id}) do
-    service_user = Repo.get!(User, user_id)
+    service_user = User
+                   |> Repo.get!(user_id)
+                   |> Repo.preload(:clinician)
+
     clinicians = User
               |> UserQuery.get_by_user_type("clinician")
               |> Repo.all
     changeset = Clinician.changeset(%Clinician{})
+
+    clinicians = clinicians
+               |> Enum.map(fn(c) ->
+                 Map.put(c, :selected, Enum.member?(service_user.clinician, c))
+               end)
 
     conn
     |> render("edit.html", user: service_user, changeset: changeset, clinicians: clinicians)
@@ -17,16 +25,10 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
   def update(conn, %{"user_id" => user_id, "clinician" => clinician_params}) do
     id = user_id |> String.to_integer
     service_user = Repo.get!(User, id)
-
     clinician_ids =
       clinician_params
-      |> Map.values
-      |> Enum.reject(fn (selection) ->
-        selection == "false"
-      end)
-      |> Enum.map(fn id ->
-        String.to_integer(id)
-      end)
+      |> Enum.reject(fn({_, v}) -> v == "false" end)
+      |> Enum.map(fn({id, _}) -> String.to_integer(id) end)
 
     room = Room |> Repo.get_by(name: "service-user-care-team:" <> Integer.to_string(id))
     clinicians = make_clinicians(id, clinician_ids)
@@ -49,6 +51,12 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
     clinicians = User
               |> UserQuery.get_by_user_type("clinician")
               |> Repo.all
+
+    clinicians = clinicians
+               |> Enum.map(fn(c) ->
+                 Map.put(c, :selected, false)
+               end)
+
     changeset = Clinician.changeset(%Clinician{})
 
     conn
@@ -61,13 +69,8 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
 
     clinician_ids =
       clinician_params
-      |> Map.values
-      |> Enum.reject(fn (selection) ->
-        selection == "false"
-      end)
-      |> Enum.map(fn id ->
-        String.to_integer(id)
-      end)
+      |> Enum.reject(fn({_, v}) -> v == "false" end)
+      |> Enum.map(fn({id, _}) -> String.to_integer(id) end)
 
     clinicians = make_clinicians(id, clinician_ids)
     multi = CreateRoom.connect_clinicians_and_create_rooms(service_user, clinician_ids, clinicians)

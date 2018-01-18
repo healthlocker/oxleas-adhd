@@ -33,7 +33,7 @@
   <%= form_for @changeset, @action, @method, fn f -> %>
     <%= for clinician <- @clinicians do %>
       <div class="mv3">
-        <%= checkbox f, String.to_atom("#{clinician.id}"), checked_value: clinician.id %>
+        <%= checkbox f, String.to_atom("#{clinician.id}"), value: clinician.selected %>
         <%= label f, String.to_atom("#{clinician.id}") do %>
           <%= clinician.first_name <> " " <> clinician.last_name %>
         <% end %>

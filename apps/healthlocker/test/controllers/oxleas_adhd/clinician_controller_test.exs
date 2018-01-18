@@ -3,8 +3,8 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
   alias Healthlocker.{User, Room}
 
   @valid_attrs %{
-    clin1235: "1235",
-    clin1236: "false"
+    "1235": "true",
+    "1236": "false"
   }
 
   setup %{} do
