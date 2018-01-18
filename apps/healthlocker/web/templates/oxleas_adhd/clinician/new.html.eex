@@ -1,4 +1,9 @@
 <h3 class="tc normal mb5 b dark-blue">Add Service User</h3>
 
-<%= render "form.html", changeset: @changeset, user: @user, clinicians: @clinicians,
-    action: user_clinician_path(@conn, :create, @user), method: [method: "post"] %>
+<%= render "form.html",
+    conn: @conn,
+    user: @user,
+    clinicians: @clinicians,
+    teachers: @teachers,
+    action: user_clinician_path(@conn, :create, @user),
+    method: :post %>
