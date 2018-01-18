@@ -1,7 +1,8 @@
 <div class="flex flex-row items-start justify-between">
-  <%= link "1. Add Staff", to: user_path(@conn, :new, user_type: "new_staff"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
-  <%= link "2. Add Service User", to: user_path(@conn, :new, user_type: "new_service_user"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
-  <%= link "3. Add Carer", to: user_path(@conn, :new, user_type: "new_carer"), class: "no-underline shadow-hover black f4 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
+  <%= link "1. Add Staff", to: user_path(@conn, :new, user_type: "new_staff"), class: "no-underline shadow-hover black f5 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
+  <%= link "2. Add Teacher", to: user_path(@conn, :new, user_type: "new_teacher"), class: "no-underline shadow-hover black f5 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
+  <%= link "3. Add Service User", to: user_path(@conn, :new, user_type: "new_service_user"), class: "no-underline shadow-hover black f5 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
+  <%= link "4. Add Carer", to: user_path(@conn, :new, user_type: "new_carer"), class: "no-underline shadow-hover black f5 pv2 ph4 mv1 b--yellow ba bw1 br3" %>
 </div>
 
 <h3 class="normal mv4 bt bw2 b--light-gray pt4">Accounts</h3>
@@ -32,5 +33,12 @@
 <%= for staff_member <- @staff do %>
   <div class="w-100 hl-bg-grey pa3 mv2 br3 hl-dark-blue">
     <p class="b di o-50"><%= staff_member.first_name %> <%= staff_member.last_name %></p>
+  </div>
+<% end %>
+
+<h3 class="pt4 pb3 b--hl-grey bt bw2 normal">Teacher accounts</h3>
+<%= for teacher <- @teachers do %>
+  <div class="w-100 hl-bg-grey pa3 mv2 br3 hl-dark-blue">
+    <p class="b di o-50"><%= teacher.first_name %> <%= teacher.last_name %></p>
   </div>
 <% end %>
