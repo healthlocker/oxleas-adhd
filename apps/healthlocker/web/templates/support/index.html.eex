@@ -144,34 +144,34 @@
   </p>   
     
   <p><strong><%= link "Youth services at The Point", to: "http://royalgreenwich.gov.uk/thepoint", class: "hl-aqua flex-wrap underline" %></strong> help and advice for Young People.
-    Email <%= link "the-point@royalgreenwich.gov.uk", to: "the-point@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
+    Email <%= link "the-point@royalgreenwich.gov.uk", to: "mailto:the-point@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
   </p>
     
    <h4 class="mt-3rem">Early Help Parenting Support</h4>   
     
   <p><strong><%= link "Families 1st", to: "http://www.royalgreenwich.gov.uk/info/200017/children_and_family_care/1391/get_help_from_families_1st", class: "hl-aqua flex-wrap underline" %></strong> 
-    practical support is offered by family support workers to families who meet the following criteria : unemployment, children not in education, housing issues, parental health issues, DV, debt, anti-social behaviour.
-    Email <%= link "families-1st@royalgreenwich.gov.uk", to: "families-1st@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
+    practical support is offered by family support workers to families who meet the following criteria : unemployment, children not in education, housing issues, parental health issues, domestic violence, debt, anti-social behaviour.
+    Email <%= link "families-1st@royalgreenwich.gov.uk", to: "mailto:families-1st@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
   </p>    
  
    <p><strong><%= link "Parenting 4 parents", to: "https://www.greenwichcommunitydirectory.org.uk/kb5/greenwich/fsd/service.page?id=Ioji71P4czs", class: "hl-aqua flex-wrap underline" %></strong> 
     a 7 week positive parenting course for parents of children aged 5-13.
-    Email <%= link "early-help-refer@royalgreenwich.gov.uk", to: "early-help-refer@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
+    Email <%= link "early-help-refer@royalgreenwich.gov.uk", to: "mailto:early-help-refer@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
   </p>   
 
-   <p><strong>About Boys</strong> 
-    a 4 week parent course about parenting boys in preschool and primary school. Run in children centres.
+   <p><strong><%= link "About Boys", to: "https://www.royalgreenwich.gov.uk/directory/15/directory_childrens_centres", class: "hl-aqua flex-wrap underline" %></strong>
+    a 4 week parent course about parenting boys in preschool and primary school. Run in children's centres.
    </p>       
      
   <p><strong><%= link "Freedom Programme", to: "http://www.freedomprogramme.co.uk/", class: "hl-aqua flex-wrap underline" %></strong> 
     a Parenting course for female survivors of domestic violence.
-    Email <%= link "referrals_gdva@h4w.co.uk", to: "referrals_gdva@h4w.co.uk", class: "hl-aqua flex-wrap underline" %> 
+    Email <%= link "referrals_gdva@h4w.co.uk", to: "mailto:referrals_gdva@h4w.co.uk", class: "hl-aqua flex-wrap underline" %> 
   </p>     
     
    <p><strong><%= link "Baby & me parenting course", to: "https://www.greenwichcommunitydirectory.org.uk/kb5/greenwich/fsd/service.page?id=2roD1pt-blQ", class: "hl-aqua flex-wrap underline" %></strong> 
     for vulnerable mothers from pregnancy to babies aged 1.
      Call <%= link "020 8921 4590", to: "tel:020 8921 4590", class: "hl-aqua flex-wrap underline" %> (Duty Line).  For a referral form call <%= link "020 8921 6921", to: "tel:020 8921 6921", class: "hl-aqua flex-wrap underline" %> 
-     or email <%= link "early-help-refer@royalgreenwich.co.uk", to: "early-help-refer@royalgreenwich.co.uk", class: "hl-aqua flex-wrap underline" %> 
+     or email <%= link "early-help-refer@royalgreenwich.co.uk", to: "mailto:early-help-refer@royalgreenwich.co.uk", class: "hl-aqua flex-wrap underline" %> 
   </p>       
 </div>
   
