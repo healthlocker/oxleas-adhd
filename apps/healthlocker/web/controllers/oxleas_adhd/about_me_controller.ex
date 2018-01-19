@@ -36,9 +36,16 @@ defmodule Healthlocker.OxleasAdhd.AboutMeController do
 
     case Repo.insert(changeset) do
       {:ok, _entry} ->
-        conn
-        |> put_flash(:info, ["About me saved successfully"])
-        |> redirect(to: toolkit_path(conn, :index))
+        case user.id == service_user.id do
+          true ->
+            conn
+            |> put_flash(:info, ["About me saved successfully"])
+            |> redirect(to: toolkit_path(conn, :index))
+          false ->
+            conn
+            |> put_flash(:info, ["Updated service users about me"])
+            |> redirect(to: caseload_user_path(conn, :show, service_user, section: "details"))
+        end
       {:error, changeset} ->
         conn
         |> put_flash(:error, ["Something went wrong, please try again"])
