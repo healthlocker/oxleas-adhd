@@ -3,8 +3,14 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
   alias Healthlocker.{User, Room}
 
   @valid_attrs %{
-    "1235": "true",
-    "1236": "false"
+    "clinicians": %{
+      "1235": "true",
+      "1236": "false"
+    },
+    "teachers": %{
+      "1235": "false",
+      "1236": "true"
+    }
   }
 
   setup %{} do
@@ -68,13 +74,13 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
   end
 
   test "PUT /update with valid attributes", %{conn: conn, user2: user2} do
-    conn = put conn, user_clinician_path(conn, :update, user2, "1"), clinician: @valid_attrs
+    conn = put conn, user_clinician_path(conn, :update, user2, "1"), links: @valid_attrs
     assert redirected_to(conn, 302) =~ user_path(conn, :index)
     assert get_flash(conn, :info) == "Staff updated"
   end
 
   test "POST /create with valid attributes", %{conn: conn, user: user} do
-    conn = post conn, user_clinician_path(conn, :create, user), clinician: @valid_attrs
+    conn = post conn, user_clinician_path(conn, :create, user), links: @valid_attrs
     assert redirected_to(conn, 302) =~ user_path(conn, :index)
     assert get_flash(conn, :info) == "Staff connected"
   end
