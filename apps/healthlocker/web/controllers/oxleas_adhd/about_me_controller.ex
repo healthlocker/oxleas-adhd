@@ -71,8 +71,9 @@ defmodule Healthlocker.OxleasAdhd.AboutMeController do
               user_last_update: user_last_update)
   end
 
-  def update(conn, %{"id" => about_me_id, "about_me" => about_me, "user_id" => user_id}) do
-    user = Repo.get!(User, user_id)
+  def update(conn, %{"id" => about_me_id, "about_me" => about_me, "user_id" => service_user_id}) do
+    user = conn.assigns.current_user
+    service_user = Repo.get!(User, service_user_id)
     old_about_me = Repo.get(AboutMe, about_me_id)
     adhd_team_member =
       case old_about_me.last_updated_by do
@@ -83,14 +84,29 @@ defmodule Healthlocker.OxleasAdhd.AboutMeController do
     team_last_update = AboutMe.format_naive_date(old_about_me.team_last_update)
     user_last_update = AboutMe.format_naive_date(old_about_me.my_last_update)
     changeset =
-      AboutMe.changeset(old_about_me, about_me)
-      |> AboutMe.user_updated()
+      case user.id == service_user.id do
+        true ->
+          old_about_me
+          |> AboutMe.changeset(about_me)
+          |> AboutMe.user_updated()
+        _    ->
+          old_about_me
+          |> AboutMe.changeset(about_me)
+          |> AboutMe.team_updated(service_user.id, user.id)
+      end
 
     case Repo.update(changeset) do
       {:ok, _entry} ->
-        conn
-        |> put_flash(:info, ["Updated About Me"])
-        |> redirect(to: toolkit_path(conn, :index))
+        case user.id == service_user.id do
+          true ->
+            conn
+            |> put_flash(:info, ["Updated About Me"])
+            |> redirect(to: toolkit_path(conn, :index))
+          false ->
+            conn
+            |> put_flash(:info, ["Updated service users about me"])
+            |> redirect(to: caseload_user_path(conn, :show, service_user, section: "details"))
+        end
       {:error, changeset} ->
         conn
     |> render("edit.html", changeset: changeset, about_me: old_about_me,
