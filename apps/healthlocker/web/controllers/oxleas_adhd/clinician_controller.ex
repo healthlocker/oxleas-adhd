@@ -14,6 +14,7 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
     selected_teachers = get_staff("teacher") |> selected_staff(service_user.teacher)
 
     conn
+    |> assign(:edit, true)
     |> render_helper("edit.html", service_user, selected_clinicians, selected_teachers)
   end
 
