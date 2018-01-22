@@ -1,5 +1,6 @@
 defmodule Healthlocker.User do
   use Healthlocker.Web, :model
+  alias Ecto.Multi
 
   alias Comeonin.Bcrypt
 
@@ -81,6 +82,19 @@ defmodule Healthlocker.User do
   def email_changeset(struct, params \\ :invalid) do
     struct
     |> cast(params, [:email])
+  end
+
+  def update_email_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:email])
+    |> validate_required([:email])
+    |> update_change(:email, &(String.downcase(&1)))
+    |> validate_format(:email, ~r/@/)
+  end
+
+  def update_su_email(changeset) do
+    Multi.new
+    |> Multi.update(:update_su_email, changeset)
   end
 
   def update_changeset(struct, params \\ :invalid) do
