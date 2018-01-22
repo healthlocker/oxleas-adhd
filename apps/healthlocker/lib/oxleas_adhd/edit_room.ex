@@ -1,6 +1,6 @@
 defmodule Healthlocker.OxleasAdhd.EditRoom do
   alias Ecto.Multi
-  alias Healthlocker.{Repo, Clinician, ClinicianRooms}
+  alias Healthlocker.{Repo, Clinician, Teacher, ClinicianRooms}
   import Ecto.Query
 
   def connect_clinicians_and_update_rooms(room, clinician_ids, clinicians, query) do
@@ -9,6 +9,12 @@ defmodule Healthlocker.OxleasAdhd.EditRoom do
     |> Multi.delete_all(:delete_clin_rooms, (from cr in ClinicianRooms, where: cr.room_id == ^room.id))
     |> Multi.insert_all(:insert_clinicians, Clinician, clinicians)
     |> Multi.run(:clinician_room, &add_clinicians_to_room(&1, clinician_ids, room))
+  end
+
+  def connect_teachers_and_update_rooms(room, teacher_ids, teachers, query) do
+    Multi.new
+    |> Multi.delete_all(:delete_teachers, query)
+    |> Multi.insert_all(:insert_teachers, Teacher, teachers)
   end
 
   defp add_clinicians_to_room(_multi, clinician_ids, room) do

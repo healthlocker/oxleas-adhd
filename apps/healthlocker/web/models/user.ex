@@ -32,6 +32,7 @@ defmodule Healthlocker.User do
     many_to_many :caring, Healthlocker.User, join_through: Healthlocker.Carer, join_through: Healthlocker.Clinician, join_keys: [carer_id: :id, caring_id: :id]
 
     many_to_many :clinician, Healthlocker.User, join_through: Healthlocker.Clinician, join_keys: [caring_id: :id, clinician_id: :id]
+    many_to_many :teacher, Healthlocker.User, join_through: Healthlocker.Teacher, join_keys: [caring_id: :id, teacher_id: :id]
 
     many_to_many :rooms, Healthlocker.Room, join_through: "user_rooms"
     has_many :messages, Healthlocker.Message

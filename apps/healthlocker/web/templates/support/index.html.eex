@@ -15,6 +15,10 @@
     <li class="mb3">
     Find out more <%= link "about", to: "/pages/about", class: "hl-aqua flex-wrap underline" %> the Greenwich ADHD service.
     </li>
+    <li class="mb3">
+    <%= link "Message my care team", to: "/care-team/contacts", class: "hl-aqua flex-wrap underline" %>
+    </li>
+      
   </ul>
 
   <div class="hl-bg-grey pa3">
@@ -116,9 +120,61 @@
 <p><strong><%= link "The Greenwich Local Offer", to: "https://www.greenwichcommunitydirectory.org.uk/kb5/greenwich/fsd/localoffer.page?localofferchannel=0", class: "hl-aqua flex-wrap underline" %></strong> a website
   of information and directory of resources for children with special educational needs and disability in the Greenwich
   </p>
+  
+  <p><strong><%= link "Greenlights", to: "http://www.greenwichmencap.org.uk/our-services/behavioural-support/", class: "hl-aqua flex-wrap underline" %></strong> offers up to 12 sessions of in-house behavioural support to families of children with disabilities, including ADHD.
+    Email <%= link "greenlights@greenwichmencap.org.uk", to: "mailto:greenlights@greenwichmencap.org.uk", class: "hl-aqua flex-wrap underline" %> 
+  </p>
+  
+  <p><strong><%= link "Expert patients - Supporting parents course", to: "http://livewellgreenwich.org.uk/parentsandcarers/", class: "hl-aqua flex-wrap underline" %></strong> a 6 week course for parents of a child with a disability, including ADHD. 
+      Call <%= link "0208 921 5528", to: "tel:0208 921 5528", class: "hl-aqua flex-wrap underline" %> or email <%= link "expert-patients@royalgreenwich.gov.uk", to: "mailto:expert-patients@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
+  </p> 
+    
+  <p><strong><%= link "Family Action Greenwich (Talking point plus)", to: "https://www.family-action.org.uk/", class: "hl-aqua flex-wrap underline" %></strong> an emotional & well being service providing counselling & therapeutic support for YP aged 13-19. 
+      Call <%= link "020 8853 9065", to: "tel:020 8853 9065", class: "hl-aqua flex-wrap underline" %> or email <%= link "greenwich@family-action.org.uk", to: "mailto:greenwich@family-action.org.uk", class: "hl-aqua flex-wrap underline" %> 
+  </p>  
+    
+  <p><strong><%= link "Greenwich Parent Voice", to: "http://www.greenwichparentvoice.com/", class: "hl-aqua flex-wrap underline" %></strong> set up and managed by parents in Greenwich who have a child with a disability, including ADHD.
+    Email <%= link "info@greenwichparentvoice.com", to: "mailto:info@greenwichparentvoice.com", class: "hl-aqua flex-wrap underline" %> 
+  </p>
+ 
+    <h4 class="mt-3rem">Greenwich Youth Services</h4>
+    
+   <p><strong><%= link "Young Greenwich Youth Service", to: "http://www.young-greenwich.org.uk/", class: "hl-aqua flex-wrap underline" %></strong> lots of information for Young People in Greenwich.
+    Sign up at <%= link "http://www.young-greenwich.org.uk/getting-in-contact", to: "http://www.young-greenwich.org.uk/getting-in-contact", class: "hl-aqua flex-wrap underline" %> 
+  </p>   
+    
+  <p><strong><%= link "Youth services at The Point", to: "http://royalgreenwich.gov.uk/thepoint", class: "hl-aqua flex-wrap underline" %></strong> help and advice for Young People.
+    Email <%= link "the-point@royalgreenwich.gov.uk", to: "mailto:the-point@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
+  </p>
+    
+   <h4 class="mt-3rem">Early Help Parenting Support</h4>   
+    
+  <p><strong><%= link "Families 1st", to: "http://www.royalgreenwich.gov.uk/info/200017/children_and_family_care/1391/get_help_from_families_1st", class: "hl-aqua flex-wrap underline" %></strong> 
+    practical support is offered by family support workers to families who meet the following criteria : unemployment, children not in education, housing issues, parental health issues, domestic violence, debt, anti-social behaviour.
+    Email <%= link "families-1st@royalgreenwich.gov.uk", to: "mailto:families-1st@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
+  </p>    
+ 
+   <p><strong><%= link "Parenting 4 parents", to: "https://www.greenwichcommunitydirectory.org.uk/kb5/greenwich/fsd/service.page?id=Ioji71P4czs", class: "hl-aqua flex-wrap underline" %></strong> 
+    a 7 week positive parenting course for parents of children aged 5-13.
+    Email <%= link "early-help-refer@royalgreenwich.gov.uk", to: "mailto:early-help-refer@royalgreenwich.gov.uk", class: "hl-aqua flex-wrap underline" %> 
+  </p>   
+
+   <p><strong><%= link "About Boys", to: "https://www.royalgreenwich.gov.uk/directory/15/directory_childrens_centres", class: "hl-aqua flex-wrap underline" %></strong>
+    a 4 week parent course about parenting boys in preschool and primary school. Run in children's centres.
+   </p>       
+     
+  <p><strong><%= link "Freedom Programme", to: "http://www.freedomprogramme.co.uk/", class: "hl-aqua flex-wrap underline" %></strong> 
+    a Parenting course for female survivors of domestic violence.
+    Email <%= link "referrals_gdva@h4w.co.uk", to: "mailto:referrals_gdva@h4w.co.uk", class: "hl-aqua flex-wrap underline" %> 
+  </p>     
+    
+   <p><strong><%= link "Baby & me parenting course", to: "https://www.greenwichcommunitydirectory.org.uk/kb5/greenwich/fsd/service.page?id=2roD1pt-blQ", class: "hl-aqua flex-wrap underline" %></strong> 
+    for vulnerable mothers from pregnancy to babies aged 1.
+     Call <%= link "020 8921 4590", to: "tel:020 8921 4590", class: "hl-aqua flex-wrap underline" %> (Duty Line).  For a referral form call <%= link "020 8921 6921", to: "tel:020 8921 6921", class: "hl-aqua flex-wrap underline" %> 
+     or email <%= link "early-help-refer@royalgreenwich.co.uk", to: "mailto:early-help-refer@royalgreenwich.co.uk", class: "hl-aqua flex-wrap underline" %> 
+  </p>       
 </div>
   
-
   <div class="hl-bg-grey pa3 mt4">
     <h3 class="tc">National charities</h3>
     <div class="tc">

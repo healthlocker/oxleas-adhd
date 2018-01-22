@@ -29,15 +29,30 @@
 </div>
 
 <div class="pv4">
+  <%= form_for @conn, @action, [as: :links, method: @method], fn f -> %>
   <p class="f5 b mt0 mb3">Connect to staff</p>
-  <%= form_for @changeset, @action, @method, fn f -> %>
+  <%= inputs_for f, :clinicians, fn i -> %>
     <%= for clinician <- @clinicians do %>
       <div class="mv3">
-        <%= checkbox f, String.to_atom("#{clinician.id}"), checked_value: clinician.id %>
-        <%= label f, String.to_atom("#{clinician.id}") do %>
-          <%= clinician.first_name <> " " <> clinician.last_name %>
-        <% end %>
+           <%= checkbox i, String.to_atom("#{clinician.id}"), checked: clinician.selected %>
+           <%= label i, String.to_atom("#{clinician.id}") do %>
+             <%= clinician.first_name <> " " <> clinician.last_name %>
+           <% end %>
       </div>
+    <% end %>
+  <% end %>
+
+
+    <p class="f5 b mt0 mb3">Connect to teachers</p>
+    <%= inputs_for f, :teachers, fn i -> %>
+      <%= for teacher <- @teachers do %>
+        <div class="mv3">
+             <%= checkbox i, String.to_atom("#{teacher.id}"), checked: teacher.selected %>
+             <%= label i, String.to_atom("#{teacher.id}") do %>
+               <%= teacher.first_name <> " " <> teacher.last_name %>
+             <% end %>
+        </div>
+      <% end %>
     <% end %>
     <div class="tr">
       <%= submit "Save", class: "shadow-hover f4 dib ph4 pv2 b--none br3 input-reset bg-yellow" %>
