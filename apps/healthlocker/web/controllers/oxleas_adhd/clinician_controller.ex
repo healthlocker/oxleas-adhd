@@ -17,9 +17,18 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
     |> render_helper("edit.html", service_user, selected_clinicians, selected_teachers)
   end
 
-  def update(conn, %{"user_id" => user_id, "links" => %{"clinicians" => clinician_params, "teachers" => teacher_params}}) do
+  def update(conn, %{"user_id" => user_id, "links" => %{"clinicians" => clinician_params, "teachers" => teacher_params, "s_user" => email}}) do
     id = user_id |> String.to_integer
-    service_user = Repo.get!(User, id)
+    service_user =
+      User
+      |> Repo.get!(id)
+      |> Repo.preload(:clinician)
+      |> Repo.preload(:teacher)
+
+    selected_clinicians = get_staff("clinician") |> selected_staff(service_user.clinician)
+    selected_teachers = get_staff("teacher") |> selected_staff(service_user.teacher)
+
+    user_changeset = User.update_email_changeset(service_user, email)
 
     clinician_ids = get_user_ids(clinician_params)
     teacher_ids = get_user_ids(teacher_params)
@@ -30,17 +39,30 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
     query = Clinician |> ClinicianQuery.get_staff_for_service_user(id)
     query_teacher = Teacher |> TeacherQuery.get_teachers_for_service_user(id)
 
-    multi = EditRoom.connect_clinicians_and_update_rooms(room, clinician_ids, clinicians, query)
+    multi_clinician = EditRoom.connect_clinicians_and_update_rooms(room, clinician_ids, clinicians, query)
     multi_teacher = EditRoom.connect_teachers_and_update_rooms(room, teacher_ids, teachers, query_teacher)
-    case Repo.transaction(Ecto.Multi.append(multi, multi_teacher)) do
+    su_email_multi = User.update_su_email(user_changeset)
+
+    multis =
+      multi_clinician
+      |> Ecto.Multi.append(multi_teacher)
+      |> Ecto.Multi.append(su_email_multi)
+
+    failed_email_update_msg = "Something went wrong updating the service user's email. Please try again"
+    failed_team_update_msg = "Could not create connection. Please try again."
+    case Repo.transaction(multis) do
       {:ok, _params} ->
         conn
-        |> put_flash(:info, "Staff updated")
+        |> put_flash(:info, "Updates saved")
         |> redirect(to: user_path(conn, :index))
-      {:error, changeset} ->
+      {:error, :update_su_email, changeset, data} ->
         conn
-        |> put_flash(:error, "Could not create connection. Please try again.")
-        |> render("new.html", user: service_user, changeset: changeset)
+        |> put_flash(:error, failed_email_update_msg)
+        |> render_helper("edit.html", service_user, selected_clinicians, selected_teachers)
+      {:error, name, changeset, data} ->
+        conn
+        |> put_flash(:error, failed_team_update_msg)
+        |> render_helper("edit.html", service_user, selected_clinicians, selected_teachers)
     end
   end
 
