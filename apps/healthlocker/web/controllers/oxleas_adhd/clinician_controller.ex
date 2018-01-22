@@ -140,4 +140,22 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
     |> Enum.reject(fn({_, v}) -> v == "false" end)
     |> Enum.map(fn({id, _}) -> String.to_integer(id) end)
   end
+
+  def get_staff(staff_type) do
+      User
+      |> UserQuery.get_by_user_type(staff_type)
+      |> Repo.all
+  end
+
+  def selected_staff(staff_members, staff_list) do
+    staff_members
+    |> Enum.map(fn(c) ->
+      Map.put(c, :selected, Enum.member?(staff_list, c))
+    end)
+  end
+
+  def render_helper(conn, html, service_user, clinicians, teachers) do
+    conn
+    |> render(html, user: service_user, clinicians: clinicians, teachers: teachers)
+  end
 end
