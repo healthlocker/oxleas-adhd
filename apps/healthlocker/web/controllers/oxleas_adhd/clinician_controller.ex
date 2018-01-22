@@ -3,36 +3,18 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
   alias Healthlocker.{User, Clinician, Teacher, Room, OxleasAdhd.CreateRoom, OxleasAdhd.EditRoom}
   alias OxleasAdhd.{ClinicianQuery, TeacherQuery, UserQuery}
 
-  def edit(conn, %{"user_id" => user_id}) do
-    service_user = User
-                   |> Repo.get!(user_id)
-                   |> Repo.preload(:clinician)
-                   |> Repo.preload(:teacher)
+  def edit(conn, %{"user_id" => user_id} = params) do
+    service_user =
+      User
+      |> Repo.get!(user_id)
+      |> Repo.preload(:clinician)
+      |> Repo.preload(:teacher)
 
-    clinicians = User
-              |> UserQuery.get_by_user_type("clinician")
-              |> Repo.all
-
-    clinicians = clinicians
-               |> Enum.map(fn(c) ->
-                 Map.put(c, :selected, Enum.member?(service_user.clinician, c))
-               end)
-
-    teachers = User
-             |> UserQuery.get_by_user_type("teacher")
-             |> Repo.all
-
-    teachers = teachers
-              |> Enum.map(fn(c) ->
-                Map.put(c, :selected, Enum.member?(service_user.teacher, c))
-              end)
+    selected_clinicians = get_staff("clinician") |> selected_staff(service_user.clinician)
+    selected_teachers = get_staff("teacher") |> selected_staff(service_user.teacher)
 
     conn
-    |> render("edit.html",
-              user: service_user,
-              clinicians: clinicians,
-              teachers: teachers
-             )
+    |> render_helper("edit.html", service_user, selected_clinicians, selected_teachers)
   end
 
   def update(conn, %{"user_id" => user_id, "links" => %{"clinicians" => clinician_params, "teachers" => teacher_params}}) do
@@ -64,30 +46,21 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
 
   def new(conn, %{"user_id" => user_id}) do
     service_user = Repo.get!(User, user_id)
-    clinicians = User
-              |> UserQuery.get_by_user_type("clinician")
-              |> Repo.all
 
-    clinicians = clinicians
-               |> Enum.map(fn(c) ->
-                 Map.put(c, :selected, false)
-               end)
+    clinicians =
+      get_staff("clinician")
+      |> Enum.map(fn(c) ->
+        Map.put(c, :selected, false)
+      end)
 
-    teachers = User
-             |> UserQuery.get_by_user_type("teacher")
-             |> Repo.all
-
-    teachers = teachers
-               |> Enum.map(fn(c) ->
-                 Map.put(c, :selected, false)
-               end)
+    teachers =
+      get_staff("teacher")
+      |> Enum.map(fn(c) ->
+        Map.put(c, :selected, false)
+      end)
 
     conn
-    |> render("new.html",
-              user: service_user,
-              clinicians: clinicians,
-              teachers: teachers
-             )
+    |> render_helper("new.html", service_user, clinicians, teachers)
   end
 
   def create(conn, %{"user_id" => user_id, "links" => %{"clinicians" => clinician_params, "teachers" => teacher_params}}) do
