@@ -3,12 +3,18 @@ defmodule Healthlocker.ComponentView do
 
   def get_options(option_type) do
     # load security questions from file
-    options =
-      Application.app_dir(:healthlocker, "priv")
-      |> Path.join("/static/#{option_type}.txt")
-      |> File.read!
+    options = case Application.get_env(:healthlocker, :environment) do
+      :test ->
+        "web/static/assets/#{option_type}.txt"
+      _ ->
+        Application.app_dir(:healthlocker, "priv")
+        |> Path.join("/static/#{option_type}.txt")
+      end
+
     # split on line breaks to separate the options:
-    String.split(options, "\n") |> List.delete("")
+    options
+    |> File.read!
+    |> String.split("\n") |> List.delete("")
   end
 
   # gives the date in the format DD/MM/YYYY
