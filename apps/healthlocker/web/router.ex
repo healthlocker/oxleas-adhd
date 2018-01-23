@@ -24,6 +24,10 @@ defmodule Healthlocker.Router do
     plug Healthlocker.Plugs.RequireStaff
   end
 
+  pipeline :staff_or_teacher do
+    plug Healthlocker.Plugs.RequireStaffOrTeacher
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -44,7 +48,7 @@ defmodule Healthlocker.Router do
 
   # routes for oxleas only staff can access
   scope "/", Healthlocker.OxleasAdhd do
-    pipe_through [:browser, :staff]
+    pipe_through [:browser, :staff_or_teacher]
     resources "/caseload", CaseloadController, only: [:index]
 
     scope "/caseload", Caseload, as: :caseload do
