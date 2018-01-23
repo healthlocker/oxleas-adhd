@@ -17,7 +17,7 @@
     <link rel=”apple-touch-icon-precomposed” href=”/images/apple-touch-icon.png”/>
 
     <%= segment_snippet() %>
- 
+
      <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -28,7 +28,7 @@
       ga('send', 'pageview');
 
     </script>
-      
+
   </head>
   <body class="w-100 bg-white">
 
@@ -59,13 +59,13 @@
             <%= cond do %>
               <%= !@current_user -> %>
                 <%= link_primary "Log in", to: login_path(@conn, :index) %>
-              <%= @current_user && @current_user.role != "clinician" -> %>
+              <% @current_user && @current_user.role != "clinician" -> %>
                 <%= link_primary "Log out", to: login_path(@conn, :delete, @current_user),
                     method: "delete"%>
-              <%= @current_user && @current_user.role == "clinician" -> %>
+              <% @current_user && @current_user.role == "clinician" -> %>
                 <%= link "Caseload", to: caseload_path(@conn, :index),
                     class: "f5 white-80 dib hover-white pointer" %>
-              <%= true -> %>
+              <% true -> %>
                 <%= link_primary "Log in", to: login_path(@conn, :index) %>
             <% end %>
           </div>
@@ -82,7 +82,7 @@
             <%= link "Care team", class: "pa3 f3 white-80 db hover-white",
                 to: care_team_room_path(@conn, :show, @room) %>
           <% end %>
-        <%= else %>
+        <% else %>
           <%= link "Home", to: page_path(@conn, :index), class: "pb3 pt4 pt5-l f3 white-80 db hover-white" %>
           <%= link "About", to: page_path(@conn, :show, "about"), class: "pa3 f3 white-80 db hover-white" %>
         <% end %>
@@ -96,10 +96,10 @@
           <%= link "Log out", class: "pa3 f3 white-80 db hover-white mb6 mb0-m mb0-l",
                              to: login_path(@conn, :delete, @current_user),
                              method: "delete" %>
-        <%= else %>
+        <% else %>
           <%= link "Log in", class: "pa3 f3 white-80 db hover-white mb6 mb0-m mb0-l",
               to: login_path(@conn, :index) %>
-        <%= end %>
+        <% end %>
       </nav>
 
       <main id="body">
