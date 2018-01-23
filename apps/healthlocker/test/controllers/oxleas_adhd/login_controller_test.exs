@@ -17,6 +17,11 @@ defmodule Healthlocker.OxleasAdhd.LoginControllerTest do
     password: "password"
   }
 
+  @teacher_attrs %{
+    email: "teacher@gmail.com",
+    password: "password"
+  }
+
   @invalid_attrs %{
     email: "clinician@gmail.com",
     password: "wrong_password"
@@ -50,6 +55,17 @@ defmodule Healthlocker.OxleasAdhd.LoginControllerTest do
       } |> Repo.insert
 
       %User{
+        id: 1237,
+        first_name: "My",
+        last_name: "Name",
+        email: "teacher@gmail.com",
+        password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
+        security_question: "Question?",
+        security_answer: "Answer",
+        role: "teacher"
+      } |> Repo.insert
+
+      %User{
         id: 1236,
         first_name: "My",
         last_name: "Name",
@@ -78,6 +94,12 @@ defmodule Healthlocker.OxleasAdhd.LoginControllerTest do
     test "/login :: create with valid data for clinician", %{conn: conn} do
       conn = post conn, login_path(conn, :create), login: @clinician_attrs
       assert get_flash(conn, :info) == "Logged in as clinician"
+      assert redirected_to(conn) == caseload_path(conn, :index)
+    end
+
+    test "/login :: create with valid data for teacher", %{conn: conn} do
+      conn = post conn, login_path(conn, :create), login: @teacher_attrs
+      assert get_flash(conn, :info) == "Logged in as teacher"
       assert redirected_to(conn) == caseload_path(conn, :index)
     end
 

@@ -20,6 +20,10 @@ defmodule Healthlocker.OxleasAdhd.LoginController do
             conn
             |> put_flash(:info, "Logged in as clinician")
             |> redirect(to: caseload_path(conn, :index))
+          "teacher" ->
+            conn
+            |> put_flash(:info, "Logged in as teacher")
+            |> redirect(to: caseload_path(conn, :index))
           _ ->
             conn
             |> put_flash(:info, "Welcome to HeadScape Focus!")
