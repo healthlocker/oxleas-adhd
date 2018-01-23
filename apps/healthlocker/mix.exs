@@ -72,6 +72,7 @@ defmodule Healthlocker.Mixfile do
      {:wallaby, "~> 0.16.1"},
      {:ecto_factory, "~> 0.0.6"},
      {:oxleas_adhd, in_umbrella: true},
+     {:plug, "~>1.3.5", override: true}
    ]
   end
 
