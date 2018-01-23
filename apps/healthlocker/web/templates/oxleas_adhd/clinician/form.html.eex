@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div class="pv4">
+  <div class="pv4 bb b--light-silver bw1 pb4">
     <p class="f5 b mt0 mb3">Connect to staff</p>
     <%= inputs_for f, :clinicians, fn i -> %>
       <%= for clinician <- @clinicians do %>
@@ -39,7 +39,9 @@
         </div>
       <% end %>
     <% end %>
+  </div>
 
+  <div class="pv4">
     <p class="f5 b mt0 mb3">Connect to teachers</p>
     <%= inputs_for f, :teachers, fn i -> %>
       <%= for teacher <- @teachers do %>
