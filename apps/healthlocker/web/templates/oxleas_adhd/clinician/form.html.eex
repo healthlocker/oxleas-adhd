@@ -1,61 +1,58 @@
-<div class="bb b--light-silver bw1 pb4">
+<%= form_for @conn, @action, [as: :links, method: @method], fn f -> %>
+  <div class="bb b--light-silver bw1 pb4">
+    <div class="dib-ns mb3 w-50">
+      <p class="dark-blue f5 b mt0 mb2">First name</p>
+      <p class="f5 mv3"><%= @user.first_name %></p>
+    </div>
 
-  <div class="dib-ns mb3 w-50">
-    <p class="dark-blue f5 b mt0 mb2">First name</p>
-    <p class="f5 mv3">
-      <%= @user.first_name %>
-    </p>
-  </div><div class="dib-ns mb3 w-50">
-    <p class="dark-blue f5 b mt0 mb2">Last name</p>
-    <p class="f5 mv3">
-      <%= @user.last_name %>
-    </p>
+    <div class="dib-ns mb3 w-50">
+      <p class="dark-blue f5 b mt0 mb2">Last name</p>
+      <p class="f5 mv3"><%= @user.last_name %></p>
+    </div>
+
+    <div class="mb4">
+      <p class="dark-blue f5 b mt0 mb2">Date of birth</p>
+      <p class="f5 mv3"><%= @user.dob %></p>
+    </div>
+
+    <div class="mb4">
+      <p class="dark-blue f5 b mt0 mb2">Email</p>
+      <%= if @conn.assigns[:edit] do %>
+        <%= inputs_for f, :s_user, fn i -> %>
+          <%= text_input i, :email, value: @user.email, class: "pa3 input-reset bn hl-bg-grey w-100"  %>
+        <% end %>
+      <% else %>
+        <p class="f5 mv3"><%= @user.email %></p>
+      <% end %>
+    </div>
   </div>
 
-  <div class="mb4">
-    <p class="dark-blue f5 b mt0 mb2">Date of birth</p>
-    <p class="f5 mv3">
-      <%= @user.dob %>
-    </p>
-  </div>
-
-  <div class="mb4">
-    <p class="dark-blue f5 b mt0 mb2">Email</p>
-    <p class="f5 mv3">
-      <%= @user.email %>
-    </p>
-  </div>
-
-</div>
-
-<div class="pv4">
-  <%= form_for @conn, @action, [as: :links, method: @method], fn f -> %>
-  <p class="f5 b mt0 mb3">Connect to staff</p>
-  <%= inputs_for f, :clinicians, fn i -> %>
-    <%= for clinician <- @clinicians do %>
-      <div class="mv3">
-           <%= checkbox i, String.to_atom("#{clinician.id}"), checked: clinician.selected %>
-           <%= label i, String.to_atom("#{clinician.id}") do %>
-             <%= clinician.first_name <> " " <> clinician.last_name %>
-           <% end %>
-      </div>
+  <div class="pv4">
+    <p class="f5 b mt0 mb3">Connect to staff</p>
+    <%= inputs_for f, :clinicians, fn i -> %>
+      <%= for clinician <- @clinicians do %>
+        <div class="mv3">
+          <%= checkbox i, String.to_atom("#{clinician.id}"), checked: clinician.selected %>
+          <%= label i, String.to_atom("#{clinician.id}") do %>
+            <%= clinician.first_name <> " " <> clinician.last_name %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-
 
     <p class="f5 b mt0 mb3">Connect to teachers</p>
     <%= inputs_for f, :teachers, fn i -> %>
       <%= for teacher <- @teachers do %>
         <div class="mv3">
-             <%= checkbox i, String.to_atom("#{teacher.id}"), checked: teacher.selected %>
-             <%= label i, String.to_atom("#{teacher.id}") do %>
-               <%= teacher.first_name <> " " <> teacher.last_name %>
-             <% end %>
+          <%= checkbox i, String.to_atom("#{teacher.id}"), checked: teacher.selected %>
+          <%= label i, String.to_atom("#{teacher.id}") do %>
+            <%= teacher.first_name <> " " <> teacher.last_name %>
+          <% end %>
         </div>
       <% end %>
     <% end %>
     <div class="tr">
       <%= submit "Save", class: "shadow-hover f4 dib ph4 pv2 b--none br3 input-reset bg-yellow" %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

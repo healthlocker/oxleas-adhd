@@ -10,6 +10,9 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
     "teachers": %{
       "1235": "false",
       "1236": "true"
+    },
+    "s_user": %{
+      "email": "test@email.com"
     }
   }
 
@@ -75,8 +78,10 @@ defmodule Healthlocker.OxleasAdhd.ClinicianControllerTest do
 
   test "PUT /update with valid attributes", %{conn: conn, user2: user2} do
     conn = put conn, user_clinician_path(conn, :update, user2, "1"), links: @valid_attrs
+    user_email = Repo.get(User, 1237).email
     assert redirected_to(conn, 302) =~ user_path(conn, :index)
-    assert get_flash(conn, :info) == "Staff updated"
+    assert get_flash(conn, :info) == "Updates saved"
+    assert user_email == "test@email.com"
   end
 
   test "POST /create with valid attributes", %{conn: conn, user: user} do
