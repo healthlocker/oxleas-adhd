@@ -40,6 +40,7 @@ defmodule Healthlocker.User do
     has_many :symptoms, Healthlocker.Symptom
     has_many :diaries, Healthlocker.Diary
     has_one :about_mes, Healthlocker.AboutMe
+    has_many :school_feedbacks, Healthlocker.SchoolFeedback
 
     timestamps()
   end
