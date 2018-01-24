@@ -1,0 +1,1 @@
+<%= textarea @map, @key, class: "pa3 input-reset bn hl-bg-grey w-100" %>
