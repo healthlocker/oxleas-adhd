@@ -1,0 +1,6 @@
+<p><%= @question %></p>
+<%= if Map.get(@map, @key) do %>
+  <p class="tc b"><%= Map.get(@map, @key) %></p>
+<% else %>
+  <p class="tc b">Nothing entered here</p>
+<% end %>

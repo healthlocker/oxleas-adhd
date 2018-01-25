@@ -5,46 +5,46 @@
       <p class="tc b">Answer the questions below by marking on the scale where</p>
       <p class="tc b">0 = Never; 5 = Sometimes/Often; 10 = Nearly Always</p>
 
-        <%= for {q, k} <- @combos.combo1 do %>
-          <%= label f, q, class: "f5 db mb2 mt3 " %>
-          <%= render "dropdown.html", map: f, key: k %>
-        <% end %>
+      <%= for {q, k} <- @combos.combo1 do %>
+        <%= label f, q, class: "f5 db mb2 mt3 " %>
+        <%= render "dropdown.html", map: f, key: k %>
+      <% end %>
 
-        <h3 class="tc">Part II  – ORGANISATION, CONCENTRATION & EXECUTIVE FUNCTION</h3>
-        <%= for {q, k} <- @combos.combo2 do %>
-          <%= label f, q, class: "f5 db mb2 mt3 " %>
-          <%= render "dropdown.html", map: f, key: k %>
-        <% end %>
+      <h3 class="tc">Part II  – ORGANISATION, CONCENTRATION & EXECUTIVE FUNCTION</h3>
+      <%= for {q, k} <- @combos.combo2 do %>
+        <%= label f, q, class: "f5 db mb2 mt3 " %>
+        <%= render "dropdown.html", map: f, key: k %>
+      <% end %>
 
-        <h3 class="tc">Part III  – HYPERACTIVITY / IMPULSIVITY</h3>
-        <%= for {q, k} <- @combos.combo3 do %>
-          <%= label f, q, class: "f5 db mb2 mt3 " %>
-          <%= render "dropdown.html", map: f, key: k %>
-        <% end %>
+      <h3 class="tc">Part III  – HYPERACTIVITY / IMPULSIVITY</h3>
+      <%= for {q, k} <- @combos.combo3 do %>
+        <%= label f, q, class: "f5 db mb2 mt3 " %>
+        <%= render "dropdown.html", map: f, key: k %>
+      <% end %>
 
-        <h3 class="tc">Part IV – BEHAVIOUR</h3>
-        <%= for {q, k} <- @combos.combo4 do %>
-          <%= label f, q, class: "f5 db mb2 mt3 " %>
-          <%= render "dropdown.html", map: f, key: k %>
-        <% end %>
+      <h3 class="tc">Part IV – BEHAVIOUR</h3>
+      <%= for {q, k} <- @combos.combo4 do %>
+        <%= label f, q, class: "f5 db mb2 mt3 " %>
+        <%= render "dropdown.html", map: f, key: k %>
+      <% end %>
 
-        <h3 class="tc">Part V – SOCIAL COMMUNICATION</h3>
-        <%= for {q, k} <- @combos.combo5 do %>
-          <%= label f, q, class: "f5 db mb2 mt3 " %>
-          <%= render "textarea.html", map: f, key: k %>
-        <% end %>
+      <h3 class="tc">Part V – SOCIAL COMMUNICATION</h3>
+      <%= for {q, k} <- @combos.combo5 do %>
+        <%= label f, q, class: "f5 db mb2 mt3 " %>
+        <%= render "textarea.html", map: f, key: k %>
+      <% end %>
 
-        <h3 class="tc">Part VI – SOCIAL INTERACTION</h3>
-        <%= for {q, k} <- @combos.combo6 do %>
-          <%= label f, q, class: "f5 db mb2 mt3 " %>
-          <%= render "textarea.html", map: f, key: k %>
-        <% end %>
+      <h3 class="tc">Part VI – SOCIAL INTERACTION</h3>
+      <%= for {q, k} <- @combos.combo6 do %>
+        <%= label f, q, class: "f5 db mb2 mt3 " %>
+        <%= render "textarea.html", map: f, key: k %>
+      <% end %>
 
-        <h3 class="tc">Part VII – FLEXIBLE BEHAVIOUR</h3>
-        <%= for {q, k} <- @combos.combo7 do %>
-          <%= label f, q, class: "f5 db mb2 mt3 " %>
-          <%= render "textarea.html", map: f, key: k %>
-        <% end %>
+      <h3 class="tc">Part VII – FLEXIBLE BEHAVIOUR</h3>
+      <%= for {q, k} <- @combos.combo7 do %>
+        <%= label f, q, class: "f5 db mb2 mt3 " %>
+        <%= render "textarea.html", map: f, key: k %>
+      <% end %>
 
     </div>
 
