@@ -17,8 +17,11 @@ defmodule Healthlocker.OxleasAdhd.SchoolFeedbackController do
   end
 
   def show(conn, %{"user_id" => su_id, "id" => feedback_id}) do
+    combos = SchoolFeedback.create_question_key_combo
+    feedback = Repo.get(SchoolFeedback, feedback_id)
+
     conn
-    |> render("show.html")
+    |> render("show.html", combos: combos, feedback: feedback)
   end
 
   def new(conn, %{"user_id" => su_id}) do

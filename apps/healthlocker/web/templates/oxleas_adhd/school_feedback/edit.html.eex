@@ -6,4 +6,7 @@
     method: [method: "post"],
     combos: @combos
   %>
+
+  <p class="hl-pink b">Most recent update:</p>
+  <p class="hl-pink"><%= @teacher_name %> <%= @last_update %></p>
 </div>

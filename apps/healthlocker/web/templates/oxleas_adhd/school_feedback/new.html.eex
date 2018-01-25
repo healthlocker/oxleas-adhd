@@ -1,7 +1,7 @@
 <div class="br2 mv4 center">
   <h2 class="tc">New school feedback</h2>
   <%=
-     render "form.html", changeset: @changeset,
+    render "form.html", changeset: @changeset,
     action: user_school_feedback_path(@conn, :create, @user),
     method: [method: "post"],
     combos: @combos
