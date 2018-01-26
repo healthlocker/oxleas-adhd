@@ -1,4 +1,5 @@
 <section>
+    <h2 class="tc">School feedback</h2>
     <div class="form-group">
       <h3 class="tc">PART I - ATTENTION DIFFICULTIES</h3>
       <%= for {q, k} <- @combos.combo1 do %>
