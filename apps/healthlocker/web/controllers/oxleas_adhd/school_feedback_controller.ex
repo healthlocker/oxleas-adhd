@@ -25,6 +25,7 @@ defmodule Healthlocker.OxleasAdhd.SchoolFeedbackController do
   end
 
   def new(conn, %{"user_id" => su_id}) do
+    current_user_role = conn.assigns[:current_user].role
     combos = SchoolFeedback.create_question_key_combo
     service_user = Repo.get!(User, su_id)
     changeset = SchoolFeedback.changeset(%SchoolFeedback{})
@@ -36,16 +37,23 @@ defmodule Healthlocker.OxleasAdhd.SchoolFeedbackController do
 
     case Repo.all(sch_feedback_query) do
       [feedback | _] ->
-        conn
-        |> redirect(
-          to: user_school_feedback_path(conn, :edit, service_user, feedback)
-        )
+        case current_user_role do
+          "teacher" ->
+            conn
+            |> redirect(to: user_school_feedback_path(conn, :edit, service_user, feedback))
+          "clinician" ->
+            conn
+            |> redirect(to: user_school_feedback_path(conn, :show, service_user, feedback))
+        end
       _ ->
-        conn
-        |> render(
-          "new.html", changeset: changeset, user: service_user,
-          combos: combos
-        )
+        case current_user_role do
+          "teacher" ->
+            conn
+            |> render( "new.html", changeset: changeset, user: service_user, combos: combos )
+          "clinician" ->
+            conn
+            |> redirect(to: user_school_feedback_path(conn, :index, service_user))
+        end
     end
   end
 
