@@ -4,12 +4,12 @@ defmodule Healthlocker.OxleasAdhd.SchoolFeedbackControllerTest do
 
   @valid_attrs %{
     p1q1: "1",
-    user_id: 1
+    user_id: 1234
   }
 
   @valid_attrs2 %{
     p1q1: "1",
-    user_id: 2
+    user_id: 2345
   }
 
   describe "No user logged in" do
