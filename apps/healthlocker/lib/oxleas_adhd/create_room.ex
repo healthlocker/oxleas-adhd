@@ -15,6 +15,10 @@ defmodule Healthlocker.OxleasAdhd.CreateRoom do
   def connect_teachers_and_create_rooms(user, teacher_ids, teachers) do
     Multi.new
     |> Multi.insert_all(:insert_teachers, Teacher, teachers)
+    |> Multi.insert(:teacher_room, Room.changeset(%Room{}, %{
+      name: "teacher-care-team:" <> Integer.to_string(user.id)
+    }))
+    |> Multi.run(:user_room_teacher, &add_su_to_room_for_teacher(&1, user))
   end
 
   defp add_su_to_room(multi, user) do
@@ -27,6 +31,19 @@ defmodule Healthlocker.OxleasAdhd.CreateRoom do
         {:ok, user_room}
       {:error, changeset} ->
         {:error, changeset, "Error adding user to room"}
+    end
+  end
+
+  defp add_su_to_room_for_teacher(multi, user) do
+    changeset = UserRoom.changeset(%UserRoom{
+      user_id: user.id,
+      room_id: multi.teacher_room.id
+    })
+    case Repo.insert(changeset) do
+      {:ok, user_room} ->
+        {:ok, user_room}
+      {:error, changeset} ->
+        {:error, changeset, "Error adding user to room with teacher"}
     end
   end
 

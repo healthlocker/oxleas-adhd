@@ -89,7 +89,6 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
   def create(conn, %{"user_id" => user_id, "links" => %{"clinicians" => clinician_params, "teachers" => teacher_params}}) do
     id = user_id |> String.to_integer
     service_user = Repo.get!(User, id)
-
     clinician_ids = get_user_ids(clinician_params)
     teacher_ids = get_user_ids(teacher_params)
 
