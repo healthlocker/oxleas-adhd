@@ -1,0 +1,39 @@
+<section>
+    <h2 class="tc">School feedback</h2>
+    <div class="form-group">
+      <h3 class="tc">PART I - ATTENTION DIFFICULTIES</h3>
+      <%= for {q, k} <- @combos.combo1 do %>
+        <%= render "show_helper.html", map: @feedback, key: k, question: q %>
+      <% end %>
+
+      <h3 class="tc">Part II  – ORGANISATION, CONCENTRATION & EXECUTIVE FUNCTION</h3>
+      <%= for {q, k} <- @combos.combo2 do %>
+        <%= render "show_helper.html", map: @feedback, key: k, question: q %>
+      <% end %>
+
+      <h3 class="tc">Part III  – HYPERACTIVITY / IMPULSIVITY</h3>
+      <%= for {q, k} <- @combos.combo3 do %>
+        <%= render "show_helper.html", map: @feedback, key: k, question: q %>
+      <% end %>
+
+      <h3 class="tc">Part IV – BEHAVIOUR</h3>
+      <%= for {q, k} <- @combos.combo4 do %>
+        <%= render "show_helper.html", map: @feedback, key: k, question: q %>
+      <% end %>
+
+      <h3 class="tc">Part V – SOCIAL COMMUNICATION</h3>
+      <%= for {q, k} <- @combos.combo5 do %>
+        <%= render "show_helper.html", map: @feedback, key: k, question: q %>
+      <% end %>
+
+      <h3 class="tc">Part VI – SOCIAL INTERACTION</h3>
+      <%= for {q, k} <- @combos.combo6 do %>
+        <%= render "show_helper.html", map: @feedback, key: k, question: q %>
+      <% end %>
+
+      <h3 class="tc">Part VII – FLEXIBLE BEHAVIOUR</h3>
+      <%= for {q, k} <- @combos.combo7 do %>
+        <%= render "show_helper.html", map: @feedback, key: k, question: q %>
+      <% end %>
+    </div>
+</section>

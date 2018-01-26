@@ -1,0 +1,12 @@
+<div class="br2 mv4 center">
+  <h2 class="tc">Edid school feedback</h2>
+  <%=
+    render "form.html", changeset: @changeset,
+    action: user_school_feedback_path(@conn, :update, @user, @feedback),
+    method: [method: "post"],
+    combos: @combos
+  %>
+
+  <p class="hl-pink b">Most recent update:</p>
+  <p class="hl-pink"><%= @teacher_name %> <%= @last_update %></p>
+</div>
