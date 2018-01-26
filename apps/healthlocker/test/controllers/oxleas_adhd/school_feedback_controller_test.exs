@@ -22,19 +22,19 @@ defmodule Healthlocker.OxleasAdhd.SchoolFeedbackControllerTest do
   describe "SU is assigned to the conn" do
     setup do
       {:ok, su} = %User{
-        id: 1,
+        id: 1234,
         email: "service@email.com",
         role: "slam_user"
       } |> Repo.insert
 
       {:ok, teacher} = %User{
-        id: 3,
+        id: 3456,
         email: "teacher@email.com",
         role: "teacher"
       } |> Repo.insert
 
       {:ok, feedback} = %SchoolFeedback{
-        id: 1,
+        id: 9876,
         user_id: 1,
         last_updated_by: 3
       } |> Repo.insert
@@ -53,27 +53,27 @@ defmodule Healthlocker.OxleasAdhd.SchoolFeedbackControllerTest do
   describe "Teacher is assigned to the conn" do
     setup do
       {:ok, su} = %User{
-        id: 1,
+        id: 1234,
         email: "service@email.com",
         role: "slam_user"
       } |> Repo.insert
 
       {:ok, su2} = %User{
-        id: 2,
+        id: 2345,
         email: "service2@email.com",
         role: "slam_user"
       } |> Repo.insert
 
       {:ok, teacher} = %User{
-        id: 3,
+        id: 3456,
         email: "teacher@email.com",
         role: "teacher"
       } |> Repo.insert
 
       {:ok, feedback} = %SchoolFeedback{
-        id: 1,
-        user_id: 2,
-        last_updated_by: 3
+        id: 9876,
+        user_id: 2345,
+        last_updated_by: 3456
       } |> Repo.insert
 
 
