@@ -208,8 +208,10 @@ defmodule Healthlocker.TrackerView do
   end
 
   def printed_time(naive_date_time) do
-    [hours, minutes | _] = naive_date_time
-    |> NaiveDateTime.to_time()
+    datetime = Timex.Timezone.convert(naive_date_time, "Europe/London")
+
+    [hours, minutes | _] = datetime
+    |> DateTime.to_time()
     |> Time.to_string
     |> String.split(":")
 
