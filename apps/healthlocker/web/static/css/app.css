@@ -233,6 +233,10 @@ button itself */
   border-color: #EBEBEB;
 }
 
+.b--hl-lilac {
+  border-color: #7f88cd;
+}
+
 .hl-input-error {
   outline: none;
   border: 1px solid #EC4067;
