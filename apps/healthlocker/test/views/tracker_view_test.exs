@@ -48,4 +48,20 @@ defmodule Healthlocker.TrackerViewTest do
     expected = "11:00"
     assert actual == expected
   end
+
+  describe "date_with_day_and_month returns the correct date string" do
+    setup do
+      [
+        range: Date.range(~D[2018-01-01], ~D[2018-01-07]),
+        dates: ["Monday 1 January", "Tuesday 2 January", "Wednesday 3 January", "Thursday 4 January", "Friday 5 January", "Saturday 6 January", "Sunday 7 January"]
+      ]
+    end
+
+    test "days", fixture do
+      Enum.each(0..6, fn(x) ->
+        actual = TrackerView.date_with_day_and_month(Enum.at(fixture.range, x))
+        assert actual == Enum.at(fixture.dates, x)
+      end)
+    end
+  end
 end
