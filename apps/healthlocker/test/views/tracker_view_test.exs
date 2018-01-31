@@ -52,7 +52,7 @@ defmodule Healthlocker.TrackerViewTest do
   describe "date_with_day_and_month returns the correct date string" do
     setup do
       [
-        range: Date.range(~D[2018-01-01], ~D[2018-01-07]),
+        range: [ ~D[2018-01-01], ~D[2018-01-02], ~D[2018-01-03], ~D[2018-01-04], ~D[2018-01-05], ~D[2018-01-06], ~D[2018-01-07] ],
         dates: ["Monday 1 January", "Tuesday 2 January", "Wednesday 3 January", "Thursday 4 January", "Friday 5 January", "Saturday 6 January", "Sunday 7 January"]
       ]
     end
