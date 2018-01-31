@@ -14,20 +14,44 @@ defmodule Healthlocker.MessageView do
   end
 
   @base_classes "w-80 br2 mb2 pa1 pa3-ns"
-  @sender_classes "hl-bg-light-yellow fr"
-  @receiver_classes "hl-bg-light-aqua fl"
+  @align_right "fr"
+  @align_left "fl"
+  @sender_classes "hl-bg-light-yellow"
+  @receiver_classes "hl-bg-light-aqua"
+  @teacher_classes "hl-bg-lilac"
 
   def classes(_message, nil) do
     @base_classes
   end
 
   def classes(message, current_user_id) do
-    communicator = if message.user.id == current_user_id do
-      @sender_classes
-    else
-      @receiver_classes
-    end
+    alignement = get_alignement(message.user, current_user_id)
+    colour = get_message_colour(message.user, current_user_id)
 
-    @base_classes <> " " <> communicator
+    @base_classes <> " " <> alignement <> " " <> colour
+  end
+
+  defp message_from_current_user?(message_user, current_user_id) do
+    message_user.id == current_user_id
+  end
+
+  defp get_alignement(message_user, current_user_id) do
+    if message_from_current_user?(message_user, current_user_id) do
+      @align_right
+    else
+      @align_left
+    end
+  end
+
+  defp get_message_colour(message_user, current_user_id) do
+    if message_user.role == "teacher" do
+      @teacher_classes
+    else
+      if message_from_current_user?(message_user, current_user_id) do
+        @sender_classes
+      else
+        @receiver_classes
+      end
+    end
   end
 end
