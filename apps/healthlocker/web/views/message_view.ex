@@ -20,8 +20,12 @@ defmodule Healthlocker.MessageView do
   @receiver_classes "hl-bg-light-aqua"
   @teacher_classes "hl-bg-lilac"
 
-  def classes(_message, nil) do
-    @base_classes
+  def classes(message, nil) do
+    if message.user.role == "teacher" do
+      @base_classes <> " " <> @teacher_classes
+    else
+      @base_classes
+    end
   end
 
   def classes(message, current_user_id) do
