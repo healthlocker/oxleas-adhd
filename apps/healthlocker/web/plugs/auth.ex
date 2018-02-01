@@ -19,7 +19,7 @@ defmodule Healthlocker.Plugs.Auth do
       user = user_id && repo.get(Healthlocker.User, user_id) |> repo.preload(:likes) ->
         conn
         |> put_session(:expiry_time, gen_expiration_datetime_string())
-        |> put_current_user(conn, user)
+        |> put_current_user(user)
       true ->
         conn
         |> assign(:current_user, nil)
