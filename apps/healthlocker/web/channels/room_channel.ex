@@ -1,7 +1,7 @@
 defmodule Healthlocker.RoomChannel do
   use Healthlocker.Web, :channel
 
-  alias Healthlocker.{Message, MessageView, Room}
+  alias Healthlocker.{Message, MessageView, Room, User}
 
   def join("room:" <> room_id, _params, socket) do
     room = Repo.get!(Room, room_id)
@@ -15,10 +15,18 @@ defmodule Healthlocker.RoomChannel do
   end
 
   def handle_in("msg:new", params, socket) do
+    current_user = Repo.get(User, socket.assigns.user_id)
+
     changeset =
       socket.assigns.room
       |> build_assoc(:messages, user_id: socket.assigns.user_id)
       |> Message.changeset(params)
+
+    if current_user.role == "service_user" || current_user.role == "teacher" do
+      changeset = Ecto.Changeset.put_change(changeset, :unread, true)
+    else
+      changeset = Ecto.Changeset.put_change(changeset, :unread, false)
+    end
 
     case Repo.insert(changeset) do
       {:ok, message} ->
