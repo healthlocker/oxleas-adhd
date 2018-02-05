@@ -1,0 +1,10 @@
+<div class="br2 mv4 center">
+  <h2 class="tc">New school feedback</h2>
+  <%=
+    render "form.html",
+    action: user_answer_path(@conn, :create, @su),
+    method: :post,
+    all_questions: @all_questions,
+    conn: @conn
+  %>
+</div>

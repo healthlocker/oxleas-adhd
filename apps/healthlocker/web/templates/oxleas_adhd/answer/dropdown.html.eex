@@ -1,0 +1,2 @@
+<%= select @map, @key, Healthlocker.ComponentView.get_options("out_of_10"), prompt: "",
+  class: "pa3 input-reset bn hl-bg-grey w-100 " %>
