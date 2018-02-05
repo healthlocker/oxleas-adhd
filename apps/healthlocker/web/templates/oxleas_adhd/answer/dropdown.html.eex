@@ -1,2 +1,13 @@
-<%= select @map, @key, Healthlocker.ComponentView.get_options("out_of_10"), prompt: "",
-  class: "pa3 input-reset bn hl-bg-grey w-100 " %>
+<%= if @route == "new" do %>
+  <%= for {question, index} <- Enum.at(@list, @index) do %>
+    <%= label @map, question, class: "f5 db mb2 mt3 " %>
+    <%= select @map, index, Healthlocker.ComponentView.get_options("out_of_10"), prompt: "select",
+      class: "pa3 input-reset bn hl-bg-grey w-100 " %>
+  <% end %>
+<% else %>
+  <%= for {{question, index}, ans} <- Enum.at(@list, @index) do %>
+    <%= label @map, question, class: "f5 db mb2 mt3 " %>
+    <%= select @map, index, Healthlocker.ComponentView.get_options("out_of_10"), selected: ans, prompt: "select",
+      class: "pa3 input-reset bn hl-bg-grey w-100 " %>
+  <% end %>
+<% end %>

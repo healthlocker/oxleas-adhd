@@ -6,68 +6,39 @@
       <p class="tc b">0 = Never; 5 = Sometimes/Often; 10 = Nearly Always</p>
 
       <%= inputs_for f, :sec1, fn i -> %>
-        <%= for {question, index} <- Enum.at(@all_questions, 0) do %>
-          <%= label i, question, class: "f5 db mb2 mt3 " %>
-          <%= render "dropdown.html", map: i, key: index %>
-        <% end %>
+        <%= render "dropdown.html", list: @q_and_a, index: 0, map: i, route: @route %>
       <% end %>
 
       <h3 class="tc">Part II  – ORGANISATION, CONCENTRATION & EXECUTIVE FUNCTION</h3>
-
       <%= inputs_for f, :sec2, fn i -> %>
-        <%= for {question, index} <- Enum.at(@all_questions, 1) do %>
-          <%= label i, question, class: "f5 db mb2 mt3 " %>
-          <%= render "dropdown.html", map: i, key: index %>
-        <% end %>
+        <%= render "dropdown.html", list: @q_and_a, index: 1, map: i, route: @route %>
       <% end %>
 
       <h3 class="tc">Part III  – HYPERACTIVITY / IMPULSIVITY</h3>
-
       <%= inputs_for f, :sec3, fn i -> %>
-        <%= for {question, index} <- Enum.at(@all_questions, 2) do %>
-          <%= label i, question, class: "f5 db mb2 mt3 " %>
-          <%= render "dropdown.html", map: i, key: index %>
-        <% end %>
+        <%= render "dropdown.html", list: @q_and_a, index: 2, map: i, route: @route %>
       <% end %>
 
       <h3 class="tc">Part IV – BEHAVIOUR</h3>
-
       <%= inputs_for f, :sec4, fn i -> %>
-        <%= for {question, index} <- Enum.at(@all_questions, 3) do %>
-          <%= label i, question, class: "f5 db mb2 mt3 " %>
-          <%= render "dropdown.html", map: i, key: index %>
-        <% end %>
+        <%= render "dropdown.html", list: @q_and_a, index: 3, map: i, route: @route %>
       <% end %>
 
       <h3 class="tc">Part V – SOCIAL COMMUNICATION</h3>
-
       <%= inputs_for f, :sec5, fn i -> %>
-        <%= for {question, index} <- Enum.at(@all_questions, 4) do %>
-          <%= label i, question, class: "f5 db mb2 mt3 " %>
-          <%= textarea i, index, class: "pa3 input-reset bn hl-bg-grey w-100" %>
-        <% end %>
+        <%= render "textarea.html", list: @q_and_a, index: 4, map: i, route: @route %>
       <% end %>
 
       <h3 class="tc">Part VI – SOCIAL INTERACTION</h3>
-
       <%= inputs_for f, :sec6, fn i -> %>
-        <%= for {question, index} <- Enum.at(@all_questions, 5) do %>
-          <%= label i, question, class: "f5 db mb2 mt3 " %>
-          <%= textarea i, index, class: "pa3 input-reset bn hl-bg-grey w-100" %>
-        <% end %>
+        <%= render "textarea.html", list: @q_and_a, index: 5, map: i, route: @route %>
       <% end %>
 
       <h3 class="tc">Part VII – FLEXIBLE BEHAVIOUR</h3>
-
       <%= inputs_for f, :sec7, fn i -> %>
-        <%= for {question, index} <- Enum.at(@all_questions, 6) do %>
-          <%= label i, question, class: "f5 db mb2 mt3 " %>
-          <%= textarea i, index, class: "pa3 input-reset bn hl-bg-grey w-100" %>
-        <% end %>
+        <%= render "textarea.html", list: @q_and_a, index: 6, map: i, route: @route %>
       <% end %>
-
     </div>
-
     <div class="mt4 tr">
       <%= submit_primary "Save" %>
     </div>

@@ -4,7 +4,8 @@
     render "form.html",
     action: user_answer_path(@conn, :create, @su),
     method: :post,
-    all_questions: @all_questions,
-    conn: @conn
+    q_and_a: @q_and_a,
+    conn: @conn,
+    route: @route
   %>
 </div>

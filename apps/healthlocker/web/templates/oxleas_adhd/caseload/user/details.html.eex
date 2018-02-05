@@ -44,7 +44,7 @@
 
     <div class="w-100 mw6 center flex items-end justify-between">
       <div class="tc w-40 dib fr">
-        <%= link to: user_school_feedback_path(@conn, :new, @user) do %>
+        <%= link to: user_answer_path(@conn, :new, @user) do %>
           <%= img_tag("/images/school_feedback.png",
         class: "w-100") %>
         <% end %>
@@ -52,7 +52,7 @@
     </div>
     <div class="w-100 mw6 center flex items-start justify-between pb5">
       <div class="tc w-40 dib">
-        <%= link to: user_school_feedback_path(@conn, :new, @user) do %>
+        <%= link to: user_answer_path(@conn, :new, @user) do %>
           <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">School Feedback</span>
         <% end %>
       </div>
