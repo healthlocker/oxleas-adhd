@@ -59,7 +59,7 @@ defmodule Healthlocker.Router do
 
     resources "/users", UserController do
       resources "/medication", MedicationController, only: [:new, :create, :edit, :update]
-      resources "/school-feedback", SchoolFeedbackController, only: [:new, :create, :edit ,:update]
+      resources "/school-feedback", AnswerController, only: [:new, :create, :edit ,:update]
     end
   end
 
