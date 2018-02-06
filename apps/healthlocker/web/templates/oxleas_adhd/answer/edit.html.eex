@@ -1,0 +1,11 @@
+<div class="br2 mv4 center">
+  <h2 class="tc">Edit school feedback</h2>
+  <%=
+    render "form.html",
+    action: user_answer_path(@conn, :update, @su, @ans),
+    method: "put",
+    q_and_a: @q_and_a,
+    conn: @conn,
+    route: @route
+  %>
+</div>
