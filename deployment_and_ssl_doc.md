@@ -60,7 +60,7 @@ If changes are made to the codebase and update to the origin git repository, the
 cd /home/ubuntu/oxleas
 git fetch
 git checkout <alternate-branch>
-git pull 
+git pull
 mix deps.clean --all
 mix deps.get --force
 mix deps.compile
@@ -70,7 +70,7 @@ mix deps.compile
 
 `mix deps.<command>` lines are only required if there are any dependency changes, see main `mix.exs` file and others at `apps/*/mix.exs`
 
-### 
+###
 
 ## Install applications on the Azure instance
 
@@ -195,6 +195,7 @@ SECRET_KEY_BASE
 SES_PORT
 TO_EMAIL
 APPSIGNAL_APP_ENV
+APP_HOSTNAME
 ```
 
 **Note:** [Healthlocker](https://github.com/healthlocker/healthlocker/blob/master/deployment_and_ssl.md)
@@ -355,7 +356,7 @@ Next run the following commands individually in your terminal, specifying deploy
 
 ```
 mix edeliver build release (this step takes a few minutes to complete)
-mix edeliver deploy release to <staging | production> 
+mix edeliver deploy release to <staging | production>
 mix edeliver start <staging | production>
 ```
 

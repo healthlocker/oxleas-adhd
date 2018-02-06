@@ -13,7 +13,7 @@ defmodule Healthlocker.Email do
     new_email()
     |> to(to_email)
     |> from(System.get_env("FROM_EMAIL"))
-    |> subject("Headscape Focus Reset Password Instructions")
-    |> text_body("Please visit http://51.140.117.78/password/#{token}/edit to reset your password")
+    |> subject("HeadScape Focus Reset Password Instructions")
+    |> text_body("Please visit https://#{System.get_env("APP_HOSTNAME")}/password/#{token}/edit to reset your password")
   end
 end
