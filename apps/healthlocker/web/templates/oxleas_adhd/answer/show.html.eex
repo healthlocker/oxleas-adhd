@@ -1,0 +1,25 @@
+<section>
+    <h2 class="tc">School feedback</h2>
+    <div class="form-group">
+      <h3 class="tc">PART I - ATTENTION DIFFICULTIES</h3>
+      <%= render "show_helper.html", list: @q_and_a, index: 0 %>
+
+      <h3 class="tc">Part II  – ORGANISATION, CONCENTRATION & EXECUTIVE FUNCTION</h3>
+      <%= render "show_helper.html", list: @q_and_a, index: 1 %>
+
+      <h3 class="tc">Part III  – HYPERACTIVITY / IMPULSIVITY</h3>
+      <%= render "show_helper.html", list: @q_and_a, index: 2 %>
+
+      <h3 class="tc">Part IV – BEHAVIOUR</h3>
+      <%= render "show_helper.html", list: @q_and_a, index: 3 %>
+
+      <h3 class="tc">Part V – SOCIAL COMMUNICATION</h3>
+      <%= render "show_helper.html", list: @q_and_a, index: 4 %>
+
+      <h3 class="tc">Part VI – SOCIAL INTERACTION</h3>
+      <%= render "show_helper.html", list: @q_and_a, index: 5 %>
+
+      <h3 class="tc">Part VII – FLEXIBLE BEHAVIOUR</h3>
+      <%= render "show_helper.html", list: @q_and_a, index: 6 %>
+    </div>
+</section>
