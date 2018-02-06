@@ -1,0 +1,11 @@
+<%= if @route == "new" do %>
+  <%= for {question, index} <- Enum.at(@list, @index) do %>
+    <%= label @map, question, class: "f5 db mb2 mt3 " %>
+    <%= textarea @map, index, class: "pa3 input-reset bn hl-bg-grey w-100" %>
+  <% end %>
+<% else %>
+  <%= for {{question, index}, ans} <- Enum.at(@list, @index) do %>
+    <%= label @map, question, class: "f5 db mb2 mt3 " %>
+    <%= textarea @map, index, value: ans, class: "pa3 input-reset bn hl-bg-grey w-100" %>
+  <% end %>
+<% end %>
