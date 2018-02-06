@@ -1,6 +1,6 @@
 defmodule Healthlocker.OxleasAdhd.EditRoom do
   alias Ecto.Multi
-  alias Healthlocker.{Repo, Clinician, Teacher, ClinicianRooms}
+  alias Healthlocker.{Repo, Clinician, Teacher, ClinicianRooms, Room}
   import Ecto.Query
 
   def connect_clinicians_and_update_rooms(room, clinician_ids, clinicians, query) do
@@ -11,10 +11,31 @@ defmodule Healthlocker.OxleasAdhd.EditRoom do
     |> Multi.run(:clinician_room, &add_clinicians_to_room(&1, clinician_ids, room))
   end
 
-  def connect_teachers_and_update_rooms(room, teacher_ids, teachers, query) do
+  def connect_teachers_and_update_rooms(service_user, teacher_ids, teachers, query) do
     Multi.new
     |> Multi.delete_all(:delete_teachers, query)
     |> Multi.insert_all(:insert_teachers, Teacher, teachers)
+    |> Multi.insert_all(:teacher_rooms, Room, add_teachers_room(service_user.id, teacher_ids))
+  end
+
+  defp add_teachers_room(user_id, teacher_ids) do
+    existing_rooms = Repo.all(from r in Room, where: ilike(r.name, ^"teacher-care-team:#{user_id}%"))
+                   |> Enum.map(fn(room) ->
+                     room.name
+                   end)
+    teacher_room_names = Enum.map(teacher_ids, fn(teacher_id) ->
+      "teacher-care-team:#{user_id}:#{teacher_id}"
+    end)
+    |> Enum.filter(fn(room) ->
+      !Enum.member?(existing_rooms, room)
+    end)
+    |> Enum.map(fn(room) ->
+      %{
+         name: room,
+         inserted_at: Timex.now(),
+         updated_at: Timex.now()
+       }
+    end)
   end
 
   defp add_clinicians_to_room(_multi, clinician_ids, room) do
@@ -39,4 +60,5 @@ defmodule Healthlocker.OxleasAdhd.EditRoom do
     }
     end)
   end
+
 end
