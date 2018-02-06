@@ -23,10 +23,10 @@ defmodule Healthlocker.RoomChannel do
       |> build_assoc(:messages, user_id: socket.assigns.user_id)
       |> Message.changeset(params)
 
-    if current_user.role == "service_user" || current_user.role == "teacher" do
-      changeset = Ecto.Changeset.put_change(changeset, :unread, true)
+    changeset = if current_user.role == "service_user" || current_user.role == "teacher" do
+      Ecto.Changeset.put_change(changeset, :unread, true)
     else
-      changeset = Ecto.Changeset.put_change(changeset, :unread, false)
+      Ecto.Changeset.put_change(changeset, :unread, false)
     end
 
     case Repo.insert(changeset) do
@@ -48,6 +48,8 @@ defmodule Healthlocker.RoomChannel do
 
   defp broadcast_message(socket, message) do
     message = Repo.preload(message, :user)
+    connected_users = Presence.list(socket)
+    IO.inspect connected_users
     rendered_message = Phoenix.View.render_to_string(MessageView, "_message.html", message: message, current_user_id: nil)
     broadcast!(socket, "msg:created", %{template: rendered_message, id: message.id, message_user_id: socket.assigns.user_id})
   end
