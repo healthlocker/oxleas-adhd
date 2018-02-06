@@ -15,6 +15,14 @@ defmodule Healthlocker.RoomChannel do
     {:ok, nil, assign(socket, :room, room)}
   end
 
+  def is_clinician_in_socket?(users_in_socket) do
+    users_in_socket
+    |> Enum.map(fn {id, map} ->
+      map.metas |> List.first |> Map.get(:role)
+    end)
+    |> Enum.member?("clinician")
+  end
+
   def handle_in("msg:new", params, socket) do
     current_user = Repo.get(User, socket.assigns.user_id)
 
@@ -23,10 +31,13 @@ defmodule Healthlocker.RoomChannel do
       |> build_assoc(:messages, user_id: socket.assigns.user_id)
       |> Message.changeset(params)
 
-    changeset = if current_user.role == "service_user" || current_user.role == "teacher" do
-      Ecto.Changeset.put_change(changeset, :unread, true)
-    else
-      Ecto.Changeset.put_change(changeset, :unread, false)
+    connected_users = Presence.list(socket)
+
+    changeset =
+      if (current_user.role == "service_user" || current_user.role == "teacher") && !is_clinician_in_socket?(connected_users) do
+        Ecto.Changeset.put_change(changeset, :unread, true)
+      else
+        Ecto.Changeset.put_change(changeset, :unread, false)
     end
 
     case Repo.insert(changeset) do
