@@ -183,6 +183,11 @@ button itself */
   background-color: #FEECB5;
 }
 
+
+.hl-bg-lilac {
+  background-color: #7f88cd;
+}
+
 .hl-bg-success {
   background-color: #FEF3CC;
 }
@@ -231,6 +236,10 @@ button itself */
 
 .b--hl-grey {
   border-color: #EBEBEB;
+}
+
+.b--hl-lilac {
+  border-color: #7f88cd;
 }
 
 .hl-input-error {

@@ -36,4 +36,32 @@ defmodule Healthlocker.TrackerViewTest do
     expected = "Friday 7 April"
     assert actual == expected
   end
+
+  test "printed_time while in BST" do
+    actual = TrackerView.printed_time(~N[2017-09-20 12:22:06.896685])
+    expected = "13:22"
+    assert actual == expected
+  end
+
+  test "printed_time while not in BST" do
+    actual = TrackerView.printed_time(~N[2000-01-01 11:00:07])
+    expected = "11:00"
+    assert actual == expected
+  end
+
+  describe "date_with_day_and_month returns the correct date string" do
+    setup do
+      [
+        range: [ ~D[2018-01-01], ~D[2018-01-02], ~D[2018-01-03], ~D[2018-01-04], ~D[2018-01-05], ~D[2018-01-06], ~D[2018-01-07] ],
+        dates: ["Monday 1 January", "Tuesday 2 January", "Wednesday 3 January", "Thursday 4 January", "Friday 5 January", "Saturday 6 January", "Sunday 7 January"]
+      ]
+    end
+
+    test "days", fixture do
+      Enum.each(0..6, fn(x) ->
+        actual = TrackerView.date_with_day_and_month(Enum.at(fixture.range, x))
+        assert actual == Enum.at(fixture.dates, x)
+      end)
+    end
+  end
 end
