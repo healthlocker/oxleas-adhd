@@ -1,0 +1,8 @@
+<%= for {{question, index}, ans} <- Enum.at(@list, @index) do %>
+  <p><%= question %></p>
+  <%= if ans == "" do %>
+    <p class="tc b">Nothing entered here</p>
+  <% else %>
+    <p class="tc b"><%= ans %></p>
+  <% end %>
+<% end %>
