@@ -125,7 +125,7 @@
     <div class="w-100 mw6 center flex items-end justify-between">
       <div class="tc w-40 dib fr">
         <%= link to: user_answer_path(@conn, :index, @current_user) do %>
-          <%= img_tag("/images/answer.png",
+          <%= img_tag("/images/school_feedback.png",
         class: "w-100") %>
         <% end %>
       </div>

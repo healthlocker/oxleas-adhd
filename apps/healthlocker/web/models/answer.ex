@@ -5,8 +5,8 @@ defmodule Healthlocker.Answer do
     field :section, :string
     field :question, :string
     field :answer, :string
-    belongs_to :su, Answers.Su, foreign_key: :su_id
-    belongs_to :last_updated_by, Answers.LatUpdatedBy, foreign_key: :last_updated_by_id
+    belongs_to :su, Healthlocker.User, foreign_key: :su_id
+    belongs_to :last_updated_by, Healthlocker.User, foreign_key: :last_updated_by_id
 
     timestamps()
   end
