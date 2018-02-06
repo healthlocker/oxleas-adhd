@@ -1,5 +1,6 @@
 defmodule Healthlocker.RoomChannel do
   use Healthlocker.Web, :channel
+  alias Healthlocker.Presence
 
   alias Healthlocker.{Message, MessageView, Room, User}
 
@@ -35,6 +36,14 @@ defmodule Healthlocker.RoomChannel do
       {:error, changeset} ->
         {:reply, {:error, %{errors: changeset}}, socket}
     end
+  end
+
+  def handle_info(:after_join, socket) do
+    push socket, "presence_state", Presence.list(socket)
+    {:ok, _} = Presence.track(socket, socket.assigns.user_id, %{
+      role: Repo.get!(User, socket.assigns.user_id).role
+      })
+    {:noreply, socket}
   end
 
   defp broadcast_message(socket, message) do
