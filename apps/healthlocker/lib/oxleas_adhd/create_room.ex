@@ -15,6 +15,7 @@ defmodule Healthlocker.OxleasAdhd.CreateRoom do
   def connect_teachers_and_create_rooms(user, teacher_ids, teachers) do
     Multi.new
     |> Multi.insert_all(:insert_teachers, Teacher, teachers)
+    |> Multi.insert_all(:teacher_rooms, Room, make_teachers_room(user.id, teacher_ids))
   end
 
   defp add_su_to_room(multi, user) do
@@ -39,6 +40,17 @@ defmodule Healthlocker.OxleasAdhd.CreateRoom do
       _err ->
         {:error, "Error adding clinician to room"}
     end
+  end
+
+  defp make_teachers_room(user_id, teachers_list) do
+    teachers_list
+    |> Enum.map(fn(teacher_id) ->
+      %{
+        name: "teacher-care-team:#{user_id}:#{teacher_id}",
+        inserted_at: Timex.now(),
+        updated_at: Timex.now()
+      }
+    end)
   end
 
   defp make_clinicians(clinician_ids, room_id) do

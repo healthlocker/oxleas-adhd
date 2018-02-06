@@ -41,7 +41,7 @@ defmodule Healthlocker.OxleasAdhd.ClinicianController do
     query_teacher = Teacher |> TeacherQuery.get_teachers_for_service_user(id)
 
     multi_clinician = EditRoom.connect_clinicians_and_update_rooms(room, clinician_ids, clinicians, query)
-    multi_teacher = EditRoom.connect_teachers_and_update_rooms(room, teacher_ids, teachers, query_teacher)
+    multi_teacher = EditRoom.connect_teachers_and_update_rooms(service_user, teacher_ids, teachers, query_teacher)
     su_email_multi = User.update_su_email(user_changeset)
 
     multis =
