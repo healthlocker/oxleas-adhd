@@ -6,6 +6,7 @@ defmodule Healthlocker.PostView do
     if !is_nil(body) do
       {:ok, text, _} = Earmark.as_html(body, %Earmark.Options{ breaks: true })
       {:safe, raw_html} = text |> raw
+      HtmlSanitizeEx.basic_html(raw_html) |> raw
     else
       ""
     end
@@ -19,6 +20,7 @@ defmodule Healthlocker.PostView do
         text
         |> String.trim_trailing(tag)
         |> markdown()
+        |> IO.inspect(label: "text")
     end
   end
 
