@@ -37,8 +37,7 @@ defmodule Healthlocker.Mixfile do
         :earmark,
         :bamboo_smtp,
         :ecto_factory,
-        :wallaby,
-        :phoenix_html_sanitizer
+        :wallaby
       ],
       extra_applications: [:logger, :appsignal]
     ]
@@ -59,7 +58,6 @@ defmodule Healthlocker.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:phoenix_html_sanitizer, "~> 1.0.0"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:earmark, "~> 1.1"},

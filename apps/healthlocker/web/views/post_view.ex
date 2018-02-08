@@ -6,12 +6,11 @@ defmodule Healthlocker.PostView do
     if !is_nil(body) do
       {:ok, text, _} = Earmark.as_html(body, %Earmark.Options{ breaks: true })
       {:safe, raw_html} = text |> raw
-      sanitize(raw_html)
     else
       ""
     end
   end
-  
+
   def format_output(text, tag) do
     case text do
       nil ->
