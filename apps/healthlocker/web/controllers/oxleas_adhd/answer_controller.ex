@@ -26,17 +26,30 @@ defmodule Healthlocker.OxleasAdhd.AnswerController do
   end
 
   def new(conn, %{"user_id" => su_id}) do
+    current_user_role = conn.assigns[:current_user].role
     su = Repo.get!(User, su_id)
     questions = Answer.get_questions
     query = from a in Answer, where: a.su_id == ^su_id
 
     case Repo.all(query) do
       [] ->
-        conn
-        |> render("new.html", su: su, q_and_a: questions, route: "new")
+        case current_user_role do
+          "teacher" ->
+            conn
+            |> render("new.html", su: su, q_and_a: questions, route: "new")
+          "clinician" ->
+            conn
+            |> redirect(to: user_answer_path(conn, :index, su))
+        end
       [answer | _] ->
-        conn
-        |> redirect(to: user_answer_path(conn, :edit, su, answer))
+        case current_user_role do
+          "teacher" ->
+            conn
+            |> redirect(to: user_answer_path(conn, :edit, su, answer))
+          "clinician" ->
+            conn
+            |> redirect(to: user_answer_path(conn, :show, su, answer))
+        end
     end
   end
 
