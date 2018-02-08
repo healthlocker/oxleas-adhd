@@ -37,7 +37,8 @@ defmodule Healthlocker.Mixfile do
         :earmark,
         :bamboo_smtp,
         :ecto_factory,
-        :wallaby
+        :wallaby,
+        :html_sanitize_ex
       ],
       extra_applications: [:logger, :appsignal]
     ]

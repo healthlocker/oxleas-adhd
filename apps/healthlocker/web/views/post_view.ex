@@ -20,7 +20,6 @@ defmodule Healthlocker.PostView do
         text
         |> String.trim_trailing(tag)
         |> markdown()
-        |> IO.inspect(label: "text")
     end
   end
 
