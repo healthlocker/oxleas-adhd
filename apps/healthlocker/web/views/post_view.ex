@@ -4,11 +4,22 @@ defmodule Healthlocker.PostView do
 
   def markdown(body) do
     if !is_nil(body) do
-      body
-      |> Earmark.as_html!
-      |> raw
+      {:ok, text, _} = Earmark.as_html(body, %Earmark.Options{ breaks: true })
+      {:safe, raw_html} = text |> raw
+      HtmlSanitizeEx.basic_html(raw_html) |> raw
     else
       ""
+    end
+  end
+
+  def format_output(text, tag) do
+    case text do
+      nil ->
+        text
+      _ ->
+        text
+        |> String.trim_trailing(tag)
+        |> markdown()
     end
   end
 

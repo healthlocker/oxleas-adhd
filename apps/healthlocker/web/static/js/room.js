@@ -13,16 +13,15 @@ let Room = {
     let msgContainer  = document.getElementById("message-feed")
     let msgInput      = document.getElementById("message-input")
     let roomChannel   = socket.channel("room:" + roomId)
+    let msgSendButton = document.getElementById("message-send")
 
-    msgInput.addEventListener("keypress", e => {
-      if (e.keyCode == 13) {
-        let payload = {
-          body: msgInput.value
-        }
-        roomChannel.push("msg:new", payload, 10000)
-          .receive("error", e => console.log(e))
-        msgInput.value = ""
+    msgSendButton.addEventListener("click", e => {
+      let payload = {
+        body: msgInput.value
       }
+      roomChannel.push("msg:new", payload, 10000)
+        .receive("error", e => console.log(e))
+      msgInput.value = ""
     })
 
     roomChannel.on("msg:created", (resp) => {

@@ -19,6 +19,15 @@
           </div>
         <% end %>
       <% end %>
+
+      <%= for teacher <- patient.teacher do %>
+        <%= link to: caseload_user_room_path(@conn, :show, patient, room_for(teacher)),
+                class: "no-underline hl-dark-blue cf" do %>
+          <div class="w-80 pa3 mv1 b--hl-lilac ba bw1 br3 hl-dark-blue ml-20 flex justify-between">
+            <p class="b di mv0"><%= Healthlocker.ComponentView.full_name(teacher) %> <span class="normal i">(teacher)</span></p><span class="hl-pink fw9">></span>
+          </div>
+        <% end %>
+      <% end %>
     <% end%>
   <% end %>
 </div>

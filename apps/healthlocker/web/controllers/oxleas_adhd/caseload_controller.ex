@@ -1,7 +1,7 @@
 defmodule Healthlocker.OxleasAdhd.CaseloadController do
   use Healthlocker.Web, :controller
   alias OxleasAdhd.{ClinicianQuery, TeacherQuery}
-  alias Healthlocker.{Clinician, Teacher, User}
+  alias Healthlocker.{Clinician, Teacher, User, Room}
 
   def index(conn, _params) do
     current_user = conn.assigns.current_user
@@ -29,6 +29,9 @@ defmodule Healthlocker.OxleasAdhd.CaseloadController do
       |> Repo.preload(:rooms)
       |> Repo.preload(carers: :rooms)
     end)
+    |> Enum.map(fn patient ->
+      %{patient | teacher: get_teachers_for_patient(patient)}
+    end)
   end
 
   def get_patients_for_teacher(teacher) do
@@ -37,8 +40,21 @@ defmodule Healthlocker.OxleasAdhd.CaseloadController do
     |> Repo.all
     |> Enum.map(fn id ->
       Repo.get!(User, id)
-      |> Repo.preload(:rooms)
-      |> Repo.preload(carers: :rooms)
+    end)
+    |> Enum.map(fn user ->
+      %{user | rooms: [Repo.get_by(Room, name: "teacher-care-team:#{user.id}:#{teacher.id}")]}
+    end)
+  end
+
+  def get_teachers_for_patient(patient) do
+    Teacher
+    |> TeacherQuery.get_teachers_for_service_user(patient.id)
+    |> Repo.all
+    |> Enum.map(fn t ->
+      Repo.get!(User, t.teacher_id)
+    end)
+    |> Enum.map(fn user ->
+      %{user | rooms: [Repo.get_by(Room, name: "teacher-care-team:#{patient.id}:#{user.id}")]}
     end)
   end
 end

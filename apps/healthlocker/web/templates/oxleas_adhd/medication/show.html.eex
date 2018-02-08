@@ -38,6 +38,6 @@
   <%= format_date(@medication.updated_at) %>
 </div>
 
+ <%= link "Ask your team a question about your medication", to: "/care-team/contacts", class: "hl-aqua flex-wrap underline" %>    
+     
 <%= render "faq.html" %>
-
-<%= link "Ask your team a question about your medication", to: "/care-team/contacts", class: "hl-aqua flex-wrap underline" %>

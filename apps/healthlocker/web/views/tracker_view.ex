@@ -1,7 +1,6 @@
 defmodule Healthlocker.TrackerView do
   use Healthlocker.Web, :view
   use Timex
-  import Healthlocker.PostView, only: [markdown: 1]
 
   def get_symptom(data) do
     case data do
@@ -191,25 +190,19 @@ defmodule Healthlocker.TrackerView do
   end
 
   @days_of_week ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-  defp day_of_week(_date, 6) do
-    @days_of_week |> Enum.at(6)
-  end
-
-  defp day_of_week(date, n) do
-    if Date.day_of_week(date) == n do
-      @days_of_week |> Enum.at(n - 1)
-    else
-      day_of_week(date, n + 1)
-    end
+  defp day_of_week(date) do
+    @days_of_week |> Enum.at(Date.day_of_week(date) -1)
   end
 
   def date_with_day_and_month(date) do
-    day_of_week(date, 0) <> " " <> Integer.to_string(date.day) <> " " <> Timex.month_name(date.month)
+    day_of_week(date) <> " " <> Integer.to_string(date.day) <> " " <> Timex.month_name(date.month)
   end
 
   def printed_time(naive_date_time) do
-    [hours, minutes | _] = naive_date_time
-    |> NaiveDateTime.to_time()
+    datetime = Timex.Timezone.convert(naive_date_time, "Europe/London")
+
+    [hours, minutes | _] = datetime
+    |> DateTime.to_time()
     |> Time.to_string
     |> String.split(":")
 
