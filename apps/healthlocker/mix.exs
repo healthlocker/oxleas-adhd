@@ -38,7 +38,8 @@ defmodule Healthlocker.Mixfile do
         :bamboo_smtp,
         :ecto_factory,
         :wallaby,
-        :html_sanitize_ex
+        :html_sanitize_ex,
+        :xmerl
       ],
       extra_applications: [:logger, :appsignal, :xmerl]
     ]
