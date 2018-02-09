@@ -16,13 +16,21 @@ defmodule Healthlocker.OxleasAdhd.AnswerController do
     end
   end
 
-  def show(conn, %{"user_id" => user_id}) do
+  def show(conn, %{"id" => ans_id, "user_id" => user_id} = params) do
     questions = Answer.get_questions
     answers = Repo.all(from a in Answer, where: a.su_id == ^user_id) |> Answer.format_answers_for_frontend
     q_and_a = Answer.make_question_answer_tuple(questions, answers)
 
+    ans = Repo.get(Answer, ans_id)
+    last_updated_by = Repo.get(User, ans.last_updated_by_id)
+    teacher_name = AboutMe.format_team_name(last_updated_by)
+    last_update = AboutMe.format_naive_date(ans.updated_at)
+
     conn
-    |> render("show.html", q_and_a: q_and_a)
+    |> render(
+      "show.html", q_and_a: q_and_a, teacher_name: teacher_name,
+      last_update: last_update
+    )
   end
 
   def new(conn, %{"user_id" => su_id}) do
@@ -78,9 +86,15 @@ defmodule Healthlocker.OxleasAdhd.AnswerController do
     questions = Answer.get_questions
     answers = Repo.all(from a in Answer, where: a.su_id == ^su_id) |> Answer.format_answers_for_frontend()
     q_and_a = Answer.make_question_answer_tuple(questions, answers)
+    last_updated_by = Repo.get(User, ans.last_updated_by_id)
+    teacher_name = AboutMe.format_team_name(last_updated_by)
+    last_update = AboutMe.format_naive_date(ans.updated_at)
 
     conn
-    |> render("edit.html", su: su, q_and_a: q_and_a, ans: ans, route: "edit")
+    |> render(
+      "edit.html", su: su, q_and_a: q_and_a, ans: ans, route: "edit",
+      teacher_name: teacher_name, last_update: last_update
+    )
   end
 
   def update(conn, %{"data" => data, "user_id" => su_id, "id" => ans_id}) do
