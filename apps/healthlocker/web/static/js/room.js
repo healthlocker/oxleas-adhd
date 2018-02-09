@@ -15,13 +15,23 @@ let Room = {
     let roomChannel   = socket.channel("room:" + roomId)
     let msgSendButton = document.getElementById("message-send")
 
-    msgSendButton.addEventListener("click", e => {
+    function sendMessage() {
       let payload = {
         body: msgInput.value
       }
       roomChannel.push("msg:new", payload, 10000)
-        .receive("error", e => console.log(e))
+      .receive("error", e => console.log(e))
       msgInput.value = ""
+    }
+
+   msgInput.addEventListener("keypress", e => {
+      if (e.keyCode == 13) {
+        sendMessage();
+      }
+   })
+
+    msgSendButton.addEventListener("click", e => {
+      sendMessage()
     })
 
     roomChannel.on("msg:created", (resp) => {
