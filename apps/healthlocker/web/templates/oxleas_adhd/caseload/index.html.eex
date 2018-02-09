@@ -5,9 +5,9 @@
   <%= for patient <- @patients do %>
     <%= link to: caseload_user_room_path(@conn, :show, patient, room_for(patient)),
             class: "no-underline hl-dark-blue cf" do %>
-      <div class="w-100 hl-bg-light-aqua pa3 mv1 br3 hl-dark-blue justify-between ba bw1 b--red">
-        <%= if Enum.at(patient.rooms, 0).notifications do %>
-          <p class="b di"><%= Healthlocker.ComponentView.full_name(patient) %></p><span class="fr hl-pink fw9 ba bw1 b--red">></span>
+      <div class="w-100 hl-bg-light-aqua pa3 mv1 br3 hl-dark-blue justify-between">
+        <%= if @current_user.role == "clinician" && Enum.at(patient.rooms, 0).notifications do %>
+          <p class="b di"><%= Healthlocker.ComponentView.full_name(patient) %></p> <span class="fr hl-pink fw9">></span> <span class="dib h1 w1 br-100 bg-red fr mr1"></span>
         <% else %>
           <p class="b di"><%= Healthlocker.ComponentView.full_name(patient) %></p><span class="fr hl-pink fw9">></span>
         <% end %>
@@ -18,8 +18,12 @@
       <%= for carer <- patient.carers do %>
         <%= link to: caseload_user_room_path(@conn, :show, carer, room_for(carer)),
                 class: "no-underline hl-dark-blue cf" do %>
-          <div class="w-80 pa3 mv1 b--hl-yellow ba bw1 br3 hl-dark-blue ml-20 flex justify-between ba bw1 b--red">
-            <p class="b di mv0"><%= Healthlocker.ComponentView.full_name(carer) %> <span class="normal i">(friend/family/carer)</span></p><span class="hl-pink fw9">></span>
+          <div class="w-80 pa3 mv1 b--hl-yellow ba bw1 br3 hl-dark-blue ml-20 justify-between">
+            <%= if Enum.at(carer.rooms, 0).notifications do %>
+              <p class="b di mv0"><%= Healthlocker.ComponentView.full_name(carer) %> <span class="normal i">(friend/family/carer)</span></p><span class="fr hl-pink fw9">></span> <span class="dib h1 w1 br-100 bg-red fr mr1"></span>
+            <% else %>
+              <p class="b di mv0"><%= Healthlocker.ComponentView.full_name(carer) %> <span class="normal i">(friend/family/carer)</span></p><span class="fr hl-pink fw9">></span>
+            <% end %>
           </div>
         <% end %>
       <% end %>
@@ -27,8 +31,12 @@
       <%= for teacher <- patient.teacher do %>
         <%= link to: caseload_user_room_path(@conn, :show, patient, room_for(teacher)),
                 class: "no-underline hl-dark-blue cf" do %>
-          <div class="w-80 pa3 mv1 b--hl-lilac ba bw1 br3 hl-dark-blue ml-20 flex justify-between">
-            <p class="b di mv0"><%= Healthlocker.ComponentView.full_name(teacher) %> <span class="normal i">(teacher)</span></p><span class="hl-pink fw9">></span>
+          <div class="w-80 pa3 mv1 b--hl-lilac ba bw1 br3 hl-dark-blue ml-20 justify-between">
+            <%= if Enum.at(teacher.rooms, 0).notifications do %>
+              <p class="b di mv0"><%= Healthlocker.ComponentView.full_name(teacher) %> <span class="normal i">(teacher)</span></p><span class="fr hl-pink fw9">></span> <span class="dib h1 w1 br-100 bg-red fr mr1"></span>
+            <% else %>
+              <p class="b di mv0"><%= Healthlocker.ComponentView.full_name(teacher) %> <span class="normal i">(teacher)</span></p><span class="fr hl-pink fw9">></span>
+            <% end %>
           </div>
         <% end %>
       <% end %>

@@ -34,7 +34,7 @@ defmodule Healthlocker.RoomChannel do
     connected_users = Presence.list(socket)
 
     changeset =
-      if (current_user.role == "service_user" || current_user.role == "teacher") && !is_clinician_in_socket?(connected_users) do
+      if Enum.member?(["service_user", "teacher", "carer"], current_user.role) && !is_clinician_in_socket?(connected_users) do
         Ecto.Changeset.put_change(changeset, :unread, true)
       else
         Ecto.Changeset.put_change(changeset, :unread, false)
@@ -60,7 +60,6 @@ defmodule Healthlocker.RoomChannel do
   defp broadcast_message(socket, message) do
     message = Repo.preload(message, :user)
     connected_users = Presence.list(socket)
-    IO.inspect connected_users
     rendered_message = Phoenix.View.render_to_string(MessageView, "_message.html", message: message, current_user_id: nil)
     broadcast!(socket, "msg:created", %{template: rendered_message, id: message.id, message_user_id: socket.assigns.user_id})
   end

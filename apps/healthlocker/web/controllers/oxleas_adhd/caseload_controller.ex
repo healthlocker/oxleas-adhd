@@ -24,7 +24,18 @@ defmodule Healthlocker.OxleasAdhd.CaseloadController do
       "clinician" ->
         patients =
           get_patients_for_clinician(current_user)
-          |> Enum.map(fn patient_map -> %{patient_map | rooms: unread_messages?(patient_map.rooms)} end)
+          |> Enum.map(fn patient_map ->
+
+            teachers = Enum.map(patient_map.teacher, fn t ->
+              %{t | rooms: unread_messages?(t.rooms)}
+            end)
+
+            carers = Enum.map(patient_map.carers, fn c ->
+              %{c | rooms: unread_messages?(c.rooms)}
+            end)
+
+            %{patient_map | rooms: unread_messages?(patient_map.rooms), teacher: teachers, carers: carers}
+          end)
 
         conn
         |> render("index.html", patients: patients, current_user: current_user)

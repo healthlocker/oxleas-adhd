@@ -5,6 +5,9 @@ defmodule Healthlocker.OxleasAdhd.Caseload.RoomController do
   def show(conn, %{"id" => id, "user_id" => user_id}) do
     room = Repo.get((from r in Room, preload: [messages: :user]), id)
 
+    from(m in Message, where: m.room_id == ^room.id)
+    |> Repo.update_all(set: [unread: false])
+
     messages =
       Repo.all from m in Message,
       where: m.room_id == ^room.id,
