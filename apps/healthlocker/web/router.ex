@@ -20,10 +20,6 @@ defmodule Healthlocker.Router do
     plug Healthlocker.Plugs.RequireSuperAdmin
   end
 
-  pipeline :staff do
-    plug Healthlocker.Plugs.RequireStaff
-  end
-
   pipeline :staff_or_teacher do
     plug Healthlocker.Plugs.RequireStaffOrTeacher
   end
@@ -38,8 +34,6 @@ defmodule Healthlocker.Router do
 
     resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
       resources "/clinician-connection", ClinicianController, only: [:new, :create, :edit, :update]
-    end
-    resources "/users", UserController, only: [:index, :new, :create, :edit, :update] do
       resources "/carer-connection", CarerController, only: [:new]
       post "/carer-connection", CarerController, :submit_SU_details
       post "/carer-connection/confirm", CarerController, :confirm_SU_details
