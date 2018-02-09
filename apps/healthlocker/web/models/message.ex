@@ -4,6 +4,7 @@ defmodule Healthlocker.Message do
   schema "messages" do
     field :body, :string
     field :name, :string
+    field :unread, :boolean
     belongs_to :user, Healthlocker.User
     belongs_to :room, Healthlocker.Room
 
@@ -15,7 +16,7 @@ defmodule Healthlocker.Message do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:body, :user_id, :room_id])
+    |> cast(params, [:body, :unread, :user_id, :room_id])
     |> validate_required([:body, :user_id, :room_id])
   end
 end

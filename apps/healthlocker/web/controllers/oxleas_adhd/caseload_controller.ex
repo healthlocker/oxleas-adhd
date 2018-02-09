@@ -1,13 +1,42 @@
 defmodule Healthlocker.OxleasAdhd.CaseloadController do
   use Healthlocker.Web, :controller
-  alias OxleasAdhd.{ClinicianQuery, TeacherQuery}
-  alias Healthlocker.{Clinician, Teacher, User, Room}
+  alias OxleasAdhd.{ClinicianQuery, TeacherQuery, MessageQuery}
+  alias Healthlocker.{Clinician, Teacher, User, Room, Message}
+
+  def unread_messages?([room | _]) do
+    unread_messages =
+      Message
+      |> MessageQuery.has_unread_messages(room.id)
+      |> Repo.all()
+      |> length()
+
+    case unread_messages == 0 do
+      true ->
+       [Map.put(room, :notifications, false)]
+      _ ->
+       [Map.put(room, :notifications, true)]
+    end
+  end
 
   def index(conn, _params) do
     current_user = conn.assigns.current_user
     case current_user.role do
       "clinician" ->
-        patients = get_patients_for_clinician(current_user)
+        patients =
+          get_patients_for_clinician(current_user)
+          |> Enum.map(fn patient_map ->
+
+            teachers = Enum.map(patient_map.teacher, fn t ->
+              %{t | rooms: unread_messages?(t.rooms)}
+            end)
+
+            carers = Enum.map(patient_map.carers, fn c ->
+              %{c | rooms: unread_messages?(c.rooms)}
+            end)
+
+            %{patient_map | rooms: unread_messages?(patient_map.rooms), teacher: teachers, carers: carers}
+          end)
+
         conn
         |> render("index.html", patients: patients, current_user: current_user)
       "teacher" ->
