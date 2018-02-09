@@ -12,6 +12,7 @@ defmodule Healthlocker do
       supervisor(Healthlocker.Repo, []),
       # Start the endpoint when the application starts
       supervisor(Healthlocker.Endpoint, []),
+      supervisor(Healthlocker.Presence, []),
       # Start your own worker by calling: Healthlocker.Worker.start_link(arg1, arg2, arg3)
       # worker(Healthlocker.Worker, [arg1, arg2, arg3]),
       worker(Segment, [Application.get_env(:segment, :write_key)])
