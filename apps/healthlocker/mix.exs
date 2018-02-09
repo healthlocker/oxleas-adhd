@@ -21,25 +21,7 @@ defmodule Healthlocker.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Healthlocker, []},
-       applications: [
-        :phoenix,
-        :phoenix_pubsub,
-        :phoenix_html,
-        :cowboy,
-        :gettext,
-        :phoenix_ecto,
-        :postgrex,
-        :comeonin,
-        :timex,
-        :bamboo,
-        :segment,
-        :faker,
-        :earmark,
-        :bamboo_smtp,
-        :ecto_factory,
-        :wallaby
-      ],
-      extra_applications: [:logger, :appsignal]
+      extra_applications: [:logger]
     ]
   end
 
@@ -51,30 +33,31 @@ defmodule Healthlocker.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.2.1"},
-     {:appsignal, "~> 1.0"},
-     {:phoenix_pubsub, "~> 1.0"},
-     {:phoenix_ecto, "~> 3.0"},
-     {:postgrex, ">= 0.0.0"},
-     {:phoenix_html, "~> 2.6"},
-     {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"},
-     {:earmark, "~> 1.1"},
-     {:comeonin, "~> 3.0"},
-     {:credo, "~> 0.7.2", only: [:dev, :test]},
-     {:timex, "~> 3.0"},
-     {:segment, github: "tonydaly/analytics-elixir"},
-     {:bamboo, "~> 0.7"},
-     {:bamboo_smtp, "~> 1.2.1"},
-     {:mock, "~> 0.2.0", only: :test},
-     {:faker, "~> 0.7"},
-     {:wallaby, "~> 0.16.1"},
-     {:ecto_factory, "~> 0.0.6"},
-     {:oxleas_adhd, in_umbrella: true},
-     {:plug, "~>1.3.5", override: true},
-     {:html_sanitize_ex, "~> 1.0"}
-   ]
+    [
+      {:appsignal, "~> 1.0"},
+      {:bamboo, "~> 0.7"},
+      {:bamboo_smtp, "~> 1.2.1"},
+      {:comeonin, "~> 3.0"},
+      {:cowboy, "~> 1.0"},
+      {:credo, "~> 0.7.2", only: [:dev, :test], runtime: false},
+      {:earmark, "~> 1.1"},
+      {:ecto_factory, "~> 0.0.6"},
+      {:faker, "~> 0.7"},
+      {:gettext, "~> 0.11"},
+      {:html_sanitize_ex, "~> 1.0"},
+      {:mock, "~> 0.2.0", only: :test, runtime: false},
+      {:oxleas_adhd, in_umbrella: true},
+      {:phoenix, "~> 1.2.1"},
+      {:phoenix_ecto, "~> 3.0"},
+      {:phoenix_html, "~> 2.6"},
+      {:phoenix_live_reload, "~> 1.0", only: :dev, runtime: false},
+      {:phoenix_pubsub, "~> 1.0"},
+      {:plug, "~>1.3.5", override: true},
+      {:postgrex, ">= 0.0.0"},
+      {:segment, github: "tonydaly/analytics-elixir"},
+      {:timex, "~> 3.0"},
+      {:wallaby, "~> 0.16.1"}
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
