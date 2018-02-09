@@ -21,27 +21,7 @@ defmodule Healthlocker.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Healthlocker, []},
-       applications: [
-        :phoenix,
-        :phoenix_pubsub,
-        :phoenix_html,
-        :cowboy,
-        :gettext,
-        :phoenix_ecto,
-        :postgrex,
-        :comeonin,
-        :timex,
-        :bamboo,
-        :segment,
-        :faker,
-        :earmark,
-        :bamboo_smtp,
-        :ecto_factory,
-        :wallaby,
-        :html_sanitize_ex,
-        :xmerl
-      ],
-      extra_applications: [:logger, :appsignal, :xmerl]
+      extra_applications: [:logger, :xmerl]
     ]
   end
 
