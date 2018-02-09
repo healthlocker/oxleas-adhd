@@ -21,7 +21,7 @@ defmodule Healthlocker.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Healthlocker, []},
-      extra_applications: [:logger, :xmerl]
+      extra_applications: [:logger, :xmerl, :elixir_make]
     ]
   end
 
