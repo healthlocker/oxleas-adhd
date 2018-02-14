@@ -49,11 +49,11 @@
 
           <%= if @conn.assigns[:current_user].role == "clinician" do %>
             <%= link to: user_medication_path(@conn, :edit, @user.id, @medication.id) do %>
-              <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication1</span>
+              <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
             <% end %>
           <% else %>
             <%= link to: user_medication_path(@conn, :index, @user) do %>
-              <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication2</span>
+              <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
             <% end %>
           <% end %>
 
@@ -61,11 +61,11 @@
 
           <%= if @conn.assigns[:current_user].role == "clinician" do %>
             <%= link to: user_medication_path(@conn, :new, @user) do %>
-              <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication3</span>
+              <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
             <% end %>
           <% else %>
             <%= link to: user_medication_path(@conn, :index, @user) do %>
-              <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication4</span>
+              <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">Medication</span>
             <% end %>
           <% end %>
 
