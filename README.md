@@ -27,7 +27,8 @@ Oxleas' desired brand name.
 
 When running the project on your machine, you can populate the database with users by running:
 ```
-mix run apps/healthlocker/priv/repo/user_only_seeds.exs
+mix run apps/healthlocker/priv/repo/super_admin.exs
+mix run apps/healthlocker/priv/repo/user_with_tracking_and_staff.exs
 ```
 
 The list of users will include a super admin (super@admin.com/password).
