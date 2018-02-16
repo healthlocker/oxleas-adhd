@@ -1,6 +1,9 @@
-<%= if @user.role == "service_user" do %>
-  <%= render Healthlocker.OxleasAdhd.Caseload.UserView, "menu.html", assigns %>
-<% else %>
-  <%= render Healthlocker.OxleasAdhd.Caseload.UserView, "carer_menu.html", assigns %>
+<%= case @user.role do %>
+  <% "service_user" -> %>
+    <%= render Healthlocker.OxleasAdhd.Caseload.UserView, "menu.html", assigns %>
+  <% "teacher" -> %>
+    <%= render Healthlocker.OxleasAdhd.Caseload.UserView, "teacher_menu.html", assigns %>
+  <% _ -> %>
+    <%= render Healthlocker.OxleasAdhd.Caseload.UserView, "carer_menu.html", assigns %>
 <% end %>
 <%= render Healthlocker.RoomView, "_room.html", assigns %>
