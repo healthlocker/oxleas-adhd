@@ -3,7 +3,7 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
   use Timex
   alias Healthlocker.SleepTracker
 
-  alias Healthlocker.{User, Goal, Post, OxleasAdhd.ServiceUser}
+  alias Healthlocker.{User, Goal, Post, OxleasAdhd.ServiceUser, Room}
 
   def show(conn, %{"id" => id, "section" => section, "date" => date, "shift" => shift}) do
     date = Date.from_iso8601!(date)
@@ -14,7 +14,8 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
         Timex.shift(date, days: 7)
       end
 
-    details = get_details(id, shifted_date)
+    current_user = conn.assigns.current_user
+    details = get_details(id, shifted_date, current_user)
 
     conn
     |> render(String.to_atom(section), user: details.user, goals: details.goals,
@@ -26,8 +27,9 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
     )
   end
 
-  def show(conn, %{"id" => id, "section" => section}) do
-    details = get_details(id, Date.utc_today())
+  def show(conn, %{"id" => user_id, "section" => section}) do
+    current_user = conn.assigns.current_user
+    details = get_details(user_id, Date.utc_today(), current_user)
 
     conn
     |> render(String.to_atom(section), user: details.user, goals: details.goals,
@@ -38,9 +40,18 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
     medication: details.medication)
   end
 
-  defp get_details(id, date) do
+  defp get_details(id, date, current_user) do
     user = Repo.get!(User, id) |> Repo.preload(:medication)
-    room = Repo.one! assoc(user, :rooms)
+    room =
+      case current_user.role do
+        "teacher" ->
+          teacher_room = "teacher-care-team:" <> Integer.to_string(user.id) <> ":" <> Integer.to_string(current_user.id)
+          query = from r in Room, where: r.name == ^teacher_room
+          Repo.all(query) |> List.first
+        _ ->
+          Repo.one! assoc(user, :rooms)
+      end
+
     service_user = ServiceUser.for(user)
     medication = user.medication
 

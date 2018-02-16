@@ -5,30 +5,15 @@
 <div class="w-100 mw7 center">
   <%= cond do %>
     <%= String.contains?(@conn.request_path, "rooms") -> %>
-      <%= link "Messages", to: caseload_user_room_path(@conn, :show, @user, @room), class: "link w-25 dib fl hl-pink b tc pt1 hl-bg-grey bb bw2 b--hl-pink pb3" %>
-      <%= link "Goals and Strategies", to: caseload_user_path(@conn, :show, @user, section: "interactions"), class: "link w-25 dib fl hl-dark-blue tc pt1 hl-bg-grey bb bw2 b--hl-grey pb3" %>
-      <%= link "Tracking Overview", to: caseload_user_path(@conn, :show, @user, section: "tracking"), class: "link w-25 dib fl hl-dark-blue tc pt1 hl-bg-grey bb bw2 b--hl-grey pb3" %>
-      <%= link "Details and Meds", to: caseload_user_path(@conn, :show, @user, section: "details"), class: "link w-25 dib fl hl-dark-blue tc pt1 hl-bg-grey bb bw2 b--hl-grey pb3" %>
-    <% String.contains?(@conn.query_string, "interactions") -> %>
-      <%= link "Messages", to: caseload_user_room_path(@conn, :show, @user, @room), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Goals and Strategies", to: caseload_user_path(@conn, :show, @user, section: "interactions"), class: "link w-25 dib fl hl-pink b tc pt1 pb3 hl-bg-grey bb bw2 b--hl-pink" %>
-      <%= link "Tracking Overview", to: caseload_user_path(@conn, :show, @user, section: "tracking"), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Details and Meds", to: caseload_user_path(@conn, :show, @user, section: "details"), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-    <% String.contains?(@conn.query_string, "details") -> %>
-      <%= link "Messages", to: caseload_user_room_path(@conn, :show, @user, @room), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Goals and Strategies", to: caseload_user_path(@conn, :show, @user, section: "interactions"), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Tracking Overview", to: caseload_user_path(@conn, :show, @user, section: "tracking"), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Details and Meds", to: caseload_user_path(@conn, :show, @user, section: "details"), class: "link w-25 dib fl hl-pink b tc pt1 pb3 hl-bg-grey bb bw2 b--hl-pink" %>
+      <%= render "menu_helper.html", conn: @conn, user: @user, room: @room, classes: get_classes("rooms") %>
+   <% String.contains?(@conn.query_string, "interactions") -> %>
+      <%= render "menu_helper.html", conn: @conn, user: @user, room: @room, classes: get_classes("interactions") %>
     <% String.contains?(@conn.query_string, "tracking") -> %>
-      <%= link "Messages", to: caseload_user_room_path(@conn, :show, @user, @room), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Goals and Strategies", to: caseload_user_path(@conn, :show, @user, section: "interactions"), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Tracking Overview", to: caseload_user_path(@conn, :show, @user, section: "tracking"), class: "link w-25 dib fl hl-pink b tc pt1 pb3 hl-bg-grey bb bw2 b--hl-pink" %>
-      <%= link "Details and Meds", to: caseload_user_path(@conn, :show, @user, section: "details"), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
+      <%= render "menu_helper.html", conn: @conn, user: @user, room: @room, classes: get_classes("tracking") %>
+      <% String.contains?(@conn.query_string, "details") -> %>
+      <%= render "menu_helper.html", conn: @conn, user: @user, room: @room, classes: get_classes("details") %>
     <% true -> %>
-      <%= link "Messages", to: caseload_user_room_path(@conn, :show, @user, @room), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Goals and Strategies", to: caseload_user_path(@conn, :show, @user, section: "interactions"), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Tracking Overview", to: caseload_user_path(@conn, :show, @user, section: "tracking"), class: "link w-25 dib fl hl-dark-blue tc pt1 pb3 hl-bg-grey bb bw2 b--hl-grey" %>
-      <%= link "Details and Meds", to: caseload_user_path(@conn, :show, @user, section: "details"), class: "link w-25 dib fl hl-pink b tc pt1 pb3 hl-bg-grey bb bw2 b--hl-pink" %>
+      <%= render "menu_helper.html", conn: @conn, user: @user, room: @room, classes: get_classes(true) %>
   <% end %>
 </div>
 </section>
