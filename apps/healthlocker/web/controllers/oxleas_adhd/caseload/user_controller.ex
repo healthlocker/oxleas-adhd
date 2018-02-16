@@ -2,8 +2,19 @@ defmodule Healthlocker.OxleasAdhd.Caseload.UserController do
   use Healthlocker.Web, :controller
   use Timex
   alias Healthlocker.SleepTracker
+  alias Healthlocker.{User, Goal, Post, OxleasAdhd.ServiceUser, Room, Answer}
 
-  alias Healthlocker.{User, Goal, Post, OxleasAdhd.ServiceUser, Room}
+  def show_teacher(conn, %{"su_id" => su_id, "room" => room_id, "teacher" => teacher_id}) do
+    teacher = Repo.get(User, teacher_id)
+    su = Repo.get(User, su_id)
+    questions = Answer.get_questions
+    answers = Repo.all(from a in Answer, where: a.su_id == ^su_id) |> Answer.format_answers_for_frontend
+    q_and_a = Answer.make_question_answer_tuple(questions, answers)
+
+    room = Repo.get(Room, room_id)
+    conn
+    |> render("teacher_details.html", teacher: teacher, q_and_a: q_and_a, service_user: su, room: room)
+  end
 
   def show(conn, %{"id" => id, "section" => section, "date" => date, "shift" => shift}) do
     date = Date.from_iso8601!(date)

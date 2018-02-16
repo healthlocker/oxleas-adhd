@@ -46,6 +46,7 @@ defmodule Healthlocker.Router do
     resources "/caseload", CaseloadController, only: [:index]
 
     scope "/caseload", Caseload, as: :caseload do
+      get "/show_teacher", UserController, :show_teacher
       resources "/users", UserController, only: [:show] do
         resources "/rooms", RoomController, only: [:show]
       end
