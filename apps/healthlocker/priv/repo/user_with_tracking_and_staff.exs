@@ -1,18 +1,65 @@
-alias Healthlocker.{Diary, Repo, User, SleepTracker, Symptom, SymptomTracker}
+alias Healthlocker.{Clinician, ClinicianRooms, Diary, Repo, Room, SleepTracker, Symptom, SymptomTracker, Teacher, User, UserRoom}
 use Timex
 
-{:ok, dummy} = Repo.insert(%User{
-  email: "dummy@data.com",
+{:ok, service_user} = Repo.insert(%User{
+  email: "test@serviceuser.com",
   password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
-  role: "slam_user",
-  first_name: "Dummy",
-  last_name: "Data",
+  role: "service_user",
+  first_name: "test",
+  last_name: "serviceuser",
   dob: "01/01/1990"
+})
+
+{:ok, clinician} = Repo.insert(%User{
+  email: "test@clinician.com",
+  password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
+  role: "clinician",
+  first_name: "test",
+  last_name: "clinician",
+  job_role: "clinician"
+})
+
+{:ok, teacher} = Repo.insert(%User{
+  email: "test@teacher.com",
+  password_hash: Comeonin.Bcrypt.hashpwsalt("password"),
+  role: "teacher",
+  first_name: "test",
+  last_name: "teacher",
+  job_role: "teacher",
+  org: "teacher"
+})
+
+Repo.insert(%Clinician{
+  clinician_id: clinician.id,
+  caring_id: service_user.id,
+})
+
+Repo.insert(%Teacher{
+  teacher_id: teacher.id,
+  caring_id: service_user.id,
+})
+
+{:ok, room} = Repo.insert(%Room{
+  name: "service-user-care-team:" <> Integer.to_string(service_user.id)
+})
+
+{:ok, room} = Repo.insert(%Room{
+  name: "teacher-care-team:" <> Integer.to_string(service_user.id) <> Integer.to_string(teacher.id)
+})
+
+Repo.insert(%UserRoom{
+  user_id: service_user.id,
+  room_id: room.id
+})
+
+Repo.insert(%ClinicianRooms{
+  clinician_id: clinician.id,
+  room_id: room.id
 })
 
 {:ok, symptom} = Repo.insert(%Symptom{
   symptom: "Anger",
-  user_id: dummy.id
+  user_id: service_user.id
 })
 
 hours = [
@@ -42,7 +89,7 @@ Enum.map(0..13, fn index ->
     hours_slept: Enum.random(hours),
     wake_count: Enum.random(wake),
     notes: Enum.random(sleep_notes),
-    user_id: dummy.id,
+    user_id: service_user.id,
     for_date: Timex.shift(Date.utc_today, days: -index)
   })
 end)
@@ -50,7 +97,7 @@ end)
 Enum.map(0..13, fn index ->
   Repo.insert(%Diary{
     entry: Enum.random(entries),
-    user_id: dummy.id,
+    user_id: service_user.id,
     inserted_at: Timex.shift(DateTime.utc_now(), days: -index)
   })
 end)
