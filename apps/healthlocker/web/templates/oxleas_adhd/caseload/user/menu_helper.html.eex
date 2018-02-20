@@ -1,0 +1,9 @@
+<%= if @conn.assigns.current_user.role == "teacher" do %>
+  <%= link "Messages", to: caseload_user_room_path(@conn, :show, @user, @room), class: "link w-50 dib fl tc pt1 pb3 hl-bg-grey bb bw2 " <> Enum.at(@classes, 0) %>
+  <%= link "Details and Meds", to: caseload_user_path(@conn, :show, @user, section: "details"), class: "link w-50 dib fl tc pt1 pb3 hl-bg-grey bb bw2 " <> Enum.at(@classes, 3) %>
+<% else %>
+  <%= link "Messages", to: caseload_user_room_path(@conn, :show, @user, @room), class: "link w-25 dib fl tc pt1 pb3 hl-bg-grey bb bw2 " <> Enum.at(@classes, 0) %>
+  <%= link "Goals and Strategies", to: caseload_user_path(@conn, :show, @user, section: "interactions"), class: "link w-25 dib fl tc pt1 pb3 hl-bg-grey bb bw2 " <> Enum.at(@classes, 1) %>
+  <%= link "Tracking Overview", to: caseload_user_path(@conn, :show, @user, section: "tracking"), class: "link w-25 dib fl tc pt1 pb3 hl-bg-grey bb bw2 " <> Enum.at(@classes, 2) %>
+  <%= link "Details and Meds", to: caseload_user_path(@conn, :show, @user, section: "details"), class: "link w-25 dib fl tc pt1 pb3 hl-bg-grey bb bw2 " <> Enum.at(@classes, 3) %>
+<% end %>

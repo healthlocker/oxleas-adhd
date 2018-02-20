@@ -29,7 +29,7 @@
       <% end %>
 
       <%= for teacher <- patient.teacher do %>
-        <%= link to: caseload_user_room_path(@conn, :show, patient, room_for(teacher)),
+        <%= link to: caseload_user_room_path(@conn, :show, teacher, room_for(teacher), patient: patient),
                 class: "no-underline hl-dark-blue cf" do %>
           <div class="w-80 pa3 mv1 b--hl-lilac ba bw1 br3 hl-dark-blue ml-20 justify-between">
             <%= if Enum.at(teacher.rooms, 0).notifications do %>
