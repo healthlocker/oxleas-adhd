@@ -1,0 +1,45 @@
+  <section class="absolute w-100 left-0 hl-bg-grey">
+    <div class="hl-bg-grey w-100 pa3 mw7 center">
+      <h2 class="hl-dark-blue ma0 tc"><%= Healthlocker.ComponentView.full_name(@teacher) %> <span class="normal">teacher of </span><%= Healthlocker.ComponentView.full_name(@service_user) %></h2>
+    </div>
+    <div class="w-100 mw7 center">
+      <%= link "Messages", to: caseload_user_room_path(@conn, :show, @teacher, @room, patient: @service_user), class: "link w-50 dib fl hl-dark-blue tc pv1 hl-bg-grey" %>
+      <%= link "Details and Meds", to: caseload_user_path(@conn, :show_teacher, teacher: @teacher, room: @room, su_id: @service_user.id), class: "link w-50 dib fl hl-pink b tc pt1 hl-bg-grey bb bw2 b--hl-pink pb3" %>
+    </div>
+  </section>
+
+<div class=" pt6 hl-dark-blue w-100">
+  <div class="w-100 mw6 center flex items-end justify-between">
+    <div class="tc w-40 dib fr">
+      <%= link to: user_answer_path(@conn, :new, @service_user) do %>
+        <%= img_tag("/images/school_feedback.png", class: "w-100") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="w-100 mw6 center flex items-start justify-between pb5">
+    <div class="tc w-40 dib">
+      <%= link to: user_answer_path(@conn, :new, @service_user) do %>
+        <span class="f5 link dib ph3 pv2 br-pill hl-dark-blue pointer hl-shadow-hover ba bw1 b--hl-yellow bg-white w-75">School Feedback</span>
+      <% end %>
+    </div>
+  </div>
+
+  <table class="hl-bg-lilac br3 w-80 tl center pa3">
+    <tr>
+      <th class="b tl pv2 mw3">Name: </th>
+      <td class="pv2"><%= @teacher.first_name %> <%= @teacher.last_name %></td>
+    </tr>
+    <tr>
+      <th class="b tl pv2 mw3">Role: </th>
+      <td class="pv2"><%= @teacher.role %></td>
+    </tr>
+    <tr>
+      <th class="b tl pv2 mw3">School: </th>
+      <td class="pv2"><%= @teacher.org %></td>
+    </tr>
+    <tr>
+      <th class="b tl pv2 mw3">Email: </th>
+      <td class="pv2"><%= @teacher.email %></td>
+    </tr>
+  </table>
+</div>
